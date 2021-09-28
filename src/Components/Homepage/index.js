@@ -1,16 +1,16 @@
 import {Link} from 'react-router-dom';
 
-const Login = (props) => {
+const HomePage = (props) => {
     const {validateUser} = props;
     return(
         < >
                 <Link to="/homepage">
                 <button onClick={() => validateUser()}>
-                    Login
+                    HomePage
                 </button>
                 </Link>
         </>
     )
 }
 
-export default Login;
+export default HomePage;

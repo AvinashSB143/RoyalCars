@@ -1,10 +1,10 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import {
     Switch,
     Route,
     Redirect
   } from "react-router-dom";
-  import Login from "../LoginPage"
+  import HomePage from "../Homepage"
   
   
   function Routing() {
@@ -15,10 +15,10 @@ import {
       <Switch>
       <div>
         <Route path="/">
-          <Redirect to="/login" />
+          <Redirect to="/homePage" />
         </Route>
-        <Route path="/login">
-          <Login validateUser={validateUser}/>
+        <Route path="/homePage">
+          <HomePage validateUser={validateUser}/>
         </Route>
       </div>
       </Switch>
