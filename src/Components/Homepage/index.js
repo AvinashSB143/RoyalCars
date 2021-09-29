@@ -1,14 +1,10 @@
-import {Link} from 'react-router-dom';
+import Header from "../Header";
 
 const HomePage = (props) => {
     const {validateUser} = props;
     return(
-        < >
-                <Link to="/homepage">
-                <button onClick={() => validateUser()}>
-                    HomePage
-                </button>
-                </Link>
+        <>
+               <Header />
         </>
     )
 }
