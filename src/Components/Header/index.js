@@ -1,66 +1,54 @@
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import { styled, alpha } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import "./header.css";
 import Logo from "../../images/Logo.png";
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
+const styles = theme => ({
+    root: {
+      background: "#f2f3f5",
     },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  }));
+    
+  });
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: '20ch',
-      },
-    },
-  }));
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-
-const Header = () => {
+const Header = (props) => {
+    const {classes} = props;
     return(
         <div className="header_conainer"> 
             <div className="header_logo">
             <img src={Logo} width="100px" height="100px" />
             </div>
-            <div>
-            <Search>
-                <SearchIconWrapper>
-                <SearchIcon />
-                </SearchIconWrapper>
+            <div className="header_search_bar">
+            {/* <Search>
+                
                 <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ 'aria-label': 'search' }}
                 />
-            </Search>
+                <SearchIconWrapper>
+                <SearchIcon />
+                </SearchIconWrapper>
+            </Search> */}
+            <div className="search_container">
+                <TextField
+                id="standard-search"
+                placeholder="Search field"
+                type="search"
+                variant="standard"
+                classes={{ root: classes.root }}
+                InputProps={{ disableUnderline: true }}
+                className="search_text"
+                />
+                 <SearchIcon className="search_icon"/>
+            <div>
+                    
+                </div>
+
+            </div>
             </div>
             <div className="header_buy_car">
                 <b>
@@ -101,4 +89,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default withStyles(styles)(Header);

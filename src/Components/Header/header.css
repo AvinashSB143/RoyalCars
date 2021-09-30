@@ -15,3 +15,24 @@
     display: flex;
     flex-direction: column;
 }
+.header_search_bar {
+    /* flex-basis: 200px; */
+}
+.search_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.search_text {
+    width: "22rem";
+}
+
+.search_icon {
+position: relative;
+right: 25px;
+top: 5px;
+}
+
+.search_bar {
+    width: 100%;;
+}
