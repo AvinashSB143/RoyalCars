@@ -1,9 +1,11 @@
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import "./navBar.css";
+import "../../styles/styles.css";
+
 
 const NavBar = () => {
     return (
-        <div className="nav_header">
+        <div className="row_container nav_header">
                   <div className="list_item">  BUDGET <ArrowDropDownIcon /></div>
                   <div className="list_item"> MAKE AND MODEL<ArrowDropDownIcon /></div>
                   <div className="list_item"> YEAR<ArrowDropDownIcon /></div>

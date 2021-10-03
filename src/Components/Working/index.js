@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom';
 import "./working.css";
+import "../../styles/styles.css";
 
 
 const Working = () => {
 return(
-    <div className="working_container">
-            <div className="working_heading">
+    <div className="main_container column_container working_container">
+            <div className="main_container column_container">
                 <h2 style={{ margin: 0}}>
                     How Royal Cars Works
                 </h2>

@@ -20,6 +20,8 @@
   
   .slide {
     display: inline-block;
+    background-size: cover;
+    background-position: 0;
     background-size: 100%;
     height: 400px;
     width: 100%;

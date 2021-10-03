@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { styled, alpha } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 
@@ -26,7 +27,7 @@ const Header = (props) => {
   const { classes } = props;
     
     return(
-        <div className="header_conainer"> 
+        <div className="header_container"> 
             <div className="header_logo">
             <img src={Logo} width="100px" height="100px" />
             </div>

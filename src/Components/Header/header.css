@@ -1,16 +1,10 @@
-.header_conainer {
+.header_container {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     width: 100%;
     border-bottom: 1px solid rgb(26, 23, 23);
-}
-
-.header_logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .header_buy_car {

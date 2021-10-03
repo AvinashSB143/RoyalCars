@@ -1,10 +1,11 @@
 import "./benifits.css";
+import "../../styles/styles.css";
 import Logo from "../../images/Logo.png";
 
 const AssuredBenifits = () => {
     return(
-        <div className="benifits_container">
-            <div className="benifits_heading">
+        <div className="main_container column_container">
+            <div className="main_container column_container">
                 <img src={Logo} width="100px" height="100px"/>
                 <h1 style={{ margin: 0}}>
                     Royal Car benifits

@@ -1,9 +1,9 @@
 import "./lifestyle.css";
-import Logo from "../../images/Logo.png";
+import "../../styles/styles.css";
 
 const LifeStyle = () => {
 return(
-    <div className="lifeStyle_container">
+    <div className="main_container column_container lifeStyle_container">
         <h2>
         Cars by Lifestyle
         </h2>
