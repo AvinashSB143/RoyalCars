@@ -1,0 +1,10 @@
+.nav_header {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   margin: 1rem auto;
+}
+.list_item {
+    display: flex;
+    align-items: center;
+}

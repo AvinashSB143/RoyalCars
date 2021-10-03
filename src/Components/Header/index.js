@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropDown';
 import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
@@ -11,35 +13,34 @@ import Logo from "../../images/Logo.png";
 const styles = theme => ({
     root: {
       background: "#f2f3f5",
+      padding: "10px"
     },
+    input: {
+        padding: "16px 0 17px 10px"
+    }
     
   });
 
 const Header = (props) => {
-    const {classes} = props;
+
+  const { classes } = props;
+    
     return(
         <div className="header_conainer"> 
             <div className="header_logo">
             <img src={Logo} width="100px" height="100px" />
             </div>
             <div className="header_search_bar">
-            {/* <Search>
-                
-                <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                />
-                <SearchIconWrapper>
-                <SearchIcon />
-                </SearchIconWrapper>
-            </Search> */}
             <div className="search_container">
                 <TextField
                 id="standard-search"
                 placeholder="Search field"
                 type="search"
                 variant="standard"
-                classes={{ root: classes.root }}
+                classes={{
+                    root: classes.root,
+                    input: classes.input
+                 }}
                 InputProps={{ disableUnderline: true }}
                 className="search_text"
                 />
@@ -50,22 +51,25 @@ const Header = (props) => {
 
             </div>
             </div>
-            <div className="header_buy_car">
-                <b>
+            <div className="header_buy_car" 
+            >
+                <b style={{fontSize: "16px"}} >
                     Buy Car
                 </b>
-                <ArrowDropDownIcon />
+                {/* {expandBuyCarsSection ? <ArrowDropUpIcon /> :  <ArrowDropDownIcon /> } */}
+               <ArrowDropDownIcon /> 
             </div>
             <div>
-                <b>
+                <b style={{fontSize: "16px"}}>
                    Sell Car
                 </b>
             </div>
             <div className="header_buy_car">
-                <b>
+                <b style={{fontSize: "16px"}}>
                     more
                 </b>
                 <ArrowDropDownIcon />
+                {/* <ArrowDropUpIcon /> */}
             </div>
             <div>
                 <FavoriteBorderIcon />
@@ -74,15 +78,18 @@ const Header = (props) => {
                 <p>
                     Hello, Sign in
                 </p>
-                <b>Account
+                <div className="header_account">
+                <b style={{fontSize: "16px"}}>Account
                 </b>
+                {/* <ArrowDropUpIcon /> */}
                 <ArrowDropDownIcon />
+                </div>
             </div>
             <div className="header_SignIn_bar">
                 <p>
                     call at
                 </p>
-                <b>7788665544
+                <b style={{fontSize: "16px"}}>7788665544
                 </b>
             </div>
         </div>

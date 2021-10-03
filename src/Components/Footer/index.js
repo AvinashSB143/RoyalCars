@@ -26,13 +26,6 @@ function Footer() {
     " FAQ's",
     "Terms & condistions",
     "Customer review",
-    "links",
-    "links",
-    "links",
-    "links",
-    "links",
-    "links",
-    "links",
   ];
 
   const buttons = ["727-727-7275", "get instant Quotes", "Browse cars"];
