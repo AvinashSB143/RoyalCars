@@ -4,6 +4,7 @@ import NavBar from "../Navigation";
 import RecommendedCars from "../Recommendation";
 import AssuredBenifits from "../AssuredBenefits";
 import Working from "../Working";
+import LifeStyle from "../LifeStyle";
 
 
 const HomePage = (props) => {
@@ -15,6 +16,7 @@ const HomePage = (props) => {
       <RecommendedCars />
       <AssuredBenifits />
       <Working />
+      <LifeStyle />
       <Footer />
     </>
   );
