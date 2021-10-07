@@ -1,19 +1,15 @@
 import { useEffect, useState, Component } from 'react';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-// import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUpIcon';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
-import { styled, alpha } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 
-const styles = theme => ({
+const styles = theme => ({ 
     root: {
       background: "#f2f3f5",
       padding: "10px"
@@ -59,7 +55,7 @@ const styles = theme => ({
 //                 <b style={{fontSize: "16px"}} >
 //                     Buy Car
 //                 </b>
-//                 {/* {expandArrowIcon ? <ArrowDropUpIcon /> :  <ArrowDropDownIcon /> } */}
+//                 {/* {expandBuyCarSection ? <ArrowDropUpIcon /> :  <ArrowDropDownIcon /> } */}
 //                <ArrowDropDownIcon /> 
 //             </div>
 //             <div>
@@ -103,21 +99,34 @@ class Header extends Component {
     constructor(props) {
         super();
         this.state = {
-            expandArrowIcon: false
+            expandBuyCarSection: false,
+            expandMoreSection: false,
+            expandAccountSection: false
         }
     }
 
-    changeArrow = () => {
-        this.setState({expandArrowIcon: !this.state.expandArrowIcon},() => {
-            this.setState({expandArrowIcon: this.state.expandArrowIcon})
+    changeArrow = (value) => {
+        if(value) {
+        this.setState({
+            expandBuyCarSection: value === "buycar" ? !this.state.expandBuyCarSection : this.state.expandBuyCarSection,
+            expandMoreSection: value === "more" ? !this.state.expandMoreSection : this.state.expandMoreSection,
+            expandAccountSection: value === "account" ? !this.state.expandAccountSection: this.state.expandAccountSection
         })
-        console.log(this.state.expandArrowIcon)
+    } 
+    else {
+        this.setState({
+            expandBuyCarSection: false,
+            expandMoreSection: false,
+            expandAccountSection: false
+        })
+    }
     }
     
     render() {
     const {classes} = this.props;
         return(
-            <div className="header_container"> 
+            <div>
+             <div className="header_container"> 
                          <div className="header_logo">
                          <img src={Logo} width="100px" height="100px" />
                          </div>
@@ -145,11 +154,11 @@ class Header extends Component {
                         <div className="header_buy_car" 
                         
                         >
-                            <b onMouseOver={this.changeArrow}
-                        onMouseOut={this.changeArrow} style={{fontSize: "16px"}} >
+                            <b onMouseOver={() => this.changeArrow("buycar")}
+                               onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
                                 Buy Car
                             </b>
-                            {this.state.expandArrowIcon ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
+                            {this.state.expandBuyCarSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                         </div>
                         <div>
                             <b style={{fontSize: "16px"}}>
@@ -157,11 +166,11 @@ class Header extends Component {
                             </b>
                         </div>
                         <div className="header_buy_car">
-                            <b style={{fontSize: "16px"}}>
+                            <b onMouseOver={() => this.changeArrow("more")}
+                               onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}}>
                                 more
                             </b>
-                            <ArrowDropDownIcon />
-                            {/* <ArrowDropUpIcon /> */}
+                            {this.state.expandMoreSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                         </div>
                         <div>
                             <FavoriteBorderIcon />
@@ -171,10 +180,10 @@ class Header extends Component {
                                 Hello, Sign in
                             </p>
                             <div className="header_account">
-                            <b style={{fontSize: "16px"}}>Account
+                            <b onMouseOver={() => this.changeArrow("account")}
+                               onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}}>Account
                             </b>
-                            {/* <ArrowDropUpIcon /> */}
-                            <ArrowDropDownIcon />
+                            {this.state.expandAccountSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                             </div>
                         </div>
                         <div className="header_SignIn_bar">
@@ -185,7 +194,16 @@ class Header extends Component {
                             </b>
                         </div>
                     </div>
-                )
+                    <div className="main_container column_container">
+                        <div className="main_container">
+                             <h4>
+                                 About Us
+                             </h4>
+
+                        </div>
+                    </div>
+                   </div> 
+            )
     }
 }
 
