@@ -1,0 +1,11 @@
+.featuredcar_container {
+    margin: 10px 30px;
+}
+
+.featuredcar_btn {
+    width: 200px;
+    margin: 20px 30px;
+    height: 50px;
+    border-radius: 10px;
+    background: #f2f3f5;
+}

@@ -1,0 +1,16 @@
+.feature_container {
+    justify-content: flex-start;
+    border-radius: 10px;
+    background-color: #f7f4f8;
+    overflow: hidden;
+}
+.lifeStyle_filters {
+    width: 300px;
+    background-color: white;
+    padding-left: 25px;
+    margin: 30px 40px;
+}
+
+.car_model_search {
+    width: 300px;
+}

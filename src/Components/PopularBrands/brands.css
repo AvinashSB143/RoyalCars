@@ -1,0 +1,11 @@
+.brandcar_container {
+    margin: 10px 30px;
+}
+
+.brandcar_btn {
+    width: 200px;
+    margin: 20px 30px;
+    height: 150px;
+    border-radius: 30px;
+    background: #f2f3f5;
+}

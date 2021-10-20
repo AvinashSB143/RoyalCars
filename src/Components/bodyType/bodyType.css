@@ -1,0 +1,10 @@
+.bodytype_images_container {
+    margin: 10px 30px;
+}
+
+.bodytype_image {
+    width: 200px;
+    margin: 20px 30px;
+    height: 150px;
+    border-radius: 30px;
+}

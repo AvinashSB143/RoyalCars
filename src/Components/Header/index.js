@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import { useEffect, useState, Component } from 'react';
+import { connect } from 'react-redux';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 // import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -18,7 +19,8 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
-import history from '../history';
+
+import { getOTP } from "../../actions"
 
 
 const styles = theme => ({ 
@@ -44,7 +46,9 @@ class Header extends Component {
             showNameField: false,
             showEmailField: false,
             remainingTime: 60,
-            showTimeInterval: false
+            showTimeInterval: false,
+            mobileNumber: null,
+            username: null
         }
     }
 
@@ -91,10 +95,22 @@ class Header extends Component {
         }
         if(key === "getOTP") {
             this.setState({otpRequested: true, showTimeInterval: true});
+            this.props.getOTP(this.state.username, this.state.mobileNumber)
             this.watchTimer()
         }
     }
 
+    getMobileNumber = number => {
+        this.setState({
+            mobileNumber: number
+        })
+    }
+
+    readName = name => {
+        this.setState({
+            username: name
+        })
+    }
     
     
     render() {
@@ -243,13 +259,10 @@ class Header extends Component {
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="search_text"
-                />
-                <SearchIcon className="search_icon"/>
-                    <div>
-                 </div>
-
-                </div>
-                </div>
+                    />
+                    <SearchIcon className="search_icon"/>
+                    </div>
+                    </div>
                   <div className="header_buy_car" >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
@@ -294,8 +307,8 @@ class Header extends Component {
                         </div>
                     </div>
                     {this.state.expandMoreSection && expandMoreSection}
-                    {this.state.expandMoreSection && this.state.showWorkFlow &&  expandShowWorkFlow }
-                    {this.state.expandAccountSection && expandAccountSection}
+                    {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
+                    {this.state.expandAccountSection  && expandAccountSection}
                     {this.state.showLoginContent && <div className="main_container column_container login_container ">
                     <VpnKeyIcon />
                 {!this.state.otpRequested ? 
@@ -313,8 +326,10 @@ class Header extends Component {
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="login_text_field"
+                    onChange={e => this.getMobileNumber(e.target.value)}
                     />
-                   {this.state.showNameField && this.state.showEmailField && <TextField
+                   {this.state.showNameField && this.state.showEmailField &&
+                    <TextField
                     id="name"
                     placeholder="Enter your name"
                     // variant="standard"
@@ -324,6 +339,7 @@ class Header extends Component {
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="login_text_field"
+                    onChange={e => this.readName(e.target.value)}
                     />
                     }
                   {this.state.showNameField && this.state.showEmailField &&  
@@ -337,6 +353,7 @@ class Header extends Component {
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="login_text_field"
+
                     />
                 }
                     {!this.state.showNameField && !this.state.showEmailField && 
@@ -399,4 +416,18 @@ class Header extends Component {
     }
 }
 
-export default withStyles(styles)(Header);
+const mapStateToProps = state => {
+    
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getOTP : (name, number) =>{
+            dispatch(
+                getOTP(name, number)
+            )
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Header));

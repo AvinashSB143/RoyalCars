@@ -4,7 +4,12 @@ import {
     Route,
     Redirect
   } from "react-router-dom";
-  import HomePage from "../Homepage"
+  import HomePage from "../Homepage";
+  import history  from '../history';
+// import LifeStyle from '../LifeStyle';
+import LifeStyleFeature from "../LifeStyleFeature";
+import Header from "../Header";
+import Footer from "../Footer";
   
   
   function Routing() {
@@ -12,16 +17,19 @@ import {
   
     const validateUser = ()=> {}
     return (
-      <Switch>
       <div>
-        <Route path="/">
+      <Header />
+        <Route exact path="/"  >
           <Redirect to="/homePage" />
         </Route>
-        <Route path="/homePage">
+        <Route exact path="/homePage" history={history}>
           <HomePage validateUser={validateUser}/>
         </Route>
+        <Route path="/lifeStyle">
+          <LifeStyleFeature />
+        </Route>
+        <Footer />
       </div>
-      </Switch>
     );
   }
   
