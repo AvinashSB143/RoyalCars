@@ -9,6 +9,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ReplayIcon from '@material-ui/icons/Replay';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
 
 
 const styles = theme => ({ 
@@ -72,7 +75,7 @@ const marks = [
                     <SearchIcon className="search_icon"/>
                     </div>
              </div>
-             <div>
+             <div style={{width: "300px"}}>
                     <Accordion>
                         <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -80,45 +83,70 @@ const marks = [
                         id="panel1a-header"
                         >
                         <input type="checkbox" />
-                        <Typography>Accordion 1</Typography>
+                        <Typography>Maruti Suzuki</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                        </Typography>
+                        <Accordion>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <input type="checkbox" />
+                        <Typography>Baleno</Typography>
+                        </AccordionSummary>
+                        </Accordion>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
                         <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2a-content"
-                        id="panel2a-header"
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
                         >
-                        <Typography>Accordion 2</Typography>
+                        <input type="checkbox" />
+                        <Typography>Hyundai</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                        <Typography>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                            malesuada lacus ex, sit amet blandit leo lobortis eget.
-                        </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion disabled>
+                        <Accordion>
                         <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel3a-content"
-                        id="panel3a-header"
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
                         >
-                        <Typography>Disabled Accordion</Typography>
+                        <input type="checkbox" />
+                        <Typography>Creta</Typography>
                         </AccordionSummary>
+                        </Accordion>
+                        </AccordionDetails>
                     </Accordion>
                   </div>
             
            </div>
-           <div>
+           <div className="colunm_container featured_filtered_cars">
+             <ul>
+               <li>HOME</li>
+               <li>USED CARS</li>
+               <li>FAMILY CARS</li>
+             </ul>
+             <div className="row_container  selected_filter_list">
+               <button className="clear_Filter_btn"> <ReplayIcon /> Clear All</button>
+             </div>
+             <p>Used Family Cars</p>
+             <div className="row_container"> 
+             <div className="column_container">
+               <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+               <div className="column_container">
+               <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
 
+               </div>
+
+             </div>
+
+             </div>
+            
            </div>
+           
         </div>
     )
 

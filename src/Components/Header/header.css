@@ -82,6 +82,13 @@ align-items: center;
     z-index: 2;
 }
 
+.close_icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: slateblue;
+}
+
 .overlay {
   position: fixed;
   width: 100%;

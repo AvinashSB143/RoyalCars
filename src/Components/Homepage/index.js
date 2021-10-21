@@ -15,6 +15,7 @@ import PopularBrands from "../PopularBrands";
 import FeaturedCars from "../Featured";
 import { useState } from "react";
 import LifeStyleFeature from "../LifeStyleFeature";
+// import SliderTest from "../Login"
 
 
 const HomePage = (props) => {
@@ -29,6 +30,7 @@ const HomePage = (props) => {
         <BodyTypeCars />
         <PopularBrands />
         <FeaturedCars />
+        {/* <SliderTest /> */}
     </div>
   );
 };

@@ -3,6 +3,7 @@
     border-radius: 10px;
     background-color: #f7f4f8;
     overflow: hidden;
+    align-items: flex-start;
 }
 .lifeStyle_filters {
     width: 300px;
@@ -13,4 +14,21 @@
 
 .car_model_search {
     width: 300px;
+}
+
+.featured_filtered_cars {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+  }
+li {
+    padding-left: 20px;
+}
+.description {
+    justify-content: flex-start;
+    align-items: center;
 }

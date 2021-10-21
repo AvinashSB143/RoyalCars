@@ -8,8 +8,8 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DescriptionIcon from '@material-ui/icons/Description';
 import DirectionsOutlinedIcon from '@material-ui/icons/DirectionsOutlined';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import AddLocationIcon from '@material-ui/icons/AddLocation';
 import CloseIcon from '@material-ui/icons/Close';
+import AddLocationIcon from '@material-ui/icons/AddLocation';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 // import {AddLocationIcon} from '@material-ui/icons';
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -236,7 +236,7 @@ class Header extends Component {
             <>
             <div className={this.state.showLoginContent && "overlay"} 
             onClick={() => {
-                this.setState({showLoginContent: false})
+                this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
             }}
             ></div>
             <div>
@@ -310,6 +310,9 @@ class Header extends Component {
                     {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
                     {this.state.expandAccountSection  && expandAccountSection}
                     {this.state.showLoginContent && <div className="main_container column_container login_container ">
+                    <CloseIcon className="close_icon" onClick={() => {
+                this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
+            }}/>
                     <VpnKeyIcon />
                 {!this.state.otpRequested ? 
                    <>
@@ -324,9 +327,10 @@ class Header extends Component {
                         root: classes.root,
                         input: classes.input
                     }}
-                    InputProps={{ disableUnderline: true }}
+                    InputProps={{ disableUnderline: true, maxLength: 10}}
                     className="login_text_field"
                     onChange={e => this.getMobileNumber(e.target.value)}
+                    type="tel"
                     />
                    {this.state.showNameField && this.state.showEmailField &&
                     <TextField

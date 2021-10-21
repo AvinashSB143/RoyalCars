@@ -13,3 +13,28 @@
     display: flex;
     flex-direction: column;
 }
+
+.row_contaier_start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.selected_filter_list {
+    margin-top: 30px;
+}
+
+.clear_Filter_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #6300a3;
+    color: white;
+    border-radius: 5px;
+}
+
+.filter_car_img {
+    width: 40%;
+    height: auto;
+}
