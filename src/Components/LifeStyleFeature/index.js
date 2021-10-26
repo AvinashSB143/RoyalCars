@@ -134,13 +134,11 @@ const marks = [
              </div>
              <p>Used Family Cars</p>
              <div className="row_container"> 
-             <div className="column_container">
-               <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-               <div className="column_container">
-               <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-
-               </div>
-
+                <div className="column_container">
+                  <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                  <div className="column_container">
+                  <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                 </div>
              </div>
 
              </div>

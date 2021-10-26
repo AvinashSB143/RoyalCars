@@ -10,6 +10,7 @@ import {
 import LifeStyleFeature from "../LifeStyleFeature";
 import Header from "../Header";
 import Footer from "../Footer";
+import AccountFilters from "../AccountFilters"
   
   
   function Routing() {
@@ -27,6 +28,9 @@ import Footer from "../Footer";
         </Route>
         <Route path="/lifeStyle">
           <LifeStyleFeature />
+        </Route>
+        <Route path="/account/testDrive">
+          <AccountFilters />
         </Route>
         <Footer />
       </div>

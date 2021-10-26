@@ -1,0 +1,79 @@
+.account_filter_container {
+padding: 2rem;
+background: hsla(0,0%,67.5%,.2);
+}
+
+.account_filtered_options_container {
+    display: flex;
+    justify-content: flex-start;
+    border-radius: 5px;
+   
+}
+
+.welcome_note {
+    margin-bottom: 1rem;
+}
+
+.account_filtered_options {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    height: 100px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0.2px solid hsl(240, 20%, 95%); 
+    text-decoration: none;
+    color: black;
+}
+
+.user_info {
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+p, h4 {
+    margin: 0;
+    padding: 0;
+    color: #2e054e;
+}
+
+.selected_account_filter{
+    margin-left: 3rem;
+}
+
+.account_filter_options {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    width: 300px;
+    height: auto;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.logout{
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_pos {
+    position: absolute;
+    right: 0px;
+}
+
+.account_filtered_cars{
+    background-color: white;
+    width: 500px;
+    height: auto;
+}
+
+.nav_link {
+    text-decoration: none;
+    font-size: 14px;
+
+}
