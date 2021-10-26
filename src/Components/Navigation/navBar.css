@@ -6,3 +6,22 @@
     display: flex;
     align-items: center;
 }
+
+
+.budget_expanded_section {
+    padding-left: 25px;
+    align-items: flex-start;
+    width: 15%;
+    position: absolute;
+    top: 10rem;
+    z-index: 1;
+    background-color: white;
+    border-radius: 5px;
+    overflow-x: hidden;
+    left: 2rem;
+}
+.budget_options {
+    margin: 10px;
+    list-style-type: none;
+}
+
