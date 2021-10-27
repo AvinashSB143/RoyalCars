@@ -20,7 +20,8 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 
-import { getOTP } from "../../actions"
+import { login } from "../../actions"
+import { Block } from '@material-ui/icons';
 
 
 const styles = theme => ({ 
@@ -90,20 +91,26 @@ class Header extends Component {
         }, 1000)
     }
 
-    getDetails = (key) => {
-        if(!this.state.mobileNumber) {
-            this.setState({ isError: true}, () => {
-                this.setState({ isError: true})
-            })
+    login = (key) => {
+        if(key=== "login") {
+            if(!this.state.mobileNumber) {
+                this.setState({ isError: true}, () => {
+                    this.setState({ isError: true})
+                })
+            } else {
+                this.props.login(this.state.mobileNumber)
+            }
         }
-        // if(key === "getDetails") {
+        
+
+        // if(key === "Login") {
         //     this.setState({showNameField: true, showEmailField: true})
         // }
-        if(key === "getOTP") {
-            this.setState({otpRequested: true, showTimeInterval: true});
-            this.props.getOTP(this.state.username, this.state.mobileNumber)
-            this.watchTimer()
-        }
+        // if(key === "getOTP") {
+        //     this.setState({otpRequested: true, showTimeInterval: true});
+        //     this.props.getOTP(this.state.username, this.state.mobileNumber)
+        //     this.watchTimer()
+        // }
     }
 
     getMobileNumber = number => {
@@ -185,7 +192,8 @@ class Header extends Component {
         </div>
         </div>
  
-         const expandAccountSection = <div className="main_container column_container about_expanded_section buying_process_container" >
+         const expandAccountSection = <div className="main_container column_container about_expanded_section buying_process_container" id="expanded_account_section" 
+         >
          <div className="more_items">
              <>
          <DescriptionIcon />
@@ -300,7 +308,9 @@ class Header extends Component {
                                 Hello, Sign in
                             </p>
                             <div className="header_account">
-                            <b onMouseOver={() => this.changeArrow("account")}
+                            <b onMouseOver={() => 
+                            this.changeArrow("account")
+                        }
                                 style={{fontSize: "16px"}}>Account
                             </b>
                             {this.state.expandAccountSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
@@ -384,7 +394,7 @@ class Header extends Component {
                    } 
                     
                     <button className="login_proceed_btn" onClick={() => {
-                       this.state.showNameField ? this.getDetails("getOTP") : this.getDetails("getDetails")
+                       this.state.showNameField ? this.login("signUp") : this.login("login")
                     }}>
                        {this.state.showNameField && this.state.showEmailField ? "Get OTP" : "Proceed"} 
                     </button>
@@ -434,9 +444,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getOTP : (name, number) =>{
+        login : (name, number) =>{
             dispatch(
-                getOTP(name, number)
+                login(name, number)
             )
         }
     }

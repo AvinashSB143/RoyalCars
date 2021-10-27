@@ -1,26 +1,29 @@
 import axios from "../axios";
 
 
-export const getOTP = (name, number) => {
-   try{
-    axios.post('user/login', {
-        username: "Avinah",
-        password: "12345"
-    }).then(res => {
-        console.log(res)
-        return {
-            type: "LOGIN_SUCCESS",
-            payload: res
-        }
-    }).catch(err => console.log(err))
-    return {
-        type: "LOGIN_SUCCESS",
-        payload: "success"
+export const login = (number) => {
+    return dispatch => {
+        try{
+            axios.post('user/login', {
+                phone: number
+            }).then(res => {
+                console.log(res)
+                dispatch ({
+                    type: "LOGIN_SUCCESS",
+                    payload: res
+                })
+            }).catch(err => console.log(err))
+            dispatch ({
+                type: "API_FAILURE",
+                payload: "success"
+            })
+           } 
+           catch (error) {
+            console.log(error);
+          }
+
     }
-   } 
-   catch (error) {
-    console.log(error);
-  }
+   
  
 }
     
