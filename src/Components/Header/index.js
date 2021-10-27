@@ -48,7 +48,8 @@ class Header extends Component {
             remainingTime: 60,
             showTimeInterval: false,
             mobileNumber: null,
-            username: null
+            username: null,
+            isError: false
         }
     }
 
@@ -90,9 +91,14 @@ class Header extends Component {
     }
 
     getDetails = (key) => {
-        if(key === "getDetails") {
-            this.setState({showNameField: true, showEmailField: true})
+        if(!this.state.mobileNumber) {
+            this.setState({ isError: true}, () => {
+                this.setState({ isError: true})
+            })
         }
+        // if(key === "getDetails") {
+        //     this.setState({showNameField: true, showEmailField: true})
+        // }
         if(key === "getOTP") {
             this.setState({otpRequested: true, showTimeInterval: true});
             this.props.getOTP(this.state.username, this.state.mobileNumber)
@@ -101,6 +107,9 @@ class Header extends Component {
     }
 
     getMobileNumber = number => {
+        if(number) {
+            this.setState({isError: false})
+        }
         this.setState({
             mobileNumber: number
         })
@@ -321,21 +330,21 @@ class Header extends Component {
                     <TextField
                     id="mobile_number"
                     placeholder="Mobile Number"
-                    // variant="standard"
                     classes={{
                         root: classes.root,
                         input: classes.input
                     }}
                     InputProps={{ disableUnderline: true, maxLength: 10}}
-                    className="login_text_field"
+                    className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                     onChange={e => this.getMobileNumber(e.target.value)}
                     type="tel"
+                    error={this.state.isError}
+                    helperText={this.state.isError ? "Please enter valid number" : "" }
                     />
                    {this.state.showNameField && this.state.showEmailField &&
                     <TextField
                     id="name"
                     placeholder="Enter your name"
-                    // variant="standard"
                     classes={{
                         root: classes.root,
                         input: classes.input
@@ -343,13 +352,14 @@ class Header extends Component {
                     InputProps={{ disableUnderline: true }}
                     className="login_text_field"
                     onChange={e => this.readName(e.target.value)}
+                    error
+                    helperText="enter your name"
                     />
                     }
                   {this.state.showNameField && this.state.showEmailField &&  
                   <TextField
                     id="email"
                     placeholder="Enter Your Email(Optional)"
-                    // variant="standard"
                     classes={{
                         root: classes.root,
                         input: classes.input
