@@ -66,10 +66,19 @@ p, h4 {
     right: 0px;
 }
 
+.cars_offered {
+    margin-left: 1rem;
+}
+
 .account_filtered_cars{
     background-color: white;
-    width: 500px;
+    /* width: 500px; */
     height: auto;
+    flex-wrap: wrap;
+}
+
+.item_focused {
+    background-color: hsla(0,0%,67.5%,.2);
 }
 
 .nav_link {

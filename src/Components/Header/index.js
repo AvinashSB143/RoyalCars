@@ -205,34 +205,34 @@ class Header extends Component {
          </div>
          <div className="more_items" >
          <DirectionsOutlinedIcon />
-              <Link to="#" className="options">
+              <Link to="/account/bookings" className="options">
                   Bookings
               </Link>
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/sellorders" className="options">
                  Sell Orders
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/help_suport" className="options">
                 Help and Support
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/refer_and_earn" className="options">
                 Refer and Earn
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/profileInformation" className="options">
                  Profile Information
               </Link>
 

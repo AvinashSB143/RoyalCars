@@ -12,6 +12,10 @@
     margin: 30px 40px;
 }
 
+.filter_option_container {
+    margin-top: 15px;
+}
+
 .car_model_search {
     width: 300px;
 }

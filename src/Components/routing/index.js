@@ -29,7 +29,7 @@ import AccountFilters from "../AccountFilters"
         <Route path="/lifeStyle">
           <LifeStyleFeature />
         </Route>
-        <Route path="/account/testDrive">
+        <Route path="/account/:filter">
           <AccountFilters />
         </Route>
         <Footer />

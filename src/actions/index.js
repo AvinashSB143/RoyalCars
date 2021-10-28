@@ -5,7 +5,7 @@ export const login = (number) => {
     return dispatch => {
         try{
             axios.post('user/login', {
-                phone: number
+                username: number
             }).then(res => {
                 console.log(res)
                 dispatch ({
