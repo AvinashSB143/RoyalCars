@@ -11,6 +11,7 @@ import LifeStyleFeature from "../LifeStyleFeature";
 import Header from "../Header";
 import Footer from "../Footer";
 import AccountFilters from "../AccountFilters"
+import Sell from "../Sell";
   
   
   function Routing() {
@@ -31,6 +32,10 @@ import AccountFilters from "../AccountFilters"
         </Route>
         <Route path="/account/:filter">
           <AccountFilters />
+        </Route>
+        <Footer />
+        <Route path="/sell">
+          <Sell />
         </Route>
         <Footer />
       </div>
