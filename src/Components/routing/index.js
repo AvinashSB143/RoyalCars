@@ -11,6 +11,7 @@ import LifeStyleFeature from "../LifeStyleFeature";
 import Header from "../Header";
 import Footer from "../Footer";
 import AccountFilters from "../AccountFilters"
+import MenuBar from '../Header/MenuBar';
   
   
   function Routing() {
@@ -32,6 +33,9 @@ import AccountFilters from "../AccountFilters"
         <Route path="/account/testDrive">
           <AccountFilters />
         </Route>
+        <Route path = "/more/AboutUs">
+          <MenuBar />
+          </Route>
         <Footer />
       </div>
     );
