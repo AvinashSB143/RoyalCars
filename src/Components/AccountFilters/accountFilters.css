@@ -7,7 +7,7 @@ background: hsla(0,0%,67.5%,.2);
     display: flex;
     justify-content: flex-start;
     border-radius: 5px;
-   
+    width: 30%;
 }
 
 .welcome_note {
@@ -68,6 +68,7 @@ p, h4 {
 
 .cars_offered {
     margin-left: 1rem;
+    width: 70%;
 }
 
 .account_filtered_cars{
@@ -75,6 +76,16 @@ p, h4 {
     /* width: 500px; */
     height: auto;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.cars_available {
+    width: 30%;
+    margin-top: 15px;
+}
+
+.filter_car_img {
+    width: 100%;
 }
 
 .item_focused {

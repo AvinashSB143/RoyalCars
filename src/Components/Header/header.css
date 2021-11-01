@@ -27,6 +27,11 @@
     width: 100%;
 }
 
+.Header_options {
+    list-style-type: none;
+    color: black;
+    text-decoration: none;
+}
 .header_account {
     display: flex;
     align-items: center;

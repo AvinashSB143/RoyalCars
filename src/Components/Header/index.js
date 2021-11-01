@@ -287,11 +287,11 @@ class Header extends Component {
                      </b>
                      {this.state.expandBuyCarSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                      </div>
-                    <div>
+                    <Link to="/sell" className="Header_options">
                     <b style={{fontSize: "16px"}}>
                         Sell Car
                     </b>
-                    </div>
+                    </Link >
                     <div className="header_buy_car">
                       <b onMouseOver={() => this.changeArrow("more")}
                         //  onMouseOut={() => this.changeArrow()}

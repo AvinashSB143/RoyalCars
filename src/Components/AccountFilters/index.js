@@ -113,17 +113,63 @@ const AccountFilters = (props) => {
                 </ul>
                 <h2 className="selected_account_filter">Test Drives</h2>
                 <div className="row_container account_filtered_cars">
-                    <div className="cars_available">
+                    <div className="cars_available column_container">
                         <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        {/* <div className="column_container"> */}
-                        {/* <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span> */}
-                    </div>
-                    <div className="cars_available">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        {/* <div className="column_container"> */}
-                        {/* <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span> */}
-                    </div>
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
 
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div className="cars_available column_container">
+                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
+                        <div>
+
+                        </div>
+                    </div>
+                   
                 </div>
                 </div>
             

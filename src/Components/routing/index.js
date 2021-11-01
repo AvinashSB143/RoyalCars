@@ -33,11 +33,14 @@ import Sell from "../Sell";
         <Route path="/account/:filter">
           <AccountFilters />
         </Route>
-        <Footer />
         <Route path="/sell">
           <Sell />
         </Route>
         <Footer />
+        {/* <Route path="/sell">
+          <Sell />
+        </Route>
+        <Footer /> */}
       </div>
     );
   }
