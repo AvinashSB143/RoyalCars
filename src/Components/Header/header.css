@@ -1,30 +1,30 @@
 .header_container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    border-bottom: 1px solid rgb(26, 23, 23);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  border-bottom: 1px solid rgb(26, 23, 23);
 }
 
 .header_buy_car {
-    display: flex;
+  display: flex;
 }
 .header_SignIn_bar {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .header_search_bar {
-    /* flex-basis: 200px; */
-    width: 25%;
+  /* flex-basis: 200px; */
+  width: 25%;
 }
 .search_container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .search_text {
-    width: 100%;
+  width: 100%;
 }
 
 .Header_options {
@@ -33,68 +33,68 @@
     text-decoration: none;
 }
 .header_account {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search_icon {
-position: relative;
-right: 35px;
+  position: relative;
+  right: 35px;
 }
 
 .search_bar {
-    width: 100%;;
+  width: 100%;
 }
 
 .about_expanded_section {
-    padding-left: 25px;
-    align-items: flex-start;
-    width: 18%;
-    position: absolute;
-    right: 20rem;
-    top: 4rem;
-    z-index: 2;
-    background-color: white;
-    border-radius: 20px;
+  padding-left: 25px;
+  align-items: flex-start;
+  width: 18%;
+  position: absolute;
+  right: 20rem;
+  top: 4rem;
+  z-index: 2;
+  background-color: white;
+  border-radius: 20px;
 }
 
 .options {
-    margin: 13px 10px;
-    list-style-type: none;
-    text-decoration: none;
-    color: black;
+  margin: 13px 10px;
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
 }
 
 .more_items {
-width: 100%;
-display: flex;
-align-items: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .more_items:hover {
-     background-color:  hsla(0,0%,67.5%,.2);
+  background-color: hsla(0, 0%, 67.5%, 0.2);
 }
 
 .buying_process_container {
-    right: 2rem;
-    top: 5rem;
-    border-radius: 5px;
+  right: 2rem;
+  top: 5rem;
+  border-radius: 5px;
 }
 
 .login_container {
-    position: absolute;
-    width: 50%;
-    height: 400px;
-    background-color: white;
-    margin: 25px 20%;
-    z-index: 2;
+  position: absolute;
+  width: 50%;
+  height: 400px;
+  background-color: white;
+  margin: 25px 20%;
+  z-index: 2;
 }
 
 .close_icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: slateblue;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: slateblue;
 }
 
 .overlay {
@@ -105,45 +105,116 @@ align-items: center;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
   cursor: pointer;
 }
 .hidden_div {
- position: fixed;
+  position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 .login_text_field {
-    width: 60%;
+  width: 60%;
 }
 
 .content_pos {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 .btn {
-border: none;
-background-color: white;
-font-size: 14px;
-font-weight: bold;
+  border: none;
+  background-color: white;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .login_proceed_btn {
-    background-color: red;
-    width: 60%;
-    padding: 10px;
-    font-weight: 400;
-    font-size: large;
-    color: white;
+  background-color: red;
+  width: 60%;
+  padding: 10px;
+  font-weight: 400;
+  font-size: large;
+  color: white;
 }
- 
+
 .mobile_error {
-    border: red;
+  border: red;
+}
+
+.more_about_us {
+  width: 100%;
+  height: 500px;
+  margin: 20px 30px;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  background-repeat: round;
+}
+
+.more_about_us .about_us_button_container {
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more_about_us .about_us_button_container .about_us_button {
+  font-size: 16px;
+  width: 10em;
+  height: 50px;
+  padding: 0 18px 0 24px;
+  font-family: emoji;
+  background-color: #fff;
+  color: #2e054e;
+  border: 1px solid #fff;
+  border-radius: 6px;
+}
+
+.more_about_us .about_us_button_container .about_us_button:hover {
+  background-image: none;
+  background-color: lightblue;
+}
+
+.about_us_card_container {
+  padding: 80px 24px 32px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  min-width: 978px;
+  max-width: 1248px;
+  font-family: futura-book;
+  font-size: 16px;
+  line-height: 20px;
+  background-color: #fff;
+  color: #2e054e;
+}
+
+.about_us_card_container .about_us_card {
+  min-width: 0;
+  width: 40%;
+  font-size: 20px;
+}
+.about_us_card_container .about_us_card .about_us_card_img {
+  width: 70%;
+  height: auto;
+  min-height: 136px;
+  border-radius: 6px;
+}
+.about_us_card_container .about_us_card h3 {
+  font-family: futura-demi;
+  margin: 12px 0;
+  font-size: 28px;
+  line-height: 32px;
+}
+.about_us_card_container .about_us_card p {
+  margin-bottom: 8px;
+  color: black;
+  font-size: 20px;
 }

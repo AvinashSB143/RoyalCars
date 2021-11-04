@@ -19,8 +19,10 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
-
+import Button from "@material-ui/core/Button"
 import { login, validateNumber, validateOTP } from "../../actions"
+import MenuBar from './MenuBar';
+import { Redirect } from "react-router";
 
 
 const styles = theme => ({ 
@@ -50,8 +52,16 @@ class Header extends Component {
             mobileNumber: null,
             username: null,
             isError: false,
+            openAboutUs:false,
             isUserValidated: false
         }
+    }
+    changeOnMouseLeave = () => {
+        this.setState({
+            expandMoreSection:false,
+            expandBuyCarSection:false,
+            expandMoreSection:false
+        })
     }
 
     changeArrow = (value) => {
@@ -135,24 +145,29 @@ class Header extends Component {
         })
     }
     
-    
-    render() {
+     onAboutUs = () => {
+        this.setState({
+            openAboutUs:true
+        })
+    }
+    render() {  
     const expandMoreSection = <div className="main_container column_container about_expanded_section">
          <div className="more_items" onMouseOver={this.hideShowWorkFlow}>
              <>
          <DescriptionIcon />
          </>
               <p4 className="options">
-                  About Us
+                  <Link to="/more/AboutUs" className="options" onClick = {this.onAboutUs}>
+                    About Us             
+                 </Link>
               </p4>
-
          </div>
          <div className="more_items" >
          <DirectionsOutlinedIcon />
               <p4 className="options" onMouseOver={() => {
              this.changeArrow("show_work_Flow")
          }}>
-                  How it Works
+                <a>How it Works</a>  
               </p4>
          <ArrowForwardIosIcon style={{marginLeft: "90px"}}/>
          </div>
@@ -179,20 +194,20 @@ class Header extends Component {
                 <DescriptionIcon />
             </>
              <p4 className="options">
-                 About Us
+                 Car buying process
              </p4>
 
         </div>
         <div className="more_items" >
         <DirectionsOutlinedIcon />
              <p4 className="options">
-                 How it Works
+                 Car selling process
              </p4>
         </div>
         <div className="more_items">
         <LocationOnIcon />
              <p4 className="options">
-                Car hub Location
+                Pricing
              </p4>
 
         </div>
@@ -440,6 +455,7 @@ class Header extends Component {
             </div> 
             </>
             )
+            
     }
 }
 
