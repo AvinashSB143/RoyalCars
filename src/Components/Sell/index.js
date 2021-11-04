@@ -1,6 +1,7 @@
 import React from "react";
 import "./sell.css";
 import Feedback from "../Feedback";
+
 export const FormFields = ({ name, value, component }) => {
   return (
     <div class="container_FormFields">
