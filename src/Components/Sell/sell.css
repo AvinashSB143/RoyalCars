@@ -1,0 +1,105 @@
+.background_image_wrapper {
+  /* background-image: url("../../images/sell_landing_back_desktop.jpg"); */
+  background-color: #2e054e;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-size: cover;
+  padding-bottom: 32px;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+.filter_form {
+  display: flex;
+  flex-direction: row;
+}
+
+.marketingItem {
+  display: flex;
+  align-items: center;
+}
+.pointWrap {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background-color: hsla(0, 0%, 100%, 0.26);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  margin: 0rem 0.75rem;
+}
+/* formField */
+
+.container_FormFields {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 6px 16px -1px rgb(0 0 0 / 30%);
+  padding: 0rem 2rem;
+}
+.valueWrap {
+  display: flex;
+  color: #2e054e;
+  flex-direction: column;
+  padding: 16px 24px;
+  height: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.title {
+  opacity: 1;
+  color: #2e054e;
+  font-weight: bolder;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 2px;
+}
+
+.selected-value {
+  color: #6300a3;
+  font-size: 14px;
+  line-height: 18px;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.search-button {
+  background-color: #ed264f;
+  color: #fff;
+  height: 68px;
+  display: flex;
+  border-radius: 0 6px 6px 0;
+  padding: 34px 34px;
+  flex: 1;
+  box-sizing: border-box;
+  position: relative;
+  border: none;
+  outline: 0;
+  height: 50px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 2.4em;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+/*HowItWorks*/
+.HowItsWork__listWrap {
+  display: flex;
+}

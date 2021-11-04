@@ -1,9 +1,24 @@
 import { combineReducers } from "redux";
 
-const reducers = (state = {}, action) => {
-    if(action.type === "LOGIN_SUCCESS") {
+const initialState = {
+    isValidUser: null,
+    api_failure: false
+}
+
+const reducers = (state = initialState, action) => {
+    if(action.type === "REGISTERED_USER") {
         return {
-            action
+            isUserRegistered: action.payload
+        }
+    }
+    if(action.type === "USER_VALIDATED") {
+        return {
+            isValidUser: action.payload
+        }
+    }
+    if(action.type === "API_FAILURE") {
+        return {
+            api_failure: true
         }
     }
     return state;

@@ -20,8 +20,7 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-
-import { login } from "../../actions"
+import { login, validateNumber, validateOTP } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 
@@ -53,7 +52,8 @@ class Header extends Component {
             mobileNumber: null,
             username: null,
             isError: false,
-            openAboutUs:false
+            openAboutUs:false,
+            isUserValidated: false
         }
     }
     changeOnMouseLeave = () => {
@@ -101,17 +101,18 @@ class Header extends Component {
         }, 1000)
     }
 
-    login = (key) => {
-        if(key=== "login") {
-            if(!this.state.mobileNumber) {
-                this.setState({ isError: true}, () => {
-                    this.setState({ isError: true})
-                })
-            } else {
-                this.props.login(this.state.mobileNumber)
-            }
+    validateUser = () => {
+        if(this.state.mobileNumber && this.state.mobileNumber.length === 10) {
+            this.watchTimer()
+            this.props.validatePhoneNumber(this.state.mobileNumber)
+             this.setState({ isUserValidated: true, showTimeInterval: true})
+        } else {
+            this.setState({ isError: true}, () => {
+                this.setState({ isError: true, isUserValidated: false})
+            })
+
         }
-        
+
 
         // if(key === "Login") {
         //     this.setState({showNameField: true, showEmailField: true})
@@ -122,6 +123,12 @@ class Header extends Component {
         //     this.watchTimer()
         // }
     }
+
+    validateOTP = (OTP) => {
+        if(OTP.length === 4) {
+            this.props.validateOTP(OTP)
+        }
+    } 
 
     getMobileNumber = number => {
         if(number) {
@@ -219,34 +226,34 @@ class Header extends Component {
          </div>
          <div className="more_items" >
          <DirectionsOutlinedIcon />
-              <Link to="#" className="options">
+              <Link to="/account/bookings" className="options" onClick={() => this.changeArrow()}>
                   Bookings
               </Link>
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/sellorders" className="options" onClick={() => this.changeArrow()}>
                  Sell Orders
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/help_suport" className="options" onClick={() => this.changeArrow()}>
                 Help and Support
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/refer_and_earn" className="options" onClick={() => this.changeArrow()}>
                 Refer and Earn
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to="/account/profileInformation" className="options" onClick={() => this.changeArrow()}>
                  Profile Information
               </Link>
 
@@ -257,7 +264,7 @@ class Header extends Component {
          } }>
          <LocationOnIcon />
               <Link to="#" className="options">
-                 Login/Sign up
+                {!this.props.isValidUser ? "Login/Sign up" : "Logout" } 
               </Link>
 
          </div>
@@ -265,14 +272,12 @@ class Header extends Component {
     const {classes} = this.props;
         return(
             <>
-            <div className={this.state.showLoginContent && "overlay"} 
+            <div className={this.state.showLoginContent && !this.props.isValidUser && "overlay"} 
             onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
             }}
             ></div>
             <div>
-                
-                 
              <div className="header_container"> 
             
                 <div className="header_logo">
@@ -301,11 +306,11 @@ class Header extends Component {
                      </b>
                      {this.state.expandBuyCarSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                      </div>
-                    <div>
+                    <Link to="/sell" className="Header_options">
                     <b style={{fontSize: "16px"}}>
                         Sell Car
                     </b>
-                    </div>
+                    </Link >
                     <div className="header_buy_car">
                       <b onMouseOver={() => this.changeArrow("more")}
                         //  onMouseOut={() => this.changeArrow()}
@@ -341,31 +346,34 @@ class Header extends Component {
                     {this.state.expandMoreSection && expandMoreSection}
                     {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
                     {this.state.expandAccountSection  && expandAccountSection}
-                    {this.state.showLoginContent && <div className="main_container column_container login_container ">
+                    {this.state.showLoginContent && !this.props.isValidUser && <div className="main_container column_container login_container ">
                     <CloseIcon className="close_icon" onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
             }}/>
                     <VpnKeyIcon />
-                {!this.state.otpRequested ? 
-                   <>
-                    <p4 className="content_pos">
-                        Login /Sign Up
-                    </p4>
-                    <TextField
-                    id="mobile_number"
-                    placeholder="Mobile Number"
-                    classes={{
-                        root: classes.root,
-                        input: classes.input
-                    }}
-                    InputProps={{ disableUnderline: true, maxLength: 10}}
-                    className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                    onChange={e => this.getMobileNumber(e.target.value)}
-                    type="tel"
-                    error={this.state.isError}
-                    helperText={this.state.isError ? "Please enter valid number" : "" }
-                    />
-                   {this.state.showNameField && this.state.showEmailField &&
+                    {!this.state.isUserValidated && !this.props.isValidUser && (
+                     <>
+                        <p4 className="content_pos">
+                            Login /Sign Up
+                        </p4>
+                        <TextField
+                        id="mobile_number"
+                        placeholder="Mobile Number"
+                        classes={{
+                            root: classes.root,
+                            input: classes.input
+                        }}
+                        InputProps={{ disableUnderline: true, maxLength: 10}}
+                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
+                        onChange={e => this.getMobileNumber(e.target.value)}
+                        type="tel"
+                        error={this.state.isError}
+                        helperText={this.state.isError ? "Please enter valid number" : "" }
+                        />
+                        </>
+                    )
+                    }
+                   {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
                     <TextField
                     id="name"
                     placeholder="Enter your name"
@@ -380,7 +388,7 @@ class Header extends Component {
                     helperText="enter your name"
                     />
                     }
-                  {this.state.showNameField && this.state.showEmailField &&  
+                 {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
                   <TextField
                     id="email"
                     placeholder="Enter Your Email(Optional)"
@@ -392,45 +400,44 @@ class Header extends Component {
                     className="login_text_field"
 
                     />
-                }
-                    {!this.state.showNameField && !this.state.showEmailField && 
-                    <div className="main_container">
+                } 
+                {!this.state.isUserValidated && !this.props.isUserRegistered && (
+                        <>
+                        <div className="main_container">
                     <input type="checkbox" id="whatsAppNumber" name="whatsAppNumber" value="whatsAppNumber" />
                     <p5 className="content_pos">
                         Send Updates on WhatsApp
                     </p5>
                     </div>
-                    }
-                   {!this.state.showNameField && !this.state.showEmailField && 
-                   <p6 className="content_pos">
-                   By logging in, I agree to <Link to="#">terms</Link> and  <Link to="#">privacy policy</Link>
-                   </p6>
-                   } 
-                    
-                    <button className="login_proceed_btn" onClick={() => {
-                       this.state.showNameField ? this.login("signUp") : this.login("login")
+                     <p6 className="content_pos">
+                     By logging in, I agree to <Link to="#">terms</Link> and  <Link to="#">privacy policy</Link>
+                     </p6>
+                     <button className="login_proceed_btn" onClick={() => {
+                    this.validateUser();
                     }}>
-                       {this.state.showNameField && this.state.showEmailField ? "Get OTP" : "Proceed"} 
+                       Proceed
                     </button>
-                    </>
-                    : 
-                    <>
+                     </>
+                    )
+                    }
+                    {this.state.isUserValidated && this.props.isUserRegistered && 
+                     <>
                      <p4 className="content_pos">
                      You will receive an OTP on the following number:
                     </p4>
                     <p4 className="content_pos">
-                    9988667755 <button className="btn">EDIT</button>
-                    </p4>
+                    {this.state.mobileNumber} <button className="btn">EDIT</button>
+                    </p4>   
                     <TextField
                     id="OTP"
                     placeholder="OTP"
-                    // variant="standard"
                     classes={{
                         root: classes.root,
                         input: classes.input
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="login_text_field"
+                    onChange={(e) => this.validateOTP(e.target.value)}
                     />
                     {this.state.showTimeInterval ? 
                      <p4 className="content_pos">
@@ -441,7 +448,6 @@ class Header extends Component {
                      Din't you get OTP? <button className="btn">RESEND AGAIN?</button>
                     </p4>
                     }
-                   
                     </>
                     }
                     </div>
@@ -454,11 +460,26 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
+    return{
+        isUserRegistered: state.reducers.isUserRegistered,
+        isValidUser: state.reducers.isValidUser
+
+    }
     
 }
 
 const mapDispatchToProps = dispatch => {
     return {
+        validatePhoneNumber: (number) => {
+            dispatch(
+                validateNumber(number)
+                )
+        },
+        validateOTP: (OTP) => {
+            dispatch(
+                validateOTP(OTP)
+                )
+        },
         login : (name, number) =>{
             dispatch(
                 login(name, number)
