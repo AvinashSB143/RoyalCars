@@ -65,23 +65,24 @@ class Header extends Component {
     }
 
     changeArrow = (value) => {
-        if(value) {
-        this.setState({
-            expandBuyCarSection: value === "buycar" ? true: false,
-            expandMoreSection: value === "more" || value === "show_work_Flow" ? true : false,
-            expandAccountSection: value === "account" ? true : false,
-            showWorkFlow: value === "show_work_Flow" ? true : false
-        })
-        } 
-        else {
-            this.setState({
-                expandBuyCarSection: false,
-                expandMoreSection: false,
-                expandAccountSection: false,
-                showWorkFlow: false,
-                otpRequested: false
-            })
-        }   
+            if(value) {
+                this.setState({
+                    expandBuyCarSection: value === "buycar" ? true: false,
+                    expandMoreSection: value === "more" || value === "show_work_Flow" ? true : false,
+                    expandAccountSection: value === "account" ? true : false,
+                    showWorkFlow: value === "show_work_Flow" ? true : false
+                })
+                } 
+                else {
+                    this.setState({
+                        expandBuyCarSection: false,
+                        expandMoreSection: false,
+                        expandAccountSection: false,
+                        showWorkFlow: false,
+                        otpRequested: false
+                    })
+                }  
+        
     }
 
     hideShowWorkFlow = () => {
@@ -219,41 +220,55 @@ class Header extends Component {
              <>
          <DescriptionIcon />
          </>
-              <Link to="/account/testDrive" className="options" onClick={() => this.changeArrow()}>
+              <Link to={this.props.isValidUser ? "/account/testDrive" : "#"} className="options" 
+              onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }
+            }>
                   Test Drives
               </Link>
 
          </div>
          <div className="more_items" >
          <DirectionsOutlinedIcon />
-              <Link to="/account/bookings" className="options" onClick={() => this.changeArrow()}>
+              <Link to="/account/bookings" className="options" onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }}>
                   Bookings
               </Link>
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/sellorders" className="options" onClick={() => this.changeArrow()}>
+              <Link to="/account/sellorders" className="options" onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }}>
                  Sell Orders
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/help_suport" className="options" onClick={() => this.changeArrow()}>
+              <Link to="/account/help_suport" className="options" onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }}>
                 Help and Support
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/refer_and_earn" className="options" onClick={() => this.changeArrow()}>
+              <Link to="/account/refer_and_earn" className="options" onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }}>
                 Refer and Earn
               </Link>
 
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/profileInformation" className="options" onClick={() => this.changeArrow()}>
+              <Link to="/account/profileInformation" className="options" onClick={() => { 
+                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                }}>
                  Profile Information
               </Link>
 
@@ -263,7 +278,7 @@ class Header extends Component {
             this.changeArrow()
          } }>
          <LocationOnIcon />
-              <Link to="#" className="options">
+              <Link to= {this.props.isValidUser ? "/homePage" : "#" } className="options">
                 {!this.props.isValidUser ? "Login/Sign up" : "Logout" } 
               </Link>
 
