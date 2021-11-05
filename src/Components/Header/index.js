@@ -430,7 +430,7 @@ class Header extends Component {
                      <button className="login_proceed_btn" onClick={() => {
                     this.validateUser();
                     }}>
-                       Proceed
+                      {!this.props.isUserRegistered ? "Proceed" : "Sign Up"} 
                     </button>
                      </>
                     )
