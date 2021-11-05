@@ -12,6 +12,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import AccountFilters from "../AccountFilters"
 import MenuBar from '../Header/MenuBar';
+import Sell from "../Sell";
   
   
   function Routing() {
@@ -30,13 +31,20 @@ import MenuBar from '../Header/MenuBar';
         <Route path="/lifeStyle">
           <LifeStyleFeature />
         </Route>
-        <Route path="/account/testDrive">
+        <Route path="/account/:filter">
           <AccountFilters />
         </Route>
         <Route path = "/more/AboutUs">
           <MenuBar />
           </Route>
+        <Route path="/sell">
+          <Sell />
+        </Route>
         <Footer />
+        {/* <Route path="/sell">
+          <Sell />
+        </Route>
+        <Footer /> */}
       </div>
     );
   }
