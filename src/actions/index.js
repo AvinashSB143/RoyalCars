@@ -80,3 +80,53 @@ export const validateOTP = OTP => {
         }
     }
 }
+export const getCustomerCars = OTP => {
+    return dispatch => {
+        try {
+            axios.get('customerCar/get').then(res => {
+                console.log(res)
+                dispatch ({
+                    type: "CUSTOMER_CAR_LIST",
+                    payload: res
+                })
+            }).catch(err => console.log(err))
+            // dispatch ({
+            //     type: "API_FAILURE",
+            //     payload: "success"
+            // })
+            dispatch ({
+                type: "USER_VALIDATED",
+                payload: "valid_user"
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const sellCar = data => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/sell', {
+                data
+            }).then(res => {
+                console.log(res)
+                dispatch ({
+                    type: "CUSTOMER_CAR_LIST",
+                    payload: res
+                })
+            }).catch(err => console.log(err))
+            // dispatch ({
+            //     type: "API_FAILURE",
+            //     payload: "success"
+            // })
+            dispatch ({
+                type: "USER_VALIDATED",
+                payload: "valid_user"
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

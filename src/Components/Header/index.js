@@ -20,7 +20,7 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP } from "../../actions"
+import { login, validateNumber, validateOTP, getCustomerCars } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 
@@ -314,7 +314,7 @@ class Header extends Component {
                     <SearchIcon className="search_icon"/>
                     </div>
                     </div>
-                    <Link to="/lifeStyle" className="header_buy_car" >
+                    <Link to="/lifeStyle" className="header_buy_car" onClick={() => this.props.getCustomerCars()} >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
                         Buy Car
@@ -493,6 +493,11 @@ const mapDispatchToProps = dispatch => {
         validateOTP: (OTP) => {
             dispatch(
                 validateOTP(OTP)
+                )
+        },
+        getCustomerCars: () => {
+            dispatch(
+                getCustomerCars()
                 )
         },
         login : (name, number) =>{
