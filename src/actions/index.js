@@ -1,11 +1,12 @@
 import axios from "../axios";
 
 
-export const login = (number) => {
+export const login = (name, password) => {
     return dispatch => {
         try{
             axios.post('user/login', {
-                username: number
+                username: name,
+                password: password
             }).then(res => {
                 console.log(res)
                 dispatch ({
