@@ -10,10 +10,9 @@ import {
 import LifeStyleFeature from "../LifeStyleFeature";
 import Header from "../Header";
 import Footer from "../Footer";
-import AccountFilters from "../AccountFilters"
+import AccountFilters from "../AccountFilters";
 import MenuBar from '../Header/MenuBar';
 import Sell from "../Sell";
-  
   
   function Routing() {
     const [validUser, setValidUser] = useState(false);
@@ -34,7 +33,7 @@ import Sell from "../Sell";
         <Route path="/account/:filter">
           <AccountFilters />
         </Route>
-        <Route path = "/more/AboutUs">
+        <Route path ="/more/AboutUs">
           <MenuBar />
           </Route>
         <Route path="/sell">

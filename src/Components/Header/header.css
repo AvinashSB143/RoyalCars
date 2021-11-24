@@ -28,9 +28,9 @@
 }
 
 .Header_options {
-    list-style-type: none;
-    color: black;
-    text-decoration: none;
+  list-style-type: none;
+  color: black;
+  text-decoration: none;
 }
 .header_account {
   display: flex;
@@ -498,4 +498,134 @@
   width: calc(20% - 12px);
   margin-bottom: 24px;
   transition: opacity 0.2s ease-in-out;
+}
+
+.press_section {
+  padding: 80px 24px;
+  color: #2e054e;
+  font-family: futura-book;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.press_section h3 {
+  font-size: 32px;
+  line-height: 36px;
+  font-family: futura-demi;
+  margin-bottom: 32px;
+}
+.press_section .press_content_wrapper {
+  position: relative;
+  max-width: 100%;
+}
+.press_section .press_content_wrapper .press_content {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  margin: auto;
+  z-index: 1;
+  padding: 16px 0;
+}
+
+.press_section .press_content_wrapper .press_content .press_content_list {
+  display: flex;
+}
+
+.press_section
+  .press_content_wrapper
+  .press_content
+  .press_content_list
+  .press_content_img {
+  flex: 1;
+  min-width: 0;
+  margin-right: 16px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  transition: transform 0.2s ease-out;
+  color: #2e054e;
+  cursor: pointer;
+}
+.press_section
+  .press_content_wrapper
+  .press_content
+  .press_content_list
+  .press_content_img
+  .press_imgContainer {
+  height: 230px;
+  width: 300px;
+  position: relative;
+}
+.press_section
+  .press_content_wrapper
+  .press_content
+  .press_content_list
+  .press_content_img
+  .press_descContainer {
+  padding: 12px 16px;
+  background-color: #fff;
+  min-height: 120px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.press_section
+  .press_content_wrapper
+  .press_content
+  .press_content_list
+  .press_content_img
+  .press_imgContainer
+  img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px 12px 0 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.press_section
+  .press_content_wrapper
+  .press_content
+  .press_content_list
+  .press_content_img
+  .press_descContainer
+  p {
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 16px;
+  display: flex;
+  white-space: pre-wrap;
+}
+.press_content_wrapper .press_carousel .carousel_left {
+  width: 2em;
+  height: 2em;
+  margin-left: -3.5em;
+  transform: translateY(-50%);
+  background-color: #6300a3;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 0;
+  cursor: pointer;
+}
+.press_content_wrapper .press_carousel .carousel_right {
+  margin-left: 0;
+  margin-right: -3.5em;
+  right: 0;
+  left: unset;
+  width: 2em;
+  height: 2em;
+  transform: translateY(-50%);
+  background-color: #6300a3;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45%;
+  cursor: pointer;
 }

@@ -129,9 +129,72 @@ return (
                             <h3>Our Backers</h3>
                             <div className="investor_list">
                                     {investor.map((imag) => (
-                                        <img src = {imag}></img>
+                                        <img src = {imag} />
                                     ))}
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className = "press_section">
+                    <h3>Press</h3>
+                    <div className="press_content_wrapper">
+                        <div className="press_content">
+                            <div className ="press_content_list">
+                                <a className="press_content_img"
+                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
+                                <div className = "press_imgContainer">
+                                    <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
+                                    </img>
+                                </div>
+                                <div className = "press_descContainer">
+                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                </div>
+                                </a>
+                                <a className="press_content_img"
+                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
+                                <div className = "press_imgContainer">
+                                    <img src="https://www.egis-india.com/sites/egis-india.com/files/styles/largeur_page/public/fe.png?itok=iyIILABn">
+                                    </img>
+                                </div>
+                                <div className = "press_descContainer">
+                                <p>Full-stack concept explained with benifits</p>
+                                </div>
+                                </a>
+                                <a className="press_content_img"
+                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
+                                <div className = "press_imgContainer">
+                                    <img src="https://img.etimg.com/thumb/msid-69088793,width-1200,height-900/industry/media/entertainment/media/the-economic-times-trumps-all-business-dailies-combined.jpg">
+                                    </img>
+                                </div>
+                                <div className = "press_descContainer">
+                                <p>Spinny brings in 360-degree interactive view of used cars</p>
+                                </div>
+                                </a>
+                                <a className="press_content_img"
+                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
+                                <div className = "press_imgContainer">
+                                    <img src="https://entrackr.com/wp-content/uploads/2019/03/funding-.jpg">
+                                    </img>
+                                </div>
+                                <div className = "press_descContainer">
+                                <p>Accel-backed Spinny acquaries used cars marketplace Truebil</p>
+                                </div>
+                                </a>
+                                <a className="press_content_img"
+                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
+                                <div className = "press_imgContainer">
+                                    <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
+                                    </img>
+                                </div>
+                                <div className = "press_descContainer">
+                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div className = "press_carousel">
+                            <div className = "carousel_left"></div>
+                            <div className="carousel_right"></div>
                         </div>
                     </div>
                 </div>
