@@ -314,13 +314,13 @@ class Header extends Component {
                     <SearchIcon className="search_icon"/>
                     </div>
                     </div>
-                  <div className="header_buy_car" >
+                    <Link to="/lifeStyle" className="header_buy_car" >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
                         Buy Car
                      </b>
                      {this.state.expandBuyCarSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
-                     </div>
+                     </Link>
                     <Link to="/sell" className="Header_options">
                     <b style={{fontSize: "16px"}}>
                         Sell Car
@@ -430,7 +430,7 @@ class Header extends Component {
                      <button className="login_proceed_btn" onClick={() => {
                     this.validateUser();
                     }}>
-                       Proceed
+                      {!this.props.isUserRegistered ? "Proceed" : "Sign Up"} 
                     </button>
                      </>
                     )

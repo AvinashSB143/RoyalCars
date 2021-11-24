@@ -37,7 +37,38 @@ const LifeStyleFeature = (props) => {
 const {classes} = props;
 const [yearSelected, setYearSelected] = useState('');
 const [kmDriven, setkmDriven] = useState('');
-const [fuelType, setFuelType] = useState([]);
+const [fuelType, setFuelType] = useState({
+  petrol: false,
+  diesel: false,
+  electric: false,
+  CNG: false
+});
+const [bodyType, setBodyType] = useState({
+  HatchBack: false,
+  Sedan: false,
+  SUV: false
+});
+const [transmissionType, setTransmissionType] = useState({
+  automatic: false,
+  manual: false
+});
+const [ownerType, setOwnerType] = useState({
+  "1st_Owner": false,
+  "2nd_Owner": false
+});
+const [category, setCategory] = useState({
+  adventure: false,
+  commuter: false,
+  family: false,
+  feature_packed: false,
+  luxury: false,
+  value: false
+});
+const [availability, setAvailability] = useState({
+  inStock: false,
+  booked: false,
+  upcoming: false
+});
 
 const marks = [
     {
@@ -61,15 +92,25 @@ const marks = [
     setkmDriven (event.target.value);
   };
 
-  const handleFuelTypeChange = name => event => { };
-  const handleBodyTypeChange = name => event => { };
-  const handletransmissionChange = name => event => { };
-  const handleOwner = name => event => { };
-  const handleCatogory = name => event => { };
-  const handleAvailability = name => event => { };
+  const handleFuelTypeChange = event => {
+    setFuelType({...fuelType, [event.target.value] : event.target.checked})
+  }
+  const handleBodyTypeChange = event => {
+    setBodyType({...bodyType, [event.target.value] : event.target.checked})
+  }
+  const handletransmissionChange =  event => {
+    setTransmissionType({...transmissionType, [event.target.value] : event.target.checked})
+  }
+  const handleOwner = event => {
+    setOwnerType({...ownerType, [event.target.value] : event.target.checked})
+  }
+  const handleCatogory = event => {
+    setCategory({...category, [event.target.value] : event.target.checked})
+  }
+  const handleAvailability = event => {
+    setAvailability({...availability, [event.target.value] : event.target.checked})
+  }
 
-
-  const handleCategory = () => {}
     return(
         <div className="main_container feature_container">
            <div className="lifeStyle_filters main_container column_container">
@@ -193,22 +234,21 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleFuelTypeChange('petrol')} value="petrol" />
+                              <Checkbox checked={fuelType.petrol} onChange={handleFuelTypeChange} value="petrol" />
                             }
                             label="Petrol"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleFuelTypeChange('diesel')} value="diesel" />
+                              <Checkbox checked={fuelType.diesel} onChange={handleFuelTypeChange} value="diesel" />
                             }
                             label="diesel"
                           />
                           <FormControlLabel
                             control={
                               <Checkbox
-                                // checked={antoine}
-                                checked={false}
-                                onChange={handleFuelTypeChange('electric')}
+                                checked={fuelType.electric}
+                                onChange={handleFuelTypeChange}
                                 value="electric"
                               />
                             }
@@ -217,9 +257,8 @@ const marks = [
                           <FormControlLabel
                             control={
                               <Checkbox
-                                // checked={antoine}
-                                checked={false}
-                                onChange={handleFuelTypeChange('CNG')}
+                                checked={fuelType.CNG}
+                                onChange={handleFuelTypeChange}
                                 value="CNG"
                               />
                             }
@@ -236,22 +275,21 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleBodyTypeChange('HatchBack')} value="HatchBack" />
+                              <Checkbox checked={bodyType.HatchBack} onChange={handleBodyTypeChange} value="HatchBack" />
                             }
                             label="HatchBack"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleBodyTypeChange('Sedan')} value="Sedan" />
+                              <Checkbox checked={bodyType.Sedan} onChange={handleBodyTypeChange} value="Sedan" />
                             }
                             label="Sedan"
                           />
                           <FormControlLabel
                             control={
                               <Checkbox
-                                // checked={antoine}
-                                checked={false}
-                                onChange={handleBodyTypeChange('SUV')}
+                                checked={bodyType.SUV}
+                                onChange={handleBodyTypeChange}
                                 value="SUV"
                               />
                             }
@@ -268,13 +306,13 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handletransmissionChange('automatic')} value="automatic" />
+                              <Checkbox checked={transmissionType.automatic} onChange={handletransmissionChange} value="automatic" />
                             }
                             label="automatic"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handletransmissionChange('manual')} value="manual" />
+                              <Checkbox checked={transmissionType.manual} onChange={handletransmissionChange} value="manual" />
                             }
                             label="manual"
                           />
@@ -289,13 +327,13 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleOwner('1st Owner')} value="1st Owner" />
+                              <Checkbox checked={ownerType["1st_Owner"]} onChange={handleOwner} value="1st_Owner" />
                             }
                             label="1st Owner"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleOwner('2nd Owner')} value="2nd Owner" />
+                              <Checkbox checked={ownerType["2nd_Owner"]} onChange={handleOwner} value="2nd_Owner" />
                             }
                             label="2nd Owner"
                           />
@@ -310,37 +348,37 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('Adventure')} value="Adventure" />
+                              <Checkbox checked={category.adventure} onChange={handleCatogory} value="adventure" />
                             }
                             label="Adventure"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('Commuter')} value="Commuter" />
+                              <Checkbox checked={category.commuter} onChange={handleCatogory} value="commuter" />
                             }
                             label="Commuter"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('Family')} value="Family" />
+                              <Checkbox checked={category.family} onChange={handleCatogory} value="family" />
                             }
                             label="Family"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('Feature Packed')} value="Feature Packed" />
+                              <Checkbox checked={category.Featured_packed} onChange={handleCatogory} value="feature_packed" />
                             }
                             label="Feature Packed"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('Luxury')} value="Luxury" />
+                              <Checkbox checked={category.luxury} onChange={handleCatogory} value="luxury" />
                             }
                             label="Luxury"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleCatogory('value')} value="value" />
+                              <Checkbox checked={category.value} onChange={handleCatogory} value="value" />
                             }
                             label="value"
                           />
@@ -355,19 +393,19 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleAvailability('in stock')} value="in stock" />
+                              <Checkbox checked={availability.inStock} onChange={handleAvailability} value="inStock" />
                             }
                             label="in stock"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleAvailability('Booked')} value="Booked" />
+                              <Checkbox checked={availability.booked} onChange={handleAvailability} value="booked" />
                             }
                             label="Booked"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={false} onChange={handleAvailability('Upcoming')} value="Upcoming" />
+                              <Checkbox checked={availability.upcoming} onChange={handleAvailability} value="upcoming" />
                             }
                             label="Upcoming"
                           />

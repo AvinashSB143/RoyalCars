@@ -9,6 +9,9 @@
 
 .header_buy_car {
   display: flex;
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
 }
 .header_SignIn_bar {
   display: flex;
