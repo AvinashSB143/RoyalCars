@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {connect} from 'react-redux';
 import "./sell.css";
 import Feedback from "../Feedback";
 import TextField from '@material-ui/core/TextField';
@@ -8,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import {sellCar} from "../../actions"
 
 
 const styles = theme => ({ 
@@ -317,6 +319,16 @@ const enableShowKMList = () => {
 }
 
 
+const carDetails = {
+  selectedyear,
+  selectedBrand,
+  selectedModel,
+  selectedVariant,
+  selectedOwner,
+  selectedKMDriven
+}
+
+
   return (
     <>
       <div className="container_sell">
@@ -362,7 +374,9 @@ const enableShowKMList = () => {
             <FormFields name="KM" value={selectedKMDriven} 
               onClick={() => enableShowKMList()}
             />
-            <button class="search-button">Search</button>
+            <button class="search-button"
+            onClick={() => props.dispatchSellCar(carDetails)}
+            >Search</button>
           </div>
         {showYearList &&   <div className="sellcar_filter_container">
             {yearListContainer}
@@ -475,4 +489,20 @@ const enableShowKMList = () => {
   );
 };
 
-export default withStyles(styles)(Sell);
+const mapStateToProps = state => {
+  return{ }
+  
+}
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatchSellCar: (data) => {
+          dispatch(
+              sellCar(data)
+              )
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Sell));

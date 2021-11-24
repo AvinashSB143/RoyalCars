@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 
 const initialState = {
     isValidUser: null,
-    api_failure: false
+    api_failure: false,
+    customerCarList: []
 }
 
 const reducers = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const reducers = (state = initialState, action) => {
     if(action.type === "USER_VALIDATED") {
         return {
             isValidUser: action.payload
+        }
+    }
+    if(action.type === "CUSTOMER_CAR_LIST") {
+        return {
+            customerCarList: action.payload
         }
     }
     if(action.type === "API_FAILURE") {
