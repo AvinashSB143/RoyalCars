@@ -13,6 +13,7 @@ import Footer from "../Footer";
 import AccountFilters from "../AccountFilters";
 import MenuBar from '../Header/MenuBar';
 import Sell from "../Sell";
+import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
   
   function Routing() {
     const [validUser, setValidUser] = useState(false);
@@ -39,6 +40,9 @@ import Sell from "../Sell";
         <Route path="/sell">
           <Sell />
         </Route>
+        <Route path = "/buyCar/cars">
+          <BuyCarDetails />
+          </Route>
         <Footer />
         {/* <Route path="/sell">
           <Sell />
