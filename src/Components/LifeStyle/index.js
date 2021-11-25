@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import "./lifestyle.css";
 import "../../styles/styles.css";
-import history from "../history";
+// import history from "../history";
 
 const LifeStyle = () => {
 return(

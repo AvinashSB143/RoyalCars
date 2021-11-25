@@ -16,7 +16,13 @@ const reducers = (state = initialState, action) => {
     }
     if(action.type === "LOGIN_SUCCESS") {
         return {
-            authToken: action.payload
+            authToken: action.payload.token,
+            userDetails: action.payload
+        }
+    }
+    if(action.type === "SIGNUP_SUCCESS") {
+        return {
+            signUpSuccess: true
         }
     }
     if(action.type === "REGISTERED_USER") {
@@ -37,6 +43,12 @@ const reducers = (state = initialState, action) => {
     if(action.type === "API_FAILURE") {
         return {
             api_failure: true
+        }
+    }
+    if(action.type === "LOGOUT") {
+        return {
+            authToken: null,
+            signUpSuccess: false
         }
     }
     return state;

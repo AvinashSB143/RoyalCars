@@ -20,7 +20,7 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP, getCustomerCars, signUp } from "../../actions"
+import { login, validateNumber, validateOTP, getCustomerCars, signUp, logout } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 import { MonetizationOn } from '@material-ui/icons';
@@ -110,33 +110,39 @@ class Header extends Component {
 
     validateUser = () => {
         
-        // if(!this.state.isSignUp) {
-        //     if(this.state.userName && this.state.password) {
-        //         this.props.loginUser(this.state.userName, this.state.password)
-        //     }
-        // }
-        // else if(this.state.userName && this.state.password && this.state.mobileNumber) {
-        //     this.props.signUp(this.state.userName, this.state.password, this.state.mobileNumber, this.state.email)
-        // }
+        if(!this.state.isSignUp) {
+            this.setState({
+                loginAttempted: true
+            }, () => this.setState({
+                loginAttempted: true
+            }))
+            if(this.state.userName && this.state.password) {
+                this.props.loginUser(this.state.userName, this.state.password)
+            }
+        }
+        else if(this.state.userName && this.state.password && this.state.mobileNumber) {
+            this.props.signUp(this.state.userName, this.state.password, this.state.mobileNumber, this.state.email)
+            this.setState({
+                isSignUp: false,
+                userName: "",
+                password: ""
+            })
+        }
       
-        if(!this.state.userName) {
-            this.setState({
-                isUserNamePresent: false
-            })
-        }
-        if(!this.state.password) {
-            this.setState({
-                isPasswordPresent: false
-            })
-        }
-        else {
-            this.props.loginUser(this.state.userName, this.state.password)
-        }
-        this.setState({
-            loginAttempted: true
-        }, () => this.setState({
-            loginAttempted: true
-        }))
+        // if(!this.state.userName) {
+        //     this.setState({
+        //         isUserNamePresent: false
+        //     })
+        // }
+        // if(!this.state.password) {
+        //     this.setState({
+        //         isPasswordPresent: false
+        //     })
+        // }
+        // else {
+        //     this.props.loginUser(this.state.userName, this.state.password)
+        // }
+        
     }
 
     validateOTP = (OTP) => {
@@ -187,12 +193,16 @@ class Header extends Component {
     }
     render() {  
     const expandMoreSection = <div className="main_container column_container about_expanded_section">
-         <div className="more_items" onMouseOver={this.hideShowWorkFlow}>
+         <div className="more_items" onMouseOver={this.hideShowWorkFlow}
+         onClick={() => { 
+            this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+          }
+      } >
              <>
          <DescriptionIcon />
          </>
               <p4 className="options">
-                  <Link to="/more/AboutUs" className="options" onClick = {this.onAboutUs}>
+                  <Link to={this.props.authToken ? "/more/AboutUs": "#"} className="options" onClick = {this.onAboutUs}>
                     About Us             
                  </Link>
               </p4>
@@ -206,21 +216,21 @@ class Header extends Component {
               </p4>
          <ArrowForwardIosIcon style={{marginLeft: "90px"}}/>
          </div>
-         <div className="more_items" onMouseOver={this.hideShowWorkFlow}>
+         {/* <div className="more_items" onMouseOver={this.hideShowWorkFlow}>
          <LocationOnIcon />
               <p4 className="options">
                  Car hub Location
               </p4>
 
-         </div>
-         <div className="more_items"  onMouseOver={this.hideShowWorkFlow}>
+         </div> */}
+         {/* <div className="more_items"  onMouseOver={this.hideShowWorkFlow}>
          <AddLocationIcon />
               <p4 className="options">
                 ContactLess car Buying
               </p4>
 
-             </div>
-            </div>
+             </div> */}
+        </div>
 
         const expandShowWorkFlow = 
         <div className="main_container column_container about_expanded_section buying_process_container" >
@@ -239,13 +249,13 @@ class Header extends Component {
                  Car selling process
              </p4>
         </div>
-        <div className="more_items">
+        {/* <div className="more_items">
         <LocationOnIcon />
              <p4 className="options">
                 Pricing
              </p4>
 
-        </div>
+        </div> */}
         </div>
  
          const expandAccountSection = <div className="main_container column_container about_expanded_section buying_process_container" id="expanded_account_section" 
@@ -254,9 +264,9 @@ class Header extends Component {
              <>
          <DescriptionIcon />
          </>
-              <Link to={this.props.isValidUser ? "/account/testDrive" : "#"} className="options" 
+              <Link to={this.props.authToken ? "/account/testDrive" : "#"} className="options" 
               onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }
             }>
                   Test Drives
@@ -265,16 +275,16 @@ class Header extends Component {
          </div>
          <div className="more_items" >
          <DirectionsOutlinedIcon />
-              <Link to="/account/bookings" className="options" onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+              <Link to={this.props.authToken ?"/account/bookings" : "#"} className="options" onClick={() => { 
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                   Bookings
               </Link>
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/sellorders" className="options" onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+              <Link to={this.props.authToken ? "/account/sellorders" : "#"} className="options" onClick={() => { 
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                  Sell Orders
               </Link>
@@ -282,8 +292,8 @@ class Header extends Component {
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/help_suport" className="options" onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+              <Link to={this.props.authToken ? "/account/help_suport" : "#"} className="options" onClick={() => { 
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                 Help and Support
               </Link>
@@ -291,8 +301,8 @@ class Header extends Component {
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/refer_and_earn" className="options" onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+              <Link to={this.props.authToken ? "/account/refer_and_earn" : "#"} className="options" onClick={() => { 
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                 Refer and Earn
               </Link>
@@ -300,8 +310,8 @@ class Header extends Component {
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to="/account/profileInformation" className="options" onClick={() => { 
-                  this.props.isValidUser ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+              <Link to={this.props.authToken ?"/account/profileInformation" : "#"} className="options" onClick={() => { 
+                  this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                  Profile Information
               </Link>
@@ -310,10 +320,11 @@ class Header extends Component {
          <div className="more_items" onClick={() => {
             this.setState({showLoginContent: true})
             this.changeArrow()
+            this.props.authToken && this.props.logout()
          } }>
          <LocationOnIcon />
-              <Link to= {this.props.isValidUser ? "/homePage" : "#" } className="options">
-                {!this.props.isValidUser ? "Login/Sign up" : "Logout" } 
+              <Link to= {this.props.authToken ? "/homePage" : "#" } className="options">
+                {!this.props.authToken ? "Login/Sign up" : "Logout" } 
               </Link>
 
          </div>
@@ -321,7 +332,7 @@ class Header extends Component {
     const {classes} = this.props;
         return(
             <>
-            <div className={this.state.showLoginContent && !this.props.isValidUser && "overlay"} 
+            <div className={this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) && "overlay"} 
             onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
             }}
@@ -348,19 +359,22 @@ class Header extends Component {
                     <SearchIcon className="search_icon"/>
                     </div>
                     </div>
-                    <Link to="/lifeStyle" className="header_buy_car" onClick={() => this.props.getCustomerCars()} >
+                    <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" onClick={() => this.props.getCustomerCars()} >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
                         Buy Car
                      </b>
-                     {this.state.expandBuyCarSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                      </Link>
-                    <Link to="/sell" className="Header_options">
+                    <Link to={this.props.authToken ? "/sell" : "#"} className="Header_options">
                     <b style={{fontSize: "16px"}}>
                         Sell Car
                     </b>
                     </Link >
-                    <div className="header_buy_car">
+                    <div className="header_buy_car" 
+                    onClick={() => {
+                        this.setState({expandMoreSection: !this.state.expandMoreSection})
+                    }}
+                    >
                       <b onMouseOver={() => this.changeArrow("more")}
                         //  onMouseOut={() => this.changeArrow()}
                           style={{fontSize: "16px"}}>
@@ -373,9 +387,11 @@ class Header extends Component {
                         </div>
                         <div className="header_SignIn_bar">
                             <p>
-                                Hello, Sign in
+                                Hello, {this.props.userDetails ? this.props.userDetails.username : "Sign In"}
                             </p>
-                            <div className="header_account">
+                            <div className="header_account" onClick={() => {
+                                this.setState({expandAccountSection: !this.state.expandAccountSection})
+                            }}>
                             <b onMouseOver={() => 
                             this.changeArrow("account")
                         }
@@ -395,7 +411,7 @@ class Header extends Component {
                     {this.state.expandMoreSection && expandMoreSection}
                     {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
                     {this.state.expandAccountSection  && expandAccountSection}
-                    {this.state.showLoginContent && !this.props.isValidUser && <div className={`main_container column_container login_container ${this.state.isSignUp && " signup_container"}`}>
+                    {this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) && <div className={`main_container column_container login_container ${this.state.isSignUp && " signup_container"}`}>
                     <CloseIcon className="close_icon" onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false, loginAttempted: false})
             }}/>
@@ -417,7 +433,8 @@ class Header extends Component {
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getUserName(e.target.value)}
                         error={this.state.loginAttempted && !this.state.userName}
-                        helperText={this.state.loginAttempted && !this.state.isUserNamePresent && "Please enter userName"} 
+                        helperText={this.state.loginAttempted && !this.state.userName && "Please enter userName"} 
+                        value={this.state.userName}
                         />
                         <TextField
                         id="password"
@@ -430,10 +447,12 @@ class Header extends Component {
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getPassword(e.target.value)}
                         error={this.state.loginAttempted && !this.state.password}
-                        helperText={this.state.loginAttempted && !this.state.isPasswordPresent && "Please enter Password"}
+                        helperText={this.state.loginAttempted && !this.state.password && "Please enter Password"}
+                        type="password"
+                        value={this.state.password}
                         />
                        
-                       {this.state.isSignUp && 
+                       {this.state.isSignUp && !this.props.signUpSuccess &&
                         <>
                             <TextField
                             id="mobile_number"
@@ -446,7 +465,7 @@ class Header extends Component {
                             className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                             onChange={e => this.getMobileNumber(e.target.value)}
                             type="tel"
-                            error={this.state.loginAttempted && !this.state.mobileNumber}
+                            error={this.state.isSignUp && !this.state.mobileNumber}
                             helperText={this.state.loginAttempted && !this.state.mobileNumber ? "Please enter valid number" : "" }
                             /> 
                             <TextField
@@ -460,23 +479,21 @@ class Header extends Component {
                             className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                             onChange={e => this.getEmail(e.target.value)}
                             type="email"
-                            error={this.state.loginAttempted && !this.state.email}
-                            helperText={this.state.loginAttempted && !this.state.email ? "Please enter emailAddress" : "" }
                             /> 
                         </>
                         }
                     </>
                     <div className="forgot_password">
-                            <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>
+                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>}
                             <Link to="#">Forgot Password</Link>
                         </div>
-                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password &&
+                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password && !this.props.signUpSuccess &&
                         <p style={{color: "red", margin: "5px"}}>Invalid Credentials</p>
                         } 
                     {<button className="login_proceed_btn" onClick={() => {
                     this.validateUser();
                     }}>
-                      {this.state.isSignUp ? "Sign Up" : "Proceed"}
+                      {this.state.isSignUp && !this.props.signUpSuccess ? "Sign Up" : this.props.signUpSuccess ? "Proceed" : "Proceed"}
                     </button>}
                    {/* {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
                     <TextField
@@ -556,7 +573,9 @@ const mapStateToProps = state => {
     return{
         isUserRegistered: state.reducers.isUserRegistered,
         isValidUser: state.reducers.isValidUser,
-        authToken: state.reducers.authToken
+        authToken: state.reducers.authToken,
+        signUpSuccess: state.reducers.signUpSuccess,
+        userDetails: state.reducers.userDetails,
     }
     
 }
@@ -584,9 +603,13 @@ const mapDispatchToProps = dispatch => {
             )
         },
         signUp : (name, password, mobileNumber,email) =>{
-            console.log("details", name, password, mobileNumber, email)
             dispatch(
                 signUp(name, password, mobileNumber,email)
+            )
+        },
+        logout : () =>{
+            dispatch(
+                logout()
             )
         }
     }

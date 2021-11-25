@@ -11,7 +11,7 @@ export const login = (name, password) => {
                 if(res && res.data && res.data.token)
                 dispatch ({
                     type: "LOGIN_SUCCESS",
-                    payload: res.data.token
+                    payload: res.data
                 })
             }).catch(err =>  dispatch ({
                 type: "AUTHENTICATION_FAILURE",
@@ -33,11 +33,11 @@ export const signUp = (name, password, phoneNumber, email) => {
                 email: email,
                 password: password
             }).then(res => {
-                console.log(res)
-                dispatch ({
-                    type: "SIGNUP_SUCCESS",
-                    payload: res
-                })
+                if(res.data) {
+                    dispatch ({
+                        type: "SIGNUP_SUCCESS",
+                    }) 
+                }
             }).catch(err =>  dispatch ({
                 type: "API_FAILURE",
             }))
@@ -46,6 +46,14 @@ export const signUp = (name, password, phoneNumber, email) => {
            catch (error) {
             console.log(error);
           }
+    }
+}
+
+export const logout = () => {
+    return dispatch => {
+        dispatch ({
+            type: "LOGOUT",
+        }) 
     }
 }
 

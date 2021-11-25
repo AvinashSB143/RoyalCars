@@ -5,7 +5,7 @@ import {
     Redirect
   } from "react-router-dom";
   import HomePage from "../Homepage";
-  import history  from '../history';
+  // import history  from '../history';
 // import LifeStyle from '../LifeStyle';
 import LifeStyleFeature from "../LifeStyleFeature";
 import Header from "../Header";
@@ -25,7 +25,9 @@ import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
         <Route exact path="/"  >
           <Redirect to="/homePage" />
         </Route>
-        <Route exact path="/homePage" history={history}>
+        <Route exact path="/homePage" 
+        // history={history}
+        >
           <HomePage validateUser={validateUser}/>
         </Route>
         <Route path="/lifeStyle">
