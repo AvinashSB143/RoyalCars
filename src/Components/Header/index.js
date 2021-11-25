@@ -109,31 +109,34 @@ class Header extends Component {
     }
 
     validateUser = () => {
+        
+        // if(!this.state.isSignUp) {
+        //     if(this.state.userName && this.state.password) {
+        //         this.props.loginUser(this.state.userName, this.state.password)
+        //     }
+        // }
+        // else if(this.state.userName && this.state.password && this.state.mobileNumber) {
+        //     this.props.signUp(this.state.userName, this.state.password, this.state.mobileNumber, this.state.email)
+        // }
+      
+        if(!this.state.userName) {
+            this.setState({
+                isUserNamePresent: false
+            })
+        }
+        if(!this.state.password) {
+            this.setState({
+                isPasswordPresent: false
+            })
+        }
+        else {
+            this.props.loginUser(this.state.userName, this.state.password)
+        }
         this.setState({
             loginAttempted: true
-        })
-        if(!this.state.isSignUp) {
-            if(this.state.userName && this.state.password) {
-                this.props.loginUser(this.state.userName, this.state.password)
-            }
-        }
-        else if(this.state.userName && this.state.password && this.state.mobileNumber) {
-            this.props.signUp(this.state.userName, this.state.password, this.state.mobileNumber, this.state.email)
-
-        }
-        // if(!this.state.userName) {
-        //     this.setState({
-        //         isUserNamePresent: false
-        //     })
-        // }
-        // if(!this.state.password) {
-        //     this.setState({
-        //         isPasswordPresent: false
-        //     })
-        // }
-        // else {
-        //     this.props.loginUser(this.state.userName, this.state.password)
-        // }
+        }, () => this.setState({
+            loginAttempted: true
+        }))
     }
 
     validateOTP = (OTP) => {
