@@ -3,10 +3,22 @@ import { combineReducers } from "redux";
 const initialState = {
     isValidUser: null,
     api_failure: false,
-    customerCarList: []
+    customerCarList: [],
+    authenticationStatus: null,
+    authToken: null
 }
 
 const reducers = (state = initialState, action) => {
+    if(action.type === "AUTHENTICATION_FAILURE") {
+        return {
+            authenticationStatus: false
+        }
+    }
+    if(action.type === "LOGIN_SUCCESS") {
+        return {
+            authToken: action.payload
+        }
+    }
     if(action.type === "REGISTERED_USER") {
         return {
             isUserRegistered: action.payload

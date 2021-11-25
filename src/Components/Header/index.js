@@ -20,9 +20,10 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP, getCustomerCars } from "../../actions"
+import { login, validateNumber, validateOTP, getCustomerCars, signUp } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
+import { MonetizationOn } from '@material-ui/icons';
 
 
 const styles = theme => ({ 
@@ -50,14 +51,15 @@ class Header extends Component {
             remainingTime: 60,
             showTimeInterval: false,
             mobileNumber: null,
-            username: null,
             isError: false,
             openAboutUs:false,
             isUserValidated: false,
             userName: "",
             password: "",
+            email: "",
             isUserNamePresent: true,
-            isPasswordPresent: true
+            isPasswordPresent: true,
+            isSignUp: false
         }
     }
     changeOnMouseLeave = () => {
@@ -110,28 +112,27 @@ class Header extends Component {
         this.setState({
             loginAttempted: true
         })
-        if(!this.state.userName) {
-            this.setState({
-                isUserNamePresent: false
-            })
+        if(!this.state.isSignUp) {
+            if(this.state.userName && this.state.password) {
+                this.props.loginUser(this.state.userName, this.state.password)
+            }
         }
-        if(!this.state.password) {
-            this.setState({
-                isPasswordPresent: false
-            })
-        }
-        else {
-            this.props.loginUser(this.state.userName, this.state.password)
-        }
-        // if(this.state.mobileNumber && this.state.mobileNumber.length === 10) {
-        //     this.watchTimer()
-        //     this.props.validatePhoneNumber(this.state.mobileNumber)
-        //      this.setState({ isUserValidated: true, showTimeInterval: true})
-        // } else {
-        //     this.setState({ isError: true}, () => {
-        //         this.setState({ isError: true, isUserValidated: false})
-        //     })
+        else if(this.state.userName && this.state.password && this.state.mobileNumber) {
+            this.props.signUp(this.state.userName, this.state.password, this.state.mobileNumber, this.state.email)
 
+        }
+        // if(!this.state.userName) {
+        //     this.setState({
+        //         isUserNamePresent: false
+        //     })
+        // }
+        // if(!this.state.password) {
+        //     this.setState({
+        //         isPasswordPresent: false
+        //     })
+        // }
+        // else {
+        //     this.props.loginUser(this.state.userName, this.state.password)
         // }
     }
 
@@ -164,11 +165,17 @@ class Header extends Component {
         })
     }
 
-    readName = name => {
+    getEmail = email => {
         this.setState({
-            username: name
+            email: email
         })
     }
+
+    // readName = name => {
+    //     this.setState({
+    //         username: name
+    //     })
+    // }
     
      onAboutUs = () => {
         this.setState({
@@ -385,9 +392,9 @@ class Header extends Component {
                     {this.state.expandMoreSection && expandMoreSection}
                     {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
                     {this.state.expandAccountSection  && expandAccountSection}
-                    {this.state.showLoginContent && !this.props.isValidUser && <div className="main_container column_container login_container ">
+                    {this.state.showLoginContent && !this.props.isValidUser && <div className={`main_container column_container login_container ${this.state.isSignUp && " signup_container"}`}>
                     <CloseIcon className="close_icon" onClick={() => {
-                this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
+                this.setState({showLoginContent: false, showEmailField: false, showNameField: false, loginAttempted: false})
             }}/>
                     <VpnKeyIcon />
                     {/* {!this.state.isUserValidated && !this.props.isValidUser && ( */}
@@ -395,7 +402,7 @@ class Header extends Component {
                         <p4 className="content_pos">
                             Login /Sign Up
                         </p4>
-
+                    
                         <TextField
                         id="userName"
                         placeholder="username"
@@ -406,7 +413,7 @@ class Header extends Component {
                         InputProps={{ disableUnderline: true, maxLength: 10}}
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getUserName(e.target.value)}
-                        error={this.state.loginAttempted && !this.state.isUserNamePresent}
+                        error={this.state.loginAttempted && !this.state.userName}
                         helperText={this.state.loginAttempted && !this.state.isUserNamePresent && "Please enter userName"} 
                         />
                         <TextField
@@ -419,32 +426,56 @@ class Header extends Component {
                         InputProps={{ disableUnderline: true, maxLength: 10}}
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getPassword(e.target.value)}
-                        error={this.state.loginAttempted && !this.state.isPasswordPresent}
+                        error={this.state.loginAttempted && !this.state.password}
                         helperText={this.state.loginAttempted && !this.state.isPasswordPresent && "Please enter Password"}
                         />
-                        {/* <TextField
-                        id="mobile_number"
-                        placeholder="Mobile Number"
-                        classes={{
-                            root: classes.root,
-                            input: classes.input
-                        }}
-                        InputProps={{ disableUnderline: true, maxLength: 10}}
-                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                        onChange={e => this.getMobileNumber(e.target.value)}
-                        type="tel"
-                        error={this.state.isError}
-                        helperText={this.state.isError ? "Please enter valid number" : "" }
-                        /> */}
+                       
+                       {this.state.isSignUp && 
+                        <>
+                            <TextField
+                            id="mobile_number"
+                            placeholder="Mobile Number"
+                            classes={{
+                                root: classes.root,
+                                input: classes.input
+                            }}
+                            InputProps={{ disableUnderline: true, maxLength: 10}}
+                            className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
+                            onChange={e => this.getMobileNumber(e.target.value)}
+                            type="tel"
+                            error={this.state.loginAttempted && !this.state.mobileNumber}
+                            helperText={this.state.loginAttempted && !this.state.mobileNumber ? "Please enter valid number" : "" }
+                            /> 
+                            <TextField
+                            id="email"
+                            placeholder="Enter Your Email(Optional)"
+                            classes={{
+                                root: classes.root,
+                                input: classes.input
+                            }}
+                            InputProps={{ disableUnderline: true, maxLength: 10}}
+                            className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
+                            onChange={e => this.getEmail(e.target.value)}
+                            type="email"
+                            error={this.state.loginAttempted && !this.state.email}
+                            helperText={this.state.loginAttempted && !this.state.email ? "Please enter emailAddress" : "" }
+                            /> 
+                        </>
+                        }
                     </>
+                    <div className="forgot_password">
+                            <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>
+                            <Link to="#">Forgot Password</Link>
+                        </div>
+                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password &&
+                        <p style={{color: "red", margin: "5px"}}>Invalid Credentials</p>
+                        } 
                     {<button className="login_proceed_btn" onClick={() => {
                     this.validateUser();
                     }}>
-                      Proceed
+                      {this.state.isSignUp ? "Sign Up" : "Proceed"}
                     </button>}
-                    {/* )
-                    } */}
-                   {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
+                   {/* {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
                     <TextField
                     id="name"
                     placeholder="Enter your name"
@@ -459,19 +490,7 @@ class Header extends Component {
                     helperText="enter your name"
                     />
                     }
-                 {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
-                  <TextField
-                    id="email"
-                    placeholder="Enter Your Email(Optional)"
-                    classes={{
-                        root: classes.root,
-                        input: classes.input
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    className="login_text_field"
-
-                    />
-                } 
+                */}
                 
                 {/* {!this.state.isUserValidated && !this.props.isUserRegistered && (
                  <>
@@ -533,8 +552,8 @@ class Header extends Component {
 const mapStateToProps = state => {
     return{
         isUserRegistered: state.reducers.isUserRegistered,
-        isValidUser: state.reducers.isValidUser
-
+        isValidUser: state.reducers.isValidUser,
+        authToken: state.reducers.authToken
     }
     
 }
@@ -559,6 +578,12 @@ const mapDispatchToProps = dispatch => {
         loginUser : (name, number) =>{
             dispatch(
                 login(name, number)
+            )
+        },
+        signUp : (name, password, mobileNumber,email) =>{
+            console.log("details", name, password, mobileNumber, email)
+            dispatch(
+                signUp(name, password, mobileNumber,email)
             )
         }
     }

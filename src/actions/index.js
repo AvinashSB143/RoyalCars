@@ -8,25 +8,47 @@ export const login = (name, password) => {
                 username: name,
                 password: password
             }).then(res => {
-                console.log(res)
+                if(res && res.data && res.data.token)
                 dispatch ({
                     type: "LOGIN_SUCCESS",
-                    payload: res
+                    payload: res.data.token
                 })
-            }).catch(err => console.log(err))
-            dispatch ({
-                type: "API_FAILURE",
-                payload: "success"
-            })
+            }).catch(err =>  dispatch ({
+                type: "AUTHENTICATION_FAILURE",
+            }))
+           
            } 
            catch (error) {
             console.log(error);
           }
-
-    }
-   
- 
+        }
 }
+
+export const signUp = (name, password, phoneNumber, email) => {
+    return dispatch => {
+        try{
+            axios.post('user/signup', {
+                username: name,
+                phone: phoneNumber,
+                email: email,
+                password: password
+            }).then(res => {
+                console.log(res)
+                dispatch ({
+                    type: "SIGNUP_SUCCESS",
+                    payload: res
+                })
+            }).catch(err =>  dispatch ({
+                type: "API_FAILURE",
+            }))
+           
+           } 
+           catch (error) {
+            console.log(error);
+          }
+    }
+}
+
 
 export const validateNumber = number => {
     return dispatch => {
