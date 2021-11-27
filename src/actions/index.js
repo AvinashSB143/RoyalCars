@@ -103,13 +103,9 @@ export const validateNumber = number => {
                     payload: "existing_user"
                 })
             }).catch(err => console.log(err))
-            // dispatch ({
-            //     type: "API_FAILURE",
-            //     payload: "success"
-            // })
             dispatch ({
-                type: "REGISTERED_USER",
-                payload: "existing_user"
+                type: "API_FAILURE",
+                payload: "success"
             })
             
         } catch (error) {
@@ -124,44 +120,38 @@ export const validateOTP = OTP => {
             axios.post('user/verifyOtp', {
                 otp: OTP
             }).then(res => {
-                // if(res && res.data) {
+                if(res && res.data) {
                     dispatch ({
                         type: "USER_VALIDATED",
                         payload: res.data
                     })
-                // }
+                }
             }).catch(err => console.log(err))
-            // dispatch ({  //***** */ need to uncomment
-            //     type: "API_FAILURE",
-            //     payload: "success"
-            // })
-            //**********for testing
-            dispatch ({
-                type: "USER_VALIDATED",
-                payload: "sucess"
+            dispatch ({  
+                type: "API_FAILURE",
+                payload: "success"
             })
+          
         } catch (error) {
             console.log(error)
         }
     }
 }
-export const getCustomerCars = OTP => {
+export const getAvailableCars = () => {
     return dispatch => {
         try {
             axios.get('customerCar/get').then(res => {
-                console.log(res)
+                if(res && res.data) {
                 dispatch ({
-                    type: "CUSTOMER_CAR_LIST",
-                    payload: res
+                    type: "AVAILABLE_CARS",
+                    payload: res.data
                 })
+                }
             }).catch(err => console.log(err))
-            // dispatch ({
-            //     type: "API_FAILURE",
-            //     payload: "success"
-            // })
+          
             dispatch ({
-                type: "USER_VALIDATED",
-                payload: "valid_user"
+                type: "AVAILABLE_CARS",
+                payload: []
             })
 
         } catch (error) {
@@ -177,17 +167,13 @@ export const sellCar = data => {
             }).then(res => {
                 console.log(res)
                 dispatch ({
-                    type: "CUSTOMER_CAR_LIST",
+                    type: "SELL_CAR",
                     payload: res
                 })
             }).catch(err => console.log(err))
-            // dispatch ({
-            //     type: "API_FAILURE",
-            //     payload: "success"
-            // })
             dispatch ({
-                type: "USER_VALIDATED",
-                payload: "valid_user"
+                type: "API_FAILURE",
+                payload: "success"
             })
 
         } catch (error) {

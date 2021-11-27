@@ -6,7 +6,8 @@ const initialState = {
     customerCarList: [],
     authenticationStatus: null,
     authToken: null,
-    OTPVerificationSuccessful: false
+    OTPVerificationSuccessful: false,
+    availableCarList: []
 }
 
 const reducers = (state = initialState, action) => {
@@ -44,9 +45,9 @@ const reducers = (state = initialState, action) => {
             OTPVerificationSuccessful: true
         }
     }
-    if(action.type === "CUSTOMER_CAR_LIST") {
+    if(action.type === "AVAILABLE_CARS") {
         return {
-            customerCarList: action.payload
+            availableCarList: action.payload
         }
     }
     if(action.type === "API_FAILURE") {

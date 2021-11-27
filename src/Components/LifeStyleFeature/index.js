@@ -1,5 +1,6 @@
 import "./lifestylefeature.css";
 import { useState } from 'react';
+import {connect} from 'react-redux';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import SearchIcon from '@material-ui/icons/Search';
@@ -32,6 +33,10 @@ const styles = theme => ({
     input: {
         padding: "16px 0 17px 10px"
     },
+    icon_root: {
+      position: "absolute",
+      right: 0
+    } 
   });
 
 const LifeStyleFeature = (props) => {
@@ -112,6 +117,25 @@ const marks = [
     setAvailability({...availability, [event.target.value] : event.target.checked})
   }
 
+  const carList = props.availableCarList && props.availableCarList.map((car) => {
+    return (
+     <div className="column_container car_list">
+                  <Link to = "/buyCar/cars">
+                  <img className="filter_car_img" src={car.img} />
+                  </Link>
+                  <div className="column_container"  style={{position: "relative"}}>
+                     <span className="row_container description"> <h4 className="car_name_info">{car.mode}</h4><h4 className="car_name_info">{car.name}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                     <div className="row_container car_km_ifo">
+                       <span className="row_container car_details"><p className="car_info">{car.KMDriven}</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.orientationType}</p></span>
+                     </div>
+                     <div>
+                       <h3 className="car_info_amount">Rs. {car.amount}</h3 >
+                     </div>
+                  </div>
+                </div>
+    )
+  }) 
+  
     return(
         <div className="main_container feature_container">
            <div className="lifeStyle_filters main_container column_container">
@@ -425,16 +449,18 @@ const marks = [
              <div className="row_container  selected_filter_list">
                <button className="clear_Filter_btn"> <ReplayIcon /> Clear All</button>
              </div>
-             <p>Used Family Cars</p>
-             <div className="row_container"> 
-                <div className="column_container">
-                  <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                  </Link>
-                  <div className="column_container">
-                  <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                 </div>
-             </div>
+             {props.availableCarList && props.availableCarList.length !== 0 && <p>Used Family Cars</p>}
+             <div className="row_container car_list_container"> 
+             {props.availableCarList && props.availableCarList.length !== 0 ? (
+               <>
+               {carList}
+               </>
+             ) : (
+               <div className="empty_car_list">
+                 No Cars Available..!
+               </div>
+             )
+            }
              </div>
            </div>
         </div>
@@ -442,4 +468,12 @@ const marks = [
 
 }
 
-export default withStyles(styles)(LifeStyleFeature);
+const mapStateToProps = state => {
+  return{
+      availableCarList: state.reducers.availableCarList,
+  }
+  
+}
+
+
+export default connect(mapStateToProps)(withStyles(styles)(LifeStyleFeature));

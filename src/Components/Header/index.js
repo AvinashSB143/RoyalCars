@@ -20,7 +20,7 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP, getCustomerCars, signUp, logout, getOTP, updatePassword } from "../../actions"
+import { login, validateNumber, validateOTP, getAvailableCars, signUp, logout, getOTP, updatePassword } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 import { MonetizationOn } from '@material-ui/icons';
@@ -413,7 +413,7 @@ class Header extends Component {
                     </div>
                     <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" 
                     onClick={() => {
-                        this.props.authToken && this.props.getCustomerCars()}} 
+                        this.props.authToken && this.props.getAvailableCars()}} 
                     >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
@@ -667,11 +667,11 @@ const mapDispatchToProps = dispatch => {
                 validateOTP(OTP)
                 )
         },
-        // getCustomerCars: () => {
-        //     dispatch(
-        //         getCustomerCars()
-        //         )
-        // },
+        getAvailableCars: () => {
+            dispatch(
+                getAvailableCars()
+                )
+        },
         loginUser : (name, number) =>{
             dispatch(
                 login(name, number)

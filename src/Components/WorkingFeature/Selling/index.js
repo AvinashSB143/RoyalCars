@@ -60,7 +60,7 @@ return (
                     <span>
                     <h1> Selling your car made simple. </h1>
                     <p className="working_buy_description">The best price for your car. Simple selling experience. Sellright by Spinny evaluation methodology has been found to get you more value for your car than you would selling it on your own or to a dealer. Also, the process is far simpler and safer as we can directly communicate with the registered sellers and buyers of each car, which is an integral part of our end-to-end customer experience.</p>
-                    <Link to="/lifeStyle" className="assured_cars">Sell Your Car</Link>
+                    <Link to="/sell" className="assured_cars">Sell Your Car</Link>
                     </span>
                 </div>
             <div className="carBuyingworkingCars">

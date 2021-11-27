@@ -262,3 +262,38 @@ li {
   justify-self: flex-end;
   transform: rotate(-90degree);
 }
+
+.empty_car_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.car_list_container {
+  flex-wrap: wrap;
+}
+
+.car_km_ifo {
+  justify-content: space-between;
+}
+
+.car_list {
+  width: 30%;
+  margin: 5px;
+}
+.car_name_info {
+  padding: 0 10px;
+}
+.car_info {
+  padding: 0 10px;
+}
+.car_details {
+  margin-top: 10px;
+}
+.car_info_amount {
+  margin: 10px;
+}
