@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 
 const initialState = {
-    isValidUser: null,
+    isValidUser: false,
     api_failure: false,
     customerCarList: [],
     authenticationStatus: null,
-    authToken: null
+    authToken: null,
+    OTPVerificationSuccessful: false
 }
 
 const reducers = (state = initialState, action) => {
@@ -17,7 +18,8 @@ const reducers = (state = initialState, action) => {
     if(action.type === "LOGIN_SUCCESS") {
         return {
             authToken: action.payload.token,
-            userDetails: action.payload
+            userDetails: action.payload,
+            isValidUser: true
         }
     }
     if(action.type === "SIGNUP_SUCCESS") {
@@ -30,9 +32,16 @@ const reducers = (state = initialState, action) => {
             isUserRegistered: action.payload
         }
     }
+    if(action.type === "PASSWORD_UPDATE_SUCCESS") {
+        return {
+            OTPVerificationSuccessful: false
+        }
+    }
     if(action.type === "USER_VALIDATED") {
         return {
-            isValidUser: action.payload
+            // isValidUser: action.payload
+            // isValidUser: true,
+            OTPVerificationSuccessful: true
         }
     }
     if(action.type === "CUSTOMER_CAR_LIST") {

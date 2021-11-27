@@ -1,0 +1,519 @@
+.carBuyingworkingCars {
+    background-color: rgb(247, 244, 248);
+    width: 100%
+  }
+  
+  .more_about_us {
+      width: 100%;
+      height: 500px;
+      margin: 20px 30px;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      background-repeat: round;
+    }
+    
+    .more_about_us .about_us_button_container {
+      margin-top: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .more_about_us .about_us_button_container .about_us_button {
+      font-size: 16px;
+      width: 10em;
+      height: 50px;
+      padding: 0 18px 0 24px;
+      font-family: emoji;
+      background-color: #fff;
+      color: #2e054e;
+      border: 1px solid #fff;
+      border-radius: 6px;
+    }
+    
+    .more_about_us .about_us_button_container .about_us_button:hover {
+      background-image: none;
+      background-color: lightblue;
+    }
+  
+    .about_us_main {
+      min-width: 978px;
+      max-width: 1248px;
+      margin: 0 auto !important;
+      box-sizing: border-box;
+    }
+  
+    
+  .about_us_card_container {
+      /* padding: 80px 24px 32px; */
+      padding: 80px;
+      display: flex;
+      justify-content: space-between;
+      font-family: futura-book;
+      font-size: 18px;
+      line-height: 20px;
+      background-color: #fff;
+      color: #2e054e;
+    }
+    
+    .working_buy_description {
+      line-height: 35px;
+      font-size: 1.2rem;
+    }
+    .assured_cars {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .about_us_card_container .about_us_card {
+      min-width: 0;
+      width: 40%;
+      font-size: 20px;
+    }
+    .about_us_card_container .about_us_card .about_us_card_img {
+      width: 70%;
+      height: auto;
+      min-height: 136px;
+      border-radius: 6px;
+    }
+    .about_us_card_container .about_us_card h3 {
+      font-family: futura-demi;
+      margin: 12px 0;
+      font-size: 28px;
+      line-height: 32px;
+    }
+    .about_us_card_container .about_us_card p {
+      margin-bottom: 8px;
+      color: black;
+      font-size: 20px;
+    }
+  
+    
+  .importantTo_us h3 {
+      font-size: 36px;
+      line-height: 40px;
+      font-family: futura-demi;
+      margin-bottom: 32px;
+    }
+    
+    .importantTo_us .importantTo_us_card {
+      display: flex;
+    }
+    
+    .importantTo_us .importantTo_us_card .importantTo_us_card_list {
+      flex: 1;
+      min-width: 0;
+      margin-right: 64px;
+      font-size: 18px;
+      line-height: 26px;
+      margin-bottom: 32px;
+    }
+    .importantTo_us .importantTo_us_card .importantTo_us_card_list img {
+      height: 45px;
+    }
+    .importantTo_us .importantTo_us_card .importantTo_us_card_list h4 {
+      font-size: 26px;
+      line-height: 30px;
+      font-family: futura-demi;
+      margin: 12px 0;
+    }
+  
+    
+  .SquadSpinny {
+    display: flex;
+    padding: 64px 0 44px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-top: 2px solid #f2f3f5;
+    background-color: rgb(247, 244, 248)
+  
+  }
+  .SquadSpinny img {
+    width: 80%;
+    border-radius: 50%;
+  }
+  .SquadSpinny .SquadSpinny_contentwrap {
+    font-family: futura-book;
+    font-size: 18px;
+    line-height: 20px;
+    color: #2e054e;
+    width: 45%;
+    margin: 0;
+  }
+  .SquadSpinny .SquadSpinny_contentwrap h3 {
+    margin-top: 0;
+    font-size: 36px;
+    line-height: 40px;
+    font-family: futura-demi-italic;
+    margin: 12px 0;
+    color: #ed264f;
+  }
+  
+  .SquadSpinny .SquadSpinny_contentwrap,
+  .Culture .Culture_contentwrap p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  
+  
+  .Culture {
+    padding: 44px 0 1px;
+    font-family: futura-book;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2e054e;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  
+  .Culture .Culture_contentwrap {
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 45%;
+    margin: 48px 0;
+    box-sizing: border-box;
+    padding: 0 24px;
+  }
+  
+  .Culture .Culture_contentwrap h3 {
+    font-family: futura-demi-italic;
+    margin: 12px 0;
+    color: #ed264f;
+    font-size: 36px;
+    line-height: 40px;
+  }
+  
+  .Culture .Culture_carouselWrrapper {
+    flex: 1;
+  }
+  
+  .Culture .Culture_carouselWrrapper .Culture_carouselselection {
+    width: 500px;
+    height: 300px;
+    margin-left: auto;
+    margin-bottom: 32px;
+  }
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner {
+    border-radius: 6px;
+    display: block;
+    height: 100%;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+  }
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_banner {
+    margin-top: 6px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_banner
+    .Culture_carousel_bannerwrap {
+    width: 90%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+  }
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner
+    .slideshowSlider {
+    white-space: nowrap;
+    transition: ease 1000ms;
+    position: relative;
+  }
+  
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner
+    .slideshowSlider
+    .slide {
+    display: inline-block;
+    background-size: cover;
+    background-position: 0;
+    background-size: 100%;
+    height: 400px;
+    width: 100%;
+  }
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_banner
+    .Culture_carousel_bannerwrap
+    .slideshowDots {
+    text-align: center;
+  }
+  
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_banner
+    .Culture_carousel_bannerwrap
+    .slideshowDots
+    .slideshowDot {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+  
+    cursor: pointer;
+    margin: 15px 7px 0px;
+  
+    background-color: #c4c4c4;
+  }
+  
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_banner
+    .Culture_carousel_bannerwrap
+    .slideshowDots
+    .slideshowDot.active {
+    background-color: #6a0dad;
+  }
+  /* Next & previous buttons */
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner
+    .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  .handPicked_cars_description {
+    font-size: 18px;
+      line-height: 30px;
+      font-weight: 600;
+  }
+  
+  /* Position the "next button" to the right */
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner
+    .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .Culture
+    .Culture_carouselWrrapper
+    .Culture_carouselselection
+    .Culture_carousel_roundedcorner
+    .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .our_backers {
+    background-color: #f7f4f8;
+    background-position: 100% 100%;
+    background-size: 60vw;
+  }
+  
+  .our_backers .investor_container {
+    color: #2e054e;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 24px;
+  }
+  
+  .our_backers .investor_container h3 {
+    font-size: 36px;
+    font-family: futura-demi;
+    line-height: 38px;
+  }
+  
+  .our_backers .investor_container .investor_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 80px 0;
+  }
+  .our_backers .investor_container .investor_list img {
+    width: calc(20% - 12px);
+    margin-bottom: 24px;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+  .press_section {
+    padding: 80px 24px;
+    color: #2e054e;
+    font-family: futura-book;
+    border-bottom: 1px solid #e6e6e6;
+    width: 100%;
+  }
+  
+  .press_section h3 {
+    font-size: 32px;
+    line-height: 36px;
+    font-family: futura-demi;
+    margin-bottom: 32px;
+  }
+  .press_section .press_content_wrapper {
+    position: relative;
+    max-width: 100%;
+  }
+  .press_section .press_content_wrapper .press_content {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    margin: auto;
+    z-index: 1;
+    padding: 16px 0;
+  }
+  
+  .press_section .press_content_wrapper .press_content .press_content_list {
+    display: flex;
+  }
+  
+  .press_section
+    .press_content_wrapper
+    .press_content
+    .press_content_list
+    .press_content_img {
+    flex: 1;
+    min-width: 0;
+    margin-right: 16px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #e6e6e6;
+    transition: transform 0.2s ease-out;
+    color: #2e054e;
+    cursor: pointer;
+  }
+  .press_section
+    .press_content_wrapper
+    .press_content
+    .press_content_list
+    .press_content_img
+    .press_imgContainer {
+    height: 230px;
+    width: 300px;
+    position: relative;
+  }
+  .press_section
+    .press_content_wrapper
+    .press_content
+    .press_content_list
+    .press_content_img
+    .press_descContainer {
+    padding: 12px 16px;
+    background-color: #fff;
+    min-height: 120px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .press_section
+    .press_content_wrapper
+    .press_content
+    .press_content_list
+    .press_content_img
+    .press_imgContainer
+    img {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px 12px 0 0;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .press_section
+    .press_content_wrapper
+    .press_content
+    .press_content_list
+    .press_content_img
+    .press_descContainer
+    p {
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 16px;
+    display: flex;
+    white-space: pre-wrap;
+  }
+  
+  .press_content_wrapper .press_carousel .carousel_right {
+    margin-left: 0;
+    margin-right: -3.5em;
+    right: 0;
+    left: unset;
+    width: 2em;
+    height: 2em;
+    transform: translateY(-50%);
+    background-color: #6300a3;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45%;
+    cursor: pointer;
+  }
+  .press_content_wrapper .press_carousel .carousel_left {
+    width: 2em;
+    height: 2em;
+    margin-left: -3.5em;
+    transform: translateY(-50%);
+    background-color: #6300a3;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45%;
+    left: 0;
+    cursor: pointer;
+  }
+  .handPicked_car_container {
+    justify-content: space-between;
+  }
+  
+  .handPicked_cars_details {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+  .FAQ_container {
+    margin: 20px;
+  }
+  
+  .FAQ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

@@ -430,7 +430,7 @@ const carDetails = {
                         flexContainer: classes.flexContainer
                       }}
                       >
-                        <Tab label="Petro" />
+                        <Tab label="Petrol" />
                         <Tab label="Diesel" />
                       </Tabs>
                     </Box>

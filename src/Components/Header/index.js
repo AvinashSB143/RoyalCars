@@ -20,7 +20,7 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP, getCustomerCars, signUp, logout } from "../../actions"
+import { login, validateNumber, validateOTP, getCustomerCars, signUp, logout, getOTP, updatePassword } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 import { MonetizationOn } from '@material-ui/icons';
@@ -59,7 +59,10 @@ class Header extends Component {
             email: "",
             isUserNamePresent: true,
             isPasswordPresent: true,
-            isSignUp: false
+            isSignUp: false,
+            isForgotPassword: false,
+            isShowOTPEnabled: false,
+            hideButton: false,
         }
     }
     changeOnMouseLeave = () => {
@@ -110,7 +113,7 @@ class Header extends Component {
 
     validateUser = () => {
         
-        if(!this.state.isSignUp) {
+        if(!this.state.isSignUp && !this.state.isForgotPassword) {
             this.setState({
                 loginAttempted: true
             }, () => this.setState({
@@ -128,6 +131,26 @@ class Header extends Component {
                 password: ""
             })
         }
+        else if(this.state.isForgotPassword) {
+            if(this.state.mobileNumber.length === 10) {
+                this.props.getOTP(this.state.mobileNumber)
+                this.setState({
+                    isError: false,
+                    isShowOTPEnabled: true,
+                    hideButton: true
+                })
+            }
+            else {
+                this.setState({
+                    isError: true
+                })
+            }
+        }
+        else {
+            this.setState({
+                isError: true
+            })
+        }
       
         // if(!this.state.userName) {
         //     this.setState({
@@ -143,6 +166,22 @@ class Header extends Component {
         //     this.props.loginUser(this.state.userName, this.state.password)
         // }
         
+    }
+
+    updatePassword = () => {
+        if(this.state.newPassword !== this.state.confirmPassword) {
+            this.setState({
+                isPasswordMisMatched: true
+            })
+        }
+        else {
+            this.props.updatePassword(this.state.mobileNumber, this.state.confirmPassword)
+            this.setState({
+                isPasswordMisMatched: false,
+                showLoginContent: false,
+                isForgotPassword: false
+            })
+        }
     }
 
     validateOTP = (OTP) => {
@@ -171,6 +210,16 @@ class Header extends Component {
             password: password,
             loginAttempted: false,
             isPasswordPresent: true
+        })
+    }
+    getnewPassword = password => {
+        this.setState({
+            newPassword: password,
+        })
+    }
+    getConfirmPassword = password => {
+        this.setState({
+            confirmPassword: password,
         })
     }
 
@@ -234,21 +283,21 @@ class Header extends Component {
 
         const expandShowWorkFlow = 
         <div className="main_container column_container about_expanded_section buying_process_container" >
-            <div className="more_items">
+            <div className="more_items" onClick={() => this.changeArrow()}>
             <>
                 <DescriptionIcon />
             </>
-             <p4 className="options">
+             <Link to="/how-it-works/buying/" className="options">
                  Car buying process
-             </p4>
+             </Link>
 
-        </div>
-        <div className="more_items" >
-        <DirectionsOutlinedIcon />
-             <p4 className="options">
-                 Car selling process
-             </p4>
-        </div>
+            </div>
+            <div  className="more_items" onClick={() => this.changeArrow()}>
+            <DirectionsOutlinedIcon />
+                <Link to="/how-it-works/selling/" className="options">
+                    Car selling process
+                </Link>
+            </div >
         {/* <div className="more_items">
         <LocationOnIcon />
              <p4 className="options">
@@ -320,7 +369,10 @@ class Header extends Component {
          <div className="more_items" onClick={() => {
             this.setState({showLoginContent: true})
             this.changeArrow()
-            this.props.authToken && this.props.logout()
+            if(this.props.authToken) { 
+                this.props.logout()
+                this.setState({showLoginContent: false})
+             }
          } }>
          <LocationOnIcon />
               <Link to= {this.props.authToken ? "/homePage" : "#" } className="options">
@@ -359,7 +411,10 @@ class Header extends Component {
                     <SearchIcon className="search_icon"/>
                     </div>
                     </div>
-                    <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" onClick={() => this.props.getCustomerCars()} >
+                    <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" 
+                    onClick={() => {
+                        this.props.authToken && this.props.getCustomerCars()}} 
+                    >
                      <b onMouseOver={() => this.changeArrow("buycar")}
                         onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
                         Buy Car
@@ -411,7 +466,7 @@ class Header extends Component {
                     {this.state.expandMoreSection && expandMoreSection}
                     {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
                     {this.state.expandAccountSection  && expandAccountSection}
-                    {this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) && <div className={`main_container column_container login_container ${this.state.isSignUp && " signup_container"}`}>
+                    {this.state.showLoginContent && !this.props.isValidUser && !this.props.authToken && <div className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) && " signup_container"}`}>
                     <CloseIcon className="close_icon" onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false, loginAttempted: false})
             }}/>
@@ -421,7 +476,8 @@ class Header extends Component {
                         <p4 className="content_pos">
                             Login /Sign Up
                         </p4>
-                    
+                    {!this.state.isForgotPassword && !this.props.OTPVerificationSuccessful &&
+                    <>
                         <TextField
                         id="userName"
                         placeholder="username"
@@ -432,8 +488,8 @@ class Header extends Component {
                         InputProps={{ disableUnderline: true, maxLength: 10}}
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getUserName(e.target.value)}
-                        error={this.state.loginAttempted && !this.state.userName}
-                        helperText={this.state.loginAttempted && !this.state.userName && "Please enter userName"} 
+                        error={(this.state.loginAttempted && !this.state.userName) || this.state.isError}
+                        helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"} 
                         value={this.state.userName}
                         />
                         <TextField
@@ -446,14 +502,24 @@ class Header extends Component {
                         InputProps={{ disableUnderline: true, maxLength: 10}}
                         className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                         onChange={e => this.getPassword(e.target.value)}
-                        error={this.state.loginAttempted && !this.state.password}
-                        helperText={this.state.loginAttempted && !this.state.password && "Please enter Password"}
+                        error={(this.state.loginAttempted && !this.state.password) || this.state.isError}
+                        helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter Password"}
                         type="password"
                         value={this.state.password}
                         />
-                       
-                       {this.state.isSignUp && !this.props.signUpSuccess &&
+                    </>
+                       }
+                       {((this.state.isSignUp && !this.props.signUpSuccess) || this.state.isForgotPassword) && !this.props.OTPVerificationSuccessful && 
                         <>
+                        {this.state.isForgotPassword && <>
+                            <p4 className="content_pos">
+                            You will receive an OTP on the following number:
+                            </p4>
+                            <p4 className="content_pos">
+                            {this.state.mobileNumber} <button className="btn">EDIT</button>
+                            </p4>
+                            </>   
+                        }
                             <TextField
                             id="mobile_number"
                             placeholder="Mobile Number"
@@ -465,10 +531,10 @@ class Header extends Component {
                             className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                             onChange={e => this.getMobileNumber(e.target.value)}
                             type="tel"
-                            error={this.state.isSignUp && !this.state.mobileNumber}
-                            helperText={this.state.loginAttempted && !this.state.mobileNumber ? "Please enter valid number" : "" }
+                            error={(this.state.isSignUp && !this.state.mobileNumber) || this.state.isError}
+                            helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError ? "Please enter valid number" : "" }
                             /> 
-                            <TextField
+                           {!this.state.isForgotPassword && <TextField
                             id="email"
                             placeholder="Enter Your Email(Optional)"
                             classes={{
@@ -479,66 +545,18 @@ class Header extends Component {
                             className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
                             onChange={e => this.getEmail(e.target.value)}
                             type="email"
-                            /> 
+                            /> }
                         </>
                         }
                     </>
-                    <div className="forgot_password">
-                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>}
-                            <Link to="#">Forgot Password</Link>
-                        </div>
-                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password && !this.props.signUpSuccess &&
-                        <p style={{color: "red", margin: "5px"}}>Invalid Credentials</p>
-                        } 
-                    {<button className="login_proceed_btn" onClick={() => {
-                    this.validateUser();
-                    }}>
-                      {this.state.isSignUp && !this.props.signUpSuccess ? "Sign Up" : this.props.signUpSuccess ? "Proceed" : "Proceed"}
-                    </button>}
-                   {/* {!this.props.isUserRegistered && this.state.mobileNumber && this.state.mobileNumber.length === 10 && this.state.isUserValidated && 
-                    <TextField
-                    id="name"
-                    placeholder="Enter your name"
-                    classes={{
-                        root: classes.root,
-                        input: classes.input
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    className="login_text_field"
-                    onChange={e => this.readName(e.target.value)}
-                    error
-                    helperText="enter your name"
-                    />
-                    }
-                */}
-                
-                {/* {!this.state.isUserValidated && !this.props.isUserRegistered && (
-                 <>
-                    <div className="main_container">
-                        <input type="checkbox" id="whatsAppNumber" name="whatsAppNumber" value="whatsAppNumber" />
-                    <p5 className="content_pos">
-                        Send Updates on WhatsApp
-                    </p5>
-                    </div>
-                     <p6 className="content_pos">
-                     By logging in, I agree to <Link to="#">terms</Link> and  <Link to="#">privacy policy</Link>
-                     </p6>
-                     <button className="login_proceed_btn" onClick={() => {
-                    this.validateUser();
-                    }}>
-                      {!this.props.isUserRegistered ? "Proceed" : "Sign Up"} 
-                    </button>
-                 </>
-                    )
-                } */}
-                    {this.state.isUserValidated && this.props.isUserRegistered && 
+                    {this.state.isForgotPassword && this.state.isShowOTPEnabled && !this.props.OTPVerificationSuccessful &&
                      <>
-                     <p4 className="content_pos">
+                     {/* <p4 className="content_pos">
                      You will receive an OTP on the following number:
                     </p4>
                     <p4 className="content_pos">
                     {this.state.mobileNumber} <button className="btn">EDIT</button>
-                    </p4>   
+                    </p4>    */}
                     <TextField
                     id="OTP"
                     placeholder="OTP"
@@ -561,9 +579,60 @@ class Header extends Component {
                     }
                     </>
                     }
+                    {this.props.OTPVerificationSuccessful &&
+                     <>
+                        <TextField
+                        id="newPassword"
+                        placeholder="New Password"
+                        classes={{
+                            root: classes.root,
+                            input: classes.input
+                        }}
+                        InputProps={{ disableUnderline: true, maxLength: 10}}
+                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
+                        onChange={e => this.getnewPassword(e.target.value)}
+                        // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"} 
+                        value={this.state.newPassword}
+                        />
+                        <TextField
+                        id="confirm_password"
+                        placeholder="confirm Password"
+                        classes={{
+                            root: classes.root,
+                            input: classes.input
+                        }}
+                        InputProps={{ disableUnderline: true, maxLength: 10}}
+                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
+                        onChange={e => this.getConfirmPassword(e.target.value)}
+                        error={this.state.isPasswordMisMatched}
+                        helperText={this.state.isPasswordMisMatched && "Password Doesnot Match"}
+                        type="password"
+                        value={this.state.confirmPassword}
+                        />
+                    </>
+                    }   
+
+                    <div className="forgot_password">
+                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>}
+                            <Link to="#" onClick={() => {this.setState({isForgotPassword: true})}}>Forgot Password</Link>
+                        </div>
+                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password && !this.props.signUpSuccess &&
+                        <p style={{color: "red", margin: "5px"}}>Invalid Credentials</p>
+                        } 
+                    {!this.state.hideButton && <button className="login_proceed_btn" onClick={() => {
+                    this.validateUser();
+                    }}>
+                    {this.state.isSignUp && !this.props.signUpSuccess ? "Sign Up" : this.props.signUpSuccess ? "Proceed" : "Proceed"}
+                    </button>}
+                    {this.props.OTPVerificationSuccessful && <button className="login_proceed_btn" onClick={() => {
+                    this.updatePassword();
+                    }}>
+                    Update Password
+                    </button>}
+                   
                     </div>
                     }
-            </div> 
+                    </div> 
             </>
             )
     }
@@ -576,6 +645,7 @@ const mapStateToProps = state => {
         authToken: state.reducers.authToken,
         signUpSuccess: state.reducers.signUpSuccess,
         userDetails: state.reducers.userDetails,
+        OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
     }
     
 }
@@ -587,16 +657,21 @@ const mapDispatchToProps = dispatch => {
                 validateNumber(number)
                 )
         },
+        getOTP: (number) => {
+            dispatch(
+                getOTP(number)
+                )
+        },
         validateOTP: (OTP) => {
             dispatch(
                 validateOTP(OTP)
                 )
         },
-        getCustomerCars: () => {
-            dispatch(
-                getCustomerCars()
-                )
-        },
+        // getCustomerCars: () => {
+        //     dispatch(
+        //         getCustomerCars()
+        //         )
+        // },
         loginUser : (name, number) =>{
             dispatch(
                 login(name, number)
@@ -605,6 +680,11 @@ const mapDispatchToProps = dispatch => {
         signUp : (name, password, mobileNumber,email) =>{
             dispatch(
                 signUp(name, password, mobileNumber,email)
+            )
+        },
+        updatePassword : (newPassword) =>{
+            dispatch(
+                updatePassword(newPassword)
             )
         },
         logout : () =>{

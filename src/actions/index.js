@@ -58,6 +58,39 @@ export const logout = () => {
 }
 
 
+export const getOTP = number => {
+    return dispatch => {
+        try {
+            axios.post('user/forgotPassword', {
+                phone: number
+            }).then(res => {
+                console.log(res)
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const updatePassword = (number, newPassword) => {
+    return dispatch => {
+        try {
+            axios.post('user/updatePassword', {
+                phone: number,
+                newPassword: newPassword
+            }).then(res => {
+               if(res && res.data) {
+                dispatch ({
+                    type: "PASSWORD_UPDATE_SUCCESS"
+                }) 
+               }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const validateNumber = number => {
     return dispatch => {
         try {
@@ -78,7 +111,7 @@ export const validateNumber = number => {
                 type: "REGISTERED_USER",
                 payload: "existing_user"
             })
-
+            
         } catch (error) {
             console.log(error)
         }
@@ -91,21 +124,22 @@ export const validateOTP = OTP => {
             axios.post('user/verifyOtp', {
                 otp: OTP
             }).then(res => {
-                console.log(res)
-                dispatch ({
-                    type: "USER_VALIDATED",
-                    payload: "valid_user"
-                })
+                // if(res && res.data) {
+                    dispatch ({
+                        type: "USER_VALIDATED",
+                        payload: res.data
+                    })
+                // }
             }).catch(err => console.log(err))
-            // dispatch ({
+            // dispatch ({  //***** */ need to uncomment
             //     type: "API_FAILURE",
             //     payload: "success"
             // })
+            //**********for testing
             dispatch ({
                 type: "USER_VALIDATED",
-                payload: "valid_user"
+                payload: "sucess"
             })
-
         } catch (error) {
             console.log(error)
         }

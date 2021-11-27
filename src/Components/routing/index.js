@@ -14,6 +14,8 @@ import AccountFilters from "../AccountFilters";
 import MenuBar from '../Header/MenuBar';
 import Sell from "../Sell";
 import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
+import CarSalesWorking from "../WorkingFeature/Selling";
+import CarBuyingworking from '../WorkingFeature/Buying';
   
   function Routing() {
     const [validUser, setValidUser] = useState(false);
@@ -38,7 +40,13 @@ import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
         </Route>
         <Route path ="/more/AboutUs">
           <MenuBar />
-          </Route>
+        </Route>
+        <Route path ="/how-it-works/buying/">
+          <CarBuyingworking />
+        </Route>
+        <Route path ="/how-it-works/selling/">
+          <CarSalesWorking />
+        </Route>
         <Route path="/sell">
           <Sell />
         </Route>
