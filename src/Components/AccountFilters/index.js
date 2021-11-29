@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useSelector } from 'react-redux';
 import {Link, useParams} from 'react-router-dom';
 import { connect } from 'react-redux';
 import "./accountFilters.css"
@@ -13,6 +14,7 @@ import {
     sellOrders,
     logout
  } from "../../actions"
+import PersonalInfo from './PersonalInfo';
 
 
 const styles = theme => ({
@@ -37,7 +39,8 @@ const AccountFilters = (props) => {
     const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
 
     const [showAllCars,setShowAllCars] = useState(false);
-
+    const getUserInfo = useSelector(state => state.reducers)
+    console.log(getUserInfo);
     const carList = props.availableCarList && props.availableCarList.map((car) => {
         return(
              <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}>
@@ -208,6 +211,7 @@ const AccountFilters = (props) => {
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
+                    <PersonalInfo />
                     <div className="column_container user_info">
                         <h4>Personal Information</h4>
                         <p>Edit & manage your profile</p>
@@ -243,7 +247,7 @@ const AccountFilters = (props) => {
                  {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && testDriveCarsList}
                  {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
                  {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
-                 {!showAllCars &&
+                 {!showAllCars && !(filter === "profileInformation") &&
                     <div className="column_container">
                        <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
                         <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
@@ -256,6 +260,7 @@ const AccountFilters = (props) => {
                 }
                 {showAllCars && carList }
                 </div>
+                <PersonalInfo></PersonalInfo>
                 </div>
         </div>
     )
@@ -267,6 +272,7 @@ const mapStateToProps = state => {
         customerBookedCars: state.reducers.customerBookedCars,
         customerSellOrderList: state.reducers.customerSellOrderList,
         availableCarList: state.reducers.availableCarList,
+        userDetails : state.reducers.userDetails
     }
 }
 

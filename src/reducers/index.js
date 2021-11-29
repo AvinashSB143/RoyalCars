@@ -5,7 +5,7 @@ const initialState = {
     api_failure: false,
     customerCarList: [],
     authenticationStatus: null,
-    authToken: null,
+    authToken: "1",
     OTPVerificationSuccessful: false,
     availableCarList: [],
     carsByYears: [],
@@ -13,7 +13,7 @@ const initialState = {
     carsByModel: [],
     testDriveCars: [],
     customerBookedCars: [],
-    customerSellOrderList: []
+    customerSellOrderList: [],
 }
 
 const reducers = (state = initialState, action) => {

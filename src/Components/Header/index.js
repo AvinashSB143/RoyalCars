@@ -373,7 +373,7 @@ class Header extends Component {
          </div>
          <div className="more_items">
          <LocationOnIcon />
-              <Link to={this.props.authToken ?"/account/profileInformation" : "#"} className="options" onClick={() => { 
+              <Link to="/account/ProfileInformation" className="options" onClick={() => { 
                   this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
                 }}>
                  Profile Information

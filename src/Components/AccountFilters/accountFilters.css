@@ -1,112 +1,113 @@
 .account_filter_container {
-padding: 2rem;
-background: hsla(0,0%,67.5%,.2);
+  padding: 2rem;
+  background: hsla(0, 0%, 67.5%, 0.2);
 }
 
 .account_filtered_options_container {
-    display: flex;
-    justify-content: flex-start;
-    border-radius: 5px;
-    width: 30%;
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 5px;
+  width: 30%;
 }
 
 .welcome_note {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .account_filtered_options {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    background-color: white;
-    height: 100px;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    border: 0.2px solid hsl(240, 20%, 95%); 
-    text-decoration: none;
-    color: black;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  height: 100px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  border: 0.2px solid hsl(240, 20%, 95%);
+  text-decoration: none;
+  color: black;
 }
 
 .user_info {
-    align-items: flex-start;
-    justify-content: center;
-    margin-left: 15px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 15px;
 }
 
-p, h4 {
-    margin: 0;
-    padding: 0;
-    color: #2e054e;
+p,
+h4 {
+  margin: 0;
+  padding: 0;
+  color: #2e054e;
 }
 
-.selected_account_filter{
-    margin-left: 3rem;
+.selected_account_filter {
+  margin-left: 3rem;
 }
 
 .account_filter_options {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    background-color: white;
-    width: 300px;
-    height: auto;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  width: 300px;
+  height: auto;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.logout{
-    justify-content: center;
-    align-items: center;
+.logout {
+  justify-content: center;
+  align-items: center;
 }
 
 .icon_pos {
-    position: absolute;
-    right: 0px;
+  position: absolute;
+  right: 0px;
 }
 
 .cars_offered {
-    margin-left: 1rem;
-    width: 70%;
+  margin-left: 1rem;
+  width: 70%;
 }
 
-.account_filtered_cars{
-    background-color: white;
-    /* width: 500px; */
-    height: auto;
-    flex-wrap: wrap;
-    width: 100%;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    position: relative;
+.account_filtered_cars {
+  background-color: white;
+  /* width: 500px; */
+  height: auto;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  position: relative;
 }
 .cars_available {
-    width: 30%;
-    margin-top: 15px;
+  width: 30%;
+  margin-top: 15px;
 }
 
 .filter_car_img {
-    width: 100%;
+  width: 100%;
 }
 
 .item_focused {
-    background-color: hsla(0,0%,67.5%,.2);
+  background-color: hsla(0, 0%, 67.5%, 0.2);
 }
 
 .nav_link {
-    text-decoration: none;
-    font-size: 14px;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .car_list {
-    width: 100%;
-    margin: 15px;
-    justify-content: space-evenly;
+  width: 100%;
+  margin: 15px;
+  justify-content: space-evenly;
 }
 
 .car_list_testDrive {
-    width: 30%;
+  width: 30%;
 }
 
 /* .car_list_testDrive :hover {
@@ -114,42 +115,133 @@ p, h4 {
 } */
 
 .test_drive_car_img {
-    width: 30%;
+  width: 30%;
 }
 
 .test_drive_car_details {
-    justify-content: center;
+  justify-content: center;
 }
 
 .description {
-    justify-content: flex-start;
-    align-items: center;
+  justify-content: flex-start;
+  align-items: center;
 }
 .car_km_ifo {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .car_details {
-    margin-top: 10px;
-
+  margin-top: 10px;
 }
 .car_name_info {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 
 .test_drive_no_cars_text {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 10px auto;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px auto;
 }
 .test_drive_car_btn {
-    padding: 5px;
-    margin: 10px auto;
-    font-size: 20px;
-    font-weight: 700;
-    background: red;
-    color: white;
-    position: relative;
-    top: 50%;
-    text-decoration: none;
+  padding: 5px;
+  margin: 10px auto;
+  font-size: 20px;
+  font-weight: 700;
+  background: red;
+  color: white;
+  position: relative;
+  top: 50%;
+  text-decoration: none;
+}
+.profile_form {
+  box-shadow: none;
+  border: 1px solid #e6e6e6;
+  margin-left: 0;
+  margin-right: 0;
+  margin: 0 16px 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #fff;
+  font-family: futura-demi;
+  color: #2e054e;
+  margin-top: 16px !important;
+}
+.profile_form .profile_form_detail {
+  width: 50%;
+}
+.profile_form_detail .form-input-name {
+  border-radius: 8px;
+  font-family: futura-demi;
+  position: relative;
+  width: 100%;
+  color: #2e054e;
+}
+.form-input-name input {
+  color: rgba(46, 5, 78, 0.5);
+  cursor: not-allowed;
+  padding-top: 20px;
+  border-color: #e8e8e8;
+  background-color: #fff;
+  appearance: none;
+  box-sizing: border-box;
+  background: #f2f3f5;
+  height: 50px;
+  outline: 0;
+  border: 1px solid #f2f3f5;
+  border-radius: 6px;
+  width: 50%;
+  font-size: 16px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #2e054e;
+  padding-left: 16px;
+  box-shadow: none;
+  font-family: futura-demi;
+}
+.form-input-name .name_label {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  display: block;
+  margin: -1px;
+}
+.form-input-name .name_label {
+  opacity: 5;
+  content: attr(data-focus-value);
+  top: 65px;
+  font-size: 10px;
+  line-height: 18px;
+  color: #6300a3;
+  text-transform: uppercase;
+  position: absolute;
+  left: 35px;
+  pointer-events: none;
+  transition: all 0.2s eas;
+}
+.form_button {
+  width: 50%;
+  box-sizing: border-box;
+  background-color: #6300a3;
+  color: #fff;
+  position: relative;
+  border: none;
+  outline: 0;
+  height: 50px;
+  font-size: 14px;
+  font-family: futura-heavy;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 2.4em;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  overflow: hidden;
 }
