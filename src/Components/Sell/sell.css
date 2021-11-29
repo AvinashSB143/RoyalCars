@@ -153,6 +153,7 @@
   border: none;
   height: 40px;
   margin-top: 5px;
+  width: 100%;
 }
 .select_carbrand_filter {
   right: 0px;

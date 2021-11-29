@@ -9,7 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import {sellCar} from "../../actions"
+import {sellCar, getCarsByYear, getCarsByBrand, getCarsByModel} from "../../actions"
 
 
 const styles = theme => ({ 
@@ -57,7 +57,7 @@ export const HowItsWork__listItem = ({
         alt="hiw-1.png"
         class=""
       />
-      <div class="HowItsWork__contentSection">
+      {/* <div class="HowItsWork__contentSection">
         <p class="HowItsWork__heading">Instant online quote</p>
         <p class="HowItsWork__details">
           Fill in a few details about your car for an instant quote.
@@ -83,7 +83,7 @@ export const HowItsWork__listItem = ({
             ></path>
           </svg>
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -211,8 +211,8 @@ const [selectedKMDriven, setselectedKMDriven] = useState();
 
 
   const carModelsYear = ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"];
-  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
-  const carModels = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
+  // const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
+  // const carModels = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
 const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km","30,000km - 40,000km", "40,000km -50,000km"]
 
 const yearListContainer = carModelsYear.map((item, index) => {
@@ -221,6 +221,7 @@ const yearListContainer = carModelsYear.map((item, index) => {
   onClick={()=> {
     setselectedYear(item) 
     setShowYearList(false)
+    props.getCarsByYear(item)
   }
   
   }>{item}</button>
@@ -228,25 +229,61 @@ const yearListContainer = carModelsYear.map((item, index) => {
 })
 
 
-const carBrandsContainer = carbrands.map((item, index) => {
+const carBrandsContainer = props.carsByYears && props.carsByYears.map((item, index) => {
   return(
   <button className={`${selectedBrand === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
   onClick={() => {
-    setselectedBrand(item)
+    props.getCarsByBrand(item.brand)
+    setselectedBrand(item.brand)
     setShowBrandList(false)
   }}
-  >{item}</button>
+  >{item.brand}</button>
   )
 })
 
-const carBrandsFiltered = carModels.map((item, index) => {
+const carBrandsFiltered = props.carsByBrand && props.carsByBrand.map((item, index) => {
   return(
   <button className={`${selectedModel === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
   onClick={() => {
-    setsetselectedModel(item)
+    props.getCarsByModel(item.model)
+    setsetselectedModel(item.model)
     setShowModelList(false)
   }}
-  >{item}</button>
+  >{item.model}</button>
+  )
+})
+
+
+const petrolCars = props.carsByModel && props.carsByModel.filter((item, index) => {
+  return(
+    item.fuelType.toLowerCase().includes("petrol")
+  )
+})
+const dieselCars = props.carsByModel && props.carsByModel.filter((item, index) => {
+  return(
+    item.fuelType.toLowerCase().includes("diesel")
+  )
+})
+
+const petrolCarsList = petrolCars && petrolCars.map((item) => {
+  return (
+    <button className={`${selectedModel === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
+  onClick={() => {
+    setselectedVariant(item.fuelType)
+    setShowModelList(false)
+  }}
+  >{item.fuelType}</button>
+  )
+})
+
+const dieselCarsList = dieselCars && dieselCars.map((item) => {
+  return (
+    <button className={`${selectedModel === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
+    onClick={() => {
+    setselectedVariant(item.fuelType)
+    setShowVariantList(false)
+  }}
+  >{item.fuelType}</button>
   )
 })
 
@@ -267,6 +304,7 @@ const handleChange = (event, newValue) => {
 };
 
 const enableShowYearlist = () => {
+  // props.getCarsByYears()
   setShowYearList(!showYearList)
   setShowBrandList(false)
   setShowModelList(false)
@@ -305,7 +343,7 @@ const enableShowOwnerList = () => {
   setShowBrandList(false)
   setShowModelList(false)
   setShowVariantList(false)
-  selectedModel && setShowOwnerList(!showOwnerList)
+  selectedVariant && setShowOwnerList(!showOwnerList)
   setKMList(false)
 }
 
@@ -320,12 +358,12 @@ const enableShowKMList = () => {
 
 
 const carDetails = {
-  selectedyear,
-  selectedBrand,
-  selectedModel,
-  selectedVariant,
-  selectedOwner,
-  selectedKMDriven
+  "year": selectedyear,
+  "brand": selectedBrand,
+  "model":selectedModel,
+  "variant":selectedVariant,
+  "totalOwner":selectedOwner,
+  "kmDriven":selectedKMDriven
 }
 
 
@@ -434,11 +472,11 @@ const carDetails = {
                         <Tab label="Diesel" />
                       </Tabs>
                     </Box>
-                    <TabPanel value={value} index={0}>
-                      Item One
+                    <TabPanel value={value} index={1}>
+                    {petrolCarsList}
                     </TabPanel>
                     <TabPanel value={value} index={1}>
-                      Item Two
+                      {dieselCarsList}
                     </TabPanel>
                   </Box>
                   </div>
@@ -462,35 +500,19 @@ const carDetails = {
           </div>}
         </div>
         <HowItWorks />
-        <div class="HowItsWork_Button_Container">
-          <button class="HowItsWorkVideoButton">
-            <span class="btnInnerContent">
-              Watch how it works{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24px"
-                viewBox="0 0 76 76"
-              >
-                <g transform="translate(-535.437 -1563.437) scale(1.5 1.5)">
-                  <path
-                    d="M-89.991-5241.6l20.392,13.184-20.392,12Z"
-                    transform="translate(464.721 6296.643)"
-                    fill="#fff"
-                    opacity="1"
-                  ></path>
-                </g>
-              </svg>
-            </span>
-          </button>
-        </div>
-        <Feedback />
+        
+        {/* <Feedback /> */}
       </div>
     </>
   );
 };
 
 const mapStateToProps = state => {
-  return{ }
+  return{
+    carsByYears: state.reducers.carsByYears,
+    carsByBrand: state.reducers.carsByBrand,
+    carsByModel: state.reducers.carsByModel,
+   }
   
 }
 
@@ -501,7 +523,22 @@ const mapDispatchToProps = dispatch => {
           dispatch(
               sellCar(data)
               )
-      }
+    },
+    getCarsByYear: (year) => {
+          dispatch(
+            getCarsByYear(year)
+              )
+    },
+    getCarsByBrand: (brand) => {
+          dispatch(
+            getCarsByBrand(brand)
+              )
+    },
+    getCarsByModel: (model) => {
+          dispatch(
+            getCarsByModel(model)
+              )
+    }
   }
 }
 

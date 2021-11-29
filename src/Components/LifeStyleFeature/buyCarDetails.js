@@ -1,10 +1,28 @@
 import { Button } from "@material-ui/core";
 import React from "react";
 import {Link} from 'react-router-dom';
+import { connect } from "react-redux";
+import {bookNow} from "../../actions";
 // import LocalOfferIcon from '@mui/icons-material/';
 
-const BuyCarDetails = () => {
+const BuyCarDetails = (props) => {
+    console.log("selected car", props)
+    const {selectedCar, userDetails} = props;
+
+    const carInformation = {
+        "bookNow": selectedCar.imagePath,
+        "model": selectedCar.model,
+        "year": selectedCar.year,
+        "brand": selectedCar.brand,
+        "totalOwner": selectedCar.totalOwner,
+        "kmDriven": selectedCar.kmDriven,
+        "fuelType": selectedCar.fuelType,
+        "bodyType": selectedCar.bodyType,
+        "transmission": selectedCar.transmission,
+        "customerPhoneNumner": userDetails.customerPhoneNumner
+    }
     return (
+        selectedCar ? 
         <div className = "pageStyle">
             <div>
                 <ul className = "carsList">
@@ -39,7 +57,7 @@ const BuyCarDetails = () => {
             </div>
             <div style = {{display:"flex",marginTop:"20px"}}>
                 <div className="carView">
-                <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                <img className="filter_car_img" src={selectedCar.imagePath} />
                 </div>
                 <div className = "carDetails">
                     <div className = "rightSection">
@@ -57,13 +75,13 @@ const BuyCarDetails = () => {
                                     Shortlisted
                                 </span>
                             </div>
-                            <h1>2018 Hyundai Creta 1.4 S Plus</h1>
+                            <h1>{selectedCar.year} {selectedCar.brand} {selectedCar.model}</h1>
                             <div className="carFeature">
-                                <span>30,635 Kms</span>
+                                <span>{selectedCar.kmDriven} Kms</span>
                                 <span>
-                                    &nbsp;.&nbsp; Diesel
+                                    &nbsp;.&nbsp; {selectedCar.fuelType}
                                 </span>
-                                <span> &nbsp;.&nbsp; Manual</span>
+                                <span> &nbsp;.&nbsp; {selectedCar.fuelType}</span>
                             </div>
                             <div className="testDrive">
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="12" viewBox="0 0 12 12"><path opacity="1" d="M12.336 5.618L6.69.177a.645.645 0 00-.888 0L.157 5.618a.37.37 0 00-.137.413c.03.074.12.2.382.2h.636v4.836a.946.946 0 00.925.929h2.861V8.722h2.769V12h2.937a.935.935 0 00.906-.929V6.239h.655c.263 0 .352-.129.382-.2a.37.37 0 00-.137-.421z" fill="#888888">
@@ -121,7 +139,9 @@ const BuyCarDetails = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div style = {{display:"flex",padding:"24px 0",margin:"0 0 0 10px"}}>
+                        <div style = {{display:"flex",padding:"24px 0",margin:"0 0 0 10px"}}
+                        onClick={() => props.bookNow(carInformation)}
+                        >
                             <Button style = {{backgroundColor:"#6300a3",
                             color:"#fff", borderRadius:"8px"}}
                             >
@@ -134,7 +154,28 @@ const BuyCarDetails = () => {
                 </div>
             </div>
         </div>
+        : 
+        <p>
+            Loaing...!
+        </p>
     )
 };
 
-export default BuyCarDetails;
+const mapStateToProps = state => {
+    return{
+        selectedCar: state.reducers.selectedCar,
+        userDetails: state.reducers.userDetails,
+    }
+    
+}
+const mapDispatchToProps = dispatch => {
+    return{
+        bookNow: data => {
+            dispatch(
+                bookNow(data)
+            )
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyCarDetails);

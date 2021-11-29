@@ -12,6 +12,14 @@
   margin: 30px 40px;
 }
 
+.budget_slider {
+  width: 80%;
+  margin: 10px 20px;
+}
+
+.budget_range {
+  justify-content: space-between;
+}
 .filter_option_container {
   margin-top: 15px;
 }
@@ -67,7 +75,6 @@ li {
 .pageStyle .carDetails .rightSection {
   margin-bottom: 16px;
   border: 1px solid #e8e8e8;
-  height: 150vh;
   border-radius: 10px;
 }
 .pageStyle .carDetails .rightSection h1 {
@@ -281,10 +288,15 @@ li {
   justify-content: space-between;
 }
 
-.car_list {
+.car_list_buyCar {
   width: 30%;
   margin: 5px;
 }
+
+.filter_car_img {
+  width: 100%;
+}
+
 .car_name_info {
   padding: 0 10px;
 }

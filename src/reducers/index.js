@@ -7,17 +7,25 @@ const initialState = {
     authenticationStatus: null,
     authToken: null,
     OTPVerificationSuccessful: false,
-    availableCarList: []
+    availableCarList: [],
+    carsByYears: [],
+    carsByBrand: [],
+    carsByModel: [],
+    testDriveCars: [],
+    customerBookedCars: [],
+    customerSellOrderList: []
 }
 
 const reducers = (state = initialState, action) => {
     if(action.type === "AUTHENTICATION_FAILURE") {
         return {
+            ...state,
             authenticationStatus: false
         }
     }
     if(action.type === "LOGIN_SUCCESS") {
         return {
+            ...state,
             authToken: action.payload.token,
             userDetails: action.payload,
             isValidUser: true
@@ -25,11 +33,13 @@ const reducers = (state = initialState, action) => {
     }
     if(action.type === "SIGNUP_SUCCESS") {
         return {
+            ...state,
             signUpSuccess: true
         }
     }
     if(action.type === "REGISTERED_USER") {
         return {
+            ...state,
             isUserRegistered: action.payload
         }
     }
@@ -40,14 +50,56 @@ const reducers = (state = initialState, action) => {
     }
     if(action.type === "USER_VALIDATED") {
         return {
-            // isValidUser: action.payload
-            // isValidUser: true,
+            ...state,
             OTPVerificationSuccessful: true
         }
     }
     if(action.type === "AVAILABLE_CARS") {
         return {
+            ...state,
             availableCarList: action.payload
+        }
+    }
+    if(action.type === "CARS_BY_YEAR") {
+        return {
+            ...state,
+            carsByYears: action.payload
+        }
+    }
+    if(action.type === "CARS_BY_BRAND") {
+        return {
+            ...state,
+            carsByBrand: action.payload
+        }
+    }
+    if(action.type === "CARS_BY_MODEL") {
+        return {
+            ...state,
+            carsByModel: action.payload
+        }
+    }
+    if(action.type === "TEST_DRIVE_CARS") {
+        return {
+            ...state,
+            testDriveCars: action.payload
+        }
+    }
+    if(action.type === "CUSTOMER_BOOKED_CARS") {
+        return {
+            ...state,
+            customerBookedCars: action.payload
+        }
+    }
+    if(action.type === "CUSTOMER_SELL_ORDER") {
+        return {
+            ...state,
+            customerSellOrderList: action.payload
+        }
+    }
+    if(action.type === "SELECTED_CAR") {
+        return {
+            ...state,
+            selectedCar: action.payload
         }
     }
     if(action.type === "API_FAILURE") {

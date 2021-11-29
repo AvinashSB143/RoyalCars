@@ -1,9 +1,18 @@
+import {useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
+import { connect } from 'react-redux';
 import "./accountFilters.css"
 import withStyles from "@material-ui/core/styles/withStyles";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import {
+    getAvailableCars,
+    getTestDriveCars,
+    getBookedCars,
+    sellOrders,
+    logout
+ } from "../../actions"
 
 
 const styles = theme => ({
@@ -14,12 +23,109 @@ const styles = theme => ({
     arrow_root: {
         fontSize: "1rem",
         padding: "0 5px"
-    }
+    },
+    icon_root: {
+        position: "absolute",
+        right: 0
+      } 
 })
 
 const AccountFilters = (props) => {
     const {filter} = useParams();
     const {classes} = props;
+
+    const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
+
+    const [showAllCars,setShowAllCars] = useState(false);
+
+    const carList = props.availableCarList && props.availableCarList.map((car) => {
+        return(
+             <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}>
+                  <Link to = "/buyCar/cars">
+                  <img className="filter_car_img" src={car.imagePath} />
+                  </Link>
+                  <div className="column_container"  style={{position: "relative"}}>
+                     <span className="row_container description"> <h4 className="car_name_info">{car.yesr}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                     <div className="row_container car_km_ifo">
+                       <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                     </div>
+                  </div>
+              </div>
+        )
+    })
+   
+    const testDriveCarsList = props.testDriveCars && props.testDriveCars.map((car) => {
+        return(
+            <div className="row_container car_list">
+                <div className="test_drive_car_img">
+                <Link to = "/buyCar/cars">
+                    <img className="filter_car_img" src={car.imagePath} />
+                </Link>
+                   </div>
+                 <div className="column_container test_drive_car_details" >
+                <h4 className="car_name_info">{car.year}</h4>
+                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
+                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                    </div>
+                    <div >
+                        <Link to="#" className="test_drive_car_btn">
+                        Free Test Drive
+                    </Link>
+                    </div>
+                    </div>
+                )
+    })
+    const bookedCarsList = props.customerBookedCars && props.customerBookedCars.map((car) => {
+        return(
+            <div className="row_container car_list">
+                <div className="test_drive_car_img">
+                <Link to = "/buyCar/cars">
+                    <img className="filter_car_img" src={car.imagePath} />
+                </Link>
+                   </div>
+                 <div className="column_container test_drive_car_details" >
+                <h4 className="car_name_info">{car.year}</h4>
+                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
+                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                    </div>
+                    <div >
+                        <Link to="#" className="test_drive_car_btn">
+                        Book Car Now
+                    </Link>
+                    </div>
+                    </div>
+        )
+    })
+    const sellOrderList = props.customerSellOrderList && props.customerSellOrderList.map((car) => {
+        return(
+            <div className="row_container car_list">
+                <div className="test_drive_car_img">
+                <Link to = "/buyCar/cars">
+                    <img className="filter_car_img" src={car.imagePath} />
+                </Link>
+                   </div>
+                 <div className="column_container test_drive_car_details" >
+                <h4 className="car_name_info">{car.year}</h4>
+                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
+                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                    </div>
+                    <div >
+                        <Link to="#" className="test_drive_car_btn">
+                        Book Car Now
+                    </Link>
+                    </div>
+                    </div>
+        )
+    })
+
+    const mainHeading =  heading.find((item) => {
+        // if(item.toLowerCase().includes(filter)){
+        if(filter.toLowerCase().includes(item)){
+           return item.toUpperCase()
+        } 
+    })
+    
+
     return(
         <div className="row_container account_filter_container">
             <div className="column_container account_filtered_options_container">
@@ -32,12 +138,17 @@ const AccountFilters = (props) => {
                         <p>Avinash</p>
                     </div>
                 </div>
-                {/* <Link to="/account/testDrive" className="account_filtered_options"> */}
                 <Link to="/account/testDrive" className={`${filter === "testDrive" && "item_focused"} account_filtered_options `}>
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
-                    <div className="column_container user_info">
+                    <div className="column_container user_info" 
+                    onClick={() => {
+                         props.getTestDriveCars() 
+                            setShowAllCars(false)
+                        }
+                    }
+                    >
                         <h4>Test Drives</h4>
                         <p>View and manage your test drives</p>
                     </div>
@@ -47,7 +158,12 @@ const AccountFilters = (props) => {
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
-                    <div className="column_container user_info">
+                    <div className="column_container user_info"
+                    onClick={() => {
+                        props.getBookedCars()
+                        setShowAllCars(false)   
+                    }}
+                    >
                         <h4>Bookings</h4>
                         <p>See booking status and complete paperwork</p>
                     </div>
@@ -57,7 +173,12 @@ const AccountFilters = (props) => {
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
-                    <div className="column_container user_info">
+                    <div className="column_container user_info"
+                    onClick={()=> {
+                        props.sellOrders()
+                        setShowAllCars(false) 
+                    }}
+                    >
                         <h4>Sell Orders</h4>
                         <p>View, track and manage your sell orders.</p>
                     </div>
@@ -93,7 +214,11 @@ const AccountFilters = (props) => {
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
                 </Link>
-                <Link to="#" className="account_filtered_options logout">
+                <Link to="/homePage" className="account_filtered_options logout"
+                onClick={() => {
+                    props.logout()
+                }}
+                >
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
@@ -109,88 +234,71 @@ const AccountFilters = (props) => {
                     <Link to="#" className="nav_link">Account <ArrowForwardIosIcon classes={{
                         root: classes.arrow_root
                     }}/></Link>
-                    <Link to="#" className="nav_link">Test Drives </Link>
+                    <Link to="#" className="nav_link">{mainHeading}</Link>
                 </ul>
-                <h2 className="selected_account_filter">Test Drives</h2>
-                <div className="row_container account_filtered_cars">
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="cars_available column_container">
-                        <img className="filter_car_img" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-                        <span className="row_container description"> <p>Ford Eco Sport</p><FavoriteBorderIcon /></span>
-                        <div>
-
-                        </div>
-                    </div>
-                   
+                <h2 className="selected_account_filter">
+                   {mainHeading.toUpperCase()}
+                </h2>
+                <div className={`${showAllCars ? "row_container" : "column_container"} account_filtered_cars`}>
+                 {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && testDriveCarsList}
+                 {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
+                 {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
+                 {!showAllCars &&
+                    <div className="column_container">
+                       <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
+                        <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
+                           filter !== "sellorders" && props.getCustomerCars()
+                            setShowAllCars(true)
+                        }}>
+                           {filter === "sellorders" ? "Sell Car" : "See all cars"} 
+                        </Link>
+                    </div>    
+                }
+                {showAllCars && carList }
                 </div>
                 </div>
-            
-            
-
         </div>
     )
 }
 
-export default withStyles(styles)(AccountFilters);
+const mapStateToProps = state => {
+    return {
+        testDriveCars: state.reducers.testDriveCars,
+        customerBookedCars: state.reducers.customerBookedCars,
+        customerSellOrderList: state.reducers.customerSellOrderList,
+        availableCarList: state.reducers.availableCarList,
+    }
+}
 
 
-{/* <div>
-                <ul>
-                    <li>HOME <ArrowForwardIosIcon classes={{
-                        root: classes.arrow_root
-                    }}/></li>
-                    <li>USED CARS <ArrowForwardIosIcon classes={{
-                        root: classes.arrow_root
-                    }}/></li>
-                    <li>FAMILY CARS </li>
-                </ul>
-                <h2 className="selected_account_filter">Test Drives</h2>
-                </div> */}
+const mapDispatchToProps = dispatch => {
+    return {
+        getCustomerCars: () => {
+            dispatch(
+                getAvailableCars()
+            )
+        },
+        getTestDriveCars: () => {
+            dispatch(
+                getTestDriveCars()
+            )
+        },
+        getBookedCars: () => {
+            dispatch(
+                getBookedCars()
+            )
+        },
+        sellOrders: () => {
+            dispatch(
+                sellOrders()
+            )
+        },
+        logout: () => {
+            dispatch(
+                logout()
+            )
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AccountFilters));

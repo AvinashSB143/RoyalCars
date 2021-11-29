@@ -22,7 +22,7 @@ const HomePage = (props) => {
   const { validateUser } = props;
   return (
     <div >
-        <NavBar />
+        {/* <NavBar /> */}
         <RecommendedCars />
         <AssuredBenifits />
         <Working />

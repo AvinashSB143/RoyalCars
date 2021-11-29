@@ -137,14 +137,87 @@ export const validateOTP = OTP => {
         }
     }
 }
+
 export const getAvailableCars = () => {
     return dispatch => {
         try {
-            axios.get('customerCar/get').then(res => {
+            axios.post('customerCar/getCustomerCar').then(res => {
                 if(res && res.data) {
                 dispatch ({
                     type: "AVAILABLE_CARS",
-                    payload: res.data
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
+          
+            dispatch ({
+                type: "AVAILABLE_CARS",
+                payload: []
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getCarsByYear = year => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/getCustomerCar', {
+                year: year
+            }).then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "CARS_BY_YEAR",
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
+          
+            dispatch ({
+                type: "AVAILABLE_CARS",
+                payload: []
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getCarsByBrand = brand => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/getCustomerCar', {
+                brand: brand
+            }).then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "CARS_BY_BRAND",
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
+          
+            dispatch ({
+                type: "AVAILABLE_CARS",
+                payload: []
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getCarsByModel = model => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/getCustomerCar', {
+                model: model
+            }).then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "CARS_BY_MODEL",
+                    payload: res.data.result
                 })
                 }
             }).catch(err => console.log(err))
@@ -176,6 +249,82 @@ export const sellCar = data => {
                 payload: "success"
             })
 
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getTestDriveCars = data => {
+    return dispatch => {
+        try {
+            axios.get('customerCar/getCustomerCar/testDrive').then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "TEST_DRIVE_CARS",
+                        payload: res.data.result
+                    })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const getBookedCars = data => {
+    return dispatch => {
+        try {
+            axios.get('customerCar/getCustomerCar/bookedCars').then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "CUSTOMER_BOOKED_CARS",
+                        payload: res.data.result
+                    })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const sellOrders = data => {
+    return dispatch => {
+        try {
+            axios.get('customerCar/getCustomerCar/sellOrders').then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "CUSTOMER_SELL_ORDER",
+                        payload: res.data.result
+                    })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const selectedCar = data => {
+    return dispatch => {
+        dispatch ({
+            type: "SELECTED_CAR",
+            payload: data
+        })
+    }
+}
+export const bookNow = data => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/buy',{
+                data
+            }).then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "CUSTOMER_BUY_ORDER",
+                        payload: res.data.result
+                    })
+                }
+            }).catch(err => console.log(err))
         } catch (error) {
             console.log(error)
         }

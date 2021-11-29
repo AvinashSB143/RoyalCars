@@ -1,5 +1,5 @@
 import "./lifestylefeature.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
@@ -21,6 +21,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import {Link} from 'react-router-dom';
+import { selectedCar } from "../../actions";
 
 
 
@@ -76,79 +77,224 @@ const [availability, setAvailability] = useState({
   upcoming: false
 });
 
-const marks = [
-    {
-      value: 500,
-      label: '500',
-    },
-    {
-      value: 1000000,
-      label: '1000000',
-    },
-  ];
-  
-  function valuetext(value) {
-    return `${value}°C`;
-  }
+const [budget, setBudget] = useState([0, 200000]);
+const [filteredCars, setFilteredCars] = useState([]);
+const [filteredCarsKMDriven, setFilteredCarsKMDriven] = useState([]);
+const [filteredCarsYears, setFilteredCarsYears] = useState([]);
+const [filteredCarsList, setFilteredCarsList] = useState(props.availableCarList);
+const [previousCarList, setPreviousCarList] = useState([]);
+
+const updatebudget = (e, data) => {
+  setBudget(data)
+}
+
 
   const handleYearChange = (event) => {
     setYearSelected(event.target.value);
+    // if(event.target.checked) {
+    //   setFilteredCarsYears([...filteredCarsYears, event.target.value])
+    // } else {
+    //   let index = filteredCarsYears.indexOf(event.target.value);
+    //   if(index >-1) {
+    //     filteredCarsYears.splice(index, 1);
+    //   }
+    // }
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+            if(car.year >= event.target.value
+            ) {
+              return car
+            }
+          })
+          setFilteredCarsList(list)
+          setPreviousCarList([...previousCarList, list])
+    }
   };
   const handleKMChange = (event) => {
     setkmDriven (event.target.value);
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.kmDriven <= event.target.value) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   };
 
   const handleFuelTypeChange = event => {
     setFuelType({...fuelType, [event.target.value] : event.target.checked})
+    // if(event.target.checked) {
+    //   setFilteredCars([...filteredCars, event.target.value])
+    // } else {
+    //   let index = filteredCars.indexOf(event.target.value);
+    //   if(index >-1) {
+    //     filteredCars.splice(index, 1);
+    //   }
+    // }
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.fuelType && car.fuelType.toString().includes(event.target.value)) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
   const handleBodyTypeChange = event => {
     setBodyType({...bodyType, [event.target.value] : event.target.checked})
+    // if(event.target.checked) {
+    //   setFilteredCars([...filteredCars, event.target.value])
+    // } else {
+    //   let index = filteredCars.indexOf(event.target.value);
+    //   if(index >-1) {
+    //     filteredCars.splice(index, 1);
+    //   }
+    // }
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.bodyType && car.bodyType.toString().includes(event.target.value)) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
   const handletransmissionChange =  event => {
     setTransmissionType({...transmissionType, [event.target.value] : event.target.checked})
+    // if(event.target.checked) {
+    //   setFilteredCars([...filteredCars, event.target.value])
+    // } else {
+    //   let index = filteredCars.indexOf(event.target.value);
+    //   if(index >-1) {
+    //     filteredCars.splice(index, 1);
+    //   }
+    // }
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.transmission && car.transmission.toString().includes(event.target.value)) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
   const handleOwner = event => {
     setOwnerType({...ownerType, [event.target.value] : event.target.checked})
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.totalOwner && car.totalOwner.toString() === event.target.value) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
   const handleCatogory = event => {
     setCategory({...category, [event.target.value] : event.target.checked})
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.category && car.category.toString() === event.target.value) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
   const handleAvailability = event => {
     setAvailability({...availability, [event.target.value] : event.target.checked})
+    if(event.target.checked) {
+      var list = props.availableCarList && props.availableCarList.filter((car) => {
+        if(car.isActive && car.isActive.toString() === event.target.checked) {
+          return car
+        }
+      })
+      setFilteredCarsList([...previousCarList, list])
+      setPreviousCarList([...previousCarList, list])
+    } else {
+      setPreviousCarList(previousCarList)
+    }
   }
 
-  const carList = props.availableCarList && props.availableCarList.map((car) => {
+  // const getFilteredCarsList = () => {
+  //   var list = props.availableCarList && props.availableCarList.filter((car) => {
+  //     if((filteredCarsYears.length !== 0 && car.year >= filteredCarsYears[0]) || 
+  //     (filteredCarsKMDriven.length !== 0 || car.kmDriven <= filteredCarsKMDriven[0]) ||
+  //     filteredCarsList.includes(car.fuelType) ||
+  //     filteredCarsList.includes(car.bodyType) ||
+  //     filteredCarsList.includes(car.transmission) ||
+  //     filteredCarsList.includes(car.totalOwner) ||
+  //     filteredCarsList.includes(car.category) ||
+  //     filteredCarsList.includes(car.availability) 
+  //     ) {
+  //       return car
+  //     }
+  //   })
+  //   setFilteredCarsList(list)
+  // }
+
+  // useEffect(() => {
+  //   getFilteredCarsList()
+  // },[filteredCars, filteredCarsKMDriven, filteredCarsYears])
+
+  const carList = (filteredCarsList && filteredCarsList.length !==0 ? filteredCarsList : props.availableCarList && props.availableCarList).map((car) => {
     return (
-     <div className="column_container car_list">
-                  <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src={car.img} />
+              <div className="column_container car_list_buyCar">
+                  <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
+                  <img className="filter_car_img" src={car.imagePath} />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
-                     <span className="row_container description"> <h4 className="car_name_info">{car.mode}</h4><h4 className="car_name_info">{car.name}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                     <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
                      <div className="row_container car_km_ifo">
-                       <span className="row_container car_details"><p className="car_info">{car.KMDriven}</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.orientationType}</p></span>
+                       <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
                      </div>
-                     <div>
+                     {/* <div>
                        <h3 className="car_info_amount">Rs. {car.amount}</h3 >
-                     </div>
+                     </div> */}
                   </div>
-                </div>
+              </div>
     )
   }) 
+
+  const clearAllFilters = () => {
+    setFilteredCars([]);
+    setFilteredCarsYears([]);
+    setFilteredCarsKMDriven([])
+  }
+
   
     return(
         <div className="main_container feature_container">
            <div className="lifeStyle_filters main_container column_container">
-             <div>
+             <div className="budget_slider column_container">
                 <p>Budget</p>
-                <Box sx={{ width: 300 }}>
+                <div className="row_container budget_range">
+                  <p>{budget[0]}</p>
+                  <p>{budget[1]}</p>
+                </div>
+                <Box>
                 <Slider
                 aria-label="Custom marks"
-                defaultValue={50000}
-                getAriaValueText={valuetext}
-                // step={50000}
-                // valueLabelDisplay="auto"
-                marks={marks}
+                value={budget}
+                onChange={updatebudget}
                 />
                 </Box>
              </div>
@@ -259,7 +405,9 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={fuelType.petrol} onChange={handleFuelTypeChange} value="petrol" />
+                            <Checkbox 
+                              checked={fuelType.petrol} 
+                              onChange={handleFuelTypeChange} value="petrol" />
                             }
                             label="Petrol"
                           />
@@ -352,13 +500,13 @@ const marks = [
                         <FormGroup>
                           <FormControlLabel
                             control={
-                              <Checkbox checked={ownerType["1st_Owner"]} onChange={handleOwner} value="1st_Owner" />
+                              <Checkbox checked={ownerType["1st_Owner"]} onChange={handleOwner} value="1" />
                             }
                             label="1st Owner"
                           />
                           <FormControlLabel
                             control={
-                              <Checkbox checked={ownerType["2nd_Owner"]} onChange={handleOwner} value="2nd_Owner" />
+                              <Checkbox checked={ownerType["2nd_Owner"]} onChange={handleOwner} value="2" />
                             }
                             label="2nd Owner"
                           />
@@ -447,7 +595,7 @@ const marks = [
                <li>FAMILY CARS</li>
              </ul>
              <div className="row_container  selected_filter_list">
-               <button className="clear_Filter_btn"> <ReplayIcon /> Clear All</button>
+               <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All</button>
              </div>
              {props.availableCarList && props.availableCarList.length !== 0 && <p>Used Family Cars</p>}
              <div className="row_container car_list_container"> 
@@ -472,8 +620,17 @@ const mapStateToProps = state => {
   return{
       availableCarList: state.reducers.availableCarList,
   }
-  
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    seletedCar: data => {
+      dispatch(
+        selectedCar(data)
+      )
+    }
+  }
 }
 
 
-export default connect(mapStateToProps)(withStyles(styles)(LifeStyleFeature));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(LifeStyleFeature));

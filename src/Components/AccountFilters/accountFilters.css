@@ -78,6 +78,8 @@ p, h4 {
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
 }
 .cars_available {
     width: 30%;
@@ -95,4 +97,59 @@ p, h4 {
 .nav_link {
     text-decoration: none;
     font-size: 14px;
+}
+
+.car_list {
+    width: 100%;
+    margin: 15px;
+    justify-content: space-evenly;
+}
+
+.car_list_testDrive {
+    width: 30%;
+}
+
+/* .car_list_testDrive :hover {
+    box-shadow: 1px 2px #888888;
+} */
+
+.test_drive_car_img {
+    width: 30%;
+}
+
+.test_drive_car_details {
+    justify-content: center;
+}
+
+.description {
+    justify-content: flex-start;
+    align-items: center;
+}
+.car_km_ifo {
+    justify-content: space-between;
+}
+
+.car_details {
+    margin-top: 10px;
+
+}
+.car_name_info {
+    padding: 0 10px;
+}
+
+.test_drive_no_cars_text {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px auto;
+}
+.test_drive_car_btn {
+    padding: 5px;
+    margin: 10px auto;
+    font-size: 20px;
+    font-weight: 700;
+    background: red;
+    color: white;
+    position: relative;
+    top: 50%;
+    text-decoration: none;
 }

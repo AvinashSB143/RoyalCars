@@ -20,7 +20,18 @@ import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
 import Button from "@material-ui/core/Button"
-import { login, validateNumber, validateOTP, getAvailableCars, signUp, logout, getOTP, updatePassword } from "../../actions"
+import { login,
+    validateNumber,
+    validateOTP,
+    getAvailableCars,
+    signUp,
+    logout,
+    getOTP,
+    updatePassword,
+    getTestDriveCars,
+    getBookedCars,
+    sellOrders 
+} from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 import { MonetizationOn } from '@material-ui/icons';
@@ -132,7 +143,7 @@ class Header extends Component {
             })
         }
         else if(this.state.isForgotPassword) {
-            if(this.state.mobileNumber.length === 10) {
+            if(this.state.mobileNumber && this.state.mobileNumber.length === 10) {
                 this.props.getOTP(this.state.mobileNumber)
                 this.setState({
                     isError: false,
@@ -185,7 +196,7 @@ class Header extends Component {
     }
 
     validateOTP = (OTP) => {
-        if(OTP.length === 4) {
+        if(OTP && OTP.length === 4) {
             this.props.validateOTP(OTP)
         }
     } 
@@ -316,6 +327,7 @@ class Header extends Component {
               <Link to={this.props.authToken ? "/account/testDrive" : "#"} className="options" 
               onClick={() => { 
                   this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                  this.props.getTestDriveCars()
                 }
             }>
                   Test Drives
@@ -326,6 +338,7 @@ class Header extends Component {
          <DirectionsOutlinedIcon />
               <Link to={this.props.authToken ?"/account/bookings" : "#"} className="options" onClick={() => { 
                   this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                  this.props.getBookedCars()
                 }}>
                   Bookings
               </Link>
@@ -334,6 +347,7 @@ class Header extends Component {
          <LocationOnIcon />
               <Link to={this.props.authToken ? "/account/sellorders" : "#"} className="options" onClick={() => { 
                   this.props.authToken ? this.changeArrow() : this.setState({showLoginContent: true}, () => this.changeArrow())
+                  this.props.sellOrders()
                 }}>
                  Sell Orders
               </Link>
@@ -413,14 +427,22 @@ class Header extends Component {
                     </div>
                     <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" 
                     onClick={() => {
-                        this.props.authToken && this.props.getAvailableCars()}} 
+                        this.props.authToken && this.props.getAvailableCars()
+                        this.setState({
+                            showLoginContent: !this.props.authToken 
+                        })}
+                    } 
                     >
-                     <b onMouseOver={() => this.changeArrow("buycar")}
-                        onMouseOut={() => this.changeArrow()} style={{fontSize: "16px"}} >
+                     <b>
                         Buy Car
                      </b>
                      </Link>
-                    <Link to={this.props.authToken ? "/sell" : "#"} className="Header_options">
+                    <Link to={this.props.authToken ? "/sell" : "#"} className="Header_options"
+                     onClick={() => {
+                        this.setState({
+                            showLoginContent: !this.props.authToken 
+                        })}
+                    } >
                     <b style={{fontSize: "16px"}}>
                         Sell Car
                     </b>
@@ -613,7 +635,7 @@ class Header extends Component {
                     }   
 
                     <div className="forgot_password">
-                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true})}>Sign Up</Link>}
+                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true,userName: "", password: ""})}>Sign Up</Link>}
                             <Link to="#" onClick={() => {this.setState({isForgotPassword: true})}}>Forgot Password</Link>
                         </div>
                         {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password && !this.props.signUpSuccess &&
@@ -685,6 +707,21 @@ const mapDispatchToProps = dispatch => {
         updatePassword : (newPassword) =>{
             dispatch(
                 updatePassword(newPassword)
+            )
+        },
+        getTestDriveCars : () =>{
+            dispatch(
+                getTestDriveCars()
+            )
+        },
+        getBookedCars : () =>{
+            dispatch(
+                getBookedCars()
+            )
+        },
+        sellOrders : () =>{
+            dispatch(
+                sellOrders()
             )
         },
         logout : () =>{
