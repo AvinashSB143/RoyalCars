@@ -1,10 +1,11 @@
 .benifits_images {
     display: flex;
     margin: 20px auto;
-    width: 71vw;
+    /* width: 71vw; */
     height: 300px;
     overflow: hidden;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .benifits_img {
@@ -13,4 +14,19 @@
     margin: 0 20px;
 
 }
+
+@media only screen and  (max-width: 360px) {
+    .benifits_images {
+        width: 580px;
+        height: 250px;
+    
+    }
+    
+     .benifits_img {
+         margin: 10px auto;
+     }    
+    
+  }
+
+
 

@@ -8,3 +8,11 @@
     height: 150px;
     border-radius: 30px;
 }
+
+
+@media screen and (max-width: 361px) {
+    .bodytype_images_container {
+        flex-wrap: wrap;
+    }
+  }
+

@@ -38,3 +38,16 @@
     width: 40%;
     height: auto;
 }
+
+
+@media screen and (max-width: 361px) {
+
+   html {
+       width: 690px;
+   }
+   
+   .hide_option {
+       display: none;
+   }
+   
+}

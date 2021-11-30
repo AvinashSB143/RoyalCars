@@ -5,7 +5,7 @@ const initialState = {
     api_failure: false,
     customerCarList: [],
     authenticationStatus: null,
-    authToken: "1",
+    authToken: null,
     OTPVerificationSuccessful: false,
     availableCarList: [],
     carsByYears: [],

@@ -3,6 +3,8 @@ import { useEffect, useState, Component } from 'react';
 import { connect } from 'react-redux';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import DensitySmallIcon from '@mui/icons-material/DensitySmall';
+import PersonIcon from '@mui/icons-material/Person';
 // import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -16,6 +18,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
@@ -35,6 +42,7 @@ import { login,
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
 import { MonetizationOn } from '@material-ui/icons';
+import { height } from '@mui/system';
 
 
 const styles = theme => ({ 
@@ -46,6 +54,9 @@ const styles = theme => ({
     input: {
         padding: "16px 0 17px 10px"
     },
+    mobile_Login_icon_root: {
+        width: "2rem"
+    }
   });
 
 class Header extends Component {
@@ -74,6 +85,7 @@ class Header extends Component {
             isForgotPassword: false,
             isShowOTPEnabled: false,
             hideButton: false,
+            expandLoginDetails: false
         }
     }
     changeOnMouseLeave = () => {
@@ -276,20 +288,6 @@ class Header extends Component {
               </p4>
          <ArrowForwardIosIcon style={{marginLeft: "90px"}}/>
          </div>
-         {/* <div className="more_items" onMouseOver={this.hideShowWorkFlow}>
-         <LocationOnIcon />
-              <p4 className="options">
-                 Car hub Location
-              </p4>
-
-         </div> */}
-         {/* <div className="more_items"  onMouseOver={this.hideShowWorkFlow}>
-         <AddLocationIcon />
-              <p4 className="options">
-                ContactLess car Buying
-              </p4>
-
-             </div> */}
         </div>
 
         const expandShowWorkFlow = 
@@ -380,14 +378,16 @@ class Header extends Component {
               </Link>
 
          </div>
-         <div className="more_items" onClick={() => {
+         <div className="more_items" 
+         onClick={() => {
             this.setState({showLoginContent: true})
             this.changeArrow()
             if(this.props.authToken) { 
                 this.props.logout()
                 this.setState({showLoginContent: false})
              }
-         } }>
+         }}
+         >
          <LocationOnIcon />
               <Link to= {this.props.authToken ? "/homePage" : "#" } className="options">
                 {!this.props.authToken ? "Login/Sign up" : "Logout" } 
@@ -398,18 +398,125 @@ class Header extends Component {
     const {classes} = this.props;
         return(
             <>
-            <div className={this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) && "overlay"} 
+            <div className={this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) || this.state.expandLoginDetails && "overlay"} 
             onClick={() => {
                 this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
             }}
             ></div>
             <div>
              <div className="header_container"> 
+             {!this.state.expandLoginDetails && <div className="morevert_icon_pos">
+                 <DensitySmallIcon onClick={() => this.setState({
+                     expandLoginDetails: true
+                 })}/>
+             </div>}
+             {this.state.expandLoginDetails && <div className="column_container mobile_login_container">
+                 <div style={{border: "0.5px solid grey", height: "70px"}}>
+                 <Link to="#" className="row_container mobile_login_content"
+                 onClick={() => {
+                    this.setState({
+                        showLoginContent: true,
+                        expandLoginDetails: false
+                    })
+                    this.changeArrow()
+                    if(this.props.authToken) { 
+                        this.props.logout()
+                        this.setState({
+                            showLoginContent: false,
+                            
+                        })
+                     }
+                 }}
+                 >
+                    <PersonIcon className="mobile_login_icon_pos" 
+                    classes={{
+                        root: classes.mobile_Login_icon_root,
+                    }}
+                    />
+                    <p style={{fontSize: "25px"}}>Login/SignUp</p>
+                 </Link>
+                 </div>
+                 <div style={{border: "0.5px solid grey", height: "70px"}}>
+                 <Link to="#" className="row_container mobile_login_content">
+                    <PersonIcon className="mobile_login_icon_pos"/>
+                    <p style={{fontSize: "25px"}}>Buy a Car</p>
+                 </Link>
+                 </div>
+                 <div style={{border: "0.5px solid grey", height: "70px"}}>
+                 <Link to="#" className="row_container mobile_login_content">
+                    <PersonIcon className="mobile_login_icon_pos"/>
+                    <p style={{fontSize: "25px"}}>Sell your car</p>
+                 </Link>
+                 </div>
+                 <div style={{border: "0.5px solid grey", height: "70px"}}> 
+                 <Link to="#" className="row_container mobile_login_content">
+                    <PersonIcon className="mobile_login_icon_pos"/>
+                    <p style={{fontSize: "25px"}}> How it works</p>
+                 </Link>
+                 </div>
+                 <div style={{border: "0.5px solid grey", height: "70px"}}>
+                 <Accordion>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <PersonIcon className="mobile_login_icon_pos"/>
+                        <Typography style={{fontSize: "25px"}}>Account</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px", padding: "5px"}}> Test Drives</p>
+                            </Link>
+                            </div>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px", padding: "5px"}}> Bookings</p>
+                            </Link>
+                            </div>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px", padding: "5px"}}> Sell Orders</p>
+                            </Link>
+                            </div>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px", padding: "5px"}}> Refer and Earn</p>
+                            </Link>
+                            </div>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px", padding: "5px"}}> Personal Information</p>
+                            </Link>
+                            </div>
+                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
+                            <Link to="#" className="row_container mobile_login_content">
+                            <p style={{fontSize: "25px"}}> Logout</p>
+                            </Link>
+                            </div>
+                        </AccordionDetails>
+                    </Accordion>
+                    </div>
+                    <div style={{border: "0.5px solid grey", height: "70px"}}>
+                    <Link to="#" className="row_container mobile_login_content">
+                        <PersonIcon className="mobile_login_icon_pos"/>
+                        <p style={{fontSize: "25px"}}>FAQ</p>
+                    </Link>
+                    </div>
+             </div>}
+             {this.state.expandLoginDetails && 
+             <div className="mobile_login_closeIcon_pos">
+                <CloseIcon onClick={() => this.setState({
+                    expandLoginDetails: !this.state.expandLoginDetails
+                })}/>    
+             </div>   
+             }
             
                 <div className="header_logo">
                    <img src={Logo} width="100px" height="100px" />
                    </div>
-                   <div className="header_search_bar">
+                   <div className="header_search_bar hide_option">
                    <div className="search_container">
                     <TextField
                     id="standard-search"
@@ -436,7 +543,7 @@ class Header extends Component {
                      <b>
                         Buy Car
                      </b>
-                     </Link>
+                    </Link>
                     <Link to={this.props.authToken ? "/sell" : "#"} className="Header_options"
                      onClick={() => {
                         this.setState({
@@ -447,7 +554,7 @@ class Header extends Component {
                         Sell Car
                     </b>
                     </Link >
-                    <div className="header_buy_car" 
+                    <div className="header_buy_car hide_option" 
                     onClick={() => {
                         this.setState({expandMoreSection: !this.state.expandMoreSection})
                     }}
@@ -459,10 +566,10 @@ class Header extends Component {
                       </b>
                             {this.state.expandMoreSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                         </div>
-                        <div>
+                        <div className="hide_option">
                             <FavoriteBorderIcon />
                         </div>
-                        <div className="header_SignIn_bar">
+                        <div className="hide_option header_SignIn_bar">
                             <p>
                                 Hello, {this.props.userDetails ? this.props.userDetails.username : "Sign In"}
                             </p>
@@ -477,7 +584,7 @@ class Header extends Component {
                             {this.state.expandAccountSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
                             </div>
                         </div>
-                        <div className="header_SignIn_bar">
+                        <div className="header_SignIn_bar hide_option">
                             <p>
                                 call at
                             </p>
