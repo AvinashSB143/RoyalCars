@@ -69,9 +69,12 @@
     font-size: 16px;
     font-weight: bold;
 }
-
-@media screen and (max-width: 361px) {
-  .root_container {
-      height: 400px;
+/* 
+@media screen and (min-width: 320px) and (max-width: 361px) {
+  .slide {
+    height: 200px;
   }
-}
+  .root_container {
+      height: 250px;
+  }
+} */

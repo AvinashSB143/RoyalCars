@@ -645,8 +645,8 @@
 }
 
 
-
-@media screen and (max-width: 361px) {
+/* 
+@media screen and (min-width: 320px) and (max-width: 361px) {
   .hide_option {
       display: none;
   }
@@ -691,4 +691,4 @@
     border: "0.5px solid grey",
     
   }
-}
+} */

@@ -309,3 +309,22 @@ li {
 .car_info_amount {
   margin: 10px;
 }
+
+/* 
+
+@media screen and (min-width: 320px) and (max-width: 361px) {
+  .hide_option {
+      display: none;
+  }
+
+  .mobile_buy_main_container {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .mobile_mode_filer_btns {
+    justify-content: space-around;
+  }
+  .mobile_mode_filer_btn {
+    background-color: white;
+  }
+} */

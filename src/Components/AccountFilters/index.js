@@ -45,7 +45,7 @@ const AccountFilters = (props) => {
         return(
              <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}>
                   <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src={car.imagePath} />
+                  <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.yesr}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -62,7 +62,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list">
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={car.imagePath} />
+                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -83,7 +83,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list">
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={car.imagePath} />
+                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -104,7 +104,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list">
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={car.imagePath} />
+                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >

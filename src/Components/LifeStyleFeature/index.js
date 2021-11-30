@@ -257,9 +257,9 @@ const updatebudget = (e, data) => {
 
   const carList = (filteredCarsList && filteredCarsList.length !==0 ? filteredCarsList : props.availableCarList && props.availableCarList).map((car) => {
     return (
-              <div className="column_container car_list_buyCar">
+              <div className="column_container car_list_buyCar hide_option">
                   <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
-                  <img className="filter_car_img" src={car.imagePath} />
+                  <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -282,8 +282,8 @@ const updatebudget = (e, data) => {
 
   
     return(
-        <div className="main_container feature_container">
-           <div className="lifeStyle_filters main_container column_container">
+        <div className="main_container feature_container mobile_buy_main_container">
+           <div className="lifeStyle_filters main_container column_container hide_option">
              <div className="budget_slider column_container">
                 <p>Budget</p>
                 <div className="row_container budget_range">
@@ -588,13 +588,13 @@ const updatebudget = (e, data) => {
              </div>
             
            </div>
-           <div className="colunm_container featured_filtered_cars">
+           <div className="colunm_container featured_filtered_cars mobile_buy_main_container">
              <ul>
                <li>HOME</li>
                <li>USED CARS</li>
                <li>FAMILY CARS</li>
              </ul>
-             <div className="row_container  selected_filter_list">
+             <div className="row_container  selected_filter_list hide_option">
                <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All</button>
              </div>
              {props.availableCarList && props.availableCarList.length !== 0 && <p>Used Family Cars</p>}
@@ -604,11 +604,35 @@ const updatebudget = (e, data) => {
                {carList}
                </>
              ) : (
-               <div className="empty_car_list">
+               <div className="empty_car_list hide_option">
                  No Cars Available..!
                </div>
              )
             }
+            {/* <div className="mobile_buy_main_container">
+              <div className="row_container mobile_mode_filer_btns">
+                <button className="mobile_mode_filer_btn">
+                  Filters
+                </button>
+                <button className="mobile_mode_filer_btn">
+                  Make and Model
+                </button>
+                <button className="mobile_mode_filer_btn">
+                  Year
+                </button>
+                <button className="mobile_mode_filer_btn">
+                  KM Driven
+                </button>
+                <button className="mobile_mode_filer_btn">
+                  Fuel Type
+                </button>
+                <button className="mobile_mode_filer_btn">
+                  BodyType
+                </button>
+                
+              </div>
+
+            </div> */}
              </div>
            </div>
         </div>

@@ -32,7 +32,7 @@ function Footer() {
   const socialIcons = ["faceebbok", "instagram", "twitter", "linkedIn"];
 
   return (
-    <div className="container_footer">
+    <div className="container_footer hide_option">
       <div className="left_container">
         <div className="logo_wrapper">
           <a href="">

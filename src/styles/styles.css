@@ -39,15 +39,21 @@
     height: auto;
 }
 
-
-@media screen and (max-width: 361px) {
+/* 
+@media screen and (min-width: 320px) and (max-width: 1023px) {
 
    html {
-       width: 690px;
+       overflow-x: hidden;
+       margin: 0 0;
+       padding: 0 0;
    }
-   
-   .hide_option {
+
+   body {
+       overflow: hidden;
+   }
+
+   /* .hide_option {
        display: none;
    }
-   
-}
+    */
+/* }  */

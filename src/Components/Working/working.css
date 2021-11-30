@@ -22,10 +22,9 @@
     align-items: center;
 }
 
+/* 
 
-
-@media screen and (max-width: 361px) {
+@media screen and (min-width: 320px) and (max-width: 361px) {
     .working_images {
-        width: 580px;
     }
-}
+} */

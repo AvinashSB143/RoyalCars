@@ -10,13 +10,13 @@ return(
                 <h2 style={{ margin: 0}}>
                     How Royal Cars Works
                 </h2>
-                <p margin="10px auto">
+                <p margin="10px auto" className="mobile_car_working_helperText">
                 You won’t just love our cars, you’ll love the way you buy them.
                 </p>
             </div>
             <div className="working_images">
                 <div className="working_img">
-                    <img style={{width: "100%"}} src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                    <img style={{width: "100%"}} src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174=" />
                     <h3 style={{textAlign: "center"}}>
                     Choose from the best
                     pre-owned cars
@@ -28,7 +28,7 @@ return(
 
                 </div>
                 <div className="working_img">
-                    <img style={{width: "100%"}} src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                    <img style={{width: "100%"}} src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174=" />
                     <h3 style={{textAlign: "center"}}>
                     Take a test drive at your Home or Spinny Hub
                     </h3>
@@ -38,7 +38,7 @@ return(
                     <div style={{marginTop: "10px"}}><Link to="#" > Book Test Drive</Link></div>
 
                 </div><div className="working_img">
-                    <img style={{width: "100%"}} src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+                    <img style={{width: "100%"}} src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174=" />
                     <h3 style={{textAlign: "center"}}>
                     Online Payment. Doorstep Delivery.
                     </h3>

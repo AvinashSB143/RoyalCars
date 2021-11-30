@@ -57,7 +57,8 @@ const BuyCarDetails = (props) => {
             </div>
             <div style = {{display:"flex",marginTop:"20px"}}>
                 <div className="carView">
-                <img className="filter_car_img" src={selectedCar.imagePath} />
+                {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
+                <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                 </div>
                 <div className = "carDetails">
                     <div className = "rightSection">
