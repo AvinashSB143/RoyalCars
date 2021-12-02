@@ -1,7 +1,11 @@
 import React from "react";
 import "./footer.css";
 import Logo from "../../images/Logo.png";
-import Facebook from "../../images/facebook.png";
+import CallIcon from "@mui/icons-material/Call";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function Footer() {
   const locations = [
     " DelhiNCR",
@@ -32,70 +36,62 @@ function Footer() {
   const socialIcons = ["faceebbok", "instagram", "twitter", "linkedIn"];
 
   return (
-    <div className="container_footer hide_option">
-      <div className="left_container">
-        <div className="logo_wrapper">
-          <a href="">
-            <img src={Logo} className="logo"></img>
-          </a>
-          <a href="" className="title">
-            Royal Cars
-          </a>
+    <div className="Footer_Container">
+      <div className="Footer__Logo">
+        <div>
+          <img src={Logo} alt="APP_Logo" />
+          <button className="Footer__Button">
+            <CallIcon />
+            {buttons[0]}
+          </button>
         </div>
-        <p className="description">
-          RoyalCars is the most trusted way of buying and selling used cars.
-          Choose from over 2000 fully inspected second-hand car models. Select
-          online and book a test drive at your home or at a RoyalCars Car Hub
-          near you. Get a no-questions-asked 5-day money back guarantee and a
-          free one-year comprehensive service warranty with Assured Resale Value
-          on every RoyalCars Assured® car.
+        <p className="APP_Description">
+          About Company Description dummy text dummy text dummy text dummy dummy
+          text dummy text dummy text dummy text dummy text dummy text dummy text
+          dummy text dummy text dummy text dummy text dummy text dummy text
+          dummy text dummy text dummy text dummy text dummy text
         </p>
-        <div className="social_icon_wrapper">
-          {socialIcons.map((socialIcon) => (
-            <a href="https://www.facebook.com">
-              <img
-                src={Facebook}
-                alt=""
-                className="social_icon"
-                alt={socialIcon}
-              />
-            </a>
-          ))}
+        <div className="Footer__SocialIcons">
+          <FacebookIcon />
+          <TwitterIcon />
+          <LinkedInIcon />
+          <InstagramIcon />
         </div>
-        <p className="copyright">
-          Copyright © 2021 Valuedrive Technologies Private Limited.
-        </p>
-        <p className="copyright">All rights reserved.</p>
       </div>
-      <div className="right_container">
-        <div className="wrapper">
-          <div className="about">
-            <h3 className="sub_heading">About us</h3>
-            <div className="link_wrapper">
-              {links.map((link) => (
-                <a href="" className="links">
-                  {link}
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="Buy">
-            <h3>Buy Used cars</h3>
-            <div className="location_wrapper">
-              {locations.map((location) => (
-                <span className="location">{`${location} | `}</span>
-              ))}
-            </div>
-            <a href="" className="sell">
-              <p>Sell Used Car at spinny</p>
+      <div>
+        <h3 className="sub_heading">About us</h3>
+        <div className="Footer__Links">
+          {links.map((link) => (
+            <a href="#" className="links">
+              {link}
             </a>
-          </div>
-        </div>
-        <div className="botton-section">
-          {buttons.map((button) => (
-            <button className="button">{button}</button>
           ))}
         </div>
+      </div>
+      <div>
+        <h3>Buy Used cars</h3>
+        <div className="Footer__LocationLinks">
+          {locations.map((location) => (
+            <span className="location">{`${location} | `}</span>
+          ))}
+          <div>
+            <a href="" className="Footer__sell">
+              Sell Used Car at spinny
+            </a>
+            <span className="Footer__sell-span"> {">"}</span>
+          </div>
+        </div>
+      </div>
+      <div className="Footer__Copyright">
+        Copyright © 2021 Royal cars Pvt Limited. All rights reserved.
+      </div>
+      <div className="Footer__Buttons">
+        {buttons.map((button, idx) => (
+          <button className="Footer__Button">
+            {idx === 0 && <CallIcon />}
+            {button}
+          </button>
+        ))}
       </div>
     </div>
   );
