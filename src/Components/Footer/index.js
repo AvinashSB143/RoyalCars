@@ -78,7 +78,6 @@ function Footer() {
             <a href="" className="Footer__sell">
               Sell Used Car at spinny
             </a>
-            <span className="Footer__sell-span"> {">"}</span>
           </div>
         </div>
       </div>

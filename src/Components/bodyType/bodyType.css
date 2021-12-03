@@ -1,11 +1,13 @@
 .bodytype_images_container {
-    margin: 10px 30px;
+    margin: 10px auto;
+    width: 95%;
+    padding:0;
 }
 
 .bodytype_image {
-    width: 200px;
-    margin: 20px 30px;
-    height: 150px;
+    width: 27.5vw;
+   max-width: 25rem;
+   
     border-radius: 30px;
 }
 
