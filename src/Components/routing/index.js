@@ -17,51 +17,58 @@ import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
 import CarSalesWorking from "../WorkingFeature/Selling";
 import CarBuyingworking from '../WorkingFeature/Buying';
 import PersonalInfo from '../AccountFilters/PersonalInfo';
-  
-  function Routing() {
-    const [validUser, setValidUser] = useState(false);
-  
-    const validateUser = ()=> {}
-    return (
-      <div>
+import styled from "styled-components";
+const HomePageContainer = styled.div`
+  @media (max-width: 768px) {
+    width: min-content;
+  }
+`;
+function Routing() {
+  const [validUser, setValidUser] = useState(false);
+
+  const validateUser = () => {};
+  return (
+    <HomePageContainer>
       <Header />
-        <Route exact path="/"  >
-          <Redirect to="/homePage" />
-        </Route>
-        <Route exact path="/homePage" 
+      <Route exact path="/">
+        <Redirect to="/homePage" />
+      </Route>
+      <Route
+        exact
+        path="/homePage"
         // history={history}
-        >
-          <HomePage validateUser={validateUser}/>
-        </Route>
-        <Route path="/lifeStyle">
-          <LifeStyleFeature />
-        </Route>
-        <Route path="/account/:filter">
-          <AccountFilters />
-        </Route>
-        <Route path ="/more/AboutUs">
-          <MenuBar />
-        </Route>
-        <Route path ="/how-it-works/buying/">
-          <CarBuyingworking />
-        </Route>
-        <Route path ="/how-it-works/selling/">
-          <CarSalesWorking />
-        </Route>
-        <Route path="/sell">
-          <Sell />
-        </Route>
-        <Route path = "/buyCar/cars">
-          <BuyCarDetails />
-          </Route>
-        <Footer />
-        {/* <Route path="/sell">
+      >
+        <HomePage validateUser={validateUser} />
+      </Route>
+      <Route path="/lifeStyle">
+        <LifeStyleFeature />
+      </Route>
+      <Route path="/account/:filter">
+        <AccountFilters />
+      </Route>
+      <Route path="/more/AboutUs">
+        <MenuBar />
+      </Route>
+      <Route path="/how-it-works/buying/">
+        <CarBuyingworking />
+      </Route>
+      <Route path="/how-it-works/selling/">
+        <CarSalesWorking />
+      </Route>
+      <Route path="/sell">
+        <Sell />
+      </Route>
+      <Route path="/buyCar/cars">
+        <BuyCarDetails />
+      </Route>
+      <Footer />
+      {/* <Route path="/sell">
           <Sell />
         </Route>
         <Footer /> */}
-      </div>
-    );
-  }
+    </HomePageContainer>
+  );
+}
   
   export default Routing;
   

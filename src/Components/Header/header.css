@@ -665,7 +665,16 @@
   justify-content: flex-start;
 }
 .mobile_login_container{
-  z-index:99
+  position: fixed;
+  top: 0;
+  z-index:99;
+  height: 100%;
+  background: #fff;
+}
+.mobile_login_closeIcon_pos{
+display: flex;
+    flex-direction: row-reverse;
+    padding: 0.5rem;
 }
 .header_search_bar
 {

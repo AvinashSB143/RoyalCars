@@ -404,7 +404,7 @@ class Header extends Component {
                   !this.props.isValidUser &&
                   !this.state.loginAttempted &&
                   !this.props.authToken) ||
-                (this.state.expandLoginDetails && "overlay") //remove overlay to interact with buttons
+                (this.state.expandLoginDetails && "") //remove overlay to interact with buttons
               }
               onClick={() => {
                 this.setState({
@@ -429,6 +429,18 @@ class Header extends Component {
                 )}
                 {this.state.expandLoginDetails && (
                   <div className="column_container mobile_login_container">
+                    {this.state.expandLoginDetails && (
+                      <div className="mobile_login_closeIcon_pos">
+                        <CloseIcon
+                          onClick={() =>
+                            this.setState({
+                              expandLoginDetails:
+                                !this.state.expandLoginDetails,
+                            })
+                          }
+                        />
+                      </div>
+                    )}
                     <div style={{ border: "0.5px solid grey", height: "70px" }}>
                       <Link
                         to="#"
@@ -601,17 +613,6 @@ class Header extends Component {
                         <p style={{ fontSize: "25px" }}>FAQ</p>
                       </Link>
                     </div>
-                  </div>
-                )}
-                {this.state.expandLoginDetails && (
-                  <div className="mobile_login_closeIcon_pos">
-                    <CloseIcon
-                      onClick={() =>
-                        this.setState({
-                          expandLoginDetails: !this.state.expandLoginDetails,
-                        })
-                      }
-                    />
                   </div>
                 )}
 
