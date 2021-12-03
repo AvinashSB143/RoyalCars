@@ -681,6 +681,9 @@ display: flex;
   width:70%;
   margin-left: 1rem;
 }
+.mobile_login_icon_pos{
+  margin:0.35rem 0;
+}
 }
 
 
