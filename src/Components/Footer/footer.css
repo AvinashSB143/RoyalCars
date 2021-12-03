@@ -158,17 +158,19 @@ margin-top: 1rem;
 a:hover{
   text-decoration: underline;
 }
-.Footer__sell-span{
-color: #fff;
+.Footer__sell::after{
+  content: ">";
+  color: #fff;
 position: relative;
 top: 2px;
 left:0.5rem;
 font-weight: bold;
 font-size: 1.5rem;
 }
+
 .Footer__Buttons{
   grid-column:  span 2;
-  opacity: 1;
+  display: block;
 }
 .Footer__Button{
    width: 10rem;
@@ -196,11 +198,11 @@ font-size: 1.5rem;
   opacity:1;
   }
 .Footer__Buttons{
-opacity: 0;
+display: none;
 }
 .Footer_Container{
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 2rem;
 }
 }

@@ -396,374 +396,631 @@ class Header extends Component {
          </div>
     </div>
     const {classes} = this.props;
-        return(
-            <>
-            <div className={this.state.showLoginContent && !this.props.isValidUser && (!this.state.loginAttempted && !this.props.authToken) || this.state.expandLoginDetails && "overlay"} 
-            onClick={() => {
-                this.setState({showLoginContent: false, showEmailField: false, showNameField: false})
-            }}
+        return (
+          <>
+            <div
+              className={
+                (this.state.showLoginContent &&
+                  !this.props.isValidUser &&
+                  !this.state.loginAttempted &&
+                  !this.props.authToken) ||
+                (this.state.expandLoginDetails && "overlay") //remove overlay to interact with buttons
+              }
+              onClick={() => {
+                this.setState({
+                  showLoginContent: false,
+                  showEmailField: false,
+                  showNameField: false,
+                });
+              }}
             ></div>
             <div>
-             <div className="header_container"> 
-             {!this.state.expandLoginDetails && <div className="morevert_icon_pos">
-                 <DensitySmallIcon onClick={() => this.setState({
-                     expandLoginDetails: true
-                 })}/>
-             </div>}
-             {this.state.expandLoginDetails && <div className="column_container mobile_login_container">
-                 <div style={{border: "0.5px solid grey", height: "70px"}}>
-                 <Link to="#" className="row_container mobile_login_content"
-                 onClick={() => {
-                    this.setState({
-                        showLoginContent: true,
-                        expandLoginDetails: false
-                    })
-                    this.changeArrow()
-                    if(this.props.authToken) { 
-                        this.props.logout()
+              <div className="header_container">
+                {!this.state.expandLoginDetails && (
+                  <div className="morevert_icon_pos">
+                    <DensitySmallIcon
+                      onClick={() =>
                         this.setState({
-                            showLoginContent: false,
-                            
+                          expandLoginDetails: true,
                         })
-                     }
-                 }}
-                 >
-                    <PersonIcon className="mobile_login_icon_pos" 
-                    classes={{
-                        root: classes.mobile_Login_icon_root,
-                    }}
+                      }
                     />
-                    <p style={{fontSize: "25px"}}>Login/SignUp</p>
-                 </Link>
-                 </div>
-                 <div style={{border: "0.5px solid grey", height: "70px"}}>
-                 <Link to="#" className="row_container mobile_login_content">
-                    <PersonIcon className="mobile_login_icon_pos"/>
-                    <p style={{fontSize: "25px"}}>Buy a Car</p>
-                 </Link>
-                 </div>
-                 <div style={{border: "0.5px solid grey", height: "70px"}}>
-                 <Link to="#" className="row_container mobile_login_content">
-                    <PersonIcon className="mobile_login_icon_pos"/>
-                    <p style={{fontSize: "25px"}}>Sell your car</p>
-                 </Link>
-                 </div>
-                 <div style={{border: "0.5px solid grey", height: "70px"}}> 
-                 <Link to="#" className="row_container mobile_login_content">
-                    <PersonIcon className="mobile_login_icon_pos"/>
-                    <p style={{fontSize: "25px"}}> How it works</p>
-                 </Link>
-                 </div>
-                 <div style={{border: "0.5px solid grey", height: "70px"}}>
-                 <Accordion>
+                  </div>
+                )}
+                {this.state.expandLoginDetails && (
+                  <div className="column_container mobile_login_container">
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Link
+                        to="#"
+                        className="row_container mobile_login_content"
+                        onClick={() => {
+                          this.setState({
+                            showLoginContent: true,
+                            expandLoginDetails: false,
+                          });
+                          this.changeArrow();
+                          if (this.props.authToken) {
+                            this.props.logout();
+                            this.setState({
+                              showLoginContent: false,
+                            });
+                          }
+                        }}
+                      >
+                        <PersonIcon
+                          className="mobile_login_icon_pos"
+                          classes={{
+                            root: classes.mobile_Login_icon_root,
+                          }}
+                        />
+                        <p style={{ fontSize: "25px" }}>Login/SignUp</p>
+                      </Link>
+                    </div>
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Link
+                        to="#"
+                        className="row_container mobile_login_content"
+                      >
+                        <PersonIcon className="mobile_login_icon_pos" />
+                        <p style={{ fontSize: "25px" }}>Buy a Car</p>
+                      </Link>
+                    </div>
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Link
+                        to="#"
+                        className="row_container mobile_login_content"
+                      >
+                        <PersonIcon className="mobile_login_icon_pos" />
+                        <p style={{ fontSize: "25px" }}>Sell your car</p>
+                      </Link>
+                    </div>
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Link
+                        to="#"
+                        className="row_container mobile_login_content"
+                      >
+                        <PersonIcon className="mobile_login_icon_pos" />
+                        <p style={{ fontSize: "25px" }}> How it works</p>
+                      </Link>
+                    </div>
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Accordion>
                         <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
                         >
-                        <PersonIcon className="mobile_login_icon_pos"/>
-                        <Typography style={{fontSize: "25px"}}>Account</Typography>
+                          <PersonIcon className="mobile_login_icon_pos" />
+                          <Typography style={{ fontSize: "25px" }}>
+                            Account
+                          </Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px", padding: "5px"}}> Test Drives</p>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px", padding: "5px" }}>
+                                {" "}
+                                Test Drives
+                              </p>
                             </Link>
-                            </div>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px", padding: "5px"}}> Bookings</p>
+                          </div>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px", padding: "5px" }}>
+                                {" "}
+                                Bookings
+                              </p>
                             </Link>
-                            </div>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px", padding: "5px"}}> Sell Orders</p>
+                          </div>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px", padding: "5px" }}>
+                                {" "}
+                                Sell Orders
+                              </p>
                             </Link>
-                            </div>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px", padding: "5px"}}> Refer and Earn</p>
+                          </div>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px", padding: "5px" }}>
+                                {" "}
+                                Refer and Earn
+                              </p>
                             </Link>
-                            </div>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px", padding: "5px"}}> Personal Information</p>
+                          </div>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px", padding: "5px" }}>
+                                {" "}
+                                Personal Information
+                              </p>
                             </Link>
-                            </div>
-                             <div style={{borderBottom: "0.5px solid grey", height: "70px"}}>
-                            <Link to="#" className="row_container mobile_login_content">
-                            <p style={{fontSize: "25px"}}> Logout</p>
+                          </div>
+                          <div
+                            style={{
+                              borderBottom: "0.5px solid grey",
+                              height: "70px",
+                            }}
+                          >
+                            <Link
+                              to="#"
+                              className="row_container mobile_login_content"
+                            >
+                              <p style={{ fontSize: "25px" }}> Logout</p>
                             </Link>
-                            </div>
+                          </div>
                         </AccordionDetails>
-                    </Accordion>
+                      </Accordion>
                     </div>
-                    <div style={{border: "0.5px solid grey", height: "70px"}}>
-                    <Link to="#" className="row_container mobile_login_content">
-                        <PersonIcon className="mobile_login_icon_pos"/>
-                        <p style={{fontSize: "25px"}}>FAQ</p>
-                    </Link>
+                    <div style={{ border: "0.5px solid grey", height: "70px" }}>
+                      <Link
+                        to="#"
+                        className="row_container mobile_login_content"
+                      >
+                        <PersonIcon className="mobile_login_icon_pos" />
+                        <p style={{ fontSize: "25px" }}>FAQ</p>
+                      </Link>
                     </div>
-             </div>}
-             {this.state.expandLoginDetails && 
-             <div className="mobile_login_closeIcon_pos">
-                <CloseIcon onClick={() => this.setState({
-                    expandLoginDetails: !this.state.expandLoginDetails
-                })}/>    
-             </div>   
-             }
-            
-                <div className="header_logo">
-                   <img src={Logo} width="100px" height="100px" />
-                   </div>
-                   <div className="header_search_bar hide_option">
-                   <div className="search_container">
-                    <TextField
-                    id="standard-search"
-                    placeholder="Search field"
-                    type="search"
-                    variant="standard"
-                    classes={{
-                        root: classes.root,
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    className="search_text"
+                  </div>
+                )}
+                {this.state.expandLoginDetails && (
+                  <div className="mobile_login_closeIcon_pos">
+                    <CloseIcon
+                      onClick={() =>
+                        this.setState({
+                          expandLoginDetails: !this.state.expandLoginDetails,
+                        })
+                      }
                     />
-                    <SearchIcon className="search_icon"/>
-                    </div>
-                    </div>
-                    <Link to={this.props.authToken ? "/lifeStyle" : "#"} className="header_buy_car" 
+                  </div>
+                )}
+
+                <div className="header_logo">
+                  <img src={Logo} alt="App_LOGO" />
+                </div>
+                <div className="header_search_bar hide_option ">
+                  <div className="search_container">
+                    <TextField
+                      id="standard-search"
+                      placeholder="Search field"
+                      type="search"
+                      variant="standard"
+                      classes={{
+                        root: classes.root,
+                      }}
+                      InputProps={{ disableUnderline: true }}
+                      className="search_text"
+                    />
+                    <SearchIcon className="search_icon" />
+                  </div>
+                </div>
+                <Link
+                  to={this.props.authToken ? "/lifeStyle" : "#"}
+                  className="header_buy_car show_desktop_menu"
+                  onClick={() => {
+                    this.props.authToken && this.props.getAvailableCars();
+                    this.setState({
+                      showLoginContent: !this.props.authToken,
+                    });
+                  }}
+                >
+                  <b>Buy Car</b>
+                </Link>
+                <Link
+                  to={this.props.authToken ? "/sell" : "#"}
+                  className="Header_options show_desktop_menu"
+                  onClick={() => {
+                    this.setState({
+                      showLoginContent: !this.props.authToken,
+                    });
+                  }}
+                >
+                  <b style={{ fontSize: "16px" }}>Sell Car</b>
+                </Link>
+                <div
+                  className="header_buy_car hide_option show_desktop_menu"
+                  onClick={() => {
+                    this.setState({
+                      expandMoreSection: !this.state.expandMoreSection,
+                    });
+                  }}
+                >
+                  <b
+                    onMouseOver={() => this.changeArrow("more")}
+                    //  onMouseOut={() => this.changeArrow()}
+                    style={{ fontSize: "16px" }}
+                  >
+                    more
+                  </b>
+                  {this.state.expandMoreSection ? (
+                    <KeyboardArrowUpIcon />
+                  ) : (
+                    <KeyboardArrowDownIcon />
+                  )}
+                </div>
+                <div className="hide_option show_desktop_menu">
+                  <FavoriteBorderIcon />
+                </div>
+                <div className="hide_option header_SignIn_bar show_desktop_menu">
+                  <p>
+                    Hello,{" "}
+                    {this.props.userDetails
+                      ? this.props.userDetails.username
+                      : "Sign In"}
+                  </p>
+                  <div
+                    className="header_account"
                     onClick={() => {
-                        this.props.authToken && this.props.getAvailableCars()
-                        this.setState({
-                            showLoginContent: !this.props.authToken 
-                        })}
-                    } 
-                    >
-                     <b>
-                        Buy Car
-                     </b>
-                    </Link>
-                    <Link to={this.props.authToken ? "/sell" : "#"} className="Header_options"
-                     onClick={() => {
-                        this.setState({
-                            showLoginContent: !this.props.authToken 
-                        })}
-                    } >
-                    <b style={{fontSize: "16px"}}>
-                        Sell Car
-                    </b>
-                    </Link >
-                    <div className="header_buy_car hide_option" 
-                    onClick={() => {
-                        this.setState({expandMoreSection: !this.state.expandMoreSection})
+                      this.setState({
+                        expandAccountSection: !this.state.expandAccountSection,
+                      });
                     }}
+                  >
+                    <b
+                      onMouseOver={() => this.changeArrow("account")}
+                      style={{ fontSize: "16px" }}
                     >
-                      <b onMouseOver={() => this.changeArrow("more")}
-                        //  onMouseOut={() => this.changeArrow()}
-                          style={{fontSize: "16px"}}>
-                         more
-                      </b>
-                            {this.state.expandMoreSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
-                        </div>
-                        <div className="hide_option">
-                            <FavoriteBorderIcon />
-                        </div>
-                        <div className="hide_option header_SignIn_bar">
-                            <p>
-                                Hello, {this.props.userDetails ? this.props.userDetails.username : "Sign In"}
-                            </p>
-                            <div className="header_account" onClick={() => {
-                                this.setState({expandAccountSection: !this.state.expandAccountSection})
-                            }}>
-                            <b onMouseOver={() => 
-                            this.changeArrow("account")
-                        }
-                                style={{fontSize: "16px"}}>Account
-                            </b>
-                            {this.state.expandAccountSection ? <KeyboardArrowUpIcon />  : <KeyboardArrowDownIcon /> }
-                            </div>
-                        </div>
-                        <div className="header_SignIn_bar hide_option">
-                            <p>
-                                call at
-                            </p>
-                            <b style={{fontSize: "16px"}}>7788665544
-                            </b>
-                        </div>
-                    </div>
-                    {this.state.expandMoreSection && expandMoreSection}
-                    {this.state.expandMoreSection &&  this.state.showWorkFlow &&  expandShowWorkFlow }
-                    {this.state.expandAccountSection  && expandAccountSection}
-                    {this.state.showLoginContent && !this.props.isValidUser && !this.props.authToken && <div className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) && " signup_container"}`}>
-                    <CloseIcon className="close_icon" onClick={() => {
-                this.setState({showLoginContent: false, showEmailField: false, showNameField: false, loginAttempted: false})
-            }}/>
+                      Account
+                    </b>
+                    {this.state.expandAccountSection ? (
+                      <KeyboardArrowUpIcon />
+                    ) : (
+                      <KeyboardArrowDownIcon />
+                    )}
+                  </div>
+                </div>
+                <div className="header_SignIn_bar hide_option show_desktop_menu">
+                  <p>call at</p>
+                  <b style={{ fontSize: "16px" }}>7788665544</b>
+                </div>
+              </div>
+              {this.state.expandMoreSection && expandMoreSection}
+              {this.state.expandMoreSection &&
+                this.state.showWorkFlow &&
+                expandShowWorkFlow}
+              {this.state.expandAccountSection && expandAccountSection}
+              {this.state.showLoginContent &&
+                !this.props.isValidUser &&
+                !this.props.authToken && (
+                  <div
+                    className={`main_container column_container login_container ${
+                      (this.state.isSignUp || this.state.isForgotPassword) &&
+                      " signup_container"
+                    }`}
+                  >
+                    <CloseIcon
+                      className="close_icon"
+                      onClick={() => {
+                        this.setState({
+                          showLoginContent: false,
+                          showEmailField: false,
+                          showNameField: false,
+                          loginAttempted: false,
+                        });
+                      }}
+                    />
                     <VpnKeyIcon />
                     {/* {!this.state.isUserValidated && !this.props.isValidUser && ( */}
-                     <>
-                        <p4 className="content_pos">
-                            Login /Sign Up
-                        </p4>
-                    {!this.state.isForgotPassword && !this.props.OTPVerificationSuccessful &&
                     <>
-                        <TextField
-                        id="userName"
-                        placeholder="username"
-                        classes={{
-                            root: classes.root,
-                            input: classes.input
-                        }}
-                        InputProps={{ disableUnderline: true, maxLength: 10}}
-                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                        onChange={e => this.getUserName(e.target.value)}
-                        error={(this.state.loginAttempted && !this.state.userName) || this.state.isError}
-                        helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"} 
-                        value={this.state.userName}
-                        />
-                        <TextField
-                        id="password"
-                        placeholder="password"
-                        classes={{
-                            root: classes.root,
-                            input: classes.input
-                        }}
-                        InputProps={{ disableUnderline: true, maxLength: 10}}
-                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                        onChange={e => this.getPassword(e.target.value)}
-                        error={(this.state.loginAttempted && !this.state.password) || this.state.isError}
-                        helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter Password"}
-                        type="password"
-                        value={this.state.password}
-                        />
-                    </>
-                       }
-                       {((this.state.isSignUp && !this.props.signUpSuccess) || this.state.isForgotPassword) && !this.props.OTPVerificationSuccessful && 
-                        <>
-                        {this.state.isForgotPassword && <>
-                            <p4 className="content_pos">
-                            You will receive an OTP on the following number:
-                            </p4>
-                            <p4 className="content_pos">
-                            {this.state.mobileNumber} <button className="btn">EDIT</button>
-                            </p4>
-                            </>   
-                        }
+                      <p4 className="content_pos">Login /Sign Up</p4>
+                      {!this.state.isForgotPassword &&
+                        !this.props.OTPVerificationSuccessful && (
+                          <>
                             <TextField
-                            id="mobile_number"
-                            placeholder="Mobile Number"
-                            classes={{
+                              id="userName"
+                              placeholder="username"
+                              classes={{
                                 root: classes.root,
-                                input: classes.input
-                            }}
-                            InputProps={{ disableUnderline: true, maxLength: 10}}
-                            className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                            onChange={e => this.getMobileNumber(e.target.value)}
-                            type="tel"
-                            error={(this.state.isSignUp && !this.state.mobileNumber) || this.state.isError}
-                            helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError ? "Please enter valid number" : "" }
-                            /> 
-                           {!this.state.isForgotPassword && <TextField
-                            id="email"
-                            placeholder="Enter Your Email(Optional)"
-                            classes={{
+                                input: classes.input,
+                              }}
+                              InputProps={{
+                                disableUnderline: true,
+                                maxLength: 10,
+                              }}
+                              className={`${
+                                this.state.isError
+                                  ? "login_text_field mobile_error"
+                                  : "login_text_field"
+                              }`}
+                              onChange={(e) => this.getUserName(e.target.value)}
+                              error={
+                                (this.state.loginAttempted &&
+                                  !this.state.userName) ||
+                                this.state.isError
+                              }
+                              helperText={
+                                (this.state.loginAttempted &&
+                                  !this.state.userName) ||
+                                (this.state.isError && "Please enter userName")
+                              }
+                              value={this.state.userName}
+                            />
+                            <TextField
+                              id="password"
+                              placeholder="password"
+                              classes={{
                                 root: classes.root,
-                                input: classes.input
-                            }}
-                            InputProps={{ disableUnderline: true, maxLength: 10}}
-                            className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                            onChange={e => this.getEmail(e.target.value)}
-                            type="email"
-                            /> }
-                        </>
-                        }
+                                input: classes.input,
+                              }}
+                              InputProps={{
+                                disableUnderline: true,
+                                maxLength: 10,
+                              }}
+                              className={`${
+                                this.state.isError
+                                  ? "login_text_field mobile_error"
+                                  : "login_text_field"
+                              }`}
+                              onChange={(e) => this.getPassword(e.target.value)}
+                              error={
+                                (this.state.loginAttempted &&
+                                  !this.state.password) ||
+                                this.state.isError
+                              }
+                              helperText={
+                                (this.state.loginAttempted &&
+                                  !this.state.userName) ||
+                                (this.state.isError && "Please enter Password")
+                              }
+                              type="password"
+                              value={this.state.password}
+                            />
+                          </>
+                        )}
+                      {((this.state.isSignUp && !this.props.signUpSuccess) ||
+                        this.state.isForgotPassword) &&
+                        !this.props.OTPVerificationSuccessful && (
+                          <>
+                            {this.state.isForgotPassword && (
+                              <>
+                                <p4 className="content_pos">
+                                  You will receive an OTP on the following
+                                  number:
+                                </p4>
+                                <p4 className="content_pos">
+                                  {this.state.mobileNumber}{" "}
+                                  <button className="btn">EDIT</button>
+                                </p4>
+                              </>
+                            )}
+                            <TextField
+                              id="mobile_number"
+                              placeholder="Mobile Number"
+                              classes={{
+                                root: classes.root,
+                                input: classes.input,
+                              }}
+                              InputProps={{
+                                disableUnderline: true,
+                                maxLength: 10,
+                              }}
+                              className={`${
+                                this.state.isError
+                                  ? "login_text_field mobile_error"
+                                  : "login_text_field"
+                              }`}
+                              onChange={(e) =>
+                                this.getMobileNumber(e.target.value)
+                              }
+                              type="tel"
+                              error={
+                                (this.state.isSignUp &&
+                                  !this.state.mobileNumber) ||
+                                this.state.isError
+                              }
+                              helperText={
+                                (this.state.loginAttempted &&
+                                  !this.state.userName) ||
+                                this.state.isError
+                                  ? "Please enter valid number"
+                                  : ""
+                              }
+                            />
+                            {!this.state.isForgotPassword && (
+                              <TextField
+                                id="email"
+                                placeholder="Enter Your Email(Optional)"
+                                classes={{
+                                  root: classes.root,
+                                  input: classes.input,
+                                }}
+                                InputProps={{
+                                  disableUnderline: true,
+                                  maxLength: 10,
+                                }}
+                                className={`${
+                                  this.state.isError
+                                    ? "login_text_field mobile_error"
+                                    : "login_text_field"
+                                }`}
+                                onChange={(e) => this.getEmail(e.target.value)}
+                                type="email"
+                              />
+                            )}
+                          </>
+                        )}
                     </>
-                    {this.state.isForgotPassword && this.state.isShowOTPEnabled && !this.props.OTPVerificationSuccessful &&
-                     <>
-                     {/* <p4 className="content_pos">
+                    {this.state.isForgotPassword &&
+                      this.state.isShowOTPEnabled &&
+                      !this.props.OTPVerificationSuccessful && (
+                        <>
+                          {/* <p4 className="content_pos">
                      You will receive an OTP on the following number:
                     </p4>
                     <p4 className="content_pos">
                     {this.state.mobileNumber} <button className="btn">EDIT</button>
                     </p4>    */}
-                    <TextField
-                    id="OTP"
-                    placeholder="OTP"
-                    classes={{
-                        root: classes.root,
-                        input: classes.input
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    className="login_text_field"
-                    onChange={(e) => this.validateOTP(e.target.value)}
-                    />
-                    {this.state.showTimeInterval ? 
-                     <p4 className="content_pos">
-                     Resend OTP in {this.state.remainingTime} seconds
-                    </p4> 
-                    :
-                     <p4 className="content_pos">
-                     Din't you get OTP? <button className="btn">RESEND AGAIN?</button>
-                    </p4>
-                    }
-                    </>
-                    }
-                    {this.props.OTPVerificationSuccessful &&
-                     <>
+                          <TextField
+                            id="OTP"
+                            placeholder="OTP"
+                            classes={{
+                              root: classes.root,
+                              input: classes.input,
+                            }}
+                            InputProps={{ disableUnderline: true }}
+                            className="login_text_field"
+                            onChange={(e) => this.validateOTP(e.target.value)}
+                          />
+                          {this.state.showTimeInterval ? (
+                            <p4 className="content_pos">
+                              Resend OTP in {this.state.remainingTime} seconds
+                            </p4>
+                          ) : (
+                            <p4 className="content_pos">
+                              Din't you get OTP?{" "}
+                              <button className="btn">RESEND AGAIN?</button>
+                            </p4>
+                          )}
+                        </>
+                      )}
+                    {this.props.OTPVerificationSuccessful && (
+                      <>
                         <TextField
-                        id="newPassword"
-                        placeholder="New Password"
-                        classes={{
+                          id="newPassword"
+                          placeholder="New Password"
+                          classes={{
                             root: classes.root,
-                            input: classes.input
-                        }}
-                        InputProps={{ disableUnderline: true, maxLength: 10}}
-                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                        onChange={e => this.getnewPassword(e.target.value)}
-                        // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"} 
-                        value={this.state.newPassword}
+                            input: classes.input,
+                          }}
+                          InputProps={{ disableUnderline: true, maxLength: 10 }}
+                          className={`${
+                            this.state.isError
+                              ? "login_text_field mobile_error"
+                              : "login_text_field"
+                          }`}
+                          onChange={(e) => this.getnewPassword(e.target.value)}
+                          // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
+                          value={this.state.newPassword}
                         />
                         <TextField
-                        id="confirm_password"
-                        placeholder="confirm Password"
-                        classes={{
+                          id="confirm_password"
+                          placeholder="confirm Password"
+                          classes={{
                             root: classes.root,
-                            input: classes.input
-                        }}
-                        InputProps={{ disableUnderline: true, maxLength: 10}}
-                        className={`${this.state.isError ? "login_text_field mobile_error": "login_text_field"}`}
-                        onChange={e => this.getConfirmPassword(e.target.value)}
-                        error={this.state.isPasswordMisMatched}
-                        helperText={this.state.isPasswordMisMatched && "Password Doesnot Match"}
-                        type="password"
-                        value={this.state.confirmPassword}
+                            input: classes.input,
+                          }}
+                          InputProps={{ disableUnderline: true, maxLength: 10 }}
+                          className={`${
+                            this.state.isError
+                              ? "login_text_field mobile_error"
+                              : "login_text_field"
+                          }`}
+                          onChange={(e) =>
+                            this.getConfirmPassword(e.target.value)
+                          }
+                          error={this.state.isPasswordMisMatched}
+                          helperText={
+                            this.state.isPasswordMisMatched &&
+                            "Password Doesnot Match"
+                          }
+                          type="password"
+                          value={this.state.confirmPassword}
                         />
-                    </>
-                    }   
+                      </>
+                    )}
 
                     <div className="forgot_password">
-                          {!this.props.signUpSuccess &&  <Link to="#" onClick={() => this.setState({isSignUp:true,userName: "", password: ""})}>Sign Up</Link>}
-                            <Link to="#" onClick={() => {this.setState({isForgotPassword: true})}}>Forgot Password</Link>
-                        </div>
-                        {this.state.loginAttempted && !this.props.authToken && this.state.userName && this.state.password && !this.props.signUpSuccess &&
-                        <p style={{color: "red", margin: "5px"}}>Invalid Credentials</p>
-                        } 
-                    {!this.state.hideButton && <button className="login_proceed_btn" onClick={() => {
-                    this.validateUser();
-                    }}>
-                    {this.state.isSignUp && !this.props.signUpSuccess ? "Sign Up" : this.props.signUpSuccess ? "Proceed" : "Proceed"}
-                    </button>}
-                    {this.props.OTPVerificationSuccessful && <button className="login_proceed_btn" onClick={() => {
-                    this.updatePassword();
-                    }}>
-                    Update Password
-                    </button>}
-                   
+                      {!this.props.signUpSuccess && (
+                        <Link
+                          to="#"
+                          onClick={() =>
+                            this.setState({
+                              isSignUp: true,
+                              userName: "",
+                              password: "",
+                            })
+                          }
+                        >
+                          Sign Up
+                        </Link>
+                      )}
+                      <Link
+                        to="#"
+                        onClick={() => {
+                          this.setState({ isForgotPassword: true });
+                        }}
+                      >
+                        Forgot Password
+                      </Link>
                     </div>
-                    }
-                    </div> 
-            </>
-            )
+                    {this.state.loginAttempted &&
+                      !this.props.authToken &&
+                      this.state.userName &&
+                      this.state.password &&
+                      !this.props.signUpSuccess && (
+                        <p style={{ color: "red", margin: "5px" }}>
+                          Invalid Credentials
+                        </p>
+                      )}
+                    {!this.state.hideButton && (
+                      <button
+                        className="login_proceed_btn"
+                        onClick={() => {
+                          this.validateUser();
+                        }}
+                      >
+                        {this.state.isSignUp && !this.props.signUpSuccess
+                          ? "Sign Up"
+                          : this.props.signUpSuccess
+                          ? "Proceed"
+                          : "Proceed"}
+                      </button>
+                    )}
+                    {this.props.OTPVerificationSuccessful && (
+                      <button
+                        className="login_proceed_btn"
+                        onClick={() => {
+                          this.updatePassword();
+                        }}
+                      >
+                        Update Password
+                      </button>
+                    )}
+                  </div>
+                )}
+            </div>
+          </>
+        );
     }
 }
 

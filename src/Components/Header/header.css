@@ -643,6 +643,36 @@
   top: 45%;
   cursor: pointer;
 }
+.morevert_icon_pos{
+   opacity: 0;
+
+}
+.header_logo img{
+  height: 10vw;
+  width: 10vw;
+  max-height: 100px;
+  max-width: 100px;
+}
+@media only screen and (max-width:768px){
+  .morevert_icon_pos{
+  opacity: 1;
+  margin: 0 1rem;
+}
+.show_desktop_menu{
+  display: none;
+}
+.header_container{
+  justify-content: flex-start;
+}
+.mobile_login_container{
+  z-index:99
+}
+.header_search_bar
+{
+  width:70%;
+  margin-left: 1rem;
+}
+}
 
 
 /* 
