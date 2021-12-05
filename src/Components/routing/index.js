@@ -20,7 +20,7 @@ import PersonalInfo from '../AccountFilters/PersonalInfo';
 import styled from "styled-components";
 const HomePageContainer = styled.div`
   @media (max-width: 768px) {
-    width: min-content;
+    width: fit-content;
   }
 `;
 function Routing() {

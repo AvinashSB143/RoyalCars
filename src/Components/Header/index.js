@@ -594,9 +594,8 @@ class Header extends Component {
                 </div>
                 <div
                   style={{
-                    borderBottom: "0.5px solid grey",
                     height: "auto",
-                    padding: "1rem 0",
+                    marginLeft: "-1rem",
                   }}
                 >
                   <Accordion>
@@ -614,8 +613,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink
@@ -631,8 +630,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink
@@ -648,8 +647,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink
@@ -665,8 +664,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink
@@ -682,8 +681,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink
@@ -699,8 +698,8 @@ class Header extends Component {
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
-                           height: "auto",
-                    padding: "1rem 0",
+                          height: "auto",
+                          padding: "1rem 0",
                         }}
                       >
                         <StyledLink

@@ -125,6 +125,7 @@ h4 {
 .description {
   justify-content: flex-start;
   align-items: center;
+  min-height: 1.5rem;
 }
 .car_km_ifo {
   justify-content: space-between;
