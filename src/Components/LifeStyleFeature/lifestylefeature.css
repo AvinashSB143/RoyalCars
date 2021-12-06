@@ -48,7 +48,7 @@ li {
 .pageStyle {
   margin: 0 auto;
   min-width: 978px;
-  max-width: 1248px;
+  /* max-width: 1248px; */
 }
 
 .pageStyle .carsList {
@@ -67,7 +67,7 @@ li {
   transform: rotate(-90deg);
 }
 .pageStyle .carDetails {
-  width: 25em;
+  /* width: 25em; */
   position: sticky;
   top: 0;
   margin: 0 5px 0 60px;
@@ -314,6 +314,10 @@ li {
       width: 90%;
     margin-left: -2rem;
 }
+.buycar__container{
+  display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
 @media only screen and (max-width:1200px){
 
 .car_list_buyCar {
@@ -325,6 +329,12 @@ li {
     width: 80%;
 }}
 @media only screen and (max-width:767px){
+
+.buycar__container {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
 
   .lifeStyle_filters {
     width: 50vw;
