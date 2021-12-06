@@ -10,7 +10,8 @@ const BuyCarDetails = (props) => {
     const {selectedCar, userDetails} = props;
 
     const carInformation = {
-        "bookNow": selectedCar.imagePath,
+        // "bookNow": selectedCar.imagePath,
+        "bookNow": "http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png",
         "model": selectedCar.model,
         "year": selectedCar.year,
         "brand": selectedCar.brand,
@@ -19,7 +20,7 @@ const BuyCarDetails = (props) => {
         "fuelType": selectedCar.fuelType,
         "bodyType": selectedCar.bodyType,
         "transmission": selectedCar.transmission,
-        "customerPhoneNumner": userDetails.customerPhoneNumner
+        "customerPhoneNumner": userDetails.phone
     }
     return selectedCar ? (
       <div className="pageStyle">
