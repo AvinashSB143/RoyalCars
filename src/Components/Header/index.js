@@ -440,7 +440,7 @@ class Header extends Component {
         <div className="more_items">
           <LocationOnIcon />
           <Link
-            to="/account/profileInformation"
+          to={this.props.authToken ? "/account/profileInformation" : "#"}
             className="options"
             onClick={() => {
               this.props.authToken

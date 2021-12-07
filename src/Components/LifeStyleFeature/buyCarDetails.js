@@ -12,15 +12,15 @@ const BuyCarDetails = (props) => {
     const carInformation = {
         // "bookNow": selectedCar.imagePath,
         "bookNow": "http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png",
-        "model": selectedCar.model,
-        "year": selectedCar.year,
-        "brand": selectedCar.brand,
-        "totalOwner": selectedCar.totalOwner,
-        "kmDriven": selectedCar.kmDriven,
-        "fuelType": selectedCar.fuelType,
-        "bodyType": selectedCar.bodyType,
-        "transmission": selectedCar.transmission,
-        "customerPhoneNumner": userDetails.phone
+        "model": selectedCar ? selectedCar.model : "",
+        "year": selectedCar ? selectedCar.year : "",
+        "brand": selectedCar ? selectedCar.brand : "",
+        "totalOwner": selectedCar ? selectedCar.totalOwner : "",
+        "kmDriven": selectedCar ? selectedCar.kmDriven : "",
+        "fuelType": selectedCar ? selectedCar.fuelType : "",
+        "bodyType": selectedCar ? selectedCar.bodyType : "",
+        "transmission": selectedCar ? selectedCar.transmission : "",
+        "customerPhoneNumner": userDetails ? userDetails.phone : ""
     }
     return selectedCar ? (
       <div className="pageStyle">
@@ -134,12 +134,12 @@ const BuyCarDetails = (props) => {
                   </span>
                 </div>
                 <h1>
-                  {selectedCar.year} {selectedCar.brand} {selectedCar.model}
+                  {selectedCar && selectedCar.year} {selectedCar && selectedCar.brand} {selectedCar && selectedCar.model}
                 </h1>
                 <div className="carFeature">
-                  <span>{selectedCar.kmDriven} Kms</span>
-                  <span>&nbsp;.&nbsp; {selectedCar.fuelType}</span>
-                  <span> &nbsp;.&nbsp; {selectedCar.fuelType}</span>
+                  <span>{selectedCar && selectedCar.kmDriven} Kms</span>
+                  <span>&nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
+                  <span> &nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
                 </div>
                 <div className="testDrive">
                   <svg

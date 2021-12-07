@@ -246,6 +246,170 @@ h4 {
   text-transform: uppercase;
   overflow: hidden;
 }
+.referal_details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: flex-start;
+  column-gap: 24px;
+  grid-auto-rows: 1fr;
+  margin-bottom: 24px;
+}
+.referal_details .refer_friend {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: futura-book;
+  color: #fff;
+  box-sizing: border-box;
+  background: linear-gradient(94.68deg, #2e054e 1.1%, #4a007a 101%);
+  border-radius: 6px;
+  background-color: #fff;
+  margin: 30px 16px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.referal_details .refer_friend .refer_friend_bgi {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #2e054e;
+  background-size: cover;
+  border-radius: 6px 6px 0 0;
+  background-position: 0;
+}
+.referal_details .refer_friend .refer_friend_desc {
+  padding: 24px;
+}
+.referal_details .refer_friend .refer_friend_desc h2 {
+  font-family: futura-demi;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+.referal_details .refer_friend .refer_friend_desc .refer_friend_btn {
+  color: #6300a3;
+  margin: 24px 0 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #fff;
+  flex: 1;
+  position: relative;
+  outline: 0;
+  height: 50px;
+  font-size: 14px;
+  font-family: futura-heavy;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 2.4em;
+  cursor: pointer;
+  white-space: nowrap;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.referal_details .refer_friend .refer_friend_desc .refer_friend_btn svg {
+  transform: rotate(-90deg);
+  margin-left: 10px;
+  margin-right: 8px;
+}
+.redeem_rewards {
+  box-shadow: none;
+  border: 1px solid #e6e6e6;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 24px;
+  margin-bottom: 0;
+  margin: 30px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.redeem_rewards h2 {
+  font-size: 18px;
+  line-height: 22px;
+  color: #2e054e;
+  font-family: futura-demi;
+  text-transform: capitalize;
+  margin-bottom: 24px;
+}
+.question_sec {
+  content: "";
+  margin-top: 32px;
+}
+.question_sec .list_heading::before {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, #ccc, transparent);
+  flex: 1;
+  margin-right: 8px;
+}
+.question_sec .list_heading::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ccc);
+  flex: 1;
+  margin-left: 8px;
+}
+.question_sec .list_heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  font-family: futura-demi;
+  font-size: 18px;
+  color: #2e054e;
+  text-align: center;
+  position: relative;
+  line-height: 24px;
+}
+.question_sec .quest_ans {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.question_sec .quest_ans .quest_forGtm {
+  font-size: 14px;
+  padding: 12px 0 24px;
+  color: #2e054e;
+  line-height: 24px;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+.question_sec .quest_ans .quest_forGtm .farquest {
+  display: flex;
+}
+.question_sec .quest_ans .quest_forGtm .farquest .farquestContent {
+  width: 90%;
+}
+.farquestContent sup {
+  font-size: 50% !important;
+  font-weight: 500;
+  font-family: futura !important;
+}
+.farquest .quest_accordianStatus {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+.quest_forGtm .answer {
+  height: auto;
+  transition: height 0.5s ease-in-out;
+  display: block;
+  padding-top: 16px;
+  width: 90%;
+}
 
   @media only screen and (max-width:960px){
   

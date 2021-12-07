@@ -12,10 +12,11 @@ import {
     getTestDriveCars,
     getBookedCars,
     sellOrders,
-    logout
+    logout,
+    selectedCar
  } from "../../actions"
 import PersonalInfo from './PersonalInfo';
-
+import ReferEarn from './referandEarn';
 
 const styles = theme => ({
     root: {
@@ -42,10 +43,10 @@ const AccountFilters = (props) => {
 
     const [showAllCars,setShowAllCars] = useState(false);
     const getUserInfo = useSelector(state => state.reducers)
-    console.log(getUserInfo);
     const carList = props.availableCarList && props.availableCarList.map((car) => {
         return(
-             <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}>
+             <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}
+             onClick={() => props.seletedCar(car)}>
                   <Link to = "/buyCar/cars">
                   <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
                   </Link>
@@ -61,7 +62,7 @@ const AccountFilters = (props) => {
    
     const testDriveCarsList = props.testDriveCars && props.testDriveCars.map((car) => {
         return(
-            <div className="row_container car_list">
+            <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
                     <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
@@ -82,7 +83,7 @@ const AccountFilters = (props) => {
     })
     const bookedCarsList = props.customerBookedCars && props.customerBookedCars.map((car) => {
         return(
-            <div className="row_container car_list">
+            <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
                     <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
@@ -190,7 +191,7 @@ const AccountFilters = (props) => {
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
                 </Link>
-                <Link to="/account/help_suport" className={`${filter === "help_suport" && "item_focused"} account_filtered_options `}>
+                {/* <Link to="/account/help_suport" className={`${filter === "help_suport" && "item_focused"} account_filtered_options `}>
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
@@ -199,7 +200,7 @@ const AccountFilters = (props) => {
                         <p>Need help? Chat with us</p>
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
-                </Link>
+                </Link> */}
                 <Link to="/account/refer_and_earn" className={`${filter === "refer_and_earn" && "item_focused"} account_filtered_options `}>
                     <PermIdentityIcon classes={{
                         root: classes.root
@@ -251,6 +252,7 @@ const AccountFilters = (props) => {
                  {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
                  {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
                  {filter === "profileInformation" && <PersonalInfo />}
+                 {filter === "refer_and_earn" && <ReferEarn />}
                  {!showAllCars && !(filter === "profileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
                        <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
@@ -286,6 +288,11 @@ const mapDispatchToProps = dispatch => {
         getCustomerCars: () => {
             dispatch(
                 getAvailableCars()
+            )
+        },
+        seletedCar: data => {
+            dispatch(
+              selectedCar(data)
             )
         },
         getTestDriveCars: () => {
