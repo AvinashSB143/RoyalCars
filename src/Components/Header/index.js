@@ -414,22 +414,6 @@ class Header extends Component {
             Sell Orders
           </Link>
         </div>
-        {/* <div className="more_items">
-          <LocationOnIcon />
-          <Link
-            to={this.props.authToken ? "/account/help_suport" : "#"}
-            className="options"
-            onClick={() => {
-              this.props.authToken
-                ? this.changeArrow()
-                : this.setState({ showLoginContent: true }, () =>
-                    this.changeArrow()
-                  );
-            }}
-          >
-            Help and Support
-          </Link>
-        </div> */}
         <div className="more_items"
         onClick={() => {
           this.props.authToken
@@ -456,7 +440,7 @@ class Header extends Component {
         <div className="more_items">
           <LocationOnIcon />
           <Link
-            to="/account/ProfileInformation"
+            to="/account/profileInformation"
             className="options"
             onClick={() => {
               this.props.authToken

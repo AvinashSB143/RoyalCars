@@ -234,27 +234,6 @@ const updatebudget = (e, data) => {
     }
   }
 
-  // const getFilteredCarsList = () => {
-  //   var list = props.availableCarList && props.availableCarList.filter((car) => {
-  //     if((filteredCarsYears.length !== 0 && car.year >= filteredCarsYears[0]) || 
-  //     (filteredCarsKMDriven.length !== 0 || car.kmDriven <= filteredCarsKMDriven[0]) ||
-  //     filteredCarsList.includes(car.fuelType) ||
-  //     filteredCarsList.includes(car.bodyType) ||
-  //     filteredCarsList.includes(car.transmission) ||
-  //     filteredCarsList.includes(car.totalOwner) ||
-  //     filteredCarsList.includes(car.category) ||
-  //     filteredCarsList.includes(car.availability) 
-  //     ) {
-  //       return car
-  //     }
-  //   })
-  //   setFilteredCarsList(list)
-  // }
-
-  // useEffect(() => {
-  //   getFilteredCarsList()
-  // },[filteredCars, filteredCarsKMDriven, filteredCarsYears])
-
   const carList = (filteredCarsList && filteredCarsList.length !==0 ? filteredCarsList : props.availableCarList && props.availableCarList).map((car) => {
     return (
               <div className="column_container car_list_buyCar hide_option">

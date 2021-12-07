@@ -89,7 +89,7 @@ export const HowItsWork__listItem = ({
 };
 export const HowItWorks = () => {
   return (
-    <div>
+    <div className="sell_car_container">
       <h3>Selling your car made simple</h3>
       <div class="HowItsWork__listWrap">
         <HowItsWork__listItem />

@@ -250,8 +250,8 @@ const AccountFilters = (props) => {
                  {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && testDriveCarsList}
                  {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
                  {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
-                 {filter === "ProfileInformation" && <PersonalInfo />}
-                 {!showAllCars && !(filter === "ProfileInformation") && !(filter === "refer_and_earn") &&
+                 {filter === "profileInformation" && <PersonalInfo />}
+                 {!showAllCars && !(filter === "profileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
                        <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
                         <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
