@@ -318,17 +318,31 @@ class Header extends Component {
 
     const expandShowWorkFlow = (
       <div className="main_container column_container about_expanded_section buying_process_container">
-        <div className="more_items" onClick={() => this.changeArrow()}>
+        <div className="more_items" 
+        onClick={() => {
+          this.changeArrow()
+          this.setState({
+            showLoginContent: !this.props.authToken,
+          });
+        }
+        }
+        >
           <>
             <DescriptionIcon />
           </>
-          <Link to="/how-it-works/buying/" className="options">
+          <Link to={this.props.authToken ? "/how-it-works/buying/" : "#" } className="options">
             Car buying process
           </Link>
         </div>
-        <div className="more_items" onClick={() => this.changeArrow()}>
+        <div className="more_items" onClick={() => {
+           this.setState({
+            showLoginContent: !this.props.authToken,
+          })
+              this.changeArrow()}
+          }
+          >
           <DirectionsOutlinedIcon />
-          <Link to="/how-it-works/selling/" className="options">
+          <Link to={this.props.authToken ? "/how-it-works/selling/" : "#" } className="options">
             Car selling process
           </Link>
         </div>
@@ -400,7 +414,7 @@ class Header extends Component {
             Sell Orders
           </Link>
         </div>
-        <div className="more_items">
+        {/* <div className="more_items">
           <LocationOnIcon />
           <Link
             to={this.props.authToken ? "/account/help_suport" : "#"}
@@ -415,8 +429,15 @@ class Header extends Component {
           >
             Help and Support
           </Link>
-        </div>
-        <div className="more_items">
+        </div> */}
+        <div className="more_items"
+        onClick={() => {
+          this.props.authToken
+            ? this.changeArrow()
+            : this.setState({ showLoginContent: true }, () =>
+                this.changeArrow()
+              );
+        }}>
           <LocationOnIcon />
           <Link
             to={this.props.authToken ? "/account/refer_and_earn" : "#"}
@@ -553,9 +574,16 @@ class Header extends Component {
                     height: "auto",
                     padding: "1rem 0",
                   }}
+                  onClick={() => {
+                    this.props.authToken && this.props.getAvailableCars();
+                    this.setState({
+                      showLoginContent: !this.props.authToken,
+                      expandLoginDetails: !this.state.expandLoginDetails,
+                    });
+                  }}
                 >
                   <StyledLink
-                    to="#"
+                    to={this.props.authToken ? "/lifeStyle" : "#"}
                     className="row_container mobile_login_content"
                   >
                     <PersonIcon className="mobile_login_icon_pos" />
@@ -568,9 +596,15 @@ class Header extends Component {
                     height: "auto",
                     padding: "1rem 0",
                   }}
+                  onClick={() => {
+                    this.setState({
+                      showLoginContent: !this.props.authToken,
+                      expandLoginDetails: !this.state.expandLoginDetails,
+                    });
+                  }}
                 >
                   <StyledLink
-                    to="#"
+                    to={this.props.authToken ? "/sell" : "#"}
                     className="row_container mobile_login_content"
                   >
                     <PersonIcon className="mobile_login_icon_pos" />
@@ -579,18 +613,71 @@ class Header extends Component {
                 </div>
                 <div
                   style={{
-                    borderBottom: "0.5px solid grey",
                     height: "auto",
-                    padding: "1rem 0",
+                    marginLeft: "-1rem",
                   }}
                 >
-                  <StyledLink
-                    to="#"
-                    className="row_container mobile_login_content"
-                  >
-                    <PersonIcon className="mobile_login_icon_pos" />
-                    <p style={{ fontSize: "25px" }}> How it works</p>
-                  </StyledLink>
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                    >
+                      <PersonIcon className="mobile_login_icon_pos" />
+                      <Typography style={{ fontSize: "25px" }}>
+                        How it works
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <div
+                        style={{
+                          borderBottom: "0.5px solid grey",
+                          height: "auto",
+                          padding: "1rem 0",
+                        }}
+                        onClick = {() => {this.setState({
+                          showLoginContent: !this.props.authToken,
+                          expandLoginDetails: false,
+                        })
+                      }
+                     }
+                      >
+                        <StyledLink
+                          to={this.props.authToken ? "/how-it-works/buying/" : "#" }
+                          className="row_container mobile_login_content"
+                        >
+                          <p style={{ fontSize: "25px", padding: "5px" }}>
+                            {" "}
+                            Car Buying Process
+                          </p>
+                        </StyledLink>
+                      </div>
+                      <div
+                        style={{
+                          borderBottom: "0.5px solid grey",
+                          height: "auto",
+                          padding: "1rem 0",
+                        }}
+                        onClick={() => {
+                          this.setState({
+                           showLoginContent: !this.props.authToken,
+                           expandLoginDetails: false,
+                         })
+                        }
+                      }
+                      >
+                        <StyledLink
+                        to={this.props.authToken ? "/how-it-works/selling/" : "#" }
+                          className="row_container mobile_login_content"
+                        >
+                          <p style={{ fontSize: "25px", padding: "5px" }}>
+                            {" "}
+                            Car Selling Process
+                          </p>
+                        </StyledLink>
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
                 </div>
                 <div
                   style={{
@@ -616,9 +703,13 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.props.getTestDriveCars();
+                        }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/account/testDrive" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -633,9 +724,13 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.props.getBookedCars();
+                        }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/account/bookings" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -650,9 +745,13 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.props.sellOrders();
+                        }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/account/sellorders" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -667,9 +766,12 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                        }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/account/refer_and_earn" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -701,9 +803,15 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          this.setState({ showLoginContent: false });
+                          if (this.props.authToken) {
+                            this.props.logout();
+                          }
+                        }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/homePage" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px" }}> Logout</p>

@@ -37,6 +37,8 @@ const AccountFilters = (props) => {
     const {classes} = props;
 
     const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
+    const PageTitle = ["TEST Drives", "BOOKINGS", "SELL ORDERS", "HELP & SUPPORT", "REFER & EARN", "PROFILE"];
+
 
     const [showAllCars,setShowAllCars] = useState(false);
     const getUserInfo = useSelector(state => state.reducers)
@@ -121,10 +123,11 @@ const AccountFilters = (props) => {
         )
     })
 
-    const mainHeading =  heading.find((item) => {
+    const mainHeading =  heading.find((item, index) => {
         // if(item.toLowerCase().includes(filter)){
         if(filter.toLowerCase().includes(item)){
-           return item.toUpperCase()
+        //    return item.toUpperCase()
+        return PageTitle[index].toUpperCase();
         } 
     })
     
@@ -211,7 +214,7 @@ const AccountFilters = (props) => {
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
-                    <PersonalInfo />
+                    {/* <PersonalInfo /> */}
                     <div className="column_container user_info">
                         <h4>Personal Information</h4>
                         <p>Edit & manage your profile</p>
@@ -241,13 +244,14 @@ const AccountFilters = (props) => {
                     <Link to="#" className="nav_link">{mainHeading}</Link>
                 </ul>
                 <h2 className="selected_account_filter">
-                   {mainHeading.toUpperCase()}
+                   {mainHeading.toUpperCase(0)}
                 </h2>
                 <div className={`${showAllCars ? "row_container" : "column_container"} account_filtered_cars`}>
                  {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && testDriveCarsList}
                  {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
                  {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
-                 {!showAllCars && !(filter === "profileInformation") &&
+                 {filter === "ProfileInformation" && <PersonalInfo />}
+                 {!showAllCars && !(filter === "ProfileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
                        <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
                         <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
@@ -260,7 +264,7 @@ const AccountFilters = (props) => {
                 }
                 {showAllCars && carList }
                 </div>
-                <PersonalInfo></PersonalInfo>
+                {/* <PersonalInfo></PersonalInfo> */}
                 </div>
         </div>
     )
