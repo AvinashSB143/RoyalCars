@@ -8,8 +8,11 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
+import Snackbar from '@mui/material/Snackbar';
 import Box from '@mui/material/Box';
-import {sellCar, getCarsByYear, getCarsByBrand, getCarsByModel} from "../../actions"
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import {sellCar, getCarsByYear, getCarsByBrand, getCarsByModel,closeSnackBar} from "../../actions"
 
 
 const styles = theme => ({ 
@@ -23,6 +26,9 @@ const styles = theme => ({
   },
   flexContainer: {
     justifyContent: "space-around"
+  },
+  snackBarRoot: {
+    backgroundColor: "green"
   }
 });
 
@@ -208,6 +214,20 @@ const [selectedModel, setsetselectedModel] = useState();
 const [selectedVariant, setselectedVariant] = useState();
 const [selectedOwner, setselectedOwner] = useState();
 const [selectedKMDriven, setselectedKMDriven] = useState();
+const [state, setState] = React.useState({
+  vertical: 'top',
+  horizontal: 'center',
+});
+
+const { vertical, horizontal, open } = state;
+
+  // const handleClick = (newState) => () => {
+  //   setState({ open: true, ...newState });
+  // };
+
+  const handleClose = () => {
+    props.disableSnackBar()
+  };
 
 
   const carModelsYear = ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"];
@@ -369,6 +389,31 @@ const carDetails = {
 
   return (
     <>
+     <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={props.carRegisteredForSell}
+        message="Thanks for Choosing Royal cars for Selling your Car. We will get in touch with you shortly"
+        key={vertical + horizontal}
+        className={
+         classes.snackBarRoot
+         }
+        classes={{
+         message: classes.snackBarRoot,
+         root: classes.snackBarRoot
+        }}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
       <div className="container_sell">
         <div className="background_image_wrapper">
           <h1 class="">Check your car's price in 10 secs </h1>
@@ -512,6 +557,7 @@ const mapStateToProps = state => {
     carsByYears: state.reducers.carsByYears,
     carsByBrand: state.reducers.carsByBrand,
     carsByModel: state.reducers.carsByModel,
+    carRegisteredForSell: state.reducers.carRegisteredForSell,
    }
   
 }
@@ -538,6 +584,11 @@ const mapDispatchToProps = dispatch => {
           dispatch(
             getCarsByModel(model)
               )
+    },
+    disableSnackBar: () => {
+          dispatch(
+            closeSnackBar()
+          )
     }
   }
 }

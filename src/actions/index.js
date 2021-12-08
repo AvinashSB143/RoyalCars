@@ -238,22 +238,30 @@ export const sellCar = data => {
             axios.post('customerCar/sell', {
                 data
             }).then(res => {
-                console.log(res)
-                dispatch ({
-                    type: "SELL_CAR",
-                    payload: res
-                })
+                if(res.data) {
+                    dispatch ({
+                        type: "SELL_CAR",
+                        payload: res
+                    })
+                }
             }).catch(err => console.log(err))
             dispatch ({
                 type: "API_FAILURE",
                 payload: "success"
             })
-
         } catch (error) {
             console.log(error)
         }
     }
 }
+export const closeSnackBar = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "SELL_CAR",
+                    })
+                }
+}
+
 export const getTestDriveCars = data => {
     return dispatch => {
         try {

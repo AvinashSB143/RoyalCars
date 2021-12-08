@@ -70,6 +70,7 @@ h4 {
 .cars_offered {
   margin-left: 1rem;
   width: 70%;
+  background-color: hsla(0, 0%, 67.5%, 0.2)
 }
 
 .account_filtered_cars {
@@ -424,7 +425,8 @@ h4 {
     font-size: 16px;
   }
   .car_list_testDrive {
-    width: 100%
+    width: 100%;
+    margin: 15px auto;
   }
 }
   @media only screen and (max-width:767px){
@@ -439,7 +441,8 @@ h4 {
       font-size: 14px;
     }
     .car_list_testDrive {
-      width: 100%
+      width: 100%;
+      margin: 15px auto;
     }
   }
   @media only screen and (max-width:576px){
@@ -454,6 +457,7 @@ h4 {
       font-size: 12px;
     }
     .car_list_testDrive {
-      width: 100%
+      width: 100%;
+      margin: 15px auto;
     }
   }

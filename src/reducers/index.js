@@ -14,6 +14,7 @@ const initialState = {
     testDriveCars: [],
     customerBookedCars: [],
     customerSellOrderList: [],
+    carRegisteredForSell: false
 }
 
 const reducers = (state = initialState, action) => {
@@ -105,6 +106,12 @@ const reducers = (state = initialState, action) => {
     if(action.type === "API_FAILURE") {
         return {
             api_failure: true
+        }
+    }
+    if(action.type === "SELL_CAR") {
+        return {
+            ...state,
+            carRegisteredForSell: !state.carRegisteredForSell
         }
     }
     if(action.type === "LOGOUT") {

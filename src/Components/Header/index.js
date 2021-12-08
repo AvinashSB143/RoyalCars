@@ -688,7 +688,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
                           this.props.getTestDriveCars();
                         }}
                       >
@@ -709,7 +709,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
                           this.props.getBookedCars();
                         }}
                       >
@@ -730,7 +730,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
                           this.props.sellOrders();
                         }}
                       >
@@ -751,7 +751,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          !this.props.authToken && this.setState({ showLoginContent: true, expandLoginDetails: false, });
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
                         }}
                       >
                         <StyledLink
@@ -770,14 +770,17 @@ class Header extends Component {
                           height: "auto",
                           padding: "1rem 0",
                         }}
+                        onClick={() => {
+                          this.setState({ showLoginContent: !this.props.authToken, showLoginContent: false })
+                      }}
                       >
                         <StyledLink
-                          to="#"
+                          to={this.props.authToken ? "/account/profileInformation" : "#"}
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
-                            {" "}
-                            Personal Information
+                          {" "}
+                            Profile Information
                           </p>
                         </StyledLink>
                       </div>

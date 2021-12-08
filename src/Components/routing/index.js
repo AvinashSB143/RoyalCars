@@ -16,7 +16,6 @@ import Sell from "../Sell";
 import BuyCarDetails from '../LifeStyleFeature/buyCarDetails';
 import CarSalesWorking from "../WorkingFeature/Selling";
 import CarBuyingworking from '../WorkingFeature/Buying';
-import PersonalInfo from '../AccountFilters/PersonalInfo';
 import styled from "styled-components";
 const HomePageContainer = styled.div`
   @media (max-width: 768px) {
@@ -24,7 +23,6 @@ const HomePageContainer = styled.div`
   }
 `;
 function Routing() {
-  const [validUser, setValidUser] = useState(false);
 
   const validateUser = () => {};
   return (
@@ -36,9 +34,8 @@ function Routing() {
       <Route
         exact
         path="/homePage"
-        // history={history}
       >
-        <HomePage validateUser={validateUser} />
+        <HomePage />
       </Route>
       <Route path="/lifeStyle">
         <LifeStyleFeature />
@@ -62,10 +59,6 @@ function Routing() {
         <BuyCarDetails />
       </Route>
       <Footer />
-      {/* <Route path="/sell">
-          <Sell />
-        </Route>
-        <Footer /> */}
     </HomePageContainer>
   );
 }
