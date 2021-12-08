@@ -16,13 +16,13 @@ return (
       <div className="working_img">
         <img
           style={{ width: "100%" }}
-          src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="
+          src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
         />
         <h3 style={{ textAlign: "center" }}>
-          Choose from the best pre-owned cars
+          Choose from a range of best pre-owned cars
         </h3>
         <p style={{ textAlign: "center", margin: 0 }}>
-          2000+ fully inspected cars online. Buy with money back guarantee.
+            Over 6000 fully inspected cars. Best performance guaranteed
         </p>
         <div style={{ marginTop: "10px" }}>
           <Link to="#"> View All Cars</Link>
@@ -31,14 +31,13 @@ return (
       <div className="working_img">
         <img
           style={{ width: "100%" }}
-          src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="
+          src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
         />
         <h3 style={{ textAlign: "center" }}>
-          Take a test drive at your Home or Spinny Hub
+            Take the test drive at our location or at the convenience of your home
         </h3>
         <p style={{ textAlign: "center", margin: 0 }}>
-          Sanitised cars for every test drive. Executives trained for COVID
-          protection.
+            Easy appointment. Cars at your doorstep. Expert assistance
         </p>
         <div style={{ marginTop: "10px" }}>
           <Link to="#"> Book Test Drive</Link>
@@ -47,16 +46,31 @@ return (
       <div className="working_img">
         <img
           style={{ width: "100%" }}
-          src="https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="
+          src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
         />
         <h3 style={{ textAlign: "center" }}>
-          Online Payment. Doorstep Delivery.
+            Own a car just with the comfort of your home
         </h3>
         <p style={{ textAlign: "center", margin: 0 }}>
-          Contactless transaction 5-day money back guarantee.
+            Get rid of complex paper work. Easy Online payment. Home delivery
         </p>
         <div style={{ marginTop: "10px" }}>
           <Link to="#"> Buy a Car</Link>
+        </div>
+      </div>
+      <div className="working_img">
+        <img
+          style={{ width: "100%" }}
+          src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
+        />
+        <h3 style={{ textAlign: "center" }}>
+            Sell your car hassle free
+        </h3>
+        <p style={{ textAlign: "center", margin: 0 }}>
+          Get instant quote. Free doorstep evaluation. Quick payment
+        </p>
+        <div style={{ marginTop: "10px" }}>
+          <Link to="#"> Sell a Car</Link>
         </div>
       </div>
     </div>

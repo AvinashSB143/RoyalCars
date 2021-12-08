@@ -76,7 +76,7 @@ function Footer() {
           ))}
           <div>
             <a href="" className="Footer__sell">
-              Sell Used Car at spinny
+              Sell Used Car at Royal Cars
             </a>
           </div>
         </div>

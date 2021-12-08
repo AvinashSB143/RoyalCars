@@ -460,7 +460,30 @@ class Header extends Component {
             this.changeArrow();
             if (this.props.authToken) {
               this.props.logout();
-              this.setState({ showLoginContent: false });
+              // this.setState({ showLoginContent: false });
+              this.setState({ expandBuyCarSection: false,
+                expandMoreSection: false,
+                expandAccountSection: false,
+                showWorkFlow: false,
+                showLoginContent: false,
+                showNameField: false,
+                showEmailField: false,
+                remainingTime: 60,
+                showTimeInterval: false,
+                mobileNumber: null,
+                isError: false,
+                openAboutUs: false,
+                isUserValidated: false,
+                userName: "",
+                password: "",
+                email: "",
+                isUserNamePresent: true,
+                isPasswordPresent: true,
+                isSignUp: false,
+                isForgotPassword: false,
+                isShowOTPEnabled: false,
+                hideButton: false,
+                expandLoginDetails: false, });
             }
           }}
         >

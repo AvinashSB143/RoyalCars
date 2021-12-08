@@ -54,7 +54,7 @@ const ReferEarn = () => {
                 <div className="refer_friend_desc">
                 <h2>Refer Your Friends</h2>
                 <p style = {{color:"#fff"}}>
-                    Once your friend uses your referral you get ₹3000/- straight into your bank account after you have bought or sold a car at Spinny.</p>
+                    Once your friend uses your referral you get ₹3000/- straight into your bank account after you have bought or sold a car at Royal Cars.</p>
                 <button className="refer_friend_btn">
                     <span>Refer a friend
                     <svg transform="rotate(0 0 0)" xmlns="http://www.w3.org/2000/svg" stroke="#6300a3" width="10" height="10" viewBox="0 0 14 8"><path fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M386 48L392 54 398 48" transform="translate(-385 -47)">
@@ -73,7 +73,7 @@ const ReferEarn = () => {
                         <div className = "quest_forGtm">
                             <div className = "farquest">
                                 <h3 className = "farquestContent">
-                                    Q. I'm not a spinny<sup>®</sup>
+                                    Q. I'm not a Royal Cars<sup>®</sup>
                                     customer yet, can I still refer my friends?
                                 </h3>
                                 <div class="quest_accordianStatus " onClick = {() =>changeArrow(1)}>
@@ -84,7 +84,7 @@ const ReferEarn = () => {
                             </div>
                             {localState.expandMoreSection && localState.questionNo === 1 &&
                                   <p className="answer">
-                                      Absolutely, customer or not, you’re welcome to participate in the referral rewards program. While you can refer your friends and accumulate rewards, you will be allowed to redeem them only after you complete a transaction at Spinny yourself.
+                                      Absolutely, customer or not, you’re welcome to participate in the referral rewards program. While you can refer your friends and accumulate rewards, you will be allowed to redeem them only after you complete a transaction at Royal Cars yourself.
                                   </p>
                                   }
                         </div>
@@ -101,7 +101,7 @@ const ReferEarn = () => {
                             </div>
                             {localState.expandMoreSection && localState.questionNo === 2 &&
                                   <p className="answer">
-                                      There’s no limit* to how much you can earn in rewards. Each car sold or bought via your referral gets you an assured cash reward of ₹3,000/-. However, you can only refer your friends to Spinny for a period of 1 year from the date of purchase of your Spinny car or the sale of your car to Spinny.
+                                      There’s no limit* to how much you can earn in rewards. Each car sold or bought via your referral gets you an assured cash reward of ₹3,000/-. However, you can only refer your friends to Royal Cars for a period of 1 year from the date of purchase of your Royal Cars car or the sale of your car to Royal Cars.
     *Subject to changes at the discretion of the business.
                                   </p>
                                   }
@@ -122,11 +122,11 @@ const ReferEarn = () => {
                                       To be eligible for your referral reward, the following listed conditions have to be met:
     <ul style = {{listStyle:"disc",marginLeft:"18px"}}>
       <li>Your friends have to complete a sale or purchase with us.</li>
-      <li>If you’re an existing customer, the referral must be made within 3 year from the date of your sale/purchase at Spinny.</li>
+      <li>If you’re an existing customer, the referral must be made within 3 year from the date of your sale/purchase at Royal Cars.</li>
       <li>While the referral rewards earned by existing customers are immediately available for redeeming to their bank accounts, non-customers are required to complete a sale/purchase within 90 days of a successful referral to be eligible for the same</li>
-      <li>Bank account details must be present in your account &amp; verified by Spinny.</li>
+      <li>Bank account details must be present in your account &amp; verified by Royal Cars.</li>
     </ul>
-    <p>For further assistance, you may get in touch with us at <a href="tel:727-727-7275">727-727-7275</a> or write to us at <a href="mailto:contact@spinny.com">contact@spinny.com.</a></p>
+    <p>For further assistance, you may get in touch with us at <a href="tel:727-727-7275">727-727-7275</a> or write to us at <a href="mailto:contact@Royal Cars.com">contact@Royal Cars.com.</a></p>
 
      </p>
                                   }

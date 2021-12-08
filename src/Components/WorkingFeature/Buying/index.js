@@ -47,7 +47,7 @@ return (
                     <h2>
                         <span>Four wheels fuel a billion dreams and</span>
                         <br />
-                        <span>for every dream there is a Spinny
+                        <span>for every dream there is a Royal Cars
                         <sup>®</sup>
                         </span>
                     </h2>
@@ -59,7 +59,7 @@ return (
                 <div className="about_us_card_container about_us_main">
                     <span>
                     <h1> We are about car joy - from selection to every part of ownership </h1>
-                    <p className="working_buy_description">Whether it’s a first set of wheels you’re after, or something bigger for everybody in the family or that big upgrade, with us you’ll be a happy car owner, confident about your purchase.</p>
+                    <p className="working_buy_description">With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
                     <Link to="/lifeStyle" className="assured_cars">See Royal Car Assured Cars</Link>
                     </span>
                 </div>
@@ -74,7 +74,7 @@ return (
                     <div className="column_container handPicked_cars_details">
                         <h1> Choose from our handpicked cars at Royal Cars</h1>
                         <h4 className="handPicked_cars_description">
-                        Personalise your search with filters. Price range or body type, there’s a Spinny Assured® car for you. High-definition pictures of each car and an online test-drive with Spinny 360 help you further.
+                        Personalise your search with filters. Price range or body type, there’s a Royal Cars Assured® car for you. High-definition pictures of each car and an online test-drive with Royal Cars 360 help you further.
                         </h4>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ return (
                     <div className="column_container handPicked_cars_details">
                     <h1>Your test drive, your way</h1>
                     <h4 className="handPicked_cars_description">
-                        Test-drive any of our cars at your home or at a Spinny car hub near you. Have a chat about any aspect of the car, our experts know each car inside-out. Enjoy your time with it, see if it’s what you’ve always wanted.
+                        Test-drive any of our cars at your home or at a Royal Cars car hub near you. Have a chat about any aspect of the car, our experts know each car inside-out. Enjoy your time with it, see if it’s what you’ve always wanted.
                         </h4>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ return (
                     <div className="column_container handPicked_cars_details">
                         <h1> Paperwork and financing, handled</h1>
                         <h4 className="handPicked_cars_description">
-                        We keep your info confidential and follow global security standards to process your payments. Enjoy financing options for your Spinny Assured® car with interest rates starting as low as 12.5%.
+                        We keep your info confidential and follow global security standards to process your payments. Enjoy financing options for your Royal Cars Assured® car with interest rates starting as low as 12.5%.
                         </h4>
                     </div>
                     <div className="column_container">
@@ -131,7 +131,7 @@ return (
                     <div className="column_container handPicked_cars_details">
                         <h1>Delivery Day – a day to remember</h1>
                         <h4 className="handPicked_cars_description">
-                        Your gleaming, professionally polished Spinny Assured® car – serviced, dry-cleaned and waxed is home-delivered in an eye-catching ceremony.
+                        Your gleaming, professionally polished Royal Cars Assured® car – serviced, dry-cleaned and waxed is home-delivered in an eye-catching ceremony.
                         </h4>
                     </div>
                     <div className="column_container">
@@ -152,7 +152,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -172,7 +172,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Spinny brings in 360-degree interactive view of used cars</p>
+                                <p>Royal Cars brings in 360-degree interactive view of used cars</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -182,7 +182,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Accel-backed Spinny acquaries used cars marketplace Truebil</p>
+                                <p>Accel-backed Royal Cars acquaries used cars marketplace Truebil</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -192,7 +192,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                             </div>
@@ -216,7 +216,7 @@ return (
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                You can schedule a home test drive for this Spinny assured car at any date and time you find convenient using our test drive booking form.Your assigned Spinny Relationship Manager will then reach out to you and make sure all the details of your preferred car are made available to you before arriving at your home on the selected date & time for the test drive. Know more about home test drives.
+                                You can schedule a home test drive for this Royal Cars assured car at any date and time you find convenient using our test drive booking form.Your assigned Royal Cars Relationship Manager will then reach out to you and make sure all the details of your preferred car are made available to you before arriving at your home on the selected date & time for the test drive. Know more about home test drives.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -246,11 +246,11 @@ return (
                                 aria-controls="panel2a-content"
                                 id="panel2a-header"
                                 >
-                                <Typography>Q. Will Spinny help me in arranging for finance?</Typography>
+                                <Typography>Q. Will Royal Cars help me in arranging for finance?</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                Absolutely, buyers can choose to avail financing through Spinny wherein we would get the loan processed through our finance partners. Our established partnerships help us process loans faster and get our customers better interest rates. Depending on your credit worthiness, you can avail used car loans through Spinny at interest rates as low as 12.5% compared to the market rates of 14-16%.
+                                Absolutely, buyers can choose to avail financing through Royal Cars wherein we would get the loan processed through our finance partners. Our established partnerships help us process loans faster and get our customers better interest rates. Depending on your credit worthiness, you can avail used car loans through Royal Cars at interest rates as low as 12.5% compared to the market rates of 14-16%.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -267,7 +267,7 @@ return (
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                At Spinny we are only happy when you’re happy. So if you don't absolutely love your new Spinny Assured car, you can return it back within 5 days or 300 Kms of running (from the date of delivery) and your complete purchase amount will be refunded back to you within 3 working days, no-questions-asked.
+                                At Royal Cars we are only happy when you’re happy. So if you don't absolutely love your new Royal Cars Assured car, you can return it back within 5 days or 300 Kms of running (from the date of delivery) and your complete purchase amount will be refunded back to you within 3 working days, no-questions-asked.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>

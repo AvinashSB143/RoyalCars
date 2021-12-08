@@ -29,7 +29,7 @@ const HomePage = (props) => {
         <LifeStyle />
         <BodyTypeCars />
         <PopularBrands />
-        <FeaturedCars />
+        {/* <FeaturedCars /> */}
         {/* <SliderTest /> */}
     </div>
   );

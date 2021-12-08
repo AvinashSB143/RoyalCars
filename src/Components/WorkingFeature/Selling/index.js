@@ -47,7 +47,7 @@ return (
                     <h2>
                         <span>Four wheels fuel a billion dreams and</span>
                         <br />
-                        <span>for every dream there is a Spinny
+                        <span>for every dream there is a Royal Cars
                         <sup>®</sup>
                         </span>
                     </h2>
@@ -59,7 +59,7 @@ return (
                 <div className="about_us_card_container about_us_main">
                     <span>
                     <h1> Selling your car made simple. </h1>
-                    <p className="working_buy_description">The best price for your car. Simple selling experience. Sellright by Spinny evaluation methodology has been found to get you more value for your car than you would selling it on your own or to a dealer. Also, the process is far simpler and safer as we can directly communicate with the registered sellers and buyers of each car, which is an integral part of our end-to-end customer experience.</p>
+                    <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
                     <Link to="/sell" className="assured_cars">Sell Your Car</Link>
                     </span>
                 </div>
@@ -131,7 +131,7 @@ return (
                     <div className="column_container handPicked_cars_details">
                         <h1>Delivery Day – a day to remember</h1>
                         <h4 className="handPicked_cars_description">
-                        Your gleaming, professionally polished Spinny Assured® car – serviced, dry-cleaned and waxed is home-delivered in an eye-catching ceremony.
+                        Your gleaming, professionally polished Royal Cars Assured® car – serviced, dry-cleaned and waxed is home-delivered in an eye-catching ceremony.
                         </h4>
                     </div>
                     <div className="column_container">
@@ -152,7 +152,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -172,7 +172,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Spinny brings in 360-degree interactive view of used cars</p>
+                                <p>Royal Cars brings in 360-degree interactive view of used cars</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -182,7 +182,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Accel-backed Spinny acquaries used cars marketplace Truebil</p>
+                                <p>Accel-backed Royal Cars acquaries used cars marketplace Truebil</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -192,7 +192,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                             </div>
@@ -212,11 +212,11 @@ return (
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                                 >
-                                <Typography>What is Spinny SellRight?</Typography>
+                                <Typography>What is Royal Cars SellRight?</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                SellRight by Spinny is the most simple way of selling your car with the assurance of getting the best price in the market. With SellRight, you can say goodbye to weeks of uncertainties around your car's sale and get paid in just 1 day. By eliminating all middlemen from the selling process, we will buy your car directly from you and offer you an unmatched price, that truly values your car & comes with the goodness of a simple & convenient selling experience.
+                                SellRight by Royal Cars is the most simple way of selling your car with the assurance of getting the best price in the market. With SellRight, you can say goodbye to weeks of uncertainties around your car's sale and get paid in just 1 day. By eliminating all middlemen from the selling process, we will buy your car directly from you and offer you an unmatched price, that truly values your car & comes with the goodness of a simple & convenient selling experience.
                                 Sell your car the right way with SellRight - the best price for your car, simple selling experience.
                                 </Typography>
                                 </AccordionDetails>
@@ -230,11 +230,11 @@ return (
                                 aria-controls="panel2a-content"
                                 id="panel2a-header"
                                 >
-                                <Typography>How does Spinny guarantee the best price for my car?</Typography>
+                                <Typography>How does Royal Cars guarantee the best price for my car?</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                At Spinny, we believe you deserve a price that truly values your car. That is why, our Doorstep Evaluation makes it easy for you to get a great price and sell your car directly from the comfort of your home. By factoring in your car's condition and similar nearby market transactions, the offer you receive with us is guaranteed 10-15% higher than the market. This is made possible by cutting all middlemen from the selling process and passing on the savings directly to you, so you can sell your car with the assurance of a great price and the goodness of a simple selling experience. Get an instant valuation in less than 10 seconds
+                                At Royal Cars, we believe you deserve a price that truly values your car. That is why, our Doorstep Evaluation makes it easy for you to get a great price and sell your car directly from the comfort of your home. By factoring in your car's condition and similar nearby market transactions, the offer you receive with us is guaranteed 10-15% higher than the market. This is made possible by cutting all middlemen from the selling process and passing on the savings directly to you, so you can sell your car with the assurance of a great price and the goodness of a simple selling experience. Get an instant valuation in less than 10 seconds
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -264,11 +264,11 @@ return (
                                 aria-controls="panel2a-content"
                                 id="panel2a-header"
                                 >
-                                <Typography>Why is my car not eligible under the Spinny selection criteria?</Typography>
+                                <Typography>Why is my car not eligible under the Royal Cars selection criteria?</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                At Spinny, the cars we buy from you are further made available on our website for potential buyers to purchase. In order to ensure the highest quality standards, we do not buy cars that fall outside our selection criteria. However, you can still sell your car to our partner website truebil.com. Just like us, Truebil also offers free doorstep evaluation, same day payments for your car and a great selling experience.
+                                At Royal Cars, the cars we buy from you are further made available on our website for potential buyers to purchase. In order to ensure the highest quality standards, we do not buy cars that fall outside our selection criteria. However, you can still sell your car to our partner website truebil.com. Just like us, Truebil also offers free doorstep evaluation, same day payments for your car and a great selling experience.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -285,7 +285,7 @@ return (
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                Depending on your preferred mode of payment, the amount can get transferred in your account in as early as a few hours. You can choose to get paid via a Bank Transfer (IMPS, RTGS, NEFT), Demand Draft or even a current dated bank cheque. Spinny does not facilitate any cash payments to car sellers.
+                                Depending on your preferred mode of payment, the amount can get transferred in your account in as early as a few hours. You can choose to get paid via a Bank Transfer (IMPS, RTGS, NEFT), Demand Draft or even a current dated bank cheque. Royal Cars does not facilitate any cash payments to car sellers.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -320,7 +320,7 @@ return (
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>
-                                Depending on your preferred mode of payment, the amount can get transferred in your account in as early as a few hours. You can choose to get paid via a Bank Transfer (IMPS, RTGS, NEFT), Demand Draft or even a current dated bank cheque. Spinny does not facilitate any cash payments to car sellers.
+                                Depending on your preferred mode of payment, the amount can get transferred in your account in as early as a few hours. You can choose to get paid via a Bank Transfer (IMPS, RTGS, NEFT), Demand Draft or even a current dated bank cheque. Royal Cars does not facilitate any cash payments to car sellers.
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>
@@ -333,7 +333,7 @@ return (
                                 aria-controls="panel2a-content"
                                 id="panel2a-header"
                                 >
-                                <Typography>Can I sell my commercial car to Spinny?</Typography>
+                                <Typography>Can I sell my commercial car to Royal Cars?</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                 <Typography>

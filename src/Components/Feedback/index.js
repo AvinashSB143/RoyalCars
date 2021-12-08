@@ -41,7 +41,7 @@ export function SwipeableTemporaryDrawer({ classes }) {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <p className="feedback-para">
-        Tell us about your experience with Spinny and if there is something that
+        Tell us about your experience with Royal Cars and if there is something that
         we can do to make it better.
         <span>*</span>
       </p>

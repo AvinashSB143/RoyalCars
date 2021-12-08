@@ -12,6 +12,7 @@ const initialState = {
     carsByBrand: [],
     carsByModel: [],
     testDriveCars: [],
+    carsByCategories: [],
     customerBookedCars: [],
     customerSellOrderList: [],
     carRegisteredForSell: false
@@ -71,6 +72,18 @@ const reducers = (state = initialState, action) => {
         return {
             ...state,
             carsByBrand: action.payload
+        }
+    }
+    if(action.type === "CARS_BY_CATEGORY") {
+        return {
+            ...state,
+            availableCarList: action.payload
+        }
+    }
+    if(action.type === "CARS_BY_BODYTYPE") {
+        return {
+            ...state,
+            availableCarList: action.payload
         }
     }
     if(action.type === "CARS_BY_MODEL") {

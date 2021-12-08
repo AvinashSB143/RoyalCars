@@ -197,6 +197,53 @@ export const getCarsByBrand = brand => {
                 })
                 }
             }).catch(err => console.log(err))
+            dispatch ({
+                type: "AVAILABLE_CARS",
+                payload: []
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getCarsByCategory = category => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/getCustomerCar', {
+                categories: category
+            }).then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "CARS_BY_CATEGORY",
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
+          
+            dispatch ({
+                type: "AVAILABLE_CARS",
+                payload: []
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const getCarsByBodyType = bodyType => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/getCustomerCar', {
+                bodyType: bodyType
+            }).then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "CARS_BY_BODYTYPE",
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
           
             dispatch ({
                 type: "AVAILABLE_CARS",

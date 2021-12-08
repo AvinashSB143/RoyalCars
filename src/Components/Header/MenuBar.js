@@ -31,7 +31,7 @@ return (
                     <h2>
                         <span>Four wheels fuel a billion dreams and</span>
                         <br />
-                        <span>for every dream there is a Spinny
+                        <span>for every dream there is a Royal Cars
                         <sup>®</sup>
                         </span>
                     </h2>
@@ -45,13 +45,13 @@ return (
                         <img className="about_us_card_img"
                         src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_25/1347178/family-road-trip-stock-today-180619-tease-02.jpg"></img>
                     <h3>We are about making car ownership accessible, simple and delightful</h3>
-                    <p>In a country where four wheels fuel dreams, less than two per cent of young Indians are satisfied with the used car experience. Our goal is for the country to trust our method, believe in and enjoy our cars. In this way we aim to propel a billion dreams.</p>
+                    <p>With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
                     </div>
                     <div className="about_us_card">
                         <img className="about_us_card_img"
                         src="https://www.wardsauto.com/sites/wardsauto.com/files/styles/article_featured_retina/public/happy%20young%20customer.jpg?itok=_7ONcJ9u"></img>
-                    <h3>20,000 + happy customers, here’s what one has to say</h3>
-                    <p>Weekends are for getting out there and letting off steam. Thanks to Spinny, our Jeep Compass has brought us closer as a family, enriched our memories and photo feeds. And Monday doesn't seem so daunting anymore.</p>
+                    <h3>happy customers, here’s what one has to say</h3>
+                    <p>With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
                     </div>
                 </div>
                 <div className="importantTo_us about_us_main">
@@ -65,12 +65,12 @@ return (
                         <div className = "importantTo_us_card_list">
                             <img src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
                             <h4>Transparency & Accountability</h4>
-                            <p>It brings trust. Laying bare every available fact about our car at our hubs, after our stringent vetting process, reassures customers. A range of industry-first offerings including Spinny Assured ® mean that we are not just in the pre-owned car business, but in the business of growing and building relationships with our customers.</p>
+                            <p>It brings trust. Laying bare every available fact about our car at our hubs, after our stringent vetting process, reassures customers. A range of industry-first offerings including Royal Cars Assured ® mean that we are not just in the pre-owned car business, but in the business of growing and building relationships with our customers.</p>
                         </div>
                         <div className = "importantTo_us_card_list">
                             <img src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
                             <h4>Persanolized Experience</h4>
-                            <p>Every customer is unique; each demands different things from a set of four wheels. That’s why our inventory is varied and the people you meet in your interactions with Spinny are trained to listen first and at length, then make recommendations.</p>
+                            <p>Every customer is unique; each demands different things from a set of four wheels. That’s why our inventory is varied and the people you meet in your interactions with Royal Cars are trained to listen first and at length, then make recommendations.</p>
                         </div>
                     </div>
                 </div>
@@ -78,8 +78,8 @@ return (
                     <img 
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     <div className="SquadSpinny_contentwrap">
-                        <h3>Squad Spinny</h3>
-                        <p>Our team is our beating heart. Each member of our squad intrinsically believes in what brand Spinny stands for and does. It's a case of mission meets vision meets highly motivated squad, each of whom understand that the needs and aspirations of every customer are unique. 
+                        <h3>Squad Royal Cars</h3>
+                        <p>Our team is our beating heart. Each member of our squad intrinsically believes in what brand Royal Cars stands for and does. It's a case of mission meets vision meets highly motivated squad, each of whom understand that the needs and aspirations of every customer are unique. 
                             <br/><br/>
                             This mindset helps us attract and retain the best talent - whether on our shop floors, our workshops, or as our ambassadors before the car-buying customers.
                             <br />
@@ -120,7 +120,7 @@ return (
                     </div>
                 <div className="Culture_contentwrap">
                     <h3>Culture</h3>
-                    <p>The Spinny badge runs deep. With transparency, integrity, focus on quality and genuine car love. Working at Spinny means a high degree of autonomy, the freedom to make one's own decisions, and a decidedly non-hierarchical structure. Everyone knows what they're doing, enjoy their work and as luck would have it, love what they're doing - driving a billion dreams.</p>
+                    <p>The Royal Cars badge runs deep. With transparency, integrity, focus on quality and genuine car love. Working at Royal Cars means a high degree of autonomy, the freedom to make one's own decisions, and a decidedly non-hierarchical structure. Everyone knows what they're doing, enjoy their work and as luck would have it, love what they're doing - driving a billion dreams.</p>
                 </div>
                 </div>
                 <div className="our_backers">
@@ -147,7 +147,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -167,7 +167,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Spinny brings in 360-degree interactive view of used cars</p>
+                                <p>Royal Cars brings in 360-degree interactive view of used cars</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -177,7 +177,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Accel-backed Spinny acquaries used cars marketplace Truebil</p>
+                                <p>Accel-backed Royal Cars acquaries used cars marketplace Truebil</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
@@ -187,7 +187,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>How Spinny is re-defining the pre-owned car market through its platform</p>
+                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
                                 </a>
                             </div>

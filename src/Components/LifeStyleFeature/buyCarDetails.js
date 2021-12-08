@@ -170,7 +170,7 @@ const BuyCarDetails = (props) => {
                       fill="#888888"
                     ></path>
                   </svg>
-                  <span>&nbsp; Spinny Car Hub, Malleshwaram, Bengaluru</span>
+                  <span>&nbsp; Royal Cars Car Hub, Malleshwaram, Bengaluru</span>
                   <span className="arrowIcon">
                     <svg
                       transform="rotate(0 0 0)"

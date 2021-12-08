@@ -4,15 +4,23 @@
     width: 95vw;
     height: auto;
     overflow: hidden;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
 .benifits_img {
-    width: 20%;
-    border-radius: 25px;
+    /* width: 20%; */
     margin: 0 20px;
-
+    position: relative;
+}
+.benifit {
+    position: absolute;
+    left: 10px;
+    bottom: 50px;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
 }
 @media only screen and (max-width:850px){
     .benifits_img{
