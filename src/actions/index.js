@@ -129,9 +129,7 @@ export const validateOTP = OTP => {
             }).catch(err => console.log(err))
             dispatch ({  
                 type: "API_FAILURE",
-                payload: "success"
             })
-          
         } catch (error) {
             console.log(error)
         }

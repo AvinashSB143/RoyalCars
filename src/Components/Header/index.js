@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import { useEffect, useState, Component } from 'react';
+import { useEffect, useState, Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
@@ -23,6 +23,9 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+
 import "../../styles/styles.css";
 import "./header.css";
 import Logo from "../../images/Logo.png";
@@ -89,6 +92,11 @@ class Header extends Component {
       isShowOTPEnabled: false,
       hideButton: false,
       expandLoginDetails: false,
+      resendOtp: false,
+      snackBarPos: {
+        vertical: 'top',
+        horizontal: 'center',
+      }
     };
   }
   changeOnMouseLeave = () => {
@@ -184,20 +192,6 @@ class Header extends Component {
         isError: true,
       });
     }
-
-    // if(!this.state.userName) {
-    //     this.setState({
-    //         isUserNamePresent: false
-    //     })
-    // }
-    // if(!this.state.password) {
-    //     this.setState({
-    //         isPasswordPresent: false
-    //     })
-    // }
-    // else {
-    //     this.props.loginUser(this.state.userName, this.state.password)
-    // }
   };
 
   updatePassword = () => {
@@ -214,6 +208,8 @@ class Header extends Component {
         isPasswordMisMatched: false,
         showLoginContent: false,
         isForgotPassword: false,
+        password: "",
+        userName: ""
       });
     }
   };
@@ -223,6 +219,18 @@ class Header extends Component {
       this.props.validateOTP(OTP);
     }
   };
+
+  resendOtp = () => {
+    this.props.getOTP(this.state.mobileNumber);
+    this.setState({resendOtp: true}, () => {
+      setTimeout(() => {
+        this.setState({
+          resendOtp: false
+        })
+      },2000)
+    })
+    
+  }
 
   getMobileNumber = (number) => {
     if (number) {
@@ -456,7 +464,12 @@ class Header extends Component {
         <div
           className="more_items"
           onClick={() => {
-            this.setState({ showLoginContent: true });
+            this.setState({ 
+            showLoginContent: true,
+            isSignUp: false,
+            isForgotPassword: false,
+            userName: "",
+            password: "" });
             this.changeArrow();
             if (this.props.authToken) {
               this.props.logout();
@@ -483,7 +496,7 @@ class Header extends Component {
                 isForgotPassword: false,
                 isShowOTPEnabled: false,
                 hideButton: false,
-                expandLoginDetails: false, });
+                expandLoginDetails: false });
             }
           }}
         >
@@ -498,8 +511,29 @@ class Header extends Component {
       </div>
     );
     const { classes } = this.props;
+    const {vertical, horizontal} = this.state.snackBarPos;
     return (
       <>
+      <Snackbar
+        anchorOrigin={{vertical, horizontal}}
+        open={this.state.resendOtp}
+        message="OTP sent Successfully..!"
+        key={vertical + horizontal}
+        className={
+         classes.snackBarRoot
+        }
+        // action={
+        //   <Fragment>
+        //     <IconButton
+        //       aria-label="close"
+        //       color="inherit"
+        //       sx={{ p: 0.5 }}
+        //     >
+        //       <CloseIcon />
+        //     </IconButton>
+        //   </Fragment>
+        // }
+      />
         <div
           className={
             (this.state.showLoginContent &&
@@ -976,7 +1010,7 @@ class Header extends Component {
                 {/* {!this.state.isUserValidated && !this.props.isValidUser && ( */}
                 <>
                   <p4 className="content_pos">Login /Sign Up</p4>
-                  {!this.state.isForgotPassword &&
+                  {!this.state.isForgotPassword && !this.props.signUpSuccess &&
                     !this.props.OTPVerificationSuccessful && (
                       <>
                         <TextField
@@ -1109,6 +1143,19 @@ class Header extends Component {
                       </>
                     )}
                 </>
+                {this.props.signUpSuccess && 
+                <TextField
+                id="OTP"
+                placeholder="OTP"
+                classes={{
+                  root: classes.root,
+                  input: classes.input,
+                }}
+                InputProps={{ disableUnderline: true }}
+                className="login_text_field"
+                onChange={(e) => this.validateOTP(e.target.value)}
+              />
+                }
                 {this.state.isForgotPassword &&
                   this.state.isShowOTPEnabled &&
                   !this.props.OTPVerificationSuccessful && (
@@ -1137,7 +1184,7 @@ class Header extends Component {
                       ) : (
                         <p4 className="content_pos">
                           Din't you get OTP?{" "}
-                          <button className="btn">RESEND AGAIN?</button>
+                          <button className="btn" onClick={() => {this.resendOtp()}}>RESEND AGAIN?</button>
                         </p4>
                       )}
                     </>
@@ -1273,7 +1320,7 @@ const mapDispatchToProps = dispatch => {
         getOTP: (number) => {
             dispatch(
                 getOTP(number)
-                )
+            )
         },
         validateOTP: (OTP) => {
             dispatch(

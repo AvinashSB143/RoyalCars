@@ -677,7 +677,7 @@ const updatebudget = (e, data) => {
           <div className="row_container  selected_filter_list hide_option">
             <button className="clear_Filter_btn" onClick={clearAllFilters}>
               {" "}
-              <ReplayIcon /> Clear All
+              <ReplayIcon /> Clear All Filters
             </button>
           </div>
           {props.availableCarList && props.availableCarList.length !== 0 && (
