@@ -60,8 +60,8 @@ const [transmissionType, setTransmissionType] = useState({
   manual: false
 });
 const [ownerType, setOwnerType] = useState({
-  "1st_Owner": false,
-  "2nd_Owner": false
+  "1": false,
+  "2": false
 });
 const [category, setCategory] = useState({
   adventure: false,
@@ -78,161 +78,158 @@ const [availability, setAvailability] = useState({
 });
 
 const [budget, setBudget] = useState([0, 200000]);
-const [filteredCars, setFilteredCars] = useState([]);
+const [filteredCars, setFilteredCars] = useState({});
 const [filteredCarsKMDriven, setFilteredCarsKMDriven] = useState([]);
 const [filteredCarsYears, setFilteredCarsYears] = useState([]);
 const [filteredCarsList, setFilteredCarsList] = useState(props.availableCarList);
-const [previousCarList, setPreviousCarList] = useState([]);
 
 const updatebudget = (e, data) => {
   setBudget(data)
 }
 
+const getFilteredCarsList = () => {
+  let keys = filteredCars && Object.keys(filteredCars);
+  let list = [];
+  let values  = filteredCars && Object.values(filteredCars).map(i => {
+    if(typeof i === "object") {
+    i.forEach((_i) => {
+      list.push(_i)
+    })
+    }
+    else {
+    list.push(i)
+    }
+    return list;
+    });
+
+  let newCarList = props.availableCarList && props.availableCarList.filter(function(car) {
+    return keys && keys.every(function(_k) {
+        return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && values[0].includes(car[_k] && car[_k].toString().toLowerCase())
+    })
+  })
+  setFilteredCarsList(newCarList)
+}
 
   const handleYearChange = (event) => {
     setYearSelected(event.target.value);
-    // if(event.target.checked) {
-    //   setFilteredCarsYears([...filteredCarsYears, event.target.value])
-    // } else {
-    //   let index = filteredCarsYears.indexOf(event.target.value);
-    //   if(index >-1) {
-    //     filteredCarsYears.splice(index, 1);
-    //   }
-    // }
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-            if(car.year >= event.target.value
-            ) {
-              return car
-            }
-          })
-          setFilteredCarsList(list)
-          setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "year": event.target.value})
     }
   };
   const handleKMChange = (event) => {
     setkmDriven (event.target.value);
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.kmDriven <= event.target.value) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
-    } else {
-      setPreviousCarList(previousCarList)
+      setFilteredCars({...filteredCars, "kmDriven": event.target.value})
     }
   };
 
   const handleFuelTypeChange = event => {
-    setFuelType({...fuelType, [event.target.value] : event.target.checked})
-    // if(event.target.checked) {
-    //   setFilteredCars([...filteredCars, event.target.value])
-    // } else {
-    //   let index = filteredCars.indexOf(event.target.value);
-    //   if(index >-1) {
-    //     filteredCars.splice(index, 1);
-    //   }
-    // }
+    setFuelType({...fuelType, [event.target.value] : event.target.checked});
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.fuelType && car.fuelType.toString().includes(event.target.value)) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "fuelType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "fuelType") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
   const handleBodyTypeChange = event => {
     setBodyType({...bodyType, [event.target.value] : event.target.checked})
-    // if(event.target.checked) {
-    //   setFilteredCars([...filteredCars, event.target.value])
-    // } else {
-    //   let index = filteredCars.indexOf(event.target.value);
-    //   if(index >-1) {
-    //     filteredCars.splice(index, 1);
-    //   }
-    // }
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.bodyType && car.bodyType.toString().includes(event.target.value)) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "bodyType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "bodyType") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
   const handletransmissionChange =  event => {
     setTransmissionType({...transmissionType, [event.target.value] : event.target.checked})
-    // if(event.target.checked) {
-    //   setFilteredCars([...filteredCars, event.target.value])
-    // } else {
-    //   let index = filteredCars.indexOf(event.target.value);
-    //   if(index >-1) {
-    //     filteredCars.splice(index, 1);
-    //   }
-    // }
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.transmission && car.transmission.toString().includes(event.target.value)) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "transmission": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "transmission") {
+        newObj = filteredCars &&  filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
   const handleOwner = event => {
     setOwnerType({...ownerType, [event.target.value] : event.target.checked})
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.totalOwner && car.totalOwner.toString() === event.target.value) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "totalOwner": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "totalOwner") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
   const handleCatogory = event => {
     setCategory({...category, [event.target.value] : event.target.checked})
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.category && car.category.toString() === event.target.value) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "categories": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "categories") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
   const handleAvailability = event => {
     setAvailability({...availability, [event.target.value] : event.target.checked})
     if(event.target.checked) {
-      var list = props.availableCarList && props.availableCarList.filter((car) => {
-        if(car.isActive && car.isActive.toString() === event.target.checked) {
-          return car
-        }
-      })
-      setFilteredCarsList([...previousCarList, list])
-      setPreviousCarList([...previousCarList, list])
+      setFilteredCars({...filteredCars, "isActive": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      setPreviousCarList(previousCarList)
+      let newObj;
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "isActive") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
     }
   }
+
+  
+  useEffect(() => {
+    getFilteredCarsList()
+  },[filteredCars, filteredCarsKMDriven, filteredCarsYears])
 
   const carList = (filteredCarsList && filteredCarsList.length !==0 ? filteredCarsList : props.availableCarList && props.availableCarList).map((car) => {
     return (
@@ -252,6 +249,22 @@ const updatebudget = (e, data) => {
               </div>
     )
   }) 
+
+  let showFilteredCarList = filteredCarsList.length !== 0 && filteredCarsList.map((car) => {
+    return (
+            <div className="column_container car_list_buyCar hide_option">
+                <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
+                <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                </Link>
+                <div className="column_container"  style={{position: "relative"}}>
+                   <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                   <div className="row_container car_km_ifo">
+                     <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                   </div>
+                </div>
+            </div>
+  )
+  })
 
   const clearAllFilters = () => {
     setFilteredCars([]);
@@ -353,22 +366,22 @@ const updatebudget = (e, data) => {
                   <FormControlLabel
                     value="2019"
                     control={<Radio />}
-                    label="2019 % above"
+                    label="2019 & above"
                   />
                   <FormControlLabel
                     value="2017"
                     control={<Radio />}
-                    label="2017 % above"
+                    label="2017 & above"
                   />
                   <FormControlLabel
                     value="2015"
                     control={<Radio />}
-                    label="2015 % above"
+                    label="2015 & above"
                   />
                   <FormControlLabel
                     value="2010"
                     control={<Radio />}
-                    label="2010 % above"
+                    label="2010 & above"
                   />
                 </RadioGroup>
               </FormControl>
@@ -538,7 +551,7 @@ const updatebudget = (e, data) => {
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={ownerType["1st_Owner"]}
+                        checked={ownerType["1"]}
                         onChange={handleOwner}
                         value="1"
                       />
@@ -548,7 +561,7 @@ const updatebudget = (e, data) => {
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={ownerType["2nd_Owner"]}
+                        checked={ownerType["2"]}
                         onChange={handleOwner}
                         value="2"
                       />
@@ -675,51 +688,24 @@ const updatebudget = (e, data) => {
             <li>FAMILY CARS</li>
           </ul>
           <div className="row_container  selected_filter_list hide_option">
-            <button className="clear_Filter_btn" onClick={clearAllFilters}>
-              {" "}
-              <ReplayIcon /> Clear All Filters
-            </button>
-          </div>
-          {props.availableCarList && props.availableCarList.length !== 0 && (
-            <p>Used Family Cars</p>
-          )}
-          <div className="row_container car_list_container">
-            {props.availableCarList && props.availableCarList.length !== 0 ? (
-              <>{carList}</>
-            ) : (
-              <div className="empty_car_list column_container">
-                <p>
+               <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All</button>
+             </div>
+             {props.availableCarList && props.availableCarList.length !== 0 && <p>Used Family Cars</p>}
+             <div className="row_container car_list_container"> 
+             {filteredCarsList && filteredCarsList.length !==0 ? <> {showFilteredCarList}</>  : filteredCars && Object.keys(filteredCars).length !== 0 ? 
+             <div className="empty_car_list hide_option">
                 No Cars Available..!
-                </p>
-                <button className="test_drive_car_btn" onClick={() => props.getCustomerCars()}>
-                  See All Cars
-                </button>
               </div>
-            )}
-            {/* <div className="mobile_buy_main_container">
-              <div className="row_container mobile_mode_filer_btns">
-                <button className="mobile_mode_filer_btn">
-                  Filters
-                </button>
-                <button className="mobile_mode_filer_btn">
-                  Make and Model
-                </button>
-                <button className="mobile_mode_filer_btn">
-                  Year
-                </button>
-                <button className="mobile_mode_filer_btn">
-                  KM Driven
-                </button>
-                <button className="mobile_mode_filer_btn">
-                  Fuel Type
-                </button>
-                <button className="mobile_mode_filer_btn">
-                  BodyType
-                </button>
-                
-              </div>
-
-            </div> */}
+             : props.availableCarList && props.availableCarList.length !== 0 ?  
+               <>
+               {carList}
+               </>
+              : (
+               <div className="empty_car_list hide_option">
+                 No Cars Available..!
+               </div>
+             )
+            }
           </div>
         </div>
       </div>
