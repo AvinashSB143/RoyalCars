@@ -82,6 +82,8 @@ const [filteredCars, setFilteredCars] = useState({});
 const [filteredCarsKMDriven, setFilteredCarsKMDriven] = useState([]);
 const [filteredCarsYears, setFilteredCarsYears] = useState([]);
 const [filteredCarsList, setFilteredCarsList] = useState(props.availableCarList);
+const [selectedBrands, setSelectedBrands] = useState([])
+const [selectedModels, setSelectedModels] = useState([])
 
 const updatebudget = (e, data) => {
   setBudget(data)
@@ -104,7 +106,7 @@ const getFilteredCarsList = () => {
 
   let newCarList = props.availableCarList && props.availableCarList.filter(function(car) {
     return keys && keys.every(function(_k) {
-        return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && values[0].includes(car[_k] && car[_k].toString().toLowerCase())
+        return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && car[_k] && values[0].includes(car[_k].toString().toLowerCase())
     })
   })
   setFilteredCarsList(newCarList)
@@ -129,6 +131,7 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "fuelType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
+      if(filteredCars) {
       for (const [key, value] of Object.entries(filteredCars)) {
         if(key === "fuelType") {
         newObj = filteredCars && filteredCars[key].filter((_val)=>{
@@ -136,6 +139,46 @@ const getFilteredCarsList = () => {
           })
         }
       }
+    }
+      setFilteredCars(newObj)
+      getFilteredCarsList()
+    }
+  }
+  const handleSelectedBrand = event => {
+    setSelectedBrands([...selectedBrands, event.target.value]);
+    if(event.target.checked) {
+      setFilteredCars({...filteredCars, "brand": filteredCars && filteredCars.brand ? [...filteredCars.brand, event.target.value]: [event.target.value]})
+    } else {
+      let newObj;
+      if(filteredCars) {
+        for (const [key, value] of Object.entries(filteredCars)) {
+          if(key === "brand") {
+          newObj = filteredCars && filteredCars[key].filter((_val)=>{
+             return _val !== event.target.value
+            })
+          }
+        }
+      }
+     
+      setFilteredCars(newObj)
+      getFilteredCarsList()
+    }
+  }
+  const handleSelectedModel = event => {
+    setSelectedModels([...selectedModels, event.target.value]);
+    if(event.target.checked) {
+      setFilteredCars({...filteredCars, "model": filteredCars && filteredCars.model ? [...filteredCars.model, event.target.value]: [event.target.value]})
+    } else {
+      let newObj;
+      if(filteredCars) {
+      for (const [key, value] of Object.entries(filteredCars)) {
+        if(key === "model") {
+        newObj = filteredCars && filteredCars[key].filter((_val)=>{
+           return _val !== event.target.value
+          })
+        }
+      }
+    }
       setFilteredCars(newObj)
       getFilteredCarsList()
     }
@@ -146,6 +189,7 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "bodyType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
+      if(filteredCars) {
       for (const [key, value] of Object.entries(filteredCars)) {
         if(key === "bodyType") {
         newObj = filteredCars && filteredCars[key].filter((_val)=>{
@@ -153,6 +197,7 @@ const getFilteredCarsList = () => {
           })
         }
       }
+    }
       setFilteredCars(newObj)
       getFilteredCarsList()
     }
@@ -163,11 +208,13 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "transmission": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "transmission") {
-        newObj = filteredCars &&  filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
+      if(filteredCars) {
+        for (const [key, value] of Object.entries(filteredCars)) {
+          if(key === "transmission") {
+          newObj = filteredCars &&  filteredCars[key].filter((_val)=>{
+             return _val !== event.target.value
+            })
+          }
         }
       }
       setFilteredCars(newObj)
@@ -180,11 +227,13 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "totalOwner": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "totalOwner") {
-        newObj = filteredCars && filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
+      if(filteredCars) {
+        for (const [key, value] of Object.entries(filteredCars)) {
+          if(key === "totalOwner") {
+          newObj = filteredCars && filteredCars[key].filter((_val)=>{
+             return _val !== event.target.value
+            })
+          }
         }
       }
       setFilteredCars(newObj)
@@ -197,11 +246,13 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "categories": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "categories") {
-        newObj = filteredCars && filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
+      if(filteredCars){
+        for (const [key, value] of Object.entries(filteredCars)) {
+          if(key === "categories") {
+          newObj = filteredCars && filteredCars[key].filter((_val)=>{
+             return _val !== event.target.value
+            })
+          }
         }
       }
       setFilteredCars(newObj)
@@ -214,11 +265,13 @@ const getFilteredCarsList = () => {
       setFilteredCars({...filteredCars, "isActive": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
       let newObj;
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "isActive") {
-        newObj = filteredCars && filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
+      if(filteredCars) {
+        for (const [key, value] of Object.entries(filteredCars)) {
+          if(key === "isActive") {
+          newObj = filteredCars && filteredCars[key].filter((_val)=>{
+             return _val !== event.target.value
+            })
+          }
         }
       }
       setFilteredCars(newObj)
@@ -309,24 +362,54 @@ const getFilteredCarsList = () => {
           </div>
           <div className="make__model">
             <Accordion>
-              <AccordionSummary
+            <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <input type="checkbox" />
-                <Typography>Maruti Suzuki</Typography>
+            <FormControlLabel
+                    control={
+                      <Checkbox
+                        // checked={}
+                        onChange={handleSelectedBrand}
+                        value="maruti suzuki"
+                      />
+                    }
+                    label="Maruti Suzuki"
+                  />
               </AccordionSummary>
               <AccordionDetails>
                 <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <input type="checkbox" />
-                    <Typography>Baleno</Typography>
-                  </AccordionSummary>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        // checked={fuelType.petrol}
+                        onChange={handleSelectedModel}
+                        value="Baleno"
+                      />
+                    }
+                    label="Baleno"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        // checked={fuelType.petrol}
+                        onChange={handleFuelTypeChange}
+                        value="Swift"
+                      />
+                    }
+                    label="Swift"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={fuelType.petrol}
+                        onChange={handleFuelTypeChange}
+                        value="Swift Dezire"
+                      />
+                    }
+                    label="Swift Dezire"
+                  />
                 </Accordion>
               </AccordionDetails>
             </Accordion>
