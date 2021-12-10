@@ -142,7 +142,7 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info">
                         <p>Hello,</p>
-                        <p>Avinash</p>
+                        <p>{props.userDetails ? props.userDetails.username : ""}</p>
                     </div>
                 </div>
                 <Link to="/account/testDrive" className={`${filter === "testDrive" && "item_focused"} account_filtered_options `}>

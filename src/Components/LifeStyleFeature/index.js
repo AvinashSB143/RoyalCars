@@ -361,13 +361,13 @@ const getFilteredCarsList = () => {
             </div>
           </div>
           <div className="make__model">
-            <Accordion>
+          <Accordion>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-            <FormControlLabel
+              <FormControlLabel
                     control={
                       <Checkbox
                         // checked={}
@@ -377,8 +377,8 @@ const getFilteredCarsList = () => {
                     }
                     label="Maruti Suzuki"
                   />
-              </AccordionSummary>
-              <AccordionDetails>
+            </AccordionSummary>
+            <AccordionDetails>
                 <Accordion>
                   <FormControlLabel
                     control={
@@ -390,50 +390,84 @@ const getFilteredCarsList = () => {
                     }
                     label="Baleno"
                   />
-                  <FormControlLabel
+                </Accordion>
+                <Accordion>
+                <FormControlLabel
                     control={
                       <Checkbox
-                        // checked={fuelType.petrol}
-                        onChange={handleFuelTypeChange}
+                        onChange={handleSelectedModel}
                         value="Swift"
                       />
                     }
                     label="Swift"
                   />
-                  <FormControlLabel
+                </Accordion>
+                <Accordion>
+                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={fuelType.petrol}
-                        onChange={handleFuelTypeChange}
+                        onChange={handleSelectedModel}
                         value="Swift Dezire"
                       />
                     }
                     label="Swift Dezire"
-                  />
+                  /> 
                 </Accordion>
-              </AccordionDetails>
+            </AccordionDetails>
+            
             </Accordion>
             <Accordion>
-              <AccordionSummary
+            <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <input type="checkbox" />
-                <Typography>Hyundai</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
+              <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleSelectedBrand}
+                        value="Hyundai"
+                      />
+                    }
+                    label="Hyundai"
+                  />
+            </AccordionSummary>
+            <AccordionDetails>
                 <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                  >
-                    <input type="checkbox" />
-                    <Typography>Creta</Typography>
-                  </AccordionSummary>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleSelectedModel}
+                        value="Creta"
+                      />
+                    }
+                    label="Creta"
+                  />
+                                 </Accordion>
+                <Accordion>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleSelectedModel}
+                        value="Alcazar"
+                      />
+                    }
+                    label="Alcazar"
+                  />
                 </Accordion>
-              </AccordionDetails>
+                <Accordion>
+                <FormControlLabel
+                    control={
+                      <Checkbox
+                        onChange={handleSelectedModel}
+                        value="I20"
+                      />
+                    }
+                    label="I20"
+                  /> 
+                </Accordion>
+            </AccordionDetails>
+            
             </Accordion>
           </div>
           <div className="filter_option_container">
