@@ -111,28 +111,6 @@ const BuyCarDetails = (props) => {
           <div className="carDetails">
             <div className="rightSection">
               <div>
-                <div className="shortList">
-                  <div>
-                    <div style={{ marginRight: "3px" }}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="28"
-                        height="28"
-                        viewBox="0 0 24 24"
-                        fill="#222745"
-                        stroke-width="0"
-                      >
-                        <path d="M0 0h24v24H0V0z" fill="none"></path>
-                        <path d="M19.66 3.99c-2.64-1.8-5.9-.96-7.66 1.1-1.76-2.06-5.02-2.91-7.66-1.1-1.4.96-2.28 2.58-2.34 4.29-.14 3.88 3.3 6.99 8.55 11.76l.1.09c.76.69 1.93.69 2.69-.01l.11-.1c5.25-4.76 8.68-7.87 8.55-11.75-.06-1.7-.94-3.32-2.34-4.28zM12.1 18.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
-                      </svg>
-                    </div>
-                  </div>
-                  <span>
-                    1 People
-                    <br />
-                    Shortlisted
-                  </span>
-                </div>
                 <h1>
                   {selectedCar && selectedCar.year} {selectedCar && selectedCar.brand} {selectedCar && selectedCar.model}
                 </h1>
@@ -193,55 +171,6 @@ const BuyCarDetails = (props) => {
                   </span>
                 </div>
                 <div className="carPriceMargin">
-                  <div className="carPrice">
-                    ₹{selectedCar.budget}
-                    <a> View benefits</a>
-                    <svg
-                      transform="rotate(-90 0 0)"
-                      xmlns="http://www.w3.org/2000/svg"
-                      stroke="#6300A3"
-                      width="7"
-                      height="7"
-                      viewBox="0 0 14 8"
-                    >
-                      <path
-                        fill="none"
-                        fill-rule="evenodd"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2.5"
-                        d="M386 48L392 54 398 48"
-                        transform="translate(-385 -47)"
-                      ></path>
-                    </svg>
-                  </div>
-                  {/* <a className="carEMI">
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                      >
-                        <g fill="none" fill-rule="evenodd">
-                          <g>
-                            <g>
-                              <path
-                                d="M0 0L24 0 24 24 0 24z"
-                                transform="translate(-27 -373) translate(27 373)"
-                              ></path>
-                              <path
-                                fill="#2e054e"
-                                fill-rule="nonzero"
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1s1 .45 1 1v4c0 .55-.45 1-1 1zm1-8h-2V7h2v2z"
-                                transform="translate(-27 -373) translate(27 373)"
-                              ></path>
-                            </g>
-                          </g>
-                        </g>
-                      </svg>
-                    </span>
-                  </a> */}
                 </div>
                 <p className="fixedPrice">Fixed on road price</p>
                 <div className="availableOffer">

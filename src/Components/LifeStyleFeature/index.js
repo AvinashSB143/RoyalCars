@@ -800,7 +800,7 @@ const getFilteredCarsList = () => {
         </div>
         <div className="colunm_container featured_filtered_cars mobile_buy_main_container">
           <ul>
-            <Link to="/homrPage">HOME</Link>
+            <Link to="/homePage" style={{marginRight: "15px"}}>HOME</Link>
             <Link>USED CARS</Link>
           </ul>
           <div className="row_container  selected_filter_list hide_option">
