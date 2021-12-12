@@ -288,7 +288,7 @@ const getFilteredCarsList = () => {
     return (
               <div className="column_container car_list_buyCar hide_option">
                   <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
-                  <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                  <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`} />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -307,7 +307,7 @@ const getFilteredCarsList = () => {
     return (
             <div className="column_container car_list_buyCar hide_option">
                 <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
-                <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`} />
                 </Link>
                 <div className="column_container"  style={{position: "relative"}}>
                    <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>

@@ -885,7 +885,8 @@ class Header extends Component {
             <div className="header_logo">
               <img src={Logo} alt="App_LOGO" />
             </div>
-            <div className="header_search_bar hide_option ">
+            {this.props.authToken &&
+              <div className="header_search_bar hide_option ">
               <div className="search_container">
                 <TextField
                   id="standard-search"
@@ -901,6 +902,7 @@ class Header extends Component {
                 <SearchIcon className="search_icon" />
               </div>
             </div>
+            }
             <Link
               to={this.props.authToken ? "/lifeStyle" : "#"}
               className="header_buy_car show_desktop_menu"

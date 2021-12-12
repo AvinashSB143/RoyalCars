@@ -11,7 +11,7 @@ const BuyCarDetails = (props) => {
 
     const carInformation = {
         // "bookNow": selectedCar.imagePath,
-        "bookNow": "http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png",
+        "bookNow": `http://13.127.242.21:5000/${selectedCar.imagePath}`,
         "model": selectedCar ? selectedCar.model : "",
         "year": selectedCar ? selectedCar.year : "",
         "brand": selectedCar ? selectedCar.brand : "",
@@ -105,7 +105,7 @@ const BuyCarDetails = (props) => {
             {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
             <img
               className="filter_car_img"
-              src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png"
+              src={`http://13.127.242.21:5000/${selectedCar.imagePath}`}
             />
           </div>
           <div className="carDetails">

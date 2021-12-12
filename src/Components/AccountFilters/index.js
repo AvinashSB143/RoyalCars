@@ -48,7 +48,7 @@ const AccountFilters = (props) => {
              <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}
              onClick={() => props.seletedCar(car)}>
                   <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                  <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`}/>
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.yesr}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -65,7 +65,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                    <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`} />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -86,7 +86,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                    <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`} />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -107,7 +107,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list">
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src="http://65.0.81.1:5000/uploads/image_Toyota_Innova_Crysta_2020_0_1200x768.png" />
+                    <img className="filter_car_img" src={`http://13.127.242.21:5000/${car.imagePath}`} />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -191,16 +191,6 @@ const AccountFilters = (props) => {
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
                 </Link>
-                {/* <Link to="/account/help_suport" className={`${filter === "help_suport" && "item_focused"} account_filtered_options `}>
-                    <PermIdentityIcon classes={{
-                        root: classes.root
-                    }}/>
-                    <div className="column_container user_info">
-                        <h4>Help and Support </h4>
-                        <p>Need help? Chat with us</p>
-                    </div>
-                    <ArrowForwardIosIcon className="icon_pos"/>
-                </Link> */}
                 <Link to="/account/refer_and_earn" className={`${filter === "refer_and_earn" && "item_focused"} account_filtered_options `}>
                     <PermIdentityIcon classes={{
                         root: classes.root
@@ -215,7 +205,6 @@ const AccountFilters = (props) => {
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
-                    {/* <PersonalInfo /> */}
                     <div className="column_container user_info">
                         <h4>Personal Information</h4>
                         <p>Edit & manage your profile</p>
