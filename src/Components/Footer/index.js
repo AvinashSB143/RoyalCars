@@ -8,28 +8,19 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 function Footer() {
   const locations = [
-    " DelhiNCR",
-    "Bangalore",
-    "Hyderabad",
-    "Mumbai",
-    "Pune",
-    "Delhi",
-    " Gurgaon",
-    "Coimbatore",
-    "Indore",
-    "Kochi",
+    "Mangalore"
   ];
 
   const links = [
     "RoyalCars",
-    "Who we are",
-    "Blog",
-    "work with us",
-    "Contact us",
-    "Privacy",
-    " FAQ's",
-    "Terms & condistions",
-    "Customer review",
+    // "Who we are",
+    // "Blog",
+    // "work with us",
+    // "Contact us",
+    // "Privacy",
+    // " FAQ's",
+    // "Terms & condistions",
+    // "Customer review",
   ];
 
   const buttons = ["727-727-7275", "get instant Quotes", "Browse cars"];
@@ -46,28 +37,25 @@ function Footer() {
           </button>
         </div>
         <p className="APP_Description">
-          About Company Description dummy text dummy text dummy text dummy dummy
-          text dummy text dummy text dummy text dummy text dummy text dummy text
-          dummy text dummy text dummy text dummy text dummy text dummy text
-          dummy text dummy text dummy text dummy text dummy text
+        Welcome to Royal Cars! Your friendly second hand car dealer in Mangalore. We take care of the end-to-end process of Buying and Selling of your car. We at Royal Cars have a wide variety of cars suiting your needs right from your first family car to your favourite off-road vehicle.
         </p>
-        <div className="Footer__SocialIcons">
+        {/* <div className="Footer__SocialIcons">
           <FacebookIcon />
           <TwitterIcon />
           <LinkedInIcon />
           <InstagramIcon />
-        </div>
+        </div> */}
       </div>
-      <div>
+      {/* <div>
         <h3 className="sub_heading">About us</h3>
         <div className="Footer__Links">
           {links.map((link) => (
-            <a href="#" className="links">
+            <a href="/homePage" className="links">
               {link}
             </a>
           ))}
         </div>
-      </div>
+      </div> */}
       <div>
         <h3>Buy Used cars</h3>
         <div className="Footer__LocationLinks">

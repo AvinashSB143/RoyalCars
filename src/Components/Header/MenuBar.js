@@ -180,7 +180,7 @@ return (
                                 <p>Accel-backed Royal Cars acquaries used cars marketplace Truebil</p>
                                 </div>
                                 </a>
-                                <a className="press_content_img"
+                                {/* <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
                                 <div className = "press_imgContainer">
                                     <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
@@ -189,7 +189,7 @@ return (
                                 <div className = "press_descContainer">
                                 <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
-                                </a>
+                                </a> */}
                             </div>
                         </div>
                         <div className = "press_carousel">

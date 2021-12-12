@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import React from "react";
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';  
 import { connect } from "react-redux";
 import {bookNow} from "../../actions";
 // import LocalOfferIcon from '@mui/icons-material/';

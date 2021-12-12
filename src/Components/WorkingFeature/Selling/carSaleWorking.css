@@ -406,7 +406,7 @@
     .press_content_img {
     flex: 1;
     min-width: 0;
-    margin-right: 16px;
+    margin-right: 10px;
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid #e6e6e6;
