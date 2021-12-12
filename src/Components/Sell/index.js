@@ -63,33 +63,6 @@ export const HowItsWork__listItem = ({
         alt="hiw-1.png"
         class=""
       />
-      {/* <div class="HowItsWork__contentSection">
-        <p class="HowItsWork__heading">Instant online quote</p>
-        <p class="HowItsWork__details">
-          Fill in a few details about your car for an instant quote.
-        </p>
-        <a class="styles__btn" href="/check-car-valuation/">
-          Get Quote
-          <svg
-            transform="rotate(0 0 0)"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#6300A3"
-            width="9"
-            height="9"
-            viewBox="0 0 14 8"
-          >
-            <path
-              fill="none"
-              fill-rule="evenodd"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M386 48L392 54 398 48"
-              transform="translate(-385 -47)"
-            ></path>
-          </svg>
-        </a>
-      </div> */}
     </div>
   );
 };

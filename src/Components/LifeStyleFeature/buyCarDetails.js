@@ -170,7 +170,7 @@ const BuyCarDetails = (props) => {
                       fill="#888888"
                     ></path>
                   </svg>
-                  <span>&nbsp; Royal Cars Car Hub, Malleshwaram, Bengaluru</span>
+                  <span>&nbsp; Royal Cars Car Hub, Mangalore</span>
                   <span className="arrowIcon">
                     <svg
                       transform="rotate(0 0 0)"
@@ -194,7 +194,7 @@ const BuyCarDetails = (props) => {
                 </div>
                 <div className="carPriceMargin">
                   <div className="carPrice">
-                    ₹ 12,25,000
+                    ₹{selectedCar.budget}
                     <a> View benefits</a>
                     <svg
                       transform="rotate(-90 0 0)"
@@ -215,8 +215,7 @@ const BuyCarDetails = (props) => {
                       ></path>
                     </svg>
                   </div>
-                  <a className="carEMI">
-                    <span>₹ 22,047</span> /month
+                  {/* <a className="carEMI">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -242,30 +241,9 @@ const BuyCarDetails = (props) => {
                         </g>
                       </svg>
                     </span>
-                  </a>
+                  </a> */}
                 </div>
                 <p className="fixedPrice">Fixed on road price</p>
-                <a className="checkPrice">
-                  Check your savings
-                  <svg
-                    transform="rotate(-90 0 0)"
-                    xmlns="http://www.w3.org/2000/svg"
-                    stroke="#01B088"
-                    width="7"
-                    height="7"
-                    viewBox="0 0 14 8"
-                  >
-                    <path
-                      fill="none"
-                      fill-rule="evenodd"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2.5"
-                      d="M386 48L392 54 398 48"
-                      transform="translate(-385 -47)"
-                    ></path>
-                  </svg>
-                </a>
                 <div className="availableOffer">
                   <h1>Available Offers</h1>
                   <ul className="offerList">

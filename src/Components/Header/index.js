@@ -882,9 +882,9 @@ class Header extends Component {
               </div>
             )}
 
-            <div className="header_logo">
+            <Link to="/homePage" className="header_logo">
               <img src={Logo} alt="App_LOGO" />
-            </div>
+            </Link>
             {this.props.authToken &&
               <div className="header_search_bar hide_option ">
               <div className="search_container">

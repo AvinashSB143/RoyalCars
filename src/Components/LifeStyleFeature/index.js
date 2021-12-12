@@ -800,9 +800,8 @@ const getFilteredCarsList = () => {
         </div>
         <div className="colunm_container featured_filtered_cars mobile_buy_main_container">
           <ul>
-            <li>HOME</li>
-            <li>USED CARS</li>
-            <li>FAMILY CARS</li>
+            <Link to="/homrPage">HOME</Link>
+            <Link>USED CARS</Link>
           </ul>
           <div className="row_container  selected_filter_list hide_option">
                <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All</button>
