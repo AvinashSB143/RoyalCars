@@ -311,8 +311,10 @@ li {
   margin: 10px;
 }
 .make__model{
-      width: 90%;
+    width: 90%;
     margin-left: -2rem;
+    height: 400px;
+    overflow: scroll;
 }
 .buycar__container{
   display: grid;
