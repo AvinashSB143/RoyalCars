@@ -116,11 +116,11 @@
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  width: 300px;
+  width: 200px;
   border-radius: 5px;
   height: auto;
   justify-content: space-between;
-  right: 18%;
+  right: 25%;
 }
 
 .model_year_btn {
@@ -136,7 +136,7 @@
   border: none;
 }
 .select_car_filter {
-  right: 10%;
+  right: 18%;
   height: 400px;
   overflow-y: scroll;
 }
@@ -146,7 +146,7 @@
 }
 .search_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -163,12 +163,13 @@
   width: 100%;
 }
 .select_carbrand_filter {
-  right: 0px;
+  right: 5%;
+  overflow: hidden;
 }
 
 .select_variant_filter {
-  width: 350px;
-  right: -5%;
+  overflow: hidden;
+  right: 0%;
 }
 
 .select_owner_filter {
@@ -176,8 +177,9 @@
   right: -10%
 }
 .select_km_filter {
-  width: 300px;
-  right: -15%;
+  width: 200px;
+  left: 20%;
+  overflow: hidden
 }
 .selected_option {
   background-color: grey

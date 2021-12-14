@@ -118,6 +118,7 @@ const reducers = (state = initialState, action) => {
     }
     if(action.type === "API_FAILURE") {
         return {
+            ...state,
             api_failure: true
         }
     }

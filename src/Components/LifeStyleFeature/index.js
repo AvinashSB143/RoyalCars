@@ -748,6 +748,16 @@ const getFilteredCarsList = () => {
                     }
                     label="2nd Owner"
                   />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={ownerType["3"]}
+                        onChange={handleOwner}
+                        value="3"
+                      />
+                    }
+                    label="3rd Owner"
+                  />
                 </FormGroup>
               </FormControl>
             </div>

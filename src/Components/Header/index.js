@@ -1012,7 +1012,7 @@ class Header extends Component {
                 {/* {!this.state.isUserValidated && !this.props.isValidUser && ( */}
                 <>
                   <p4 className="content_pos">Login /Sign Up</p4>
-                  {!this.state.isForgotPassword && !this.props.signUpSuccess &&
+                  {!this.state.isForgotPassword && !this.props.signUpSuccess && !this.props.authToken &&
                     !this.props.OTPVerificationSuccessful && (
                       <>
                         <TextField

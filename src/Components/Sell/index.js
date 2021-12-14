@@ -1,7 +1,9 @@
-import React, {useState} from "react";
+import React, {useState, Fragment} from "react";
 import {connect} from 'react-redux';
 import "./sell.css";
 import Feedback from "../Feedback";
+import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+import DateFnsUtils from '@date-io/date-fns';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -29,6 +31,13 @@ const styles = theme => ({
   },
   snackBarRoot: {
     backgroundColor: "green"
+  },
+  datePickerRoot: {
+    left: "20%",
+  },
+  animated: {
+    fontSize: "18px",
+    fontWeight: "400"
   }
 });
 
@@ -174,7 +183,7 @@ const TabPanel = (props) => {
 
 const Sell = (props) => {
 
-const {classes}  = props;
+const {classes,authToken}  = props;
 const [showYearList, setShowYearList] = useState(false)
 const [showBrandList, setShowBrandList] = useState(false)
 const [showModelList, setShowModelList] = useState(false)
@@ -191,6 +200,7 @@ const [state, setState] = React.useState({
   vertical: 'top',
   horizontal: 'center',
 });
+const [selectedDate, handleDateChange] = useState(new Date());
 
 const { vertical, horizontal, open } = state;
 
@@ -202,47 +212,27 @@ const { vertical, horizontal, open } = state;
     props.disableSnackBar()
   };
 
+  const handleYearChange = (event) => {
+    handleDateChange();
+    setShowYearList(false)
+    setselectedYear(event.getFullYear())
+  }
 
-  const carModelsYear = ["2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"];
-  // const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
-  // const carModels = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki"];
+
+  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki","Others"];
 const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km","30,000km - 40,000km", "40,000km -50,000km"]
 
-const yearListContainer = carModelsYear.map((item, index) => {
-  return(
-  <button className={`${item===selectedyear ? "selected_option model_year_btn" : "model_year_btn"}`} 
-  onClick={()=> {
-    setselectedYear(item) 
-    setShowYearList(false)
-    props.getCarsByYear(item)
-  }
-  
-  }>{item}</button>
-  )
-})
 
-
-const carBrandsContainer = props.carsByYears && props.carsByYears.map((item, index) => {
+const carBrandsContainer = carbrands.map((item, index) => {
   return(
-  <button className={`${selectedBrand === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
+  <button 
+  className={`${selectedBrand === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
   onClick={() => {
-    props.getCarsByBrand(item.brand)
-    setselectedBrand(item.brand)
+    props.getCarsByBrand(item)
+    setselectedBrand(item)
     setShowBrandList(false)
   }}
-  >{item.brand}</button>
-  )
-})
-
-const carBrandsFiltered = props.carsByBrand && props.carsByBrand.map((item, index) => {
-  return(
-  <button className={`${selectedModel === item ? "selected_option car_brand_btn" : "car_brand_btn"}`} 
-  onClick={() => {
-    props.getCarsByModel(item.model)
-    setsetselectedModel(item.model)
-    setShowModelList(false)
-  }}
-  >{item.model}</button>
+  >{item}</button>
   )
 })
 
@@ -298,12 +288,14 @@ const handleChange = (event, newValue) => {
 
 const enableShowYearlist = () => {
   // props.getCarsByYears()
-  setShowYearList(!showYearList)
-  setShowBrandList(false)
-  setShowModelList(false)
-  setShowVariantList(false)
-  setShowOwnerList(false)
-  setKMList(false)
+  if(props.authToken) {
+    setShowYearList(!showYearList)
+    setShowBrandList(false)
+    setShowModelList(false)
+    setShowVariantList(false)
+    setShowOwnerList(false)
+    setKMList(false)
+  }
 }
 const enableShowBrandList = () => {
   setShowYearList(false)
@@ -431,30 +423,29 @@ const carDetails = {
               onClick={() => enableShowKMList()}
             />
             <button class="search-button"
-            onClick={() => props.dispatchSellCar(carDetails)}
-            >Search</button>
+            // disabled={!selectedKMDriven}
+            onClick={() => {props.dispatchSellCar(carDetails)}}
+            >Save Car Details</button>
           </div>
         {showYearList &&   <div className="sellcar_filter_container">
-            {yearListContainer}
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <DatePicker
+              views={["year"]}
+              label="Please Select Year"
+              value={selectedDate}
+              onChange={e => handleYearChange(e)}
+              classes={{
+                root: classes.datePickerRoot,
+                animated: classes.animated
+              }}
+              disableUnderline={true}
+            />
+          </MuiPickersUtilsProvider>
           </div>
         }
          {selectedyear && showBrandList && <div className="sellcar_filter_container select_car_filter">
           <div className="column_container car_list_options">
-                  <div className="search_container">
-                    <TextField
-                    id="standard-search"
-                    placeholder="Search field"
-                    type="search"
-                    variant="standard"
-                    classes={{
-                        root: classes.root,
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    className="search_text"
-                    />
-                    <SearchIcon className="search_icon"/>
-                  </div>
-                  {carBrandsContainer}
+             {carBrandsContainer}
           </div>
           </div>}
          {selectedyear && selectedBrand && showModelList && <div className="sellcar_filter_container select_carbrand_filter">
@@ -462,7 +453,7 @@ const carDetails = {
                   <div className="search_container">
                     <TextField
                     id="standard-search"
-                    placeholder="Search field"
+                    placeholder="Please enter car Model"
                     type="search"
                     variant="standard"
                     classes={{
@@ -470,33 +461,32 @@ const carDetails = {
                     }}
                     InputProps={{ disableUnderline: true }}
                     className="search_text"
+                    onChange={e => setsetselectedModel(e.target.value)}
                     />
-                    <SearchIcon className="search_icon"/>
+                    <button onClick={()=> setShowModelList(false)}>
+                      Okay
+                    </button>
                   </div>
-                  {carBrandsFiltered}
           </div>
           </div>}
          {selectedModel && showVariantList &&  <div className="sellcar_filter_container select_variant_filter">
           <div className="column_container car_list_options">
                   <div className="search_container">
-                  <Box sx={{ width: '100%' }}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
-                      classes={{
-                        flexContainer: classes.flexContainer
-                      }}
-                      >
-                        <Tab label="Petrol" />
-                        <Tab label="Diesel" />
-                      </Tabs>
-                    </Box>
-                    <TabPanel value={value} index={1}>
-                    {petrolCarsList}
-                    </TabPanel>
-                    <TabPanel value={value} index={1}>
-                      {dieselCarsList}
-                    </TabPanel>
-                  </Box>
+                    <TextField
+                    id="standard-search"
+                    placeholder="Please type Variant"
+                    type="search"
+                    variant="standard"
+                    classes={{
+                        root: classes.root,
+                    }}
+                    InputProps={{ disableUnderline: true }}
+                    className="search_text"
+                    onChange={e => setselectedVariant(e.target.value)}
+                    />
+                    <button onClick={()=> setShowVariantList(false)}>
+                      Okay
+                    </button>
                   </div>
           </div>
           </div>}
@@ -510,10 +500,31 @@ const carDetails = {
             setselectedOwner("2nd Owner")
             setShowOwnerList(false)
           }}>2nd Owner</button>   
+          <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
+          onClick={() => {
+            setselectedOwner("3rd Owner")
+            setShowOwnerList(false)
+          }}>3nd Owner</button>   
           </div>}
           {selectedOwner && showKMList &&  <div className="sellcar_filter_container select_km_filter">
                 <div className="column_container car_list_options">
-                  {KmDriven}
+                <div className="search_container">
+                    <TextField
+                    id="standard-search"
+                    placeholder="KMs Driven"
+                    type="search"
+                    variant="standard"
+                    classes={{
+                        root: classes.root,
+                    }}
+                    InputProps={{ disableUnderline: true }}
+                    className="search_text"
+                    onChange={e => setselectedKMDriven(e.target.value)}
+                    />
+                    <button onClick={()=> setKMList(false)}>
+                      Okay
+                    </button>
+                  </div>
                  </div>
           </div>}
         </div>
@@ -531,6 +542,7 @@ const mapStateToProps = state => {
     carsByBrand: state.reducers.carsByBrand,
     carsByModel: state.reducers.carsByModel,
     carRegisteredForSell: state.reducers.carRegisteredForSell,
+    authToken: state.reducers.authToken,
    }
   
 }
