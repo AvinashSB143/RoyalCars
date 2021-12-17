@@ -1,0 +1,130 @@
+#feedback {
+    position: fixed;
+    z-index: 10000;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    animation: ipsContainer-slide-reset 1s forwards;
+}
+
+
+.customerFeedBack {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    align-items: center;
+    left: 25%;
+    background: white;
+    top: 20%;
+    width: 40%;
+    border-radius: 1rem;
+    background-color: #cfd4d1;
+}
+
+.feedbackBtns {
+    justify-content: space-around;
+    margin: 20px auto;
+}
+
+.ipsButton.sapMBtnBase {
+    writing-mode: tb-rl;
+    border-radius: 3px 0px 0px 3px;
+    z-index: 100000;
+    position: absolute;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    cursor: pointer;
+    height: auto;
+    padding: 0;
+}
+
+.ipsButton .sapMBtnHoverable.sapMFocusable {
+    height: auto;
+    overflow: auto;
+    padding: 1rem 0.5rem;
+}
+
+span.sapMBtnInner.sapMBtnEmphasized {
+    background-image: none;
+    background-color: #f8bdc1;
+    border-color: #f16e77;
+    color: #483d3d;
+    text-shadow: 0 0 0.125rem #fff;
+}
+.sapMBtn .sapMBtnInner {
+    display: flex;
+    justify-content: center;
+}
+
+.sapMBtnInner {
+    vertical-align: top;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    box-sizing: border-box;
+    font-family: "72fallback","72","72full",Arial,Helvetica,sans-serif;
+    font-size: 0.875rem;
+    height: 2.5rem;
+    min-width: 2.5rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    background-color: #f7f7f7;
+    border: 0.0625rem solid #ababab;
+    border-radius: 0.2rem;
+    color: #346187;
+    text-shadow: 0 0 0.125rem #fff;
+}
+
+.ipsButton .sapMBtnContent {
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2rem;
+    width: 1.2rem;
+}
+
+.sapMBtn .sapMBtnContent {
+    display: inline-block;
+    flex-shrink: 1;
+}
+
+.sapMBtnContent {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: top;
+    line-height: 2.375rem;
+}
+
+.ipsButton .sapMBtnContent {
+    writing-mode: tb-rl;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.2rem;
+    width: 1.2rem;
+}
+
+@media only screen and (max-width:850px){
+    .customerFeedBack{
+        width:50%;
+        margin:1rem ;
+        padding: 1rem
+    }
+}
+@media only screen and (min-width:320px) and (max-width: 690px){
+    .customerFeedBack{
+        width:60%;
+        margin:1rem ;
+        padding: 1rem
+    }
+}

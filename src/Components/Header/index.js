@@ -864,7 +864,7 @@ class Header extends Component {
                     </AccordionDetails>
                   </Accordion>
                 </div>
-                <div
+                {/* <div
                   style={{
                     borderBottom: "0.5px solid grey",
                     height: "auto",
@@ -878,7 +878,7 @@ class Header extends Component {
                     <PersonIcon className="mobile_login_icon_pos" />
                     <p style={{ fontSize: "25px" }}>FAQ</p>
                   </StyledLink>
-                </div>
+                </div> */}
               </div>
             )}
 
