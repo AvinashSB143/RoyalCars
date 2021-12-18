@@ -828,7 +828,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          this.setState({ showLoginContent: !this.props.authToken, showLoginContent: false })
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false })
                       }}
                       >
                         <StyledLink
@@ -848,7 +848,7 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          this.setState({ showLoginContent: false });
+                          this.setState({ showLoginContent: false, expandLoginDetails: false });
                           if (this.props.authToken) {
                             this.props.logout();
                           }
