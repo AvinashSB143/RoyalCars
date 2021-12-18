@@ -85,8 +85,12 @@ const [filteredCarsList, setFilteredCarsList] = useState(props.availableCarList)
 const [selectedBrands, setSelectedBrands] = useState([])
 const [selectedModels, setSelectedModels] = useState([])
 
-const updatebudget = (e, data) => {
-  setBudget(data)
+const updatebudget = (value) => {
+  if(value) {
+    setFilteredCars({...filteredCars, "budget": value})
+  }
+  setBudget(value)
+  return `${value}`
 }
 
 const getFilteredCarsList = () => {
@@ -337,9 +341,13 @@ const getFilteredCarsList = () => {
             </div>
             <Box>
               <Slider
-                aria-label="Custom marks"
-                value={budget}
-                onChange={updatebudget}
+                defaultValue={50000}
+                getAriaValueText={updatebudget}
+                valueLabelDisplay="auto"
+                step={50000}
+                marks
+                min={50000}
+                max={2000000}
               />
             </Box>
           </div>
