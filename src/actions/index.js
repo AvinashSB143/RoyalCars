@@ -368,13 +368,13 @@ export const selectedCar = data => {
 export const bookNow = data => {
     return dispatch => {
         try {
-            axios.post('customerCar/buy',{
-                data
+            axios.post('customerCar/buyCar/createOrderId',{
+                "amount": data.amount
             }).then(res => {
                 if(res && res.data) {
                     dispatch ({
                         type: "CUSTOMER_BUY_ORDER",
-                        payload: res.data.result
+                        payload: res.data
                     })
                 }
             }).catch(err => console.log(err))

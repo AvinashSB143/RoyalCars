@@ -10,17 +10,7 @@ const BuyCarDetails = (props) => {
     const {selectedCar, userDetails} = props;
 
     const carInformation = {
-        // "bookNow": selectedCar.imagePath,
-        "bookNow": `http://13.127.242.21:5000/${selectedCar.imagePath}`,
-        "model": selectedCar ? selectedCar.model : "",
-        "year": selectedCar ? selectedCar.year : "",
-        "brand": selectedCar ? selectedCar.brand : "",
-        "totalOwner": selectedCar ? selectedCar.totalOwner : "",
-        "kmDriven": selectedCar ? selectedCar.kmDriven : "",
-        "fuelType": selectedCar ? selectedCar.fuelType : "",
-        "bodyType": selectedCar ? selectedCar.bodyType : "",
-        "transmission": selectedCar ? selectedCar.transmission : "",
-        "customerPhoneNumner": userDetails ? userDetails.phone : ""
+        "amount": selectedCar ? selectedCar.budget: ""
     }
     return selectedCar ? (
       <div className="pageStyle">

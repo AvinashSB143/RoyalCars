@@ -122,6 +122,12 @@ const reducers = (state = initialState, action) => {
             api_failure: true
         }
     }
+    if(action.type === "CUSTOMER_BUY_ORDER") {
+        return {
+            ...state,
+            bookedOrderId: action.payload
+        }
+    }
     if(action.type === "SELL_CAR") {
         return {
             ...state,
