@@ -353,7 +353,7 @@ const getFilteredCarsList = () => {
           </div>
           <div>
             <p> Make + Model</p>
-            <div className="search_container car_model_search">
+            {/* <div className="search_container car_model_search">
               <TextField
                 id="standard-search"
                 placeholder="Search field"
@@ -366,7 +366,7 @@ const getFilteredCarsList = () => {
                 className="search_text"
               />
               <SearchIcon className="search_icon" />
-            </div>
+            </div> */}
           </div>
           <div className="make__model">
           <Accordion>

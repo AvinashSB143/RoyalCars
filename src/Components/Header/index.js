@@ -887,7 +887,7 @@ class Header extends Component {
             </Link>
             {this.props.authToken &&
               <div className="header_search_bar hide_option ">
-              <div className="search_container">
+              {/* <div className="search_container">
                 <TextField
                   id="standard-search"
                   placeholder="Search field"
@@ -900,7 +900,7 @@ class Header extends Component {
                   className="search_text"
                 />
                 <SearchIcon className="search_icon" />
-              </div>
+              </div> */}
             </div>
             }
             <Link
