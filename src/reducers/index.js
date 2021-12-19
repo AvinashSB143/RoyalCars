@@ -15,7 +15,8 @@ const initialState = {
     carsByCategories: [],
     customerBookedCars: [],
     customerSellOrderList: [],
-    carRegisteredForSell: false
+    carRegisteredForSell: false,
+    bookedOrderId: ""
 }
 
 const reducers = (state = initialState, action) => {

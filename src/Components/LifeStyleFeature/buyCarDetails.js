@@ -13,13 +13,13 @@ const BuyCarDetails = (props) => {
 
     const handlePayment =  useCallback(() => {
       const options = {
-        key: "YOUR_KEY_ID",
+        key: "rzp_test_HrnE7wPqX9HFyT",
         amount: selectedCar.budget,
         currency: "INR",
         name: "Acme Corp",
         description: "Car Book Transaction",
         // image: "https://example.com/your_logo",
-        order_id: "order_9A33XWu170gUtm",
+        order_id: props.bookedOrderId,
         handler: (res) => {
          console.log("razorpay response",res);
          const data = {
