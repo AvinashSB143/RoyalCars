@@ -1,13 +1,60 @@
 import { Button } from "@material-ui/core";
+import { useCallback, useEffect } from "react";
+import useRazorpay from "react-razorpay";
 import React from "react";
 import {Link} from 'react-router-dom';  
 import { connect } from "react-redux";
-import {bookNow} from "../../actions";
-// import LocalOfferIcon from '@mui/icons-material/';
+import {bookNow, verifyPayment} from "../../actions";
+
 
 const BuyCarDetails = (props) => {
-    console.log("selected car", props)
     const {selectedCar, userDetails} = props;
+    const Razorpay = useRazorpay();
+
+    const handlePayment =  useCallback(() => {
+      const options = {
+        key: "YOUR_KEY_ID",
+        amount: selectedCar.budget,
+        currency: "INR",
+        name: "Acme Corp",
+        description: "Car Book Transaction",
+        // image: "https://example.com/your_logo",
+        order_id: "order_9A33XWu170gUtm",
+        handler: (res) => {
+         console.log("razorpay response",res);
+         const data = {
+           razorpay_payment_id: "",
+           razorpay_order_id: "",
+           razorpay_signature: "",
+           cardId: "",
+           customerPhoneNo: userDetails.phone
+         }
+         props.verifyPayment(res)
+        },
+        // prefill: {
+        //   name: "Piyush Garg",
+        //   email: "piyushgarg.dev@gmail.com",
+        //   contact: "9999999999",
+        // },
+        // notes: {
+        //   address: "Razorpay Corporate Office",
+        // },
+        // theme: {
+        //   color: "#3399cc",
+        // },
+      };
+  
+      const rzpay = new Razorpay(options);
+      rzpay.open();
+    },[Razorpay])
+      // const order = await createOrder(params);
+  
+    useEffect(() => {
+      if(props.bookedOrderId) {
+        handlePayment()
+      }
+    },[props.bookedOrderId])
+  
 
     const carInformation = {
         "amount": selectedCar ? selectedCar.budget: ""
@@ -205,7 +252,10 @@ const BuyCarDetails = (props) => {
                   padding: "24px 0",
                   margin: "0 0 0 10px",
                 }}
-                onClick={() => props.bookNow(carInformation)}
+                onClick={() => {
+                  // handlePayment()
+                  props.bookNow(carInformation)
+                }}
               >
                 <Button
                   style={{
@@ -240,6 +290,7 @@ const mapStateToProps = state => {
     return{
         selectedCar: state.reducers.selectedCar,
         userDetails: state.reducers.userDetails,
+        bookedOrderId: state.reducers.bookedOrderId,
     }
     
 }
@@ -248,6 +299,11 @@ const mapDispatchToProps = dispatch => {
         bookNow: data => {
             dispatch(
                 bookNow(data)
+            )
+        },
+        verifyPayment: data => {
+            dispatch(
+              verifyPayment(data)
             )
         }
     }

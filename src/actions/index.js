@@ -374,7 +374,25 @@ export const bookNow = data => {
                 if(res && res.data) {
                     dispatch ({
                         type: "CUSTOMER_BUY_ORDER",
-                        payload: res.data
+                        payload: res.data.orderId
+                    })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+export const verifyPayment = data => {
+    return dispatch => {
+        try {
+            axios.post('customerCar/buyCar/verify',{
+               data
+            }).then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "CUSTOMER_BUY_ORDER_STATUS",
+                        // payload: res.data.orderId
                     })
                 }
             }).catch(err => console.log(err))
