@@ -342,7 +342,8 @@ const getFilteredCarsList = () => {
             <Box>
               <Slider
                 defaultValue={50000}
-                getAriaValueText={updatebudget}
+                // getAriaValueText={updatebudget}
+                onChange={updatebudget}
                 valueLabelDisplay="auto"
                 step={50000}
                 marks

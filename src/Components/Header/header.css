@@ -61,7 +61,8 @@
   align-items: flex-start;
   width: 18%;
   position: absolute;
-  right: 25 rem;
+  /* right: 25 rem; */
+  left: 60%;
   top: 4rem;
   z-index: 2;
   background-color: white;
