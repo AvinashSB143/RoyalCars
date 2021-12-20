@@ -142,7 +142,7 @@ const BuyCarDetails = (props) => {
             {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
             <img
               className="filter_car_img"
-              src={`http://13.127.242.21:5000/${selectedCar.imagePath}`}
+              src={`${selectedCar.imagePath}`}
             />
           </div>
           <div className="carDetails">
