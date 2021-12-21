@@ -85,12 +85,12 @@ const [filteredCarsList, setFilteredCarsList] = useState(props.availableCarList)
 const [selectedBrands, setSelectedBrands] = useState([])
 const [selectedModels, setSelectedModels] = useState([])
 
-const updatebudget = (value) => {
-  if(value) {
-    setFilteredCars({...filteredCars, "budget": value})
+const updatebudget = (event) => {
+  if(event) {
+    setFilteredCars({...filteredCars, "budget": event.target.value})
   }
-  setBudget(value)
-  return `${value}`
+  setBudget(event.target.value)
+  return `${event.target.value}`
 }
 
 const getFilteredCarsList = () => {
@@ -342,7 +342,6 @@ const getFilteredCarsList = () => {
             <Box>
               <Slider
                 defaultValue={50000}
-                // getAriaValueText={updatebudget}
                 onChange={updatebudget}
                 valueLabelDisplay="auto"
                 step={50000}
@@ -350,6 +349,13 @@ const getFilteredCarsList = () => {
                 min={50000}
                 max={2000000}
               />
+              <p style={{
+                position: "absolute",
+                right: "0",
+                top: "0",
+                fontSize: "18px",
+                fontWeight: "500"
+              }}>{budget}</p>
             </Box>
           </div>
           <div>

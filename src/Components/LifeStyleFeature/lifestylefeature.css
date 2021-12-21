@@ -15,6 +15,7 @@
 .budget_slider {
   width: 80%;
   margin: 10px 20px;
+  position: relative;
 }
 
 .budget_range {

@@ -284,7 +284,7 @@ class Header extends Component {
   };
   render() {
     const expandMoreSection = (
-      <div className="main_container column_container about_expanded_section">
+      <div className="main_container column_container about_more_section">
         <div
           className="more_items"
           onMouseOver={this.hideShowWorkFlow}
@@ -325,7 +325,7 @@ class Header extends Component {
     );
 
     const expandShowWorkFlow = (
-      <div className="main_container column_container about_expanded_section buying_process_container">
+      <div className="main_container column_container buying_process_container">
         <div className="more_items" 
         onClick={() => {
           this.changeArrow()
@@ -335,9 +335,7 @@ class Header extends Component {
         }
         }
         >
-          <>
             <DescriptionIcon />
-          </>
           <Link to={this.props.authToken ? "/how-it-works/buying/" : "#" } className="options">
             Car buying process
           </Link>
@@ -366,7 +364,7 @@ class Header extends Component {
 
     const expandAccountSection = (
       <div
-        className="main_container column_container about_expanded_section buying_process_container"
+        className="main_container column_container about_expanded_section"
         id="expanded_account_section"
       >
         <div className="more_items">
@@ -885,9 +883,9 @@ class Header extends Component {
             <Link to="/homePage" className="header_logo">
               <img src={Logo} alt="App_LOGO" />
             </Link>
-            {this.props.authToken &&
+            {/* {this.props.authToken && */}
               <div className="header_search_bar hide_option ">
-              {/* <div className="search_container">
+              <div className="search_container">
                 <TextField
                   id="standard-search"
                   placeholder="Search field"
@@ -900,9 +898,9 @@ class Header extends Component {
                   className="search_text"
                 />
                 <SearchIcon className="search_icon" />
-              </div> */}
+              </div>
             </div>
-            }
+            {/* } */}
             <Link
               to={this.props.authToken ? "/lifeStyle" : "#"}
               className="header_buy_car show_desktop_menu"

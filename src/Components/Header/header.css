@@ -61,9 +61,21 @@
   align-items: flex-start;
   width: 18%;
   position: absolute;
-  /* right: 25 rem; */
-  left: 60%;
-  top: 4rem;
+  right: 10px;
+  /* left: 60%; */
+  top: 5rem;
+  z-index: 2;
+  background-color: white;
+  border-radius: 20px;
+}
+.about_more_section {
+  padding-left: 25px;
+  align-items: flex-start;
+  width: 18%;
+  position: absolute;
+  right: 20rem;
+  /* left: 60%; */
+  top: 5rem;
   z-index: 2;
   background-color: white;
   border-radius: 20px;
@@ -87,9 +99,13 @@
 }
 
 .buying_process_container {
-  right: 2rem;
-  top: 5rem;
+  top: 6rem;
   border-radius: 5px;
+  position: absolute;
+  z-index: 2;
+  width: 18%;
+  background: white;
+  right: 50px;
 }
 
 .login_container {
