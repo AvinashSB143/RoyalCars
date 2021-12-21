@@ -69,7 +69,7 @@ const BuyCarDetails = (props) => {
                 <svg
                   transform="rotate(0 0 0)"
                   xmlns="http://www.w3.org/2000/svg"
-                  stroke="#2E054E"
+                  stroke="#4169e1"
                   width="7"
                   height="7"
                   viewBox="0 0 14 8"

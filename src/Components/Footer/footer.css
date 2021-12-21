@@ -1,7 +1,7 @@
 /* .container_footer {
   display: flex;
   justify-content: center;
-  background-color: #2e054e;
+  background-color: #4169e1;
   color: white;
   padding: 4rem 5rem;
   z-index: 1;
@@ -98,7 +98,7 @@
   display: grid;
   grid-template-columns: 2fr repeat(2,1fr);
   grid-template-rows: auto 10rem;
-  background: #2e054e;
+  background: #4169e1;
   color: #fff;
   padding: 2rem 1rem 2rem 3rem;
   margin: 0 auto;
