@@ -910,7 +910,7 @@ const getFilteredCarsList = () => {
             <Link>USED CARS</Link>
           </ul>
           <div className="row_container  selected_filter_list hide_option">
-               <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All</button>
+               <button className="clear_Filter_btn" onClick={clearAllFilters}> <ReplayIcon /> Clear All Filters</button>
              </div>
              {props.availableCarList && props.availableCarList.length !== 0 && <p>Used Family Cars</p>}
              <div className="row_container car_list_container"> 
