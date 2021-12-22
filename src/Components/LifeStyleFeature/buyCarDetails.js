@@ -30,6 +30,7 @@ const BuyCarDetails = (props) => {
            customerPhoneNo: userDetails.phone
          }
          props.verifyPayment(res)
+         window.location.href = "http://3.111.30.111:3000/"
         },
         // prefill: {
         //   name: "Piyush Garg",
