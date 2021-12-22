@@ -117,6 +117,12 @@ const reducers = (state = initialState, action) => {
             selectedCar: action.payload
         }
     }
+    if(action.type === "SEARCH_CAR") {
+        return {
+            ...state,
+            searchedCarName: action.payload
+        }
+    }
     if(action.type === "API_FAILURE") {
         return {
             ...state,

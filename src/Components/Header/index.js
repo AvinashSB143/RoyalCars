@@ -40,7 +40,8 @@ import { login,
     updatePassword,
     getTestDriveCars,
     getBookedCars,
-    sellOrders 
+    sellOrders,
+    searchCar 
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -96,7 +97,8 @@ class Header extends Component {
       snackBarPos: {
         vertical: 'top',
         horizontal: 'center',
-      }
+      },
+      searchCarName: ""
     };
   }
   changeOnMouseLeave = () => {
@@ -270,6 +272,23 @@ class Header extends Component {
       email: email,
     });
   };
+
+  setCarNameForSearch = name => {
+    if(name !== "") {
+      this.setState({
+        searchCarName: name
+      })
+    } else {
+      this.props.searchCarByName("")
+    }
+  }
+
+  filterCarsBySearch = () => {
+    this.props.searchCarByName(this.state.searchCarName)
+    this.setState({
+      searchCarName: ""
+    })
+  }
 
   // readName = name => {
   //     this.setState({
@@ -895,9 +914,13 @@ class Header extends Component {
                     root: classes.root,
                   }}
                   InputProps={{ disableUnderline: true }}
+                  onChange={e => this.setCarNameForSearch(e.target.value)}
                   className="search_text"
                 />
-                <SearchIcon className="search_icon" />
+                <SearchIcon className="search_icon" onClick={
+                  // this.props.searchCar(this.state.searchCarName)
+                  this.filterCarsBySearch
+                  } />
               </div>
             </div>
             {/* } */}
@@ -1360,6 +1383,11 @@ const mapDispatchToProps = dispatch => {
         sellOrders : () =>{
             dispatch(
                 sellOrders()
+            )
+        },
+        searchCarByName : (name) =>{
+            dispatch(
+              searchCar(name)
             )
         },
         logout : () =>{

@@ -365,6 +365,14 @@ export const selectedCar = data => {
         })
     }
 }
+export const searchCar = name => {
+    return dispatch => {
+        dispatch ({
+            type: "SEARCH_CAR",
+            payload: name
+        })
+    }
+}
 export const bookNow = data => {
     return dispatch => {
         try {

@@ -93,6 +93,16 @@ const updatebudget = (event) => {
   return `${event.target.value}`
 }
 
+const searchCarByName = (name) => {
+  let newCarList = props.availableCarList && props.availableCarList.filter(function(car) {
+    return car["brand"] === name || car["model"] === name;
+    // keys && keys.every(function(_k) {
+    //     return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && car[_k] && values[0].includes(car[_k].toString().toLowerCase())
+    // })
+  })
+  setFilteredCarsList(newCarList)
+}
+
 const getFilteredCarsList = () => {
   let keys = filteredCars && Object.keys(filteredCars);
   let list = [];
@@ -110,7 +120,7 @@ const getFilteredCarsList = () => {
 
   let newCarList = props.availableCarList && props.availableCarList.filter(function(car) {
     return keys && keys.every(function(_k) {
-        return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && car[_k] && values[0].includes(car[_k].toString().toLowerCase())
+        return (_k === "year" || _k === "kmDriven" || _k === "budget") ? typeof car[_k] === "number" && values && (_k === "kmDriven" || _k === "budget" ) ? Number(values[0][0]) >= car[_k] : Number(values[0][0]) <= car[_k] : values && car[_k] && values[0].includes(car[_k].toString().toLowerCase())
     })
   })
   setFilteredCarsList(newCarList)
@@ -288,11 +298,19 @@ const getFilteredCarsList = () => {
     getFilteredCarsList()
   },[filteredCars, filteredCarsKMDriven, filteredCarsYears])
 
+  useEffect(() => {
+    if(props.searchedCarName) {
+        searchCarByName(props.searchedCarName)
+    }else {
+      getFilteredCarsList()
+    }
+  },[props.searchedCarName])
+
   const carList = (filteredCarsList && filteredCarsList.length !==0 ? filteredCarsList : props.availableCarList && props.availableCarList).map((car) => {
     return (
               <div className="column_container car_list_buyCar hide_option">
                   <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
-                  <img className="filter_car_img" src={`${car.imagePath}`} />
+                  <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -311,7 +329,7 @@ const getFilteredCarsList = () => {
     return (
             <div className="column_container car_list_buyCar hide_option">
                 <Link to = "/buyCar/cars" onClick={() => props.seletedCar(car)}>
-                <img className="filter_car_img" src={`${car.imagePath}`} />
+                <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} />
                 </Link>
                 <div className="column_container"  style={{position: "relative"}}>
                    <span className="row_container description"> <h4 className="car_name_info">{car.year}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -920,6 +938,7 @@ const getFilteredCarsList = () => {
 const mapStateToProps = state => {
   return{
       availableCarList: state.reducers.availableCarList,
+      searchedCarName: state.reducers.searchedCarName,
   }
 }
 
