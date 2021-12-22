@@ -902,7 +902,6 @@ class Header extends Component {
             <Link to="/homePage" className="header_logo">
               <img src={Logo} alt="App_LOGO" />
             </Link>
-            {/* {this.props.authToken && */}
               <div className="header_search_bar hide_option ">
               <div className="search_container">
                 <TextField
@@ -918,20 +917,15 @@ class Header extends Component {
                   className="search_text"
                 />
                 <SearchIcon className="search_icon" onClick={
-                  // this.props.searchCar(this.state.searchCarName)
                   this.filterCarsBySearch
                   } />
               </div>
             </div>
-            {/* } */}
             <Link
-              to={this.props.authToken ? "/lifeStyle" : "#"}
+              to="/lifeStyle"
               className="header_buy_car show_desktop_menu"
               onClick={() => {
-                this.props.authToken && this.props.getAvailableCars();
-                this.setState({
-                  showLoginContent: !this.props.authToken,
-                });
+                this.props.getAvailableCars();
               }}
             >
               <b>Buy Car</b>
