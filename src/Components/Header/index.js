@@ -41,7 +41,8 @@ import { login,
     getTestDriveCars,
     getBookedCars,
     sellOrders,
-    searchCar 
+    searchCar,
+    enableLogUser 
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -633,15 +634,15 @@ class Header extends Component {
                     padding: "1rem 0",
                   }}
                   onClick={() => {
-                    this.props.authToken && this.props.getAvailableCars();
+                    this.props.getAvailableCars();
                     this.setState({
-                      showLoginContent: !this.props.authToken,
-                      expandLoginDetails: !this.state.expandLoginDetails,
+                      showLoginContent: false,
+                      expandLoginDetails: false
                     });
                   }}
                 >
                   <StyledLink
-                    to={this.props.authToken ? "/lifeStyle" : "#"}
+                    to="/lifeStyle"
                     className="row_container mobile_login_content"
                   >
                     <PersonIcon className="mobile_login_icon_pos" />
@@ -1021,6 +1022,7 @@ class Header extends Component {
                       showNameField: false,
                       loginAttempted: false,
                     });
+                    this.props.enableLogUser(false)
                   }}
                 />
                 <VpnKeyIcon />
@@ -1385,6 +1387,11 @@ const mapDispatchToProps = dispatch => {
               searchCar(name)
             )
         },
+        enableLogUser: data => {
+          dispatch(
+            enableLogUser(data)
+          )
+      },
         logout : () =>{
             dispatch(
                 logout()
