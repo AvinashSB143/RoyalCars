@@ -31,7 +31,8 @@ const reducers = (state = initialState, action) => {
             ...state,
             authToken: action.payload.token,
             userDetails: action.payload,
-            isValidUser: true
+            isValidUser: true,
+            enableUserToBook: false
         }
     }
     if(action.type === "SIGNUP_SUCCESS") {
@@ -121,6 +122,12 @@ const reducers = (state = initialState, action) => {
         return {
             ...state,
             searchedCarName: action.payload
+        }
+    }
+    if(action.type === "ENABLE_USER_TO_BOOK") {
+        return {
+            ...state,
+            enableUserToBook: action.payload
         }
     }
     if(action.type === "API_FAILURE") {

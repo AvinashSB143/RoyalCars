@@ -373,6 +373,14 @@ export const searchCar = name => {
         })
     }
 }
+export const enableLogUser = data => {
+    return dispatch => {
+        dispatch ({
+            type: "ENABLE_USER_TO_BOOK",
+            payload: data
+        })
+    }
+}
 export const bookNow = data => {
     return dispatch => {
         try {

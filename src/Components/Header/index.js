@@ -1003,9 +1003,9 @@ class Header extends Component {
             this.state.showWorkFlow &&
             expandShowWorkFlow}
           {this.state.expandAccountSection && expandAccountSection}
-          {this.state.showLoginContent &&
+          {(this.props.enableUserToBook || (this.state.showLoginContent &&
             !this.props.isValidUser &&
-            !this.props.authToken && (
+            !this.props.authToken)) && (
               <div
                 className={`main_container column_container login_container ${
                   (this.state.isSignUp || this.state.isForgotPassword) &&
@@ -1323,6 +1323,7 @@ const mapStateToProps = state => {
         signUpSuccess: state.reducers.signUpSuccess,
         userDetails: state.reducers.userDetails,
         OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
+        enableUserToBook: state.reducers.enableUserToBook,
     }
     
 }

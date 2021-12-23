@@ -4,7 +4,7 @@ import useRazorpay from "react-razorpay";
 import React from "react";
 import {Link} from 'react-router-dom';  
 import { connect } from "react-redux";
-import {bookNow, verifyPayment} from "../../actions";
+import {bookNow, verifyPayment, enableLogUser} from "../../actions";
 
 
 const BuyCarDetails = (props) => {
@@ -253,16 +253,20 @@ const BuyCarDetails = (props) => {
                   padding: "24px 0",
                   margin: "0 0 0 10px",
                 }}
-                onClick={() => {
-                  // handlePayment()
-                  props.bookNow(carInformation)
-                }}
               >
                 <Button
                   style={{
                     backgroundColor: "#6300a3",
                     color: "#fff",
                     borderRadius: "8px",
+                  }}
+                  onClick={() => {
+                    if(props.authToken) {
+                      props.bookNow(carInformation)
+                      props.enableLogUser(false)
+                    }else {
+                      props.enableLogUser(true)
+                    }
                   }}
                 >
                   Book Now
@@ -292,6 +296,7 @@ const mapStateToProps = state => {
         selectedCar: state.reducers.selectedCar,
         userDetails: state.reducers.userDetails,
         bookedOrderId: state.reducers.bookedOrderId,
+        authToken: state.reducers.authToken,
     }
     
 }
@@ -300,6 +305,11 @@ const mapDispatchToProps = dispatch => {
         bookNow: data => {
             dispatch(
                 bookNow(data)
+            )
+        },
+        enableLogUser: data => {
+            dispatch(
+              enableLogUser(data)
             )
         },
         verifyPayment: data => {
