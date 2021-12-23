@@ -144,17 +144,19 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "fuelType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
+      let newFuelList;
       if(filteredCars) {
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "fuelType") {
-        newObj = filteredCars && filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
-        }
+        newFuelList = filteredCars["fuelType"];
+        let index = newFuelList.indexOf(event.target.value);
+        if (index > -1) {
+          newFuelList.splice(index, 1);
+      }
+      if(newFuelList.length !== 0) {
+        setFilteredCars({...filteredCars, "fuelType": newFuelList})
+      } else {
+        delete filteredCars.fuelType;
       }
     }
-      setFilteredCars(newObj)
       getFilteredCarsList()
     }
   }
@@ -163,18 +165,19 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "brand": filteredCars && filteredCars.brand ? [...filteredCars.brand, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
+      let newFuelList;
       if(filteredCars) {
-        for (const [key, value] of Object.entries(filteredCars)) {
-          if(key === "brand") {
-          newObj = filteredCars && filteredCars[key].filter((_val)=>{
-             return _val !== event.target.value
-            })
-          }
-        }
+        newFuelList = filteredCars["brand"];
+        let index = newFuelList.indexOf(event.target.value);
+        if (index > -1) {
+          newFuelList.splice(index, 1);
       }
-     
-      setFilteredCars(newObj)
+      if(newFuelList.length !== 0) {
+        setFilteredCars({...filteredCars, "brand": newFuelList})
+      } else {
+        delete filteredCars.brand;
+      }
+    }
       getFilteredCarsList()
     }
   }
@@ -202,17 +205,20 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "bodyType": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
-      if(filteredCars) {
-      for (const [key, value] of Object.entries(filteredCars)) {
-        if(key === "bodyType") {
-        newObj = filteredCars && filteredCars[key].filter((_val)=>{
-           return _val !== event.target.value
-          })
-        }
-      }
+    
+    let newList ;
+    if(filteredCars) {
+      newList = filteredCars["bodyType"];
+      let index = newList && newList.indexOf(event.target.value);
+      if (index > -1) {
+        newList && newList.splice(index, 1);
     }
-      setFilteredCars(newObj)
+    if(newList.length !== 0) {
+      setFilteredCars({...filteredCars, "bodyType": newList})
+    } else {
+      delete filteredCars.bodyType;
+    }
+  }
       getFilteredCarsList()
     }
   }
@@ -221,17 +227,19 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "transmission": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
+      let newList;
       if(filteredCars) {
-        for (const [key, value] of Object.entries(filteredCars)) {
-          if(key === "transmission") {
-          newObj = filteredCars &&  filteredCars[key].filter((_val)=>{
-             return _val !== event.target.value
-            })
-          }
-        }
+        newList = filteredCars["transmission"];
+        let index = newList && newList.indexOf(event.target.value);
+        if (index > -1) {
+          newList && newList.splice(index, 1);
       }
-      setFilteredCars(newObj)
+      if(newList.length !== 0) {
+        setFilteredCars({...filteredCars, "transmission": newList})
+      } else {
+        delete filteredCars.transmission;
+      }
+    }
       getFilteredCarsList()
     }
   }
@@ -240,17 +248,19 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "totalOwner": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
+      let newList;
       if(filteredCars) {
-        for (const [key, value] of Object.entries(filteredCars)) {
-          if(key === "totalOwner") {
-          newObj = filteredCars && filteredCars[key].filter((_val)=>{
-             return _val !== event.target.value
-            })
-          }
-        }
+        newList = filteredCars["totalOwner"];
+        let index = newList && newList.indexOf(event.target.value);
+        if (index > -1) {
+          newList && newList.splice(index, 1);
       }
-      setFilteredCars(newObj)
+      if(newList.length !== 0) {
+        setFilteredCars({...filteredCars, "totalOwner": newList})
+      } else {
+        delete filteredCars.totalOwner;
+      }
+    }
       getFilteredCarsList()
     }
   }
@@ -259,39 +269,45 @@ const getFilteredCarsList = () => {
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "categories": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
-      if(filteredCars){
-        for (const [key, value] of Object.entries(filteredCars)) {
-          if(key === "categories") {
-          newObj = filteredCars && filteredCars[key].filter((_val)=>{
-             return _val !== event.target.value
-            })
-          }
+        let newList;
+        if(filteredCars) {
+          newList = filteredCars["categories"];
+          let index = newList && newList.indexOf(event.target.value);
+          if (index > -1) {
+            newList && newList.splice(index, 1);
+        }
+        if(newList.length !== 0) {
+          setFilteredCars({...filteredCars, "categories": newList})
+        } else {
+          delete filteredCars.categories;
         }
       }
-      setFilteredCars(newObj)
-      getFilteredCarsList()
+        getFilteredCarsList()
     }
+      
   }
   const handleAvailability = event => {
     setAvailability({...availability, [event.target.value] : event.target.checked})
     if(event.target.checked) {
       setFilteredCars({...filteredCars, "isActive": filteredCars && filteredCars.fuelType ? [...filteredCars.fuelType, event.target.value]: [event.target.value]})
     } else {
-      let newObj;
+      let newList;
       if(filteredCars) {
-        for (const [key, value] of Object.entries(filteredCars)) {
-          if(key === "isActive") {
-          newObj = filteredCars && filteredCars[key].filter((_val)=>{
-             return _val !== event.target.value
-            })
-          }
-        }
+        newList = filteredCars["isActive"];
+        let index = newList && newList.indexOf(event.target.value);
+        if (index > -1) {
+          newList && newList.splice(index, 1);
       }
-      setFilteredCars(newObj)
-      getFilteredCarsList()
+      if(newList.length !== 0) {
+        setFilteredCars({...filteredCars, "isActive": newList})
+      } else {
+        delete filteredCars.isActive;
+      }
     }
+      getFilteredCarsList()
   }
+    
+}
 
   
   useEffect(() => {
