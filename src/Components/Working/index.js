@@ -1,9 +1,11 @@
 import {Link} from 'react-router-dom';
 import "./working.css";
 import "../../styles/styles.css";
+import { connect } from "react-redux";
+import { getAvailableCars, getCarsByBrand } from "../../actions"
 
 
-const Working = () => {
+const Working = props => {
 return (
   <div className="main_container column_container working_container">
     <div className="working__Heading">
@@ -25,7 +27,7 @@ return (
             Over 6000 fully inspected cars. Best performance guaranteed
         </p>
         <div style={{ marginTop: "10px" }}>
-          <Link to="#"> View All Cars</Link>
+          <Link to="/lifeStyle" onClick={() => props.getAvailableCars()}> View All Cars</Link>
         </div>
       </div>
       <div className="working_img">
@@ -55,7 +57,9 @@ return (
             Get rid of complex paper work. Easy Online payment. Home delivery
         </p>
         <div style={{ marginTop: "10px" }}>
-          <Link to="#"> Buy a Car</Link>
+          <Link to="/lifeStyle"
+          onClick={() => {props.getAvailableCars()}}
+          > Buy a Car</Link>
         </div>
       </div>
       <div className="working_img">
@@ -70,7 +74,7 @@ return (
           Get instant quote. Free doorstep evaluation. Quick payment
         </p>
         <div style={{ marginTop: "10px" }}>
-          <Link to="#"> Sell a Car</Link>
+          <Link to={`${props.authToken ? "/sell" : "#"}`}> Sell a Car</Link>
         </div>
       </div>
     </div>
@@ -78,4 +82,26 @@ return (
 );
 }
 
-export default Working;
+
+const mapStateToProps = state => {
+  return{
+    authToken: state.reducers.authToken,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+       getAvailableCars: () => {
+          dispatch(
+              getAvailableCars()
+              )
+      },        
+       getCarsByBrand: (data) => {
+          dispatch(
+              getCarsByBrand(data)
+              )
+      }        
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Working);

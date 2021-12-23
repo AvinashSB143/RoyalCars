@@ -73,7 +73,7 @@ const reducers = (state = initialState, action) => {
     if(action.type === "CARS_BY_BRAND") {
         return {
             ...state,
-            carsByBrand: action.payload
+            availableCarList: action.payload
         }
     }
     if(action.type === "CARS_BY_CATEGORY") {
