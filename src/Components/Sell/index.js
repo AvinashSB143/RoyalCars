@@ -98,7 +98,7 @@ export const HowItWorks = () => {
               <svg
                 transform="rotate(0 0 0)"
                 xmlns="http://www.w3.org/2000/svg"
-                stroke="#6300A3"
+                stroke="#4169e1"
                 width="9"
                 height="9"
                 viewBox="0 0 14 8"
@@ -137,7 +137,7 @@ export const HowItWorks = () => {
               <svg
                 transform="rotate(0 0 0)"
                 xmlns="http://www.w3.org/2000/svg"
-                stroke="#6300A3"
+                stroke="#4169e1"
                 width="9"
                 height="9"
                 viewBox="0 0 14 8"

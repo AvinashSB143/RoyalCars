@@ -13,6 +13,9 @@
     margin: 0 20px;
     position: relative;
 }
+.benifit_image {
+    border-radius: "25px";
+}
 .benifit {
     position: absolute;
     left: 10px;
@@ -32,6 +35,10 @@
     .benifits_img{
         width:90%;
         margin:1rem auto;
+    }
+    .benifit_image {
+        width: 100%;
+        border-radius: "25px";
     }
 }
 

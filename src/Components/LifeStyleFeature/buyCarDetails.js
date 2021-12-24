@@ -256,7 +256,7 @@ const BuyCarDetails = (props) => {
               >
                 <Button
                   style={{
-                    backgroundColor: "#6300a3",
+                    backgroundColor: "#4169e1",
                     color: "#fff",
                     borderRadius: "8px",
                   }}

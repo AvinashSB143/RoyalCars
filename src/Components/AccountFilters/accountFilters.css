@@ -216,7 +216,7 @@ h4 {
   top: 65px;
   font-size: 10px;
   line-height: 18px;
-  color: #6300a3;
+  color: #4169e1;
   text-transform: uppercase;
   position: absolute;
   left: 35px;
@@ -226,7 +226,7 @@ h4 {
 .form_button {
   width: 50%;
   box-sizing: border-box;
-  background-color: #6300a3;
+  background-color: #4169e1;
   color: #fff;
   position: relative;
   border: none;
@@ -291,7 +291,7 @@ h4 {
   text-transform: capitalize;
 }
 .referal_details .refer_friend .refer_friend_desc .refer_friend_btn {
-  color: #6300a3;
+  color: #4169e1;
   margin: 24px 0 0;
   width: 100%;
   background-color: #fff;

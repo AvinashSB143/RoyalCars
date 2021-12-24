@@ -57,7 +57,7 @@ const ReferEarn = () => {
                     Once your friend uses your referral you get ₹3000/- straight into your bank account after you have bought or sold a car at Royal Cars.</p>
                 <button className="refer_friend_btn">
                     <span>Refer a friend
-                    <svg transform="rotate(0 0 0)" xmlns="http://www.w3.org/2000/svg" stroke="#6300a3" width="10" height="10" viewBox="0 0 14 8"><path fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M386 48L392 54 398 48" transform="translate(-385 -47)">
+                    <svg transform="rotate(0 0 0)" xmlns="http://www.w3.org/2000/svg" stroke="#4169e1" width="10" height="10" viewBox="0 0 14 8"><path fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M386 48L392 54 398 48" transform="translate(-385 -47)">
                         </path></svg>
                     </span>
                 </button>
