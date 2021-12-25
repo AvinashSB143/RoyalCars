@@ -311,52 +311,116 @@ li {
 .car_info_amount {
   margin: 10px;
 }
-.make__model{
-    width: 90%;
-    margin-left: -2rem;
-    height: 400px;
-    overflow: scroll;
+.make__model {
+  width: 90%;
+  margin-left: -2rem;
+  height: 400px;
+  overflow: scroll;
 }
-.buycar__container{
-  display: grid;
-    grid-template-columns: repeat(2,1fr);
-}
-@media only screen and (max-width:1200px){
-
-.car_list_buyCar {
-    width: 45%;
-}}
-@media only screen and (max-width:960px){
-
-.car_list_buyCar {
-    width: 80%;
-}}
-@media only screen and (max-width:767px){
-
 .buycar__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media only screen and (max-width: 1200px) {
+}
+
+@media screen and (max-width: 1280px) and (min-width: 769px) {
+  .car_list_buyCar {
+    width: 45%;
+  }
+  .empty_car_list {
+    left: 62%;
+  }
+  .row_container {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 768px) {
+  .car_list_buyCar {
+    width: 100%;
+  }
+  .featured_filtered_cars {
+    width: 100%;
+  }
+  .empty_car_list {
+    left: 0%;
+  }
+  .row_container {
+    justify-content: center;
+  }
+  .buycar__container {
     grid-template-columns: auto;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-}
+  }
 
   .lifeStyle_filters {
-    width: 50vw;
+    width: 100%;
     max-width: 25rem;
     margin: 2rem 1rem;
   }
   .car_model_search {
     width: 40vw;
-}
+  }
 
-.empty_car_list{
-      transform: translateX(35%);
-}
-}
-@media only screen and (max-width:576px){
-.search_text  input {
-  font-size: 3vw;
-}
- .lifeStyle_filters {
-    max-width: 18rem;
+  .empty_car_list {
+    transform: translateX(35%);
+  }
+
+  .filter_button {
+    width: auto;
+    color: #fff;
+    line-height: 1.5rem;
+    background-color: #ff0f5a;
+    border: 2px solid #ff0f5a;
+    font-size: 1rem !important;
+    font-family: futura-demi;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    opacity: 1;
+    margin-left: 5px;
+    text-align: center;
+    padding: 7px;
+    margin-right: 0px !important;
+    text-decoration: none;
+  }
+  .close_filter_button {
+    width: 5rem;
+    color: #fff;
+    line-height: 1.5rem;
+    background-color: #ff0f5a;
+    border: 2px solid #ff0f5a;
+    font-size: 1rem;
+    font-family: futura-demi;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    opacity: 1;
+    margin: 20px 0px;
+  }
+
+  .hide {
+    display: none;
+  }
+  .feature_container {
+    justify-content: flex-start;
+    border-radius: 10px;
+    background-color: #f7f4f8;
+    overflow: hidden;
+    align-items: flex-start;
+  }
+
+  .search_text input {
+    font-size: 3vw;
+  }
+  .lifeStyle_filters {
+    max-width: 100%;
   }
 }
+/* @media only screen and (max-width: 960px) {
+} */
+/* @media only screen and (max-width: 767px) {
+} */
+/* @media only screen and (max-width: 576px) {
+} */

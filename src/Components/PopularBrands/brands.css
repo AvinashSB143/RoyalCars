@@ -1,20 +1,30 @@
 .brandcar_container {
-    margin: 10px 30px;
+  margin: 10px 30px;
 }
 
 .brandcar_btn {
-    width: 37.5vw;
-    margin: 20px 30px;
-    height: 150px;
-    border-radius: 30px;
-    background: #f2f3f5;
+  width: 37.5vw;
+  margin: 20px 30px;
+  height: 150px;
+  border-radius: 30px;
+  background: #f2f3f5;
 }
 
+@media screen and (max-width: 768px) {
+  .brandcar_container {
+    width: 90%;
+    padding: 0;
+    margin: 0;
+    justify-content: space-around;
+  }
 
-/* 
-@media only screen and  (max-width: 361px) {
-    .brandcar_btn {
-        width: 100px;
-    
-    }
-  } */
+  .brandcar_btn {
+    width: 100%;
+    height: 118px;
+    border-radius: 30px;
+    background: #f2f3f5;
+    margin: 0px;
+    padding: 0px 15px;
+    margin: 13px 5px;
+  }
+}
