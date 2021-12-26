@@ -346,7 +346,7 @@ li {
     left: 0%;
   }
   .row_container {
-    justify-content: center;
+    /* justify-content: center; */
   }
   .buycar__container {
     grid-template-columns: auto;
