@@ -381,14 +381,14 @@ const carDetails = {
       />
       <div className="container_sell">
         <div className="background_image_wrapper">
-          <h1 class="">Check your car's price in 10 secs </h1>
+          {/* <h1 class="">Check your car's price in 10 secs </h1> */}
           <ul class="marketingContent">
-            <li class="marketingItem">
+            {/* <li class="marketingItem">
               <div class="pointWrap">
                 <span>1</span>
               </div>
               Instant Online Quote
-            </li>
+            </li> */}
             <li class="marketingItem">
               <div class="pointWrap">
                 <span>2</span>
