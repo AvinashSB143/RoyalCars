@@ -73,8 +73,8 @@
   width: 11.25rem;
   color: #fff;
   line-height: 2.8rem;
-  background-color: #ff0f5a;
-  border: 2px solid #ff0f5a;
+  background-color: #FFDF00;
+  border: 2px solid #FFDF00;
   font-size: 1rem;
   font-family: futura-demi;
   display: flex;
@@ -174,10 +174,10 @@ font-size: 1.5rem;
 }
 .Footer__Button{
    width: 10rem;
-  color: #fff;
+  color: black;
   line-height: 2.8rem;
-  background-color: #ff0f5a;
-  border: 2px solid #ff0f5a;
+  background-color: #FFDF00;
+  border: 2px solid #FFDF00;
   font-size: 1rem;
   font-family: futura-demi;
   justify-content: center;

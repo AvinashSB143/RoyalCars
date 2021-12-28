@@ -957,7 +957,7 @@ const LifeStyleFeature = (props) => {
                   }
                   label="Adventure"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={
                     <Checkbox
                       checked={category.commuter}
@@ -966,7 +966,7 @@ const LifeStyleFeature = (props) => {
                     />
                   }
                   label="Commuter"
-                />
+                /> */}
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -977,7 +977,7 @@ const LifeStyleFeature = (props) => {
                   }
                   label="Family"
                 />
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={
                     <Checkbox
                       checked={category.Featured_packed}
@@ -986,8 +986,8 @@ const LifeStyleFeature = (props) => {
                     />
                   }
                   label="Feature Packed"
-                />
-                <FormControlLabel
+                /> */}
+                {/* <FormControlLabel
                   control={
                     <Checkbox
                       checked={category.luxury}
@@ -996,7 +996,7 @@ const LifeStyleFeature = (props) => {
                     />
                   }
                   label="Luxury"
-                />
+                /> */}
                 <FormControlLabel
                   control={
                     <Checkbox
