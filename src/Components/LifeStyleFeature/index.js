@@ -194,13 +194,20 @@ const LifeStyleFeature = (props) => {
       });
     } else {
       let newFuelList;
+      let newBrandList = selectedBrands;
+      let itemToDelete = newBrandList && newBrandList.indexOf(event.target.value);
+        if (itemToDelete ==0 || itemToDelete > -1) {
+          newBrandList.splice(itemToDelete, 1);
+        }
+        setSelectedBrands(newBrandList)
+
       if (filteredCars) {
         newFuelList = filteredCars["brand"];
-        let index = newFuelList.indexOf(event.target.value);
-        if (index > -1) {
+        let index = newFuelList && newFuelList.indexOf(event.target.value);
+        if (index == 0 || index > -1) {
           newFuelList.splice(index, 1);
         }
-        if (newFuelList.length !== 0) {
+        if (newFuelList && newFuelList.length !== 0) {
           setFilteredCars({ ...filteredCars, brand: newFuelList });
         } else {
           delete filteredCars.brand;
@@ -461,6 +468,26 @@ const LifeStyleFeature = (props) => {
     setFilteredCars([]);
     setFilteredCarsYears([]);
     setFilteredCarsKMDriven([]);
+    setYearSelected('')
+    setkmDriven('')
+    setFuelType({})
+    setSelectedBrands([])
+    setBodyType({})
+    setTransmissionType({})
+    setOwnerType({})
+    setCategory({
+      adventure: false,
+    commuter: false,
+    family: false,
+    feature_packed: false,
+    luxury: false,
+    value: false,
+    })
+    setAvailability({
+      inStock: false,
+      booked: false,
+      upcoming: false,
+    });
   };
 
   return (
@@ -513,20 +540,6 @@ const LifeStyleFeature = (props) => {
         </div>
         <div>
           <p> Make + Model</p>
-          {/* <div className="search_container car_model_search">
-              <TextField
-                id="standard-search"
-                placeholder="Search field"
-                type="search"
-                variant="standard"
-                classes={{
-                  root: classes.root,
-                }}
-                InputProps={{ disableUnderline: true }}
-                className="search_text"
-              />
-              <SearchIcon className="search_icon" />
-            </div> */}
         </div>
         <div className="make__model">
           <Accordion>
@@ -537,7 +550,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                    checked={selectedBrands.includes("maruti suzuki")}
                     onChange={handleSelectedBrand}
                     value="maruti suzuki"
                   />
@@ -554,7 +567,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Hyundai")}
                     onChange={handleSelectedBrand}
                     value="Hyundai"
                   />
@@ -571,7 +584,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Honda")}
                     onChange={handleSelectedBrand}
                     value="Honda"
                   />
@@ -588,7 +601,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Ford")}
                     onChange={handleSelectedBrand}
                     value="Ford"
                   />
@@ -605,7 +618,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Renault")}
                     onChange={handleSelectedBrand}
                     value="Renault"
                   />
@@ -622,7 +635,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Volkswagen")}
                     onChange={handleSelectedBrand}
                     value="Volkswagen"
                   />
@@ -639,7 +652,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Mahindra")}
                     onChange={handleSelectedBrand}
                     value="Mahindra"
                   />
@@ -656,7 +669,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Skoda")}
                     onChange={handleSelectedBrand}
                     value="Skoda"
                   />
@@ -673,7 +686,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Tata")}
                     onChange={handleSelectedBrand}
                     value="Tata"
                   />
@@ -690,7 +703,7 @@ const LifeStyleFeature = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    // checked={}
+                  checked={selectedBrands.includes("Toyata")}
                     onChange={handleSelectedBrand}
                     value="Toyata"
                   />

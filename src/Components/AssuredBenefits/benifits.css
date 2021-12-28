@@ -4,7 +4,7 @@
     width: 95vw;
     height: auto;
     overflow: hidden;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -41,6 +41,12 @@
         border-radius: "25px";
     }
 }
+
+/* @media only screen and (max-width:1001px){
+    .benifits_img{
+        justify-content: space-between;
+    }
+} */
 
 
 
