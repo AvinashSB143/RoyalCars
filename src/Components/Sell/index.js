@@ -425,7 +425,7 @@ const carDetails = {
             <button class="search-button"
             // disabled={!selectedKMDriven}
             onClick={() => {props.dispatchSellCar(carDetails)}}
-            >Save Car Details</button>
+            >Submit</button>
           </div>
         {showYearList &&   <div className="sellcar_filter_container">
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

@@ -173,17 +173,19 @@ font-size: 1.5rem;
   display: block;
 }
 .Footer__Button{
+  padding: 15px;
    width: 10rem;
   color: black;
   line-height: 2.8rem;
   background-color: #FFDF00;
   border: 2px solid #FFDF00;
-  font-size: 1rem;
+  font-size: 18px;
   font-family: futura-demi;
   justify-content: center;
   align-items: center;
   border-radius: 0.4rem;
   margin: 2rem 1.5rem 0rem 0rem;
+  text-decoration: none;
 }
 .Footer__Buttons button > svg{
       position: relative;

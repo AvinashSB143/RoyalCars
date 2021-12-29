@@ -512,8 +512,8 @@ const LifeStyleFeature = (props) => {
         <div className="budget_slider column_container">
           <p>Budget</p>
           <div className="row_container budget_range">
-            <p>{budget[0]}</p>
-            <p>{budget[1]}</p>
+            {/* <p>{budget[0]}</p>
+            <p>{budget[1]}</p> */}
           </div>
           <Box>
             <Slider

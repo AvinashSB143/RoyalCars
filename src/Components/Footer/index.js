@@ -2,6 +2,7 @@ import React from "react";
 import "./footer.css";
 import Logo from "../../images/Logo.png";
 import CallIcon from "@mui/icons-material/Call";
+import { Link } from "react-router-dom";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -23,7 +24,7 @@ function Footer() {
     // "Customer review",
   ];
 
-  const buttons = ["727-727-7275", "get instant Quotes", "Browse cars"];
+  const buttons = ["727-727-7275", "Browse cars"];
   const socialIcons = ["faceebbok", "instagram", "twitter", "linkedIn"];
 
   return (
@@ -74,10 +75,10 @@ function Footer() {
       </div>
       <div className="Footer__Buttons">
         {buttons.map((button, idx) => (
-          <button className="Footer__Button">
+          <Link to={idx === 1 ? "/lifeStyle" : "#"} className="Footer__Button" onClick={() => window.scroll(0,0)}>
             {idx === 0 && <CallIcon />}
             {button}
-          </button>
+          </Link>
         ))}
       </div>
     </div>
