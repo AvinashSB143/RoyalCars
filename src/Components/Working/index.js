@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./working.css";
 import "../../styles/styles.css";
 import { connect } from "react-redux";
-import { getAvailableCars, getCarsByBrand } from "../../actions";
+import { getAvailableCars, getCarsByBrand, enableLogUser } from "../../actions";
 
 const Working = (props) => {
   return (
@@ -84,7 +84,14 @@ const Working = (props) => {
             Get instant quote. Free doorstep evaluation. Quick payment
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to={`${props.authToken ? "/sell" : "#"}`}> Sell a Car</Link>
+            <Link to={`${props.authToken ? "/sell" : "#"}`}
+            onClick={() => {
+              if(!props.authToken) {
+                props.enableLogUser(true);
+                window.scrollTo(0, 0);
+              }
+            }}
+            > Sell a Car</Link>
           </div>
         </div>
       </div>
@@ -106,6 +113,11 @@ const mapDispatchToProps = (dispatch) => {
     getCarsByBrand: (data) => {
       dispatch(getCarsByBrand(data));
     },
+    enableLogUser: data => {
+      dispatch(
+        enableLogUser(data)
+      )
+  },
   };
 };
 
