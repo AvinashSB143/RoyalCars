@@ -26,15 +26,15 @@ class CustomerFeedback extends Component {
     this.state = { // set default states
       comments: [],
       formControls: {
-          email: {
-            value: ''
-          },
-          userName: {
-            value: ''
-          },
-          comment: {
-            value: ''
-          }
+        email: {
+          value: ''
+        },
+        userName: {
+          value: ''
+        },
+        comment: {
+          value: ''
+        }
       },
       rating: 1,
       chartDataHeaders: ["Comment index", "Rating"],
@@ -45,35 +45,35 @@ class CustomerFeedback extends Component {
   }
 
   changeHandler = event => {
-      
-      const name = event.target.name;
-      const value = event.target.value;
-    
-      this.setState({
-        formControls: {
-            ...this.state.formControls,
-            [name]: {
-            ...this.state.formControls[name],
-            value
-          }
+
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState({
+      formControls: {
+        ...this.state.formControls,
+        [name]: {
+          ...this.state.formControls[name],
+          value
         }
-      });
+      }
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault(); // stop form from submitting and do actions below
 
     const comments = [...this.state.comments, {
-        comment: this.state.formControls.comment.value, 
-        name: this.state.formControls.userName.value, 
-        rating: this.state.rating
+      comment: this.state.formControls.comment.value,
+      name: this.state.formControls.userName.value,
+      rating: this.state.rating
     }]
     this.setState({
       comments: comments,
       formControls: {
-          comment: {
-            value: ''
-          }
+        comment: {
+          value: ''
+        }
       },
       rating: 1
     });
@@ -81,7 +81,7 @@ class CustomerFeedback extends Component {
   }
 
   onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
+    this.setState({ rating: nextValue });
   }
 
   render() {
@@ -91,26 +91,26 @@ class CustomerFeedback extends Component {
           <h1 className="below-16">Customer feedback</h1>
           <div className="row">
             <div className="col-md-7">
-              <form onSubmit={this.handleSubmit}>      
+              <form onSubmit={this.handleSubmit}>
                 <div className="below-16 top-24">
                   <h2 className="mega">Please include your rating:</h2>
-                  <StarRatingComponent 
-                    name="rate1" 
+                  <StarRatingComponent
+                    name="rate1"
                     starCount={5}
                     value={this.state.rating}
                     onStarClick={this.onStarClick.bind(this)}
                   />
                 </div>
                 <div>
-                <label htmlFor="comment" className="hidden">Your comment </label>
-                <textarea name="comment" value={this.state.formControls.comment.value} onChange={this.changeHandler} placeholder="Please leave your comment" required />
+                  <label htmlFor="comment" className="hidden">Your comment </label>
+                  <textarea name="comment" value={this.state.formControls.comment.value} onChange={this.changeHandler} placeholder="Please leave your comment" required />
                 </div>
                 {/* <button type="submit" value="Submit" /> */}
                 <div className='main_container feedbackBtns'>
-                <button style={{ background: "green",color: "white"}} onClick={this.handleSubmit}>Submit</button>
-                <button style={{ background: "red",color: "white"}} onClick={() => {
-                  this.props.setShowFeedBack(!this.props.showFeedBack)
-                }}>Cancel</button>
+                  <button style={{ background: "green", color: "white" }} onClick={this.handleSubmit}>Submit</button>
+                  <button style={{ background: "red", color: "white" }} onClick={() => {
+                    this.props.setShowFeedBack(!this.props.showFeedBack)
+                  }}>Cancel</button>
                 </div>
               </form>
             </div>
@@ -126,31 +126,31 @@ const HomePage = (props) => {
   const [showFeedBack, setShowFeedBack] = useState(false)
   return (
     <div >
-     {showFeedBack && <div className='customerFeedBack'>
-        <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack}/>
+      {showFeedBack && <div className='customerFeedBack'>
+        <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack} />
       </div>}
 
       <div id="feedback">
-        <button className="sapMBtnBase ipsButton sapMBtn" onClick={ () => setShowFeedBack(!showFeedBack)}>
+        <button className="sapMBtnBase ipsButton sapMBtn" onClick={() => setShowFeedBack(!showFeedBack)}>
           <span className="sapMBtnHoverable sapMFocusable sapMBtnInner sapMBtnText sapMBtnEmphasized">
             <span className="sapMBtnContent">
-            <bdi id="__button0-BDI-content">Feedback</bdi>
-              </span>
+              <bdi id="__button0-BDI-content">Feedback</bdi>
+            </span>
 
           </span>
 
         </button>
-        
+
       </div>
-        {/* <NavBar /> */}
-        <RecommendedCars />
-        <AssuredBenefits />
-        <Working />
-        <LifeStyle />
-        <BodyTypeCars />
-        <PopularBrands />
-        {/* <FeaturedCars /> */}
-        {/* <SliderTest /> */}
+      {/* <NavBar /> */}
+      <RecommendedCars />
+      <AssuredBenefits />
+      <Working />
+      <LifeStyle />
+      <BodyTypeCars />
+      <PopularBrands />
+      <FeaturedCars />
+      {/* <SliderTest /> */}
     </div>
   );
 };

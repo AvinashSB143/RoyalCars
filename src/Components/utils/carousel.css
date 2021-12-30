@@ -1,0 +1,29 @@
+.wrapper {
+    display: flex !important;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+  }
+  
+  .sliderImg {
+    box-sizing: border-box;
+    height: 300px;
+    width: 400px;
+    padding: 0px 2vw;
+    object-fit: cover;
+  }
+  
+  .imgTitle {
+    font-weight: 900;
+  }
+  
+  .slides .slick-prev,
+  .slides .slick-next {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    background-color: black;
+  }
+  

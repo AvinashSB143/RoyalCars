@@ -4,20 +4,18 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAvailableCars, getCarsByBrand } from "../../actions";
 
-import Skoda from "../../assests/Skoda.jpg";
-import Toyota from "../../assests/Toyota.jpg";
-import TATA from "../../assests/TATA.jpg";
-import Mahindra from "../../assests/Mahindra.jpg";
-import Volkswagen from "../../assests/VW.jpg";
-import Renault from "../../assests/Renault.jpg";
-import Ford from "../../assests/Ford.jpg";
-import Honda from "../../assests/Honda.jpg";
-import Hyundai from "../../assests/Hyundai.jpg";
-import Maruthi from "../../assests/Maruthi.jpg";
-import Nissan from "../../assests/Nissan.jpg";
+import Skoda from "../../assests/Skoda.png";
+import Toyota from "../../assests/Toyota.png";
+import TATA from "../../assests/TATA.png";
+import Mahindra from "../../assests/Mahindra.png";
+import Volkswagen from "../../assests/VW.png";
+import Renault from "../../assests/Renault.png";
+import Ford from "../../assests/Ford.png";
+import Honda from "../../assests/Honda.png";
+import Hyundai from "../../assests/Hyundai.png";
+import Maruthi from "../../assests/Maruthi.png";
 
 const brands = [
-  {url : Skoda, brandName: 'Skoda'},
   {url : Toyota, brandName: 'Toyota'},
   {url : TATA, brandName: 'TATA'},
   {url : Maruthi, brandName: 'Maruthi'},
@@ -26,15 +24,15 @@ const brands = [
   {url : Volkswagen, brandName: 'Volkswagen'},
   {url : Ford, brandName: 'Ford'},
   {url : Renault, brandName: 'Renault'},
-  {url : Mahindra, brandName: 'Mahindra'},
-  {url : Nissan, brandName: 'Nissan'}
+  {url : Skoda, brandName: 'Skoda'},
+  {url : Mahindra, brandName: 'Mahindra'}
   ]
 
 const PopularBrands = (props) => {
   return (
     <div className="main_container column_container">
       <h2>Popular Brands</h2>
-      <ul className="main_container brandcar_container">
+      <div className="brandcar_container">
         {/* <Link
           to="/lifeStyle"
           className="main_container brandcar_btn"
@@ -43,29 +41,33 @@ const PopularBrands = (props) => {
           Ford
         </Link> */}
 
+          <div className="PopularBrands__listWrap">
        { brands.map((brand) => {
          return (
-          <div className="PopularBrands__listWrap">
           <a class="PopularBrands__brand" hre="#" >
             <div class="PopularBrands__content">
-          <img alt={brand.brandName} src={brand.url} />
-            <p>{brand.brandName}</p>
+          <img alt={brand.brandName} src={brand.url} style={{height: "60px",minHeight: "60px"}} />
+            <p style={{fontSize: "12px"}}>{brand.brandName}</p>
             </div>
           </a>
-         
+                  )}
+       )}
+       <a class="PopularBrands__brand" hre="#" >
+            <div class="PopularBrands__content">
+            <p style={{fontSize: "16px"}}>View All Brands</p>
+            </div>
+          </a>
          </div>
-         )}
-         )}
-        <Link
+        {/* <Link
           to="/lifeStyle"
           className="main_container brandcar_btn"
           onClick={() => props.getAvailableCars()}
         >
           View All Cars
-        </Link>
-      </ul>
-      {/* <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-        <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" /> */}
+        </Link> */}
+      </div>
+      {/* <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.png?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
+        <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.png?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" /> */}
     </div>
   );
 };

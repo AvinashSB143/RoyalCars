@@ -40,6 +40,7 @@ function Footer() {
         <p className="APP_Description">
         Welcome to Royal Cars! Your friendly second hand car dealer in Mangalore. We take care of the end-to-end process of Buying and Selling of your car. We at Royal Cars have a wide variety of cars suiting your needs right from your first family car to your favourite off-road vehicle.
         </p>
+       
         {/* <div className="Footer__SocialIcons">
           <FacebookIcon />
           <TwitterIcon />
@@ -70,9 +71,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="Footer__Copyright">
-        Copyright © 2021 Royal cars Pvt Limited. All rights reserved.
-      </div>
+      
       <div className="Footer__Buttons">
         {buttons.map((button, idx) => (
           <Link to={idx === 1 ? "/lifeStyle" : "#"} className="Footer__Button" onClick={() => window.scroll(0,0)}>
@@ -80,7 +79,11 @@ function Footer() {
             {button}
           </Link>
         ))}
+        <div className="Footer__Copyright">
+        Copyright © 2021 Royal cars Pvt Limited. All rights reserved.
       </div>
+      </div>
+      
     </div>
   );
 }

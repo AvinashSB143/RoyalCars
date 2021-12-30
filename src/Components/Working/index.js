@@ -21,7 +21,7 @@ const Working = (props) => {
       <div className="working_images">
         <div className="working_img">
           <img
-            style={{ width: "100%",borderRadius: "50%" }}
+            style={{ width: "100%", borderRadius: "50%" }}
             src={CarBuy}
             alt="Choose from a range of best pre-owned cars"
           />
@@ -40,7 +40,7 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%",borderRadius: "50%" }}
+            style={{ width: "100%", borderRadius: "50%" }}
             src={TestDrive}
             alt="Take a test drive a your convenience"
           />
@@ -57,7 +57,7 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%",borderRadius: "50%" }}
+            style={{ width: "100%", borderRadius: "50%" }}
             src={BuyFromHome}
             alt="Own a car from home"
           />
@@ -84,7 +84,7 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%",borderRadius: "50%" }}
+            style={{ width: "100%", borderRadius: "50%" }}
             src={SellCar}
             alt="Sell your car quickly"
           />
@@ -94,12 +94,12 @@ const Working = (props) => {
           </p>
           <div style={{ marginTop: "10px" }}>
             <Link to={`${props.authToken ? "/sell" : "#"}`}
-            onClick={() => {
-              if(!props.authToken) {
-                props.enableLogUser(true);
-                window.scrollTo(0, 0);
-              }
-            }}
+              onClick={() => {
+                if (!props.authToken) {
+                  props.enableLogUser(true);
+                  window.scrollTo(0, 0);
+                }
+              }}
             > Sell a Car</Link>
           </div>
         </div>
@@ -126,7 +126,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(
         enableLogUser(data)
       )
-  },
+    },
   };
 };
 

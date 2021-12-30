@@ -1,5 +1,5 @@
 .brandcar_container {
-  margin: 10px 30px;
+  margin: 10px 30px 30px 30px;
 }
 
 .brandcar_btn {
@@ -8,6 +8,39 @@
   height: 150px;
   border-radius: 30px;
   background: #f2f3f5;
+}
+
+.PopularBrands__listWrap {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.PopularBrands__brand {
+  background: #f2f3f5;
+  position: relative;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-out;
+  border-radius: 12px;
+}
+
+.PopularBrands__brand:hover {
+  transform: scale(1.03);
+}
+.PopularBrands__content {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: baseline;
+  font-weight: 700;
+}
+
+a.PopularBrands__brand {
+  text-decoration: none;
 }
 
 @media screen and (max-width: 768px) {
