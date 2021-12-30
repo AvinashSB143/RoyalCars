@@ -4,6 +4,11 @@ import "../../styles/styles.css";
 import { connect } from "react-redux";
 import { getAvailableCars, getCarsByBrand, enableLogUser } from "../../actions";
 
+import CarBuy from '../../assests/carBuy.jpg';
+import BuyFromHome from '../../assests/homecar.jpg';
+import SellCar from '../../assests/sellCar.jpg';
+import TestDrive from '../../assests/testdrive.jpg';
+
 const Working = (props) => {
   return (
     <div className="main_container column_container working_container">
@@ -17,7 +22,7 @@ const Working = (props) => {
         <div className="working_img">
           <img
             style={{ width: "100%" }}
-            src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
+            src={CarBuy}
           />
           <h3 style={{ textAlign: "center" }}>
             Choose from a range of best pre-owned cars
@@ -35,7 +40,7 @@ const Working = (props) => {
         <div className="working_img">
           <img
             style={{ width: "100%" }}
-            src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
+            src={TestDrive}
           />
           <h3 style={{ textAlign: "center" }}>
             Take the test drive at our location or at the convenience of your
@@ -51,7 +56,7 @@ const Working = (props) => {
         <div className="working_img">
           <img
             style={{ width: "100%" }}
-            src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
+            src={BuyFromHome}
           />
           <h3 style={{ textAlign: "center" }}>
             Own a car just with the comfort of your home
@@ -77,7 +82,7 @@ const Working = (props) => {
         <div className="working_img">
           <img
             style={{ width: "100%" }}
-            src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/CarBuyingProcess/assets/choose_from_the_best_pre_owned_cars.png"
+            src={SellCar}
           />
           <h3 style={{ textAlign: "center" }}>Sell your car hassle free</h3>
           <p style={{ textAlign: "center", margin: 0 }}>
