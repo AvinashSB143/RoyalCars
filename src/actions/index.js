@@ -72,6 +72,23 @@ export const getOTP = number => {
     }
 }
 
+export const createOTP = number => {
+    return dispatch => {
+        try {
+            axios.post('user/createOTP', {
+                phoneNumber: number
+            }).then(res => {
+                dispatch ({
+                    type: "OTP_CREATED_TEST_DRIVE"
+                }) 
+                
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const updatePassword = (number, newPassword) => {
     return dispatch => {
         try {
@@ -103,7 +120,9 @@ export const bookTestDrive = (number, data) => {
                     type: "BOOKED_TEST_DRIVE"
                 }) 
                }
-            }).catch(err => console.log(err))
+            }).catch(err => dispatch ({
+                type: "BOOKED_TEST_DRIVE"
+            }) )
         } catch (error) {
             console.log(error)
         }
@@ -322,6 +341,13 @@ export const closeSnackBar = () => {
     return dispatch => {
                     dispatch ({
                         type: "SELL_CAR",
+                    })
+                }
+}
+export const closeSnackBarTestDrive = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "CLOSE_TEST_DRIVE_SNACKBAR",
                     })
                 }
 }
