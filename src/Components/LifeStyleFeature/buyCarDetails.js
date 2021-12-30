@@ -1,16 +1,65 @@
-import { Button } from "@material-ui/core";
-import { useCallback, useEffect } from "react";
-import useRazorpay from "react-razorpay";
 import React from "react";
+import { Button } from "@material-ui/core";
+import { useCallback, useEffect, useState } from "react";
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import useRazorpay from "react-razorpay";
 import TextField from '@material-ui/core/TextField';
+import withStyles from "@material-ui/core/styles/withStyles";
 import {Link} from 'react-router-dom';  
 import { connect } from "react-redux";
-import {bookNow, verifyPayment, enableLogUser, bookTestDrive} from "../../actions";
+import {bookNow,
+  verifyPayment,
+  enableLogUser,
+  bookTestDrive,
+  createOTP,
+  validateOTP,
+  closeSnackBarTestDrive
+} from "../../actions";
+
+
+
+const styles = theme => ({ 
+  root: {
+    background: "#f2f3f5",
+    padding: "10px",
+    margin: "10px auto"
+  },
+  input: {
+      padding: "16px 0 17px 10px"
+  },
+  flexContainer: {
+    justifyContent: "space-around"
+  },
+  snackBarRoot: {
+    backgroundColor: "green"
+  },
+  datePickerRoot: {
+    left: "20%",
+  },
+  animated: {
+    fontSize: "18px",
+    fontWeight: "400"
+  }
+});
 
 
 const BuyCarDetails = (props) => {
-    const {selectedCar, userDetails} = props;
+    const {selectedCar, userDetails, classes} = props;
     const Razorpay = useRazorpay();
+    const [state, setState] = React.useState({
+      vertical: 'top',
+      horizontal: 'center',
+    });
+
+    const { vertical, horizontal, open } = state;
+
+
+    const [testDrivePhoneNumber,setTestDrivePhoneNumber] = useState('')
+    const [isOTPCreated, setisOTPCreated] = useState(false)
+    const [OTP, setOTP] = useState(null)
+    const [validateUser, setvalidateUser] = useState()
 
     const handlePayment =  useCallback(() => {
       const options = {
@@ -58,10 +107,108 @@ const BuyCarDetails = (props) => {
     },[props.bookedOrderId])
   
 
+    useEffect(() => {
+      if(props.OTPVerificationSuccessful) {
+          props.bookTestDrive(userDetails.phone, new Date())
+      }
+
+    },[props.OTPVerificationSuccessful])
+
     const carInformation = {
         "amount": selectedCar ? selectedCar.budget: ""
     }
+
+    const getPhoneNumber = number => {
+      setTestDrivePhoneNumber(number)
+    }
+    const readOTPValue = value => {
+      setOTP(value)
+    }
+
+    const handleClose = () => {
+      props.disableSnackBar()
+    };
+
+    const validateForTestDrive = () => {
+      if(!isOTPCreated) {
+        props.createOTP(testDrivePhoneNumber)
+        setTestDrivePhoneNumber("")
+        setisOTPCreated(true)
+      } else if(OTP && OTP.length === 4){
+        props.validateOTP(OTP)
+        setvalidateUser(false)
+        setisOTPCreated(false)
+      }
+    }
+
     return selectedCar ? (
+      <div className={`${validateUser && 'overlay'} "car_details_container"`} 
+          style={{position : "relative"}}>
+             <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={props.isBookedTestDriveSuccessFul}
+                message="Test Drive has been Booked as per your request."
+                key={vertical + horizontal}
+                className={
+                classes.snackBarRoot
+                }
+                classes={{
+                message: classes.snackBarRoot,
+                root: classes.snackBarRoot
+                }}
+                action={
+                  <React.Fragment>
+                    <IconButton
+                        aria-label="close"
+                      color="inherit"
+                      sx={{ p: 0.5 }}
+                      onClick={handleClose}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  </React.Fragment>
+                }
+              />
+       {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
+          <div className="test_drive_validate_container">
+            <div className="test_drive_mobileNo_container">
+            <h4>
+              Please Enter your PhoneNumber
+            </h4>
+            {!props.OTPcreatedForTestDrive ? (<TextField
+              id="mobile_number"
+              placeholder="Mobile Number"
+              InputProps={{
+                disableUnderline: true,
+                 maxLength: 10,
+              }}
+              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: 0}}
+              type="tel"
+              onChange={(e) => getPhoneNumber(e.target.value)}
+              value={testDrivePhoneNumber}
+            /> )
+            : 
+            (<TextField
+              id="OTP"
+              placeholder="OTP"
+              InputProps={{
+                disableUnderline: true,
+                 maxLength: 10,
+              }}
+              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: 0}}
+              type="tel"
+              onChange={(e) => readOTPValue(e.target.value)}
+              value={OTP}
+            /> )
+            }
+            </div>
+            <div className="test_drive_btn_submit">
+              <button className="verify_btn" onClick={validateForTestDrive}>
+              {!isOTPCreated ? "Send OTP" : "Validate OTP"} 
+              </button>
+          </div>
+        </div>
+      }
       <div className="pageStyle">
         <div>
           <ul className="carsList">
@@ -280,12 +427,13 @@ const BuyCarDetails = (props) => {
                     borderRadius: "8px",
                   }}
                   onClick={() => {
-                    if(props.authToken) {
-                      props.bookTestDrive(userDetails.phone, new Date())
-                      props.enableLogUser(false)
-                    }else {
-                      props.enableLogUser(true)
-                    }
+                    // if(props.authToken) {
+                    //   props.bookTestDrive(userDetails.phone, new Date())
+                    //   props.enableLogUser(false)
+                    // }else {
+                    //   props.enableLogUser(true)
+                    // }
+                    setvalidateUser(true)
                   }}
                 >
                   Free Test Drive
@@ -294,6 +442,7 @@ const BuyCarDetails = (props) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     ) : (
       <p>Loaing...!</p>
@@ -306,6 +455,9 @@ const mapStateToProps = state => {
         userDetails: state.reducers.userDetails,
         bookedOrderId: state.reducers.bookedOrderId,
         authToken: state.reducers.authToken,
+        isBookedTestDriveSuccessFul: state.reducers.isBookedTestDriveSuccessFul,
+        OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
+        OTPcreatedForTestDrive: state.reducers.OTPcreatedForTestDrive,
     }
     
 }
@@ -316,14 +468,29 @@ const mapDispatchToProps = dispatch => {
                 bookNow(data)
             )
         },
+        validateOTP: data => {
+            dispatch(
+                validateOTP(data)
+            )
+        },
         enableLogUser: data => {
             dispatch(
               enableLogUser(data)
             )
         },
+        createOTP: data => {
+            dispatch(
+              createOTP(data)
+            )
+        },
         verifyPayment: data => {
             dispatch(
               verifyPayment(data)
+            )
+        },
+        disableSnackBar: () => {
+            dispatch(
+              closeSnackBarTestDrive()
             )
         },
         bookTestDrive: (phoneNumber, data) => {
@@ -334,4 +501,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BuyCarDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(BuyCarDetails));

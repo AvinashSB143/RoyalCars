@@ -58,6 +58,12 @@ const reducers = (state = initialState, action) => {
             OTPVerificationSuccessful: true
         }
     }
+    if(action.type === "OTP_CREATED_TEST_DRIVE") {
+        return {
+            ...state,
+            OTPcreatedForTestDrive: true
+        }
+    }
     if(action.type === "AVAILABLE_CARS") {
         return {
             ...state,
@@ -148,10 +154,17 @@ const reducers = (state = initialState, action) => {
             carRegisteredForSell: !state.carRegisteredForSell
         }
     }
+    if(action.type === "CLOSE_TEST_DRIVE_SNACKBAR") {
+        return {
+            ...state,
+            isBookedTestDriveSuccessFul: false
+        }
+    }
     if(action.type === "BOOKED_TEST_DRIVE") {
         return {
             ...state,
-            isBookedTestDrive: true
+            isBookedTestDriveSuccessFul: true,
+            OTPcreatedForTestDrive: false
         }
     }
     if(action.type === "LOGOUT") {
