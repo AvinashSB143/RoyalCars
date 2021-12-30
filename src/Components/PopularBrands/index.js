@@ -4,18 +4,58 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getAvailableCars, getCarsByBrand } from "../../actions";
 
+import Skoda from "../../assests/Skoda.jpg";
+import Toyota from "../../assests/Toyota.jpg";
+import TATA from "../../assests/TATA.jpg";
+import Mahindra from "../../assests/Mahindra.jpg";
+import Volkswagen from "../../assests/VW.jpg";
+import Renault from "../../assests/Renault.jpg";
+import Ford from "../../assests/Ford.jpg";
+import Honda from "../../assests/Honda.jpg";
+import Hyundai from "../../assests/Hyundai.jpg";
+import Maruthi from "../../assests/Maruthi.jpg";
+import Nissan from "../../assests/Nissan.jpg";
+
+const brands = [
+  {url : Skoda, brandName: 'Skoda'},
+  {url : Toyota, brandName: 'Toyota'},
+  {url : TATA, brandName: 'TATA'},
+  {url : Maruthi, brandName: 'Maruthi'},
+  {url : Hyundai, brandName: 'Hyundai'},
+  {url : Honda, brandName: 'Honda'},
+  {url : Volkswagen, brandName: 'Volkswagen'},
+  {url : Ford, brandName: 'Ford'},
+  {url : Renault, brandName: 'Renault'},
+  {url : Mahindra, brandName: 'Mahindra'},
+  {url : Nissan, brandName: 'Nissan'}
+  ]
+
 const PopularBrands = (props) => {
   return (
     <div className="main_container column_container">
       <h2>Popular Brands</h2>
       <ul className="main_container brandcar_container">
-        <Link
+        {/* <Link
           to="/lifeStyle"
           className="main_container brandcar_btn"
           onClick={() => props.getCarsByBrand("ford")}
         >
           Ford
-        </Link>
+        </Link> */}
+
+       { brands.map((brand) => {
+         return (
+          <div className="PopularBrands__listWrap">
+          <a class="PopularBrands__brand" hre="#" >
+            <div class="PopularBrands__content">
+          <img alt={brand.brandName} src={brand.url} />
+            <p>{brand.brandName}</p>
+            </div>
+          </a>
+         
+         </div>
+         )}
+         )}
         <Link
           to="/lifeStyle"
           className="main_container brandcar_btn"
