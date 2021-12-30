@@ -8,7 +8,7 @@ import Header from "../Header";
 import Footer from "../Footer";
 import NavBar from "../Navigation";
 import RecommendedCars from "../Recommendation";
-import Assuredbenefits from "../AssuredBenefits";
+import AssuredBenefits from "../AssuredBenefits";
 import Working from "../Working";
 import LifeStyle from "../LifeStyle";
 import BodyTypeCars from "../bodyType";
@@ -144,7 +144,7 @@ const HomePage = (props) => {
       </div>
         {/* <NavBar /> */}
         <RecommendedCars />
-        <Assuredbenefits />
+        <AssuredBenefits />
         <Working />
         <LifeStyle />
         <BodyTypeCars />

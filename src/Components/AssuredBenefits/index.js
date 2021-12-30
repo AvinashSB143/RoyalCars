@@ -2,7 +2,7 @@ import "./benefits.css";
 import "../../styles/styles.css";
 import Logo from "../../images/Logo.png";
 
-const Assuredbenefits = () => {
+const AssuredBenefits = () => {
     return(
         <div className="main_container column_container">
             <div className="main_container column_container">
@@ -48,4 +48,4 @@ const Assuredbenefits = () => {
     )
 }
 
-export default Assuredbenefits;
+export default AssuredBenefits;
