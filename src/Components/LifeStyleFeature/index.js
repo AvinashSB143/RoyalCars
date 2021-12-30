@@ -408,6 +408,7 @@ const LifeStyleFeature = (props) => {
           <img
             className="filter_car_img"
             src={`http://3.111.30.111:5000/${car.imagePath}`}
+            alt="Selected cars"
           />
         </Link>
         <div className="column_container" style={{ position: "relative" }}>
@@ -442,6 +443,7 @@ const LifeStyleFeature = (props) => {
             <img
               className="filter_car_img"
               src={`http://3.111.30.111:5000/${car.imagePath}`}
+              alt="Selected cars"
             />
           </Link>
           <div className="column_container" style={{ position: "relative" }}>

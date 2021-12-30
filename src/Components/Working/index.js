@@ -21,8 +21,9 @@ const Working = (props) => {
       <div className="working_images">
         <div className="working_img">
           <img
-            style={{ width: "100%" }}
+            style={{ width: "100%",borderRadius: "50%" }}
             src={CarBuy}
+            alt="Choose from a range of best pre-owned cars"
           />
           <h3 style={{ textAlign: "center" }}>
             Choose from a range of best pre-owned cars
@@ -39,8 +40,9 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%" }}
+            style={{ width: "100%",borderRadius: "50%" }}
             src={TestDrive}
+            alt="Take a test drive a your convenience"
           />
           <h3 style={{ textAlign: "center" }}>
             Take the test drive at our location or at the convenience of your
@@ -55,8 +57,9 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%" }}
+            style={{ width: "100%",borderRadius: "50%" }}
             src={BuyFromHome}
+            alt="Own a car from home"
           />
           <h3 style={{ textAlign: "center" }}>
             Own a car just with the comfort of your home
@@ -81,8 +84,9 @@ const Working = (props) => {
         </div>
         <div className="working_img">
           <img
-            style={{ width: "100%" }}
+            style={{ width: "100%",borderRadius: "50%" }}
             src={SellCar}
+            alt="Sell your car quickly"
           />
           <h3 style={{ textAlign: "center" }}>Sell your car hassle free</h3>
           <p style={{ textAlign: "center", margin: 0 }}>

@@ -48,7 +48,7 @@ const AccountFilters = (props) => {
              <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}
              onClick={() => props.seletedCar(car)}>
                   <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`}/>
+                  <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} alt="Buy A Car" />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info">{car.yesr}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -65,7 +65,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} />
+                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} alt="Test Drive Car Details" />
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -86,7 +86,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} />
+                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} alt="Test Drive Car Details"/>
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >
@@ -107,7 +107,7 @@ const AccountFilters = (props) => {
             <div className="row_container car_list">
                 <div className="test_drive_car_img">
                 <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} />
+                    <img className="filter_car_img" src={`http://3.111.30.111:5000/${car.imagePath}`} alt="Test Drive Car Details"/>
                 </Link>
                    </div>
                  <div className="column_container test_drive_car_details" >

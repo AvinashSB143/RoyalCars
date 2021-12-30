@@ -42,13 +42,13 @@ return (
                 </div>
                 <div className="about_us_card_container about_us_main">
                     <div className="about_us_card">
-                        <img className="about_us_card_img"
+                        <img className="about_us_card_img" alt="About Us"
                         src="https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_25/1347178/family-road-trip-stock-today-180619-tease-02.jpg"></img>
                     <h3>We are about making car ownership accessible, simple and delightful</h3>
                     <p>With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
                     </div>
                     <div className="about_us_card">
-                        <img className="about_us_card_img"
+                        <img className="about_us_card_img" alt="About Us"
                         src="https://www.wardsauto.com/sites/wardsauto.com/files/styles/article_featured_retina/public/happy%20young%20customer.jpg?itok=_7ONcJ9u"></img>
                     <h3>happy customers, here’s what one has to say</h3>
                     <p>With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
@@ -58,24 +58,24 @@ return (
                     <h3>What's important to us</h3>
                     <div className="importantTo_us_card">
                         <div className = "importantTo_us_card_list">
-                            <img src = "https://www.google.com/search?q=car+icon+svg&bih=657&biw=1366&rlz=1C1CHZL_enIN711IN712&hl=en&sxsrf=AOaemvJ-9qqf1xP4FtOTDbgBBZwER1Q2LA:1635685944399&tbm=isch&source=iu&ictx=1&fir=7m4hp2lPaAvPjM%252CnqhAlX2a6HZK0M%252C_%253BqAQmBMX5URAb6M%252CTuwJ5awS3qU0vM%252C_%253BcQs86BYMDI1WYM%252CykM--IYvbpYdAM%252C_%253BxghgPv4by5ySsM%252CLvW2l0HWv0Fn9M%252C_%253BRyMkwO6iR_bLtM%252Ci7cn3RsDVODiiM%252C_%253B2ywf-nuH3GliOM%252CmrUsA8b6UVwgEM%252C_%253B82WPO-QUYtD7mM%252CJEu0XRL9UsPRKM%252C_%253B2kx7Hpj7nPykVM%252Cm0GY8aknX5v0DM%252C_%253BpUKs0A7g40TlNM%252COuAAJEkI-WOLrM%252C_%253B27e1yLZP63QyRM%252CDEAg6VAxAeF8eM%252C_%253BpQm0KzHLfPddHM%252C8NFZSMFcjX7kuM%252C_%253BoD3WjMg7vakCIM%252CaPcleUTkz8bHrM%252C_%253B9LM2DFn1k3EJOM%252C8HzCa8DY7bkedM%252C_%253BCwY6vB-u2bD2pM%252C-oU8zz6rQ1C6sM%252C_%253Bs0fT2R1BLbBRbM%252C7rYQWsh8ZCdTtM%252C_&vet=1&usg=AI4_-kRYaSVquimTUKXPemoqCyFEc-e8xw&sa=X&ved=2ahUKEwip07f93PTzAhX1zTgGHUDICf0Q9QF6BAgREAE#imgrc=pQm0KzHLfPddHM"></img>
+                            <img alt="Quality Reasons" src = "https://www.google.com/search?q=car+icon+svg&bih=657&biw=1366&rlz=1C1CHZL_enIN711IN712&hl=en&sxsrf=AOaemvJ-9qqf1xP4FtOTDbgBBZwER1Q2LA:1635685944399&tbm=isch&source=iu&ictx=1&fir=7m4hp2lPaAvPjM%252CnqhAlX2a6HZK0M%252C_%253BqAQmBMX5URAb6M%252CTuwJ5awS3qU0vM%252C_%253BcQs86BYMDI1WYM%252CykM--IYvbpYdAM%252C_%253BxghgPv4by5ySsM%252CLvW2l0HWv0Fn9M%252C_%253BRyMkwO6iR_bLtM%252Ci7cn3RsDVODiiM%252C_%253B2ywf-nuH3GliOM%252CmrUsA8b6UVwgEM%252C_%253B82WPO-QUYtD7mM%252CJEu0XRL9UsPRKM%252C_%253B2kx7Hpj7nPykVM%252Cm0GY8aknX5v0DM%252C_%253BpUKs0A7g40TlNM%252COuAAJEkI-WOLrM%252C_%253B27e1yLZP63QyRM%252CDEAg6VAxAeF8eM%252C_%253BpQm0KzHLfPddHM%252C8NFZSMFcjX7kuM%252C_%253BoD3WjMg7vakCIM%252CaPcleUTkz8bHrM%252C_%253B9LM2DFn1k3EJOM%252C8HzCa8DY7bkedM%252C_%253BCwY6vB-u2bD2pM%252C-oU8zz6rQ1C6sM%252C_%253Bs0fT2R1BLbBRbM%252C7rYQWsh8ZCdTtM%252C_&vet=1&usg=AI4_-kRYaSVquimTUKXPemoqCyFEc-e8xw&sa=X&ved=2ahUKEwip07f93PTzAhX1zTgGHUDICf0Q9QF6BAgREAE#imgrc=pQm0KzHLfPddHM"></img>
                             <h4>Quality</h4>
                             <p>Our cars are the reason we are in business and will be why we continue to exist and attract customers. Quality at every touchpoint for our customers, is just as important to us for we are a service-first brand.</p>
                         </div>
                         <div className = "importantTo_us_card_list">
-                            <img src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
+                            <img alt="Transparency & Accountability" src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
                             <h4>Transparency & Accountability</h4>
                             <p>It brings trust. Laying bare every available fact about our car at our hubs, after our stringent vetting process, reassures customers. A range of industry-first offerings including Royal Cars Assured ® mean that we are not just in the pre-owned car business, but in the business of growing and building relationships with our customers.</p>
                         </div>
                         <div className = "importantTo_us_card_list">
-                            <img src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
+                            <img alt="Persanolized Experience" src = "https://www.google.com/search?q=quality.svg&rlz=1C1CHZL_enIN711IN712&sxsrf=AOaemvLke4N_LYaM0DjlO0AY-ZELQnZqKg:1635680541294&tbm=isch&source=iu&ictx=1&fir=wABPeGsnauCPvM%252C26dHwpWMa4RjbM%252C_%253B5KTGnYErpGkGeM%252CCS1S2jU8gWPuqM%252C_%253BRFcnpA0kQSIu9M%252CtO53w3i7u5cBAM%252C_%253Bs-SuxwddQU9aMM%252CknH8bIl9BubghM%252C_%253BeDtfXQkavoqR9M%252C5XZNcU1fL6fL_M%252C_%253BRQOnzMfkxXzhVM%252C5XZNcU1fL6fL_M%252C_%253Bdt36A40TOsI6DM%252CDoV49Mp7LNeR3M%252C_%253BsS2Uqf3wHLvFzM%252CknH8bIl9BubghM%252C_%253BjvKTX01xZBs1xM%252Cgq5THSoOTrq0BM%252C_%253Ba80p6mlJlA6-YM%252CHDNn48TmBqq4nM%252C_%253B5W5q64QUbWVn9M%252CHDNn48TmBqq4nM%252C_%253BBKLVqn6ULwSBmM%252CHDNn48TmBqq4nM%252C_%253BNSS-M5raf1FvnM%252CtO53w3i7u5cBAM%252C_%253BGrgZkI-xLvijYM%252CBZ4Tjb7RTzLm8M%252C_%253B85LEticY_f7swM%252CtO53w3i7u5cBAM%252C_%253BlUJ23TGmJ7_0hM%252CHDNn48TmBqq4nM%252C_&vet=1&usg=AI4_-kRl0U58bKQRBJwirXrMynuTNNGhjQ&sa=X&ved=2ahUKEwj9soTtyPTzAhUhzzgGHW6ACz0Q9QF6BAgXEAE#imgrc=RQOnzMfkxXzhVM"></img>
                             <h4>Persanolized Experience</h4>
                             <p>Every customer is unique; each demands different things from a set of four wheels. That’s why our inventory is varied and the people you meet in your interactions with Royal Cars are trained to listen first and at length, then make recommendations.</p>
                         </div>
                     </div>
                 </div>
                 <div className = "SquadSpinny about_us_main">
-                    <img 
+                    <img alt="Squad Royal Cars"
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     <div className="SquadSpinny_contentwrap">
                         <h3>Squad Royal Cars</h3>
@@ -143,7 +143,7 @@ return (
                                 <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
                                 <div className = "press_imgContainer">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
+                                    <img alt="own a pre-owned car" src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
@@ -153,7 +153,7 @@ return (
                                 <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
                                 <div className = "press_imgContainer">
-                                    <img src="https://www.egis-india.com/sites/egis-india.com/files/styles/largeur_page/public/fe.png?itok=iyIILABn">
+                                    <img alt="Pre-owned car redefined" src="https://www.egis-india.com/sites/egis-india.com/files/styles/largeur_page/public/fe.png?itok=iyIILABn">
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
@@ -163,7 +163,7 @@ return (
                                 <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
                                 <div className = "press_imgContainer">
-                                    <img src="https://img.etimg.com/thumb/msid-69088793,width-1200,height-900/industry/media/entertainment/media/the-economic-times-trumps-all-business-dailies-combined.jpg">
+                                    <img alt="360-degree interactive view" src="https://img.etimg.com/thumb/msid-69088793,width-1200,height-900/industry/media/entertainment/media/the-economic-times-trumps-all-business-dailies-combined.jpg">
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
@@ -173,7 +173,7 @@ return (
                                 <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
                                 <div className = "press_imgContainer">
-                                    <img src="https://entrackr.com/wp-content/uploads/2019/03/funding-.jpg">
+                                    <img alt="Accel-backed royal cars" src="https://entrackr.com/wp-content/uploads/2019/03/funding-.jpg">
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">

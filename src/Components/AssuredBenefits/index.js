@@ -6,7 +6,7 @@ const AssuredBenefits = () => {
     return(
         <div className="main_container column_container">
             <div className="main_container column_container">
-                <img src={Logo} width="100px" height="100px"/>
+                <img src={Logo} width="100px" height="100px" alt="Royal Cars" />
                 <h1 style={{ margin: 0}}>
                     Royal Car benefits
                 </h1>
@@ -16,31 +16,31 @@ const AssuredBenefits = () => {
             </div>
             <div className="benefits_images">
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/200-inspection-point.png" />
+                <img className="benefit_image"alt="Value for money" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/200-inspection-point.png" />
                 <p className="benefit"> Value for money: Priced as per the market value and condition</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/5-day-money-back-guarentee.png" />
+                <img className="benefit_image" alt="Easy Online search" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/5-day-money-back-guarentee.png" />
                 <p className="benefit">Easy Online search – Choose from wide category of cars in the website</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/1-year-spinny-warranty.png" />
+                <img className="benefit_image" alt="Expert Assistance" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/1-year-spinny-warranty.png" />
                 <p className="benefit"> Choice assistance from a team of expert personnel</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/5-day-money-back-guarentee.png" />
+                <img className="benefit_image" alt="Best spot evaluation" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/5-day-money-back-guarentee.png" />
                 <p className="benefit">Best spot evaluation</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/1-year-spinny-warranty.png" />
+                <img className="benefit_image" alt="Free document transfers" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/1-year-spinny-warranty.png" />
                 <p className="benefit">Free document transfers</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/fixed-price-assurance.png" />
+                <img className="benefit_image" alt="Home Test Drive, Delivery and Pickup" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/fixed-price-assurance.png" />
                 <p className="benefit">Home Test Drive, Delivery and Pickup</p>
                 </div>
                 <div className="benefits_img">
-                <img className="benefit_image" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/200-inspection-point.png" />
+                <img className="benefit_image" alt="Online Payment" src="https://d1263yrto77i5b.cloudfront.net/0.2.1222/assets/images/pages/HomePage/components/SpinnyAssured/assets/200-inspection-point.png" />
                 <p className="benefit"> Online Payment – One day settlement</p>
                 </div>
             </div>
