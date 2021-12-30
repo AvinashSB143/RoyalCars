@@ -343,12 +343,13 @@ const enableShowKMList = () => {
 
 
 const carDetails = {
-  "year": selectedyear,
+  "year": JSON.stringify(selectedyear),
   "brand": selectedBrand,
   "model":selectedModel,
   "variant":selectedVariant,
   "totalOwner":selectedOwner,
-  "kmDriven":selectedKMDriven
+  "kmDriven":selectedKMDriven,
+  "customerPhoneNo": props.userDetails.phone
 }
 
 
@@ -543,6 +544,7 @@ const mapStateToProps = state => {
     carsByModel: state.reducers.carsByModel,
     carRegisteredForSell: state.reducers.carRegisteredForSell,
     authToken: state.reducers.authToken,
+    userDetails: state.reducers.userDetails,
    }
   
 }

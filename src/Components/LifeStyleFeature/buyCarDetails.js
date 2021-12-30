@@ -2,9 +2,10 @@ import { Button } from "@material-ui/core";
 import { useCallback, useEffect } from "react";
 import useRazorpay from "react-razorpay";
 import React from "react";
+import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom';  
 import { connect } from "react-redux";
-import {bookNow, verifyPayment, enableLogUser} from "../../actions";
+import {bookNow, verifyPayment, enableLogUser, bookTestDrive} from "../../actions";
 
 
 const BuyCarDetails = (props) => {
@@ -278,6 +279,14 @@ const BuyCarDetails = (props) => {
                     marginLeft: "20px",
                     borderRadius: "8px",
                   }}
+                  onClick={() => {
+                    if(props.authToken) {
+                      props.bookTestDrive(userDetails.phone, new Date())
+                      props.enableLogUser(false)
+                    }else {
+                      props.enableLogUser(true)
+                    }
+                  }}
                 >
                   Free Test Drive
                 </Button>
@@ -315,6 +324,11 @@ const mapDispatchToProps = dispatch => {
         verifyPayment: data => {
             dispatch(
               verifyPayment(data)
+            )
+        },
+        bookTestDrive: (phoneNumber, data) => {
+            dispatch(
+              bookTestDrive(phoneNumber, data)
             )
         }
     }

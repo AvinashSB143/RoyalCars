@@ -91,6 +91,25 @@ export const updatePassword = (number, newPassword) => {
     }
 }
 
+export const bookTestDrive = (number, data) => {
+    return dispatch => {
+        try {
+            axios.post('user/bookTestDrive', {
+                phoneNumber: number,
+                bookedDate: data.getDate()+"/"+(data.getMonth()+1)+"/"+data.getFullYear()
+            }).then(res => {
+               if(res && res.data) {
+                dispatch ({
+                    type: "BOOKED_TEST_DRIVE"
+                }) 
+               }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const validateNumber = number => {
     return dispatch => {
         try {
