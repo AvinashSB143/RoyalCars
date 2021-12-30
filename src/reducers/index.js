@@ -148,6 +148,12 @@ const reducers = (state = initialState, action) => {
             carRegisteredForSell: !state.carRegisteredForSell
         }
     }
+    if(action.type === "BOOKED_TEST_DRIVE") {
+        return {
+            ...state,
+            isBookedTestDrive: true
+        }
+    }
     if(action.type === "LOGOUT") {
         return {
             authToken: null,
