@@ -162,7 +162,7 @@ return (
                                     </img>
                                 </div>
                                 <div className = "press_descContainer">
-                                <p>Full-stack concept explained with benifits</p>
+                                <p>Full-stack concept explained with benefits</p>
                                 </div>
                                 </a>
                                 <a className="press_content_img"
