@@ -171,6 +171,12 @@ const BuyCarDetails = (props) => {
               />
        {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
           <div className="test_drive_validate_container">
+            <CloseIcon
+                  className="close_Test_Drive_container"
+                  onClick={() => {
+                   setvalidateUser(false)
+                  }}
+                />
             <div className="test_drive_mobileNo_container">
             <h4>
               Please Enter your PhoneNumber
@@ -182,7 +188,7 @@ const BuyCarDetails = (props) => {
                 disableUnderline: true,
                  maxLength: 10,
               }}
-              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: 0}}
+              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: "10px"}}
               type="tel"
               onChange={(e) => getPhoneNumber(e.target.value)}
               value={testDrivePhoneNumber}

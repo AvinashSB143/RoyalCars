@@ -29,6 +29,16 @@ const brands = [
   ]
 
 const PopularBrands = (props) => {
+
+  const displayCarsByBrand = (brand, index) => {
+      props.getCarsByBrand(brand)
+      window.scroll(0,0)
+  }
+
+  const getAllCars = () => {
+    props.getAvailableCars()
+    window.scroll(0,0)
+  }
   return (
     <div className="main_container column_container">
       <h2>Popular Brands</h2>
@@ -42,32 +52,29 @@ const PopularBrands = (props) => {
         </Link> */}
 
           <div className="PopularBrands__listWrap">
-       { brands.map((brand) => {
+       { brands.map((brand,index) => {
          return (
           <a class="PopularBrands__brand" hre="#" >
-            <div class="PopularBrands__content">
+            <Link to="/lifeStyle" class="PopularBrands__content" 
+            onClick={() => {
+              displayCarsByBrand(brand.brandName, index)
+            }
+            }>
           <img alt={brand.brandName} src={brand.url} style={{height: "60px",minHeight: "60px"}} />
             <p style={{fontSize: "12px"}}>{brand.brandName}</p>
-            </div>
+            </Link>
           </a>
                   )}
        )}
-       <a class="PopularBrands__brand" hre="#" >
-            <div class="PopularBrands__content">
+       <Link to="/lifeStyle" class="PopularBrands__brand" onClick={() => {
+              getAllCars()
+            }}>
+            <div class="PopularBrands__content" >
             <p style={{fontSize: "16px"}}>View All Brands</p>
             </div>
-          </a>
+          </Link>
          </div>
-        {/* <Link
-          to="/lifeStyle"
-          className="main_container brandcar_btn"
-          onClick={() => props.getAvailableCars()}
-        >
-          View All Cars
-        </Link> */}
       </div>
-      {/* <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.png?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-        <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.png?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" /> */}
     </div>
   );
 };

@@ -185,17 +185,29 @@ export const getAvailableCars = () => {
                 })
                 }
             }).catch(err => console.log(err))
-          
-            dispatch ({
-                type: "AVAILABLE_CARS",
-                payload: []
-            })
-
         } catch (error) {
             console.log(error)
         }
     }
 }
+
+export const getAssuredCars = () => {
+    return dispatch => {
+        try {
+            axios.get('customerCar/getWarrantyCar').then(res => {
+                if(res && res.data) {
+                dispatch ({
+                    type: "ASSURED_CARS",
+                    payload: res.data.result
+                })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const getCarsByYear = year => {
     return dispatch => {
         try {

@@ -42,7 +42,8 @@ import { login,
     getBookedCars,
     sellOrders,
     searchCar,
-    enableLogUser 
+    enableLogUser,
+    getAssuredCars 
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -101,6 +102,10 @@ class Header extends Component {
       },
       searchCarName: ""
     };
+  }
+
+  componentDidMount() {
+    this.props.getAssuredCars()
   }
   changeOnMouseLeave = () => {
     this.setState({
@@ -1336,6 +1341,11 @@ const mapDispatchToProps = dispatch => {
             dispatch(
                 validateNumber(number)
                 )
+        },
+        getAssuredCars: () => {
+          dispatch(
+            getAssuredCars()
+          )
         },
         getOTP: (number) => {
             dispatch(

@@ -354,8 +354,8 @@ li {
 
 .test_drive_btn_submit {
   position: absolute;
-  left: 30%;
-  top: 50%;
+  left: 35%;
+  top: 55%;
 }
 
 .verify_btn {
@@ -364,6 +364,11 @@ li {
   border-radius: 10px;
   font-weight: 600;
   font-size: 14px;
+}
+
+.close_Test_Drive_container {
+  position: absolute;
+  right: 5px;
 }
 
 @media only screen and (max-width: 1200px) {
