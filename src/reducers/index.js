@@ -167,6 +167,12 @@ const reducers = (state = initialState, action) => {
             OTPcreatedForTestDrive: false
         }
     }
+    if(action.type === "ASSURED_CARS") {
+        return {
+            ...state,
+            assuredCarList: action.payload
+        }
+    }
     if(action.type === "LOGOUT") {
         return {
             authToken: null,
