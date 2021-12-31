@@ -11,16 +11,22 @@
 }
 
 .PopularBrands__listWrap {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   column-gap: 16px;
+  grid-row-gap: 16px;
   row-gap: 16px;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  column-count: 6;
 }
 
 .PopularBrands__brand {
   background: #f2f3f5;
   position: relative;
   height: 140px;
+  width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
