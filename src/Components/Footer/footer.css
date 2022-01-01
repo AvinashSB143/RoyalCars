@@ -113,7 +113,7 @@
 .Footer__Logo div > button {
   position: relative;
   top: -1.5rem;
-  right: -35%;
+  right: -10%;
   opacity: 0;
 }
 .Footer__Logo div > button > svg {
