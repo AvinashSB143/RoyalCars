@@ -344,7 +344,7 @@ class Header extends Component {
           >
             <a>How it Works</a>
           </p4>
-          <ArrowForwardIosIcon style={{ marginLeft: "90px" }} />
+          <ArrowForwardIosIcon style={{ marginLeft: "50px" }} />
         </div>
       </div>
     );
@@ -960,7 +960,7 @@ class Header extends Component {
                 //  onMouseOut={() => this.changeArrow()}
                 style={{ fontSize: "16px" }}
               >
-                more
+                More
               </b>
               {this.state.expandMoreSection ? (
                 <KeyboardArrowUpIcon />
