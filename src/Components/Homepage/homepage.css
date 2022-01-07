@@ -9,18 +9,21 @@
 
 
 .customerFeedBack {
-    position: absolute;
+    border-radius: 10px !important;
+    position: fixed;
     display: flex;
     justify-content: center;
     z-index: 999;
     align-items: center;
-    left: 25%;
+    left: 50%;
     background: white;
-    top: 20%;
-    width: 40%;
-    border-radius: 1rem;
+    top: 50%;
     background-color: #cfd4d1;
+    margin: auto auto;
+    width: 35%;
+    transform: translate(-50%,-50%);
 }
+
 
 .feedbackBtns {
     justify-content: space-around;
@@ -116,17 +119,24 @@ span.sapMBtnInner.sapMBtnEmphasized {
     font-weight: 700;
 }
 
+.styleModal{
+    height: 100vh;
+    overflow: hidden;
+}
+
 @media only screen and (max-width:850px){
     .customerFeedBack{
         width:50%;
-        margin:1rem ;
-        padding: 1rem
+        margin:1rem;
+        padding: 1rem;
     }
 }
 @media only screen and (min-width:320px) and (max-width: 690px){
     .customerFeedBack{
-        width:60%;
-        margin:1rem ;
-        padding: 1rem
+        width: 85%;
+        margin: 1rem;
+        padding: 1rem;
+        z-index: 1000000;
+        left: 45%;
     }
 }

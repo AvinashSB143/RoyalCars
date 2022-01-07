@@ -62,7 +62,8 @@ class CustomerFeedback extends Component {
 
   handleSubmit(event) {
     event.preventDefault(); // stop form from submitting and do actions below
-
+    if(!this.props.showFeedBack) document.body.classList.add("styleModal");
+    if(this.props.showFeedBack) document.body.classList.remove("styleModal");
     const comments = [...this.state.comments, {
       comment: this.state.formControls.comment.value,
       name: this.state.formControls.userName.value,
@@ -93,7 +94,7 @@ class CustomerFeedback extends Component {
             <div className="col-md-7">
               <form onSubmit={this.handleSubmit}>
                 <div className="below-16 top-24">
-                  <h2 className="mega">Please include your rating:</h2>
+                  <h3 className="mega">Please include your rating:</h3>
                   <StarRatingComponent
                     name="rate1"
                     starCount={5}
@@ -108,9 +109,7 @@ class CustomerFeedback extends Component {
                 {/* <button type="submit" value="Submit" /> */}
                 <div className='main_container feedbackBtns'>
                   <button style={{ background: "green", color: "white" }} onClick={this.handleSubmit}>Submit</button>
-                  <button style={{ background: "red", color: "white" }} onClick={() => {
-                    this.props.setShowFeedBack(!this.props.showFeedBack)
-                  }}>Cancel</button>
+                  <button style={{ background: "red", color: "white" }} onClick={() => this.props.setFeedbackModal()}>Cancel</button>
                 </div>
               </form>
             </div>
@@ -124,14 +123,21 @@ class CustomerFeedback extends Component {
 const HomePage = (props) => {
   const { validateUser } = props;
   const [showFeedBack, setShowFeedBack] = useState(false)
+
+  const setFeedbackModal = () => {
+    setShowFeedBack(!showFeedBack);
+    if(!showFeedBack) document.body.classList.add("styleModal");
+    if(showFeedBack) document.body.classList.remove("styleModal");
+  }
+
   return (
-    <div >
+    <div>
       {showFeedBack && <div className='customerFeedBack'>
-        <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack} />
+        <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack} setFeedbackModal={setFeedbackModal} />
       </div>}
 
       <div id="feedback">
-        <button className="sapMBtnBase ipsButton sapMBtn" onClick={() => setShowFeedBack(!showFeedBack)}>
+        <button className="sapMBtnBase ipsButton sapMBtn" onClick={() => setFeedbackModal()}>
           <span className="sapMBtnHoverable sapMFocusable sapMBtnInner sapMBtnText sapMBtnEmphasized">
             <span className="sapMBtnContent">
               <bdi id="__button0-BDI-content">Feedback</bdi>
