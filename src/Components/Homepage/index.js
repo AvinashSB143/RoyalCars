@@ -62,8 +62,8 @@ class CustomerFeedback extends Component {
 
   handleSubmit(event) {
     event.preventDefault(); // stop form from submitting and do actions below
-    if(!this.props.showFeedBack) document.body.classList.add("styleModal");
-    if(this.props.showFeedBack) document.body.classList.remove("styleModal");
+    if (!this.props.showFeedBack) document.body.classList.add("styleModal");
+    if (this.props.showFeedBack) document.body.classList.remove("styleModal");
     const comments = [...this.state.comments, {
       comment: this.state.formControls.comment.value,
       name: this.state.formControls.userName.value,
@@ -126,15 +126,17 @@ const HomePage = (props) => {
 
   const setFeedbackModal = () => {
     setShowFeedBack(!showFeedBack);
-    if(!showFeedBack) document.body.classList.add("styleModal");
-    if(showFeedBack) document.body.classList.remove("styleModal");
+    if (!showFeedBack) document.body.classList.add("styleModal");
+    if (showFeedBack) document.body.classList.remove("styleModal");
   }
 
   return (
     <div>
-      {showFeedBack && <div className='customerFeedBack'>
-        <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack} setFeedbackModal={setFeedbackModal} />
-      </div>}
+      {showFeedBack &&
+        <div className="overlay">
+          <div className='customerFeedBack'>
+            <CustomerFeedback setShowFeedBack={setShowFeedBack} showFeedBack={showFeedBack} setFeedbackModal={setFeedbackModal} />
+          </div></div>}
 
       <div id="feedback">
         <button className="sapMBtnBase ipsButton sapMBtn" onClick={() => setFeedbackModal()}>

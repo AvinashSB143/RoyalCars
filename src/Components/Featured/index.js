@@ -1,9 +1,11 @@
 import "./featured.css";
 import "../../styles/styles.css";
 import { connect } from 'react-redux';
-import Carousel from '../utils/Carousel';
+import CarouselModule from '../utils/Carousel';
 import { Link } from 'react-router-dom';
 import { selectedCar } from "../../actions";
+import { Carousel } from '@trendyol-js/react-carousel';
+
 
 
 const images = [
@@ -79,8 +81,8 @@ const FeaturedCars = (props) => {
                     More Popular
                 </buttons>
             </ul> */}
-            {/* <Carousel /> */}
             <div class="grid--4-cols">
+                {/* <Carousel slide={3}> */}
                 {props.assuredCarList && props.assuredCarList.map((car) => {
                     return (
                         <Link to="/buyCar/cars" class="feature-box" onClick={() => {
@@ -95,13 +97,13 @@ const FeaturedCars = (props) => {
                                 <div className="content-details">
                                     <h4>{car && car.year} {car && car.brand} {car && car.model}</h4>
                                     <h5><span>{car && car.kmDriven} Kms</span>
-                  <span>&nbsp;.&nbsp; {car && car.fuelType}</span>
-                  <span> &nbsp;.&nbsp; {car && car.fuelType}</span></h5>
+                                        <span>&nbsp;.&nbsp; {car && car.fuelType}</span>
+                                        <span> &nbsp;.&nbsp; {car && car.fuelType}</span></h5>
                                     <h3>{car.budget}</h3>
                                 </div>
                                 <div className="location-details">
-                                    {/* <h5 style={{ borderTop: "0.5px gray solid", paddingTop: "8px" }}>{image.location}</h5> */}
-                                    {/* <h6>{selectedCar.HomeTestDrive ? "Home Test Drive Available" : null}</h6> */}
+                                    <h5 style={{ borderTop: "0.5px gray solid", paddingTop: "8px" }}>{car.location}</h5>
+                                    <h6>{selectedCar.HomeTestDrive ? "Home Test Drive Available" : null}</h6>
                                     <h6>Home Test Drive Available</h6>
                                 </div>
                             </div>
@@ -110,8 +112,7 @@ const FeaturedCars = (props) => {
                 }
                 )}
             </div>
-            {/* <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" />
-        <img className="bodytype_image" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*" /> */}
+            {/* </Carousel> */}
         </div>
     )
 }
@@ -122,13 +123,13 @@ const mapStateToProps = (state) => {
     };
 };
 
-  
+
 const mapDispatchToProps = (dispatch) => {
     return {
         selectedCar: (data) => {
             dispatch(selectedCar(data));
-          },
+        },
     }
-  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturedCars)
