@@ -59,6 +59,7 @@ function Routing() {
         <BuyCarDetails />
       </Route>
       <Footer />
+      <Route component={HomePage} />
     </HomePageContainer>
   );
 }

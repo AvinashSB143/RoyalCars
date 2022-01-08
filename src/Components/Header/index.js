@@ -43,7 +43,8 @@ import { login,
     sellOrders,
     searchCar,
     enableLogUser,
-    getAssuredCars 
+    getAssuredCars,
+    createOTP 
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -177,6 +178,7 @@ class Header extends Component {
         this.state.mobileNumber,
         this.state.email
       );
+      this.props.createOTP(this.state.mobileNumber,)
       this.setState({
         isSignUp: false,
         userName: "",
@@ -224,7 +226,7 @@ class Header extends Component {
 
   validateOTP = (OTP) => {
     if (OTP && OTP.length === 4) {
-      this.props.validateOTP(OTP);
+      this.props.validateOTP(OTP, this.state.mobileNumber);
     }
   };
 
@@ -355,25 +357,25 @@ class Header extends Component {
         onClick={() => {
           this.changeArrow()
           this.setState({
-            showLoginContent: !this.props.authToken,
+            showLoginContent: false
           });
         }
         }
         >
             <DescriptionIcon />
-          <Link to={this.props.authToken ? "/how-it-works/buying/" : "#" } className="options">
+          <Link to="/how-it-works/buying/" className="options">
             Car buying process
           </Link>
         </div>
         <div className="more_items" onClick={() => {
            this.setState({
-            showLoginContent: !this.props.authToken,
+            showLoginContent: false
           })
               this.changeArrow()}
           }
           >
           <DirectionsOutlinedIcon />
-          <Link to={this.props.authToken ? "/how-it-works/selling/" : "#" } className="options">
+          <Link to="/how-it-works/selling/" className="options">
             Car selling process
           </Link>
         </div>
@@ -700,14 +702,14 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick = {() => {this.setState({
-                          showLoginContent: !this.props.authToken,
+                          showLoginContent: false,
                           expandLoginDetails: false,
                         })
                       }
                      }
                       >
                         <StyledLink
-                          to={this.props.authToken ? "/how-it-works/buying/" : "#" }
+                          to="/how-it-works/buying/"
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -724,14 +726,14 @@ class Header extends Component {
                         }}
                         onClick={() => {
                           this.setState({
-                           showLoginContent: !this.props.authToken,
+                           showLoginContent: false,
                            expandLoginDetails: false,
                          })
                         }
                       }
                       >
                         <StyledLink
-                        to={this.props.authToken ? "/how-it-works/selling/" : "#" }
+                        to="/how-it-works/selling/"
                           className="row_container mobile_login_content"
                         >
                           <p style={{ fontSize: "25px", padding: "5px" }}>
@@ -1352,9 +1354,9 @@ const mapDispatchToProps = dispatch => {
                 getOTP(number)
             )
         },
-        validateOTP: (OTP) => {
+        validateOTP: (OTP, phoneNumber) => {
             dispatch(
-                validateOTP(OTP)
+                validateOTP(OTP, phoneNumber)
                 )
         },
         getAvailableCars: () => {
@@ -1395,6 +1397,11 @@ const mapDispatchToProps = dispatch => {
         searchCarByName : (name) =>{
             dispatch(
               searchCar(name)
+            )
+        },
+        createOTP : (name) =>{
+            dispatch(
+              createOTP(name)
             )
         },
         enableLogUser: data => {
