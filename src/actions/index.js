@@ -155,7 +155,7 @@ export const validateNumber = number => {
 export const validateOTP = (OTP,phoneNumber) => {
     return dispatch => {
         try {
-            axios.post('user/verifyOtp', {
+            axios.post('user/validateOTP', {
                 otp: OTP,
                 phoneNumber: phoneNumber
             }).then(res => {
