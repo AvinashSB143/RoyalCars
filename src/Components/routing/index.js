@@ -40,6 +40,15 @@ function Routing() {
       <Route path="/lifeStyle">
         <LifeStyleFeature />
       </Route>
+      <Route path="/hatchBack">
+        <LifeStyleFeature />
+      </Route>
+      <Route path="/sedan">
+        <LifeStyleFeature />
+      </Route>
+      <Route path="/SUV">
+        <LifeStyleFeature />
+      </Route>
       <Route path="/account/:filter">
         <AccountFilters />
       </Route>
