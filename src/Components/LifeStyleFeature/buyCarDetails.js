@@ -208,7 +208,13 @@ const BuyCarDetails = (props) => {
             /> )
             }
             </div>
-            <div className="test_drive_btn_submit">
+            <div className="test_drive_btn_submit column_container">
+            { isOTPCreated && <button onClick={() => {
+              props.createOTP(testDrivePhoneNumber)
+            }}>
+                Resend OTP
+              </button> 
+              }
               <button className="verify_btn" onClick={validateForTestDrive}>
               {!isOTPCreated ? "Send OTP" : "Validate OTP"} 
               </button>

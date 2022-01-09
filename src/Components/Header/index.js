@@ -179,7 +179,7 @@ class Header extends Component {
         this.state.mobileNumber,
         this.state.email
       );
-      this.props.createOTP(this.state.mobileNumber,)
+      this.props.createOTP(this.state.mobileNumber)
       this.setState({
         isSignUp: false,
         userName: "",
@@ -187,7 +187,7 @@ class Header extends Component {
       });
     } else if (this.state.isForgotPassword) {
       if (this.state.mobileNumber && this.state.mobileNumber.length === 10) {
-        this.props.getOTP(this.state.mobileNumber);
+        this.props.createOTP(this.state.mobileNumber);
         this.setState({
           isError: false,
           isShowOTPEnabled: true,
@@ -231,17 +231,7 @@ class Header extends Component {
     }
   };
 
-  resendOtp = () => {
-    this.props.getOTP(this.state.mobileNumber);
-    this.setState({ resendOtp: true }, () => {
-      setTimeout(() => {
-        this.setState({
-          resendOtp: false
-        })
-      }, 2000)
-    })
-
-  }
+ 
 
   getMobileNumber = (number) => {
     if (number) {
@@ -1260,7 +1250,7 @@ class Header extends Component {
                   )}
 
                   <div className="forgot_password">
-                    {!this.props.signUpSuccess && (
+                    {!this.props.signUpSuccess ? (
                       <Link
                         to="#"
                         onClick={() =>
@@ -1272,6 +1262,23 @@ class Header extends Component {
                         }
                       >
                         Sign Up
+                      </Link>
+                    ) : (
+                      <Link
+                        to="#"
+                        onClick={() =>
+                         this.setState({
+                          resendOtp: true
+                         }, () => this.props.createOTP(this.state.mobileNumber),
+                         setTimeout(() => {
+                          this.setState({
+                            resendOtp: false
+                          })
+                        }, 2000)
+                         )
+                        }
+                      >
+                        Resend OTP
                       </Link>
                     )}
                     <Link
