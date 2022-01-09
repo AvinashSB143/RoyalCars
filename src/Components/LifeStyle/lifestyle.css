@@ -7,6 +7,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .lifeStyle_image {
@@ -23,26 +24,32 @@
 }
 .Choice_Item {
     color: white;
-    left:25%;
+    /* left:25%; */
     text-decoration: none;
     position: absolute;
     bottom: 10px;
     font-size: 2rem;
     text-align: center;
+    width: 100%;
     font-style: italic;
 }
 
 
-
+ 
 @media only screen and (max-width:850px){
-    .Choice_Item{
+    /* .Choice_Item{
         left:25%;
         font-size: 1.5rem;
+    } */
+    .lifeStyle_image {
+        width: 100%;
     }
 }
 @media only screen and (max-width:450px){
-    .Choice_Item{
+    /* .Choice_Item{
         font-size: 1rem;
+    } */
+    .lifeStyle_image {
+        width: 100%;
     }
-    
-}
+} 

@@ -48,7 +48,7 @@ li {
 
 .pageStyle {
   margin: 0 auto;
-  min-width: 978px;
+  /* min-width: 978px; */
   /* max-width: 1248px; */
 }
 
@@ -58,7 +58,7 @@ li {
   font-size: 10px;
   line-height: 15px;
   display: flex;
-  padding: 0;
+  padding: 20px;
   margin: 0;
   color: #2e054e;
   white-space: nowrap;
@@ -71,7 +71,7 @@ li {
   /* width: 25em; */
   position: sticky;
   top: 0;
-  margin: 0 5px 0 60px;
+  margin: 0 20px;
 }
 .pageStyle .carDetails .rightSection {
   margin-bottom: 16px;
@@ -400,7 +400,7 @@ li {
   }
   .buycar__container {
     grid-template-columns: auto;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     align-items: center;
   }
 

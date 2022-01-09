@@ -49,8 +49,10 @@ body {
   height: auto;
 }
 
-.working_img img {
-  border-radius: ;
+@media screen and (max-width:850px){
+.car_details_container .filter_car_img{
+  width: 40% !important;
+}
 }
 
 /* 
