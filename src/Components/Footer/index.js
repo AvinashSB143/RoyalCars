@@ -30,19 +30,17 @@ function Footer() {
   return (
     <div className="Footer_Container">
       <div className="Footer__Logo">
+
         <div>
           <img src={Logo} alt="APP_Logo" />
-          <button className="Footer__Button">
-            <CallIcon />
-            <span> {buttons[0]} </span>
-          </button>
+          <p className="APP_Description">
+            Welcome to Royal Cars! Your friendly second hand car dealer in Mangalore.
+            We take care of the end-to-end process of Buying and Selling of your car.
+            We at Royal Cars have a wide variety of cars suiting your needs right from your first family car to your favourite off-road vehicle.
+            Email us at <a href="mailto:support@royalcarsmangalore.in" style={{ color: "white" }}>support@royalcarsmangalore.in</a>
+          </p>
         </div>
-        <p className="APP_Description">
-          Welcome to Royal Cars! Your friendly second hand car dealer in Mangalore.
-          We take care of the end-to-end process of Buying and Selling of your car.
-          We at Royal Cars have a wide variety of cars suiting your needs right from your first family car to your favourite off-road vehicle.
-          Email us at <a href="mailto:support@royalcarsmangalore.in" style={{ color: "white" }}>support@royalcarsmangalore.in</a>
-        </p>
+
 
         {/* <div className="Footer__SocialIcons">
           <FacebookIcon />
@@ -74,7 +72,12 @@ function Footer() {
           </div>
         </div>
       </div>
-
+      <div className="Footer__mb_btn">
+        <button className="Footer__Button">
+          <CallIcon />
+          <span> {buttons[0]} </span>
+        </button>
+      </div>
       <div className="Footer__Buttons">
         {buttons.map((button, idx) => (
           <Link to={idx === 1 ? "/lifeStyle" : "#"} className="Footer__Button" onClick={() => window.scroll(0, 0)}>
