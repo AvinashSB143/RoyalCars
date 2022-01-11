@@ -9,7 +9,7 @@
 }
 
 .bodytype_images_container li{
-    width: 30%;
+    width: 25%;
     margin: 10px 20px;
     border-radius: 20px;
     position: relative;
@@ -30,7 +30,7 @@
     bottom: -40px;
     font-size: 2rem;
     text-align: center;
-    font-style: italic;
+    /* font-style: italic; */
     width: 100%;
 }
 

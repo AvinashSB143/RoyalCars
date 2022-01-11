@@ -97,12 +97,11 @@
   display: grid;
   grid-template-columns: 2fr repeat(2, 1fr);
   grid-template-rows: auto 4rem;
-  background: #4169e1;
+  background: #777;
   color: #fff;
   padding: 1rem;
   margin: 0 auto;
   z-index: 1;
-  font-family: serif;
 }
 .Footer_Container div {
   padding: 1rem 0;

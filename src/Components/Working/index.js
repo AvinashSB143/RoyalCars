@@ -14,7 +14,7 @@ const Working = (props) => {
     <div className="main_container column_container working_container">
       <div className="working__Heading">
         <h2>How Royal Cars Works</h2>
-        <p margin="10px auto" className="mobile_car_working_helperText">
+        <p style={{ margin:"10px auto" }} className="mobile_car_working_helperText">
           You won’t just love our cars, you’ll love the way you buy them.
         </p>
       </div>

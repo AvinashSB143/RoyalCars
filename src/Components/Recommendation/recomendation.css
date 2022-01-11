@@ -1,7 +1,7 @@
 .root_container {
     /* background-image: url("https://d1263yrto77i5b.cloudfront.net/0.2.1192/assets/images/pages/HomePage/components/TopBanner/assets/returning_user_back_desk.jpg"); */
     background-size: 100%;
-    height: 60vh;
+    /* height: 60vh; */
     overflow: hidden;
 }
 
