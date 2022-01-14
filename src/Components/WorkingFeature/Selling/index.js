@@ -60,7 +60,7 @@ return (
                     <span>
                     <h1> Selling your car made simple. </h1>
                     <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
-                    <Link to="/sell" className="assured_cars">Sell Your Car</Link>
+                    {/* <Link to="/sell" className="assured_cars">Sell Your Car</Link> */}
                     </span>
                 </div>
             <div className="carBuyingworkingCars">

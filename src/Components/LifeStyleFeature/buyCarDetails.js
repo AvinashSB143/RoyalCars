@@ -144,32 +144,7 @@ const BuyCarDetails = (props) => {
     return selectedCar ? (
       <div className={`${validateUser && 'overlay'} "car_details_container"`} 
           style={{position : "relative"}}>
-             <Snackbar
-                anchorOrigin={{ vertical, horizontal }}
-                open={props.isBookedTestDriveSuccessFul}
-                message="Test Drive has been Booked as per your request."
-                key={vertical + horizontal}
-                className={
-                classes.snackBarRoot
-                }
-                classes={{
-                message: classes.snackBarRoot,
-                root: classes.snackBarRoot
-                }}
-                action={
-                  <React.Fragment>
-                    <IconButton
-                        aria-label="close"
-                      color="inherit"
-                      sx={{ p: 0.5 }}
-                      onClick={handleClose}
-                    >
-                      <CloseIcon />
-                    </IconButton>
-                  </React.Fragment>
-                }
-              />
-       {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
+            {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
           <div className="test_drive_validate_container">
             <CloseIcon
                   className="close_Test_Drive_container"
@@ -188,7 +163,7 @@ const BuyCarDetails = (props) => {
                 disableUnderline: true,
                  maxLength: 10,
               }}
-              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: "10px"}}
+              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: "10px", width: "80%"}}
               type="tel"
               onChange={(e) => getPhoneNumber(e.target.value)}
               value={testDrivePhoneNumber}
@@ -221,6 +196,32 @@ const BuyCarDetails = (props) => {
           </div>
         </div>
       }
+             <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={props.isBookedTestDriveSuccessFul}
+                message="Test Drive has been Booked as per your request."
+                key={vertical + horizontal}
+                className={
+                classes.snackBarRoot
+                }
+                classes={{
+                message: classes.snackBarRoot,
+                root: classes.snackBarRoot
+                }}
+                action={
+                  <React.Fragment>
+                    <IconButton
+                        aria-label="close"
+                      color="inherit"
+                      sx={{ p: 0.5 }}
+                      onClick={handleClose}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  </React.Fragment>
+                }
+              />
+       
       <div className="pageStyle">
         <div>
           <ul className="carsList">
