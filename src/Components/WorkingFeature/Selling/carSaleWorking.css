@@ -459,7 +459,7 @@
     .press_content_img
     .press_descContainer
     p {
-    font-family: sans-serif;
+    /* font-family: sans-serif; */
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 16px;

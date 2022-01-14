@@ -43,6 +43,8 @@
   text-align: center;
   vertical-align: baseline;
   font-weight: 700;
+  color: black;
+  text-decoration: none;
 }
 
 a.PopularBrands__brand {

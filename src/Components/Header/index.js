@@ -694,7 +694,7 @@ class Header extends Component {
                         style={{
                           borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
+                          padding: "0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -708,7 +708,7 @@ class Header extends Component {
                           to="/how-it-works/buying/"
                           className="row_container mobile_login_content"
                         >
-                          <p style={{ fontSize: "25px", padding: "5px" }}>
+                          <p style={{ fontSize: "25px", marginTop: "-25px" }}>
                             {" "}
                             Car Buying Process
                           </p>
@@ -774,7 +774,7 @@ class Header extends Component {
                           to={this.props.authToken ? "/account/testDrive" : "#"}
                           className="row_container mobile_login_content"
                         >
-                          <p style={{ fontSize: "25px", padding: "5px" }}>
+                          <p style={{ fontSize: "25px",marginTop: "-25px"  }}>
                             {" "}
                             Test Drives
                           </p>
@@ -997,7 +997,7 @@ class Header extends Component {
               </div>
             </div>
             <div className="header_SignIn_bar hide_option show_desktop_menu">
-              <p>call at</p>
+              <p>Call us at</p>
               <b style={{ fontSize: "16px" }}>8147676718</b>
             </div>
           </div>

@@ -4,7 +4,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
 
 body {
-  font-family: Helvetica-Light, Helvetica, Arial, sans-serif;
+  font-family: "Nunito", sans-serif,Helvetica-Light, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 30px 0px;
 }
 
 .row_container {
@@ -47,6 +48,23 @@ body {
 .filter_car_img {
   width: 40%;
   height: auto;
+}
+
+.slideshowDots{
+  display:none;
+}
+
+.main_container:nth-child(even){
+  background-color: #f0eeee;
+}
+
+.Header-root-1{
+  border-radius: 50px;
+}
+
+.column_container.mobile_login_container p {
+  font-size: 16px !important;
+  margin-top: 7px;
 }
 
 @media screen and (max-width:850px){
