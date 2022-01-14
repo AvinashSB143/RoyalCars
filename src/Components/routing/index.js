@@ -49,6 +49,9 @@ function Routing() {
       <Route path="/SUV">
         <LifeStyleFeature />
       </Route>
+      <Route path="/availableCars">
+        <LifeStyleFeature />
+      </Route>
       <Route path="/account/:filter">
         <AccountFilters />
       </Route>

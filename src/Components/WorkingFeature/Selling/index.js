@@ -51,16 +51,16 @@ return (
                         <sup>®</sup>
                         </span>
                     </h2>
-                    <div className="about_us_button_container">
+                    {/* <div className="about_us_button_container">
                         <button className = "about_us_button">Watch the film</button>
-                    </div>
+                    </div> */}
                     </div>
                 </div>
                 <div className="about_us_card_container about_us_main">
                     <span>
                     <h1> Selling your car made simple. </h1>
                     <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
-                    <Link to="/sell" className="assured_cars">Sell Your Car</Link>
+                    {/* <Link to="/sell" className="assured_cars">Sell Your Car</Link> */}
                     </span>
                 </div>
             <div className="carBuyingworkingCars">
@@ -90,6 +90,21 @@ return (
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
                 </div>
+
+                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className="column_container">
+                    <img src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
+                    </div>
+                    <div className="column_container handPicked_cars_details">
+                        <h1>Same day payment</h1>
+                        <h4 className="handPicked_cars_description">
+                        Accept the final offer, you will be paid for your car on the same day. We’ll also get working on the car’s paperwork – our responsibility – right away.
+                        </h4>
+                    </div>
+                   
+                </div>
+
+{/* 
                 <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
                     <div className="column_container">
                         
@@ -102,8 +117,8 @@ return (
                     Choose a time of day and date you find convenient. Our experts will visit your home or your workplace to evaluate your car, validate its worth and make you a final offer - valid for 3 days.
                         </h4>
                     </div>
-                </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                </div> */}
+                {/* <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1>Same day payment</h1>
                         <h4 className="handPicked_cars_description">
@@ -114,36 +129,37 @@ return (
                         <img 
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
-                </div>
+                </div> */}
                 <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
-                    <div className="column_container">
-                        <img 
-                    src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
-                    </div>
                     <div className="column_container handPicked_cars_details">
                     <h1>Peace of mind in ownership transfer</h1>
                     <h4 className="handPicked_cars_description">
                     Your car remains in our safe custody. You’ll be updated immediately when the ownership papers get transferred to a new owner.
                         </h4>
                     </div>
+                    <div className="column_container">
+                        <img 
+                    src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
+                    </div>
                 </div>
                 <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className="column_container">
+                    <img 
+                    src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
+                    </div>
                     <div className="column_container handPicked_cars_details">
                         <h1>Delivery Day – a day to remember</h1>
                         <h4 className="handPicked_cars_description">
                         Your gleaming, professionally polished Royal Cars Assured® car – serviced, dry-cleaned and waxed is home-delivered in an eye-catching ceremony.
                         </h4>
                     </div>
-                    <div className="column_container">
-                        <img 
-                    src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
-                    </div>
+                   
                 </div>
 
                 <div className = "press_section">
-                    <h3>Press</h3>
+                    {/* <h3>Press</h3> */}
                     <div className="press_content_wrapper">
-                        <div className="press_content">
+                        {/* <div className="press_content">
                             <div className ="press_content_list">
                                 <a className="press_content_img"
                                 href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
@@ -196,7 +212,7 @@ return (
                                 </div>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <div className = "press_carousel">
                             <div className = "carousel_left"></div>
                             <div className="carousel_right"></div>

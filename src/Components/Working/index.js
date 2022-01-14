@@ -32,7 +32,7 @@ const Working = (props) => {
             Over 6000 fully inspected cars. Best performance guaranteed
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/lifeStyle" onClick={() => props.getAvailableCars()}>
+            <Link to="/lifeStyle" onClick={() =>( props.getAvailableCars(), window.scroll(0,0))}>
               {" "}
               View All Cars
             </Link>
@@ -52,7 +52,7 @@ const Working = (props) => {
             Easy appointment. Cars at your doorstep. Expert assistance
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="#"> Book Test Drive</Link>
+            <Link to="/availableCars" onClick={() => window.scroll(0,0) }> Book Test Drive</Link>
           </div>
         </div>
         <div className="working_img">

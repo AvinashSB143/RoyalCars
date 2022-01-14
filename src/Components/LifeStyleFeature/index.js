@@ -1013,7 +1013,7 @@ const LifeStyleFeature = (props) => {
             </FormControl>
           </div>
         </div>
-        <div className="filter_option_container">
+        {/* <div className="filter_option_container">
           <div className="search_container car_model_search">
             <FormControl component="fieldset" className={classes.formControl}>
               <FormLabel component="legend">Availability</FormLabel>
@@ -1051,7 +1051,7 @@ const LifeStyleFeature = (props) => {
               </FormGroup>
             </FormControl>
           </div>
-        </div>
+        </div> */}
       </div>
       <div
         className={

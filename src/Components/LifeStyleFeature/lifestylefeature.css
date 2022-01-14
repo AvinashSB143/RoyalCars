@@ -336,8 +336,8 @@ li {
   height: 250px;
   background-color: white;
   top: 10%;
-  width: 30%;
-  left: 400px;
+  width: 450px;
+  left: 30%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -466,6 +466,10 @@ li {
   }
   .lifeStyle_filters {
     max-width: 100%;
+  }
+
+  .test_drive_validate_container {
+    left: 10%
   }
 }
 /* @media only screen and (max-width: 960px) {

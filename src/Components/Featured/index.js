@@ -98,7 +98,7 @@ const FeaturedCars = (props) => {
                                     <h4>{car && car.year} {car && car.brand} {car && car.model}</h4>
                                     <h5><span>{car && car.kmDriven} Kms</span>
                                         <span>&nbsp;.&nbsp; {car && car.fuelType}</span>
-                                        <span> &nbsp;.&nbsp; {car && car.fuelType}</span></h5>
+                                        <span> &nbsp;.&nbsp; {car && car.transmission}</span></h5>
                                     <h3>{car.budget}</h3>
                                 </div>
                                 <div className="location-details">
