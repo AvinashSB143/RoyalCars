@@ -493,17 +493,17 @@ const carDetails = {
           </div>}
         { selectedModel && showOwnerList && <div className="sellcar_filter_container select_owner_filter column_container">
           <button className={`${selectedOwner ==="1st Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`}  onClick={() => {
-            setselectedOwner("1st Owner")
+            setselectedOwner("1")
             setShowOwnerList(false)
           }}>1st Owner</button>   
           <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
           onClick={() => {
-            setselectedOwner("2nd Owner")
+            setselectedOwner("2")
             setShowOwnerList(false)
           }}>2nd Owner</button>   
           <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
           onClick={() => {
-            setselectedOwner("3rd Owner")
+            setselectedOwner("3")
             setShowOwnerList(false)
           }}>3nd Owner</button>   
           </div>}

@@ -442,8 +442,8 @@ export const enableLogUser = data => {
 export const bookNow = data => {
     return dispatch => {
         try {
-            axios.post('customerCar/buyCar/createOrderId',{
-                "amount": data.amount
+            axios.post('customerCar/buyCar/creatOrderId',{
+                "ammount": data.amount
             }).then(res => {
                 if(res && res.data) {
                     dispatch ({
