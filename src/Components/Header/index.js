@@ -954,8 +954,7 @@ class Header extends Component {
               }}
             >
               <b
-                onMouseOver={() => this.changeArrow("more")}
-                //  onMouseOut={() => this.changeArrow()}
+                onClick={() => this.changeArrow("more")}
                 style={{ fontSize: "16px" }}
               >
                 More
@@ -985,7 +984,7 @@ class Header extends Component {
                 }}
               >
                 <b
-                  onMouseOver={() => this.changeArrow("account")}
+                  onClick={() => this.changeArrow("account")}
                   style={{ fontSize: "16px" }}
                 >
                   Account

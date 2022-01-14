@@ -51,9 +51,9 @@ return (
                         <sup>®</sup>
                         </span>
                     </h2>
-                    <div className="about_us_button_container">
+                    {/* <div className="about_us_button_container">
                         <button className = "about_us_button">Watch the film</button>
-                    </div>
+                    </div> */}
                     </div>
                 </div>
                 <div className="about_us_card_container about_us_main">

@@ -35,9 +35,9 @@ return (
                         <sup>®</sup>
                         </span>
                     </h2>
-                    <div className="about_us_button_container">
+                    {/* <div className="about_us_button_container">
                         <button className = "about_us_button">Watch the film</button>
-                    </div>
+                    </div> */}
                     </div>
                 </div>
                 <div className="about_us_card_container about_us_main">
@@ -135,7 +135,7 @@ return (
                         </div>
                     </div>
                 </div>
-                <div className = "press_section">
+                {/* <div className = "press_section">
                     <h3>Press</h3>
                     <div className="press_content_wrapper">
                         <div className="press_content">
@@ -189,7 +189,7 @@ return (
                                 <div className = "press_descContainer">
                                 <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
                                 </div>
-                                </a> */}
+                                </a> 
                             </div>
                         </div>
                         <div className = "press_carousel">
@@ -197,7 +197,7 @@ return (
                             <div className="carousel_right"></div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

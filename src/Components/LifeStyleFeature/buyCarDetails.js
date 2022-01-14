@@ -135,7 +135,7 @@ const BuyCarDetails = (props) => {
         setTestDrivePhoneNumber("")
         setisOTPCreated(true)
       } else if(OTP && OTP.length === 4){
-        props.validateOTP(OTP)
+        props.validateOTP(OTP, testDrivePhoneNumber)
         setvalidateUser(false)
         setisOTPCreated(false)
       }
@@ -315,7 +315,7 @@ const BuyCarDetails = (props) => {
                 <div className="carFeature">
                   <span>{selectedCar && selectedCar.kmDriven} Kms</span>
                   <span>&nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
-                  <span> &nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
+                  <span> &nbsp;.&nbsp; {selectedCar && selectedCar.transmission}</span>
                 </div>
                 <div className="testDrive">
                   <svg
@@ -371,12 +371,12 @@ const BuyCarDetails = (props) => {
                 <div className="carPriceMargin">
                 </div>
                 <p className="fixedPrice">Fixed on road price</p>
-                <div className="availableOffer">
+                {/* <div className="availableOffer">
                   <h1>Available Offers</h1>
                   <ul className="offerList">
                     <li className="offerItem">
                       <div className="offerIcon">
-                        {/* <LocalOfferIcon /> */}
+                        {/* <LocalOfferIcon /> 
                       </div>
                       <div className="offerText">
                         <span>Guaranteed buyback: &nbsp;</span>
@@ -405,7 +405,7 @@ const BuyCarDetails = (props) => {
                       </div>
                     </li>
                   </ul>
-                </div>
+                </div> */}
               </div>
               <div
                 style={{
@@ -480,9 +480,9 @@ const mapDispatchToProps = dispatch => {
                 bookNow(data)
             )
         },
-        validateOTP: data => {
+        validateOTP: (OTP, phoneNumber) => {
             dispatch(
-                validateOTP(data)
+                validateOTP(OTP, phoneNumber)
             )
         },
         enableLogUser: data => {
