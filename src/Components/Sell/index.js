@@ -2,6 +2,10 @@ import React, {useState, Fragment} from "react";
 import {connect} from 'react-redux';
 import "./sell.css";
 import Feedback from "../Feedback";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import TextField from '@material-ui/core/TextField';
@@ -38,6 +42,9 @@ const styles = theme => ({
   animated: {
     fontSize: "18px",
     fontWeight: "400"
+  },
+  accordianroot: {
+    background: "#FFDF00"
   }
 });
 
@@ -93,8 +100,7 @@ export const HowItWorks = () => {
               Schedule the evaluation at your convenience, from the comfort of
               your home or workplace
             </p>
-            <a class="styles__btn" href="/check-car-valuation/">
-              Schedule Evaluation
+            {/* <a class="styles__btn" href="/check-car-valuation/">
               <svg
                 transform="rotate(0 0 0)"
                 xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +119,7 @@ export const HowItWorks = () => {
                   transform="translate(-385 -47)"
                 ></path>
               </svg>{" "}
-            </a>
+            </a> */}
           </div>
         </div>
         <div class="HowItsWork__listItem">
@@ -127,21 +133,12 @@ export const HowItWorks = () => {
             <p class="HowItsWork__details">
               Complete payment and paperwork on-the-spot
             </p>
-            <a
+            {/* <a
               class="styles__btn"
               data-category="how_it_works"
               data-label="Sell Car"
               href="/check-car-valuation/"
             >
-              Sell Car{" "}
-              <svg
-                transform="rotate(0 0 0)"
-                xmlns="http://www.w3.org/2000/svg"
-                stroke="#4169e1"
-                width="9"
-                height="9"
-                viewBox="0 0 14 8"
-              >
                 <path
                   fill="none"
                   fill-rule="evenodd"
@@ -152,7 +149,7 @@ export const HowItWorks = () => {
                   transform="translate(-385 -47)"
                 ></path>
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
@@ -392,13 +389,13 @@ const carDetails = {
             </li> */}
             <li class="marketingItem">
               <div class="pointWrap">
-                <span>2</span>
+                <span>1</span>
               </div>
               Free Doorstep Evaluation
             </li>
             <li class="marketingItem">
               <div class="pointWrap">
-                <span>3</span>
+                <span>2</span>
               </div>
               Same Day Payment
             </li>
@@ -427,6 +424,177 @@ const carDetails = {
             // disabled={!selectedKMDriven}
             onClick={() => {props.dispatchSellCar(carDetails)}}
             >Submit</button>
+          </div>
+          <div className="filter_form_mobile">
+              <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        Year
+                        {selectedyear && <p style={{fontSize: "12px"}}>{selectedyear}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                        <DatePicker
+                        views={["year"]}
+                        label="Please Select Year"
+                        value={selectedDate}
+                        onChange={e => handleYearChange(e)}
+                        classes={{
+                          root: classes.datePickerRoot,
+                          animated: classes.animated
+                        }}
+                        disableUnderline={true}
+                      />
+                    </MuiPickersUtilsProvider>
+                    </AccordionDetails>
+              </Accordion>
+              <Accordion disabled={!selectedyear}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        Brand
+                        {selectedBrand && <p style={{fontSize: "12px"}}>{selectedBrand}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                      {carBrandsContainer}
+                    </AccordionDetails>
+              </Accordion>
+              <Accordion disabled={!selectedBrand}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        Variant
+                        {selectedVariant && <p style={{fontSize: "12px"}}>{selectedVariant}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                      <TextField
+                          id="standard-search"
+                          placeholder="Please type Variant"
+                          type="search"
+                          variant="standard"
+                          classes={{
+                              root: classes.root,
+                          }}
+                          InputProps={{ disableUnderline: true }}
+                          className="search_text"
+                          onChange={e => setselectedVariant(e.target.value)}
+                          />
+                    </AccordionDetails>
+              </Accordion>
+              <Accordion disabled={!selectedVariant}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        Model
+                        {selectedModel && <p style={{fontSize: "12px"}}>{selectedModel}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                      <div >
+                      <TextField
+                          id="standard-search"
+                          placeholder="Please enter car Model"
+                          type="search"
+                          variant="standard"
+                          classes={{
+                              root: classes.root,
+                          }}
+                          InputProps={{ disableUnderline: true }}
+                          className="search_text"
+                          onChange={e => setsetselectedModel(e.target.value)}
+                          />
+                      </div>
+                    </AccordionDetails>
+              </Accordion>
+              <Accordion disabled={!selectedModel}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        Owner
+                        {selectedOwner && <p style={{fontSize: "12px"}}>{selectedOwner}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                    <div className="sellcar_filter_container select_owner_filter column_container">
+                        <button className={`${selectedOwner ==="1st Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`}  onClick={() => {
+                          setselectedOwner("1")
+                          setShowOwnerList(false)
+                        }}>1st Owner</button>   
+                        <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
+                        onClick={() => {
+                          setselectedOwner("2")
+                          setShowOwnerList(false)
+                        }}>2nd Owner</button>   
+                        <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
+                        onClick={() => {
+                          setselectedOwner("3")
+                          setShowOwnerList(false)
+                        }}>3nd Owner</button>   
+                        </div>
+                    </AccordionDetails>
+              </Accordion>
+              <Accordion disabled={!selectedOwner}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={{background: "#FFDF00"}}
+                    >
+                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                        KM Driven
+                        {selectedKMDriven && <p style={{fontSize: "12px"}}>{selectedKMDriven}</p>}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
+                      <div >
+                      <TextField
+                        id="standard-search"
+                        placeholder="KMs Driven"
+                        type="search"
+                        variant="standard"
+                        classes={{
+                            root: classes.root,
+                        }}
+                        InputProps={{ disableUnderline: true }}
+                        className="search_text"
+                        onChange={e => setselectedKMDriven(e.target.value)}
+                        />
+                      </div>
+                    </AccordionDetails>
+              </Accordion>
+              <div className="sell_submit_mobile">
+                <button style={{padding: "10px 30px", width: "50%", fontSize: "18px",
+                  fontWeight: "700", background: "red", color: "white"}}
+                  onClick={() => {props.dispatchSellCar(carDetails)}}
+                  disabled={!selectedKMDriven}
+                  >
+                  Submit
+                </button>
+              </div>
           </div>
         {showYearList &&   <div className="sellcar_filter_container">
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

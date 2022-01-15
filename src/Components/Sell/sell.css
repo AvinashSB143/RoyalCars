@@ -185,6 +185,10 @@
   background-color: grey
 }
 
+.filter_form_mobile {
+  display: none;
+}
+
 
 @media only screen and (min-width:769px) and (max-width:1200px){
 
@@ -201,7 +205,37 @@
  
 }
   @media only screen and (max-width:767px){
-   
+    .filter_form {
+      display: none;
+    }
+    .filter_form_mobile {
+      display: block;
+      width: 80%;
+    }
+    .select_owner_filter {
+      width: 250px;
+    }
+
+    .search_text {
+      width: 90%;
+    }
+    .select_owner_filter {
+      right: 0;
+    }
+    .sell_submit_mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+    }
+    .HowItsWork__listWrap {
+      width: 90%;
+      display: block;
+    }
+
+    .HowItsWork__listItem img {
+      width: 100%;
+    }
   }
   @media only screen and (max-width:576px){
   
