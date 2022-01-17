@@ -45,7 +45,8 @@ import {
   searchCar,
   enableLogUser,
   getAssuredCars,
-  createOTP
+  createOTP,
+  disableSnackBar
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -220,7 +221,8 @@ class Header extends Component {
         showLoginContent: false,
         isForgotPassword: false,
         password: "",
-        userName: ""
+        userName: "",
+        hideButton: false
       });
     }
   };
@@ -300,6 +302,21 @@ class Header extends Component {
       openAboutUs: true,
     });
   };
+
+  handleCloseOTP = () => {
+    this.setState({ resendOtp: false })
+  }
+
+  handleClose = () => {
+    if(this.state.isSignUp) {
+      this.setState({ showLoginContent: false});
+    }
+    if(this.state.isForgotPassword) {
+      this.setState({closeOTPValidationPopUp: false})
+    }
+    
+  }
+
   render() {
     const expandMoreSection = (
       <div className="main_container column_container about_more_section">
@@ -532,6 +549,8 @@ class Header extends Component {
     );
     const { classes } = this.props;
     const { vertical, horizontal } = this.state.snackBarPos;
+
+    
     return (
       <>
         <Snackbar
@@ -542,17 +561,39 @@ class Header extends Component {
           className={
             classes.snackBarRoot
           }
-        // action={
-        //   <Fragment>
-        //     <IconButton
-        //       aria-label="close"
-        //       color="inherit"
-        //       sx={{ p: 0.5 }}
-        //     >
-        //       <CloseIcon />
-        //     </IconButton>
-        //   </Fragment>
-        // }
+        action={
+          <Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={this.handleCloseOTP}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Fragment>
+        }
+        />
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={this.props.OTPVerificationSuccessful && this.state.closeOTPValidationPopUp }
+          message="OTP Validated Successfully"
+          key={vertical + horizontal}
+          className={
+            classes.snackBarRoot
+          }
+        action={
+          <Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Fragment>
+        }
         />
         <div
           className={
@@ -1008,7 +1049,7 @@ class Header extends Component {
           {this.state.expandAccountSection && expandAccountSection}
           {(this.props.enableUserToBook || (this.state.showLoginContent &&
             !this.props.isValidUser &&
-            !this.props.authToken)) && (
+            !this.props.authToken)) && !this.props.OTPVerificationSuccessful && (
               <div className='overlay'>
                 <div
                   className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) &&
@@ -1160,7 +1201,7 @@ class Header extends Component {
                         </>
                       )}
                   </>
-                  {this.props.signUpSuccess &&
+                  {this.props.signUpSuccess && !this.props.OTPVerificationSuccessful &&
                     <TextField
                       id="OTP"
                       placeholder="OTP"
@@ -1221,7 +1262,6 @@ class Header extends Component {
                             : "login_text_field"
                           }`}
                         onChange={(e) => this.getnewPassword(e.target.value)}
-                        // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
                         value={this.state.newPassword}
                       />
                       <TextField
@@ -1283,7 +1323,7 @@ class Header extends Component {
                     <Link
                       to="#"
                       onClick={() => {
-                        this.setState({ isForgotPassword: true });
+                        this.setState({ isForgotPassword: true, closeOTPValidationPopUp: true });
                       }}
                     >
                       Forgot Password
@@ -1324,6 +1364,81 @@ class Header extends Component {
                   )}
                 </div>
               </div>
+            )}
+
+            {this.props.OTPVerificationSuccessful && this.state.isForgotPassword && (
+              <div className='overlay'>
+              <div
+                className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) &&
+                  " signup_container"
+                  }`}
+              >
+                <CloseIcon
+                  className="close_icon"
+                  onClick={() => {
+                    this.setState({
+                      showLoginContent: false,
+                      showEmailField: false,
+                      showNameField: false,
+                      loginAttempted: false,
+                    });
+                    this.props.enableLogUser(false)
+                  }}
+                />
+                <VpnKeyIcon />
+                {this.props.OTPVerificationSuccessful && (
+                  <>
+                    <TextField
+                      id="newPassword"
+                      placeholder="New Password"
+                      classes={{
+                        root: classes.root,
+                        input: classes.input,
+                      }}
+                      InputProps={{ disableUnderline: true, maxLength: 10 }}
+                      className={`${this.state.isError
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
+                        }`}
+                      onChange={(e) => this.getnewPassword(e.target.value)}
+                      // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
+                      value={this.state.newPassword}
+                    />
+                    <TextField
+                      id="confirm_password"
+                      placeholder="confirm Password"
+                      classes={{
+                        root: classes.root,
+                        input: classes.input,
+                      }}
+                      InputProps={{ disableUnderline: true, maxLength: 10 }}
+                      className={`${this.state.isError
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
+                        }`}
+                      onChange={(e) => this.getConfirmPassword(e.target.value)}
+                      error={this.state.isPasswordMisMatched}
+                      helperText={
+                        this.state.isPasswordMisMatched &&
+                        "Password Doesnot Match"
+                      }
+                      type="password"
+                      value={this.state.confirmPassword}
+                    />
+                  </>
+                )}
+                {this.props.OTPVerificationSuccessful && (
+                  <button
+                    className="login_proceed_btn"
+                    onClick={() => {
+                      this.updatePassword();
+                    }}
+                  >
+                    Update Password
+                  </button>
+                )}
+              </div>
+            </div>
             )}
         </div>
       </>
@@ -1381,9 +1496,9 @@ const mapDispatchToProps = dispatch => {
         signUp(name, password, mobileNumber, email)
       )
     },
-    updatePassword: (newPassword) => {
+    updatePassword: (phoneNumber, newPassword) => {
       dispatch(
-        updatePassword(newPassword)
+        updatePassword(phoneNumber, newPassword)
       )
     },
     getTestDriveCars: () => {
@@ -1414,6 +1529,11 @@ const mapDispatchToProps = dispatch => {
     enableLogUser: data => {
       dispatch(
         enableLogUser(data)
+      )
+    },
+    disableSnackBar: () => {
+      dispatch(
+        disableSnackBar()
       )
     },
     logout: () => {

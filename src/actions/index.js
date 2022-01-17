@@ -364,6 +364,13 @@ export const closeSnackBarTestDrive = () => {
                     })
                 }
 }
+export const disableSnackBar = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "DISABLE_OTP_VALIDATION",
+                    })
+                }
+}
 
 export const getTestDriveCars = data => {
     return dispatch => {
