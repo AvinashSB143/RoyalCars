@@ -13,7 +13,9 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DescriptionIcon from '@material-ui/icons/Description';
 import DirectionsOutlinedIcon from '@material-ui/icons/DirectionsOutlined';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import LockIcon from '@mui/icons-material/Lock';
 import CloseIcon from '@material-ui/icons/Close';
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
@@ -28,6 +30,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 
@@ -445,7 +448,7 @@ class Header extends Component {
           </Link>
         </div>
         <div className="more_items">
-          <LocationOnIcon />
+          <DirectionsCarFilledOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/sellorders" : "#"}
             className="options"
@@ -469,7 +472,7 @@ class Header extends Component {
                 this.changeArrow()
               );
           }}>
-          <LocationOnIcon />
+          <AttachMoneyOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/refer_and_earn" : "#"}
             className="options"
@@ -485,7 +488,7 @@ class Header extends Component {
           </Link>
         </div>
         <div className="more_items">
-          <LocationOnIcon />
+          <PermIdentityOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/profileInformation" : "#"}
             className="options"
@@ -542,7 +545,7 @@ class Header extends Component {
             }
           }}
         >
-          <LocationOnIcon />
+          <LockIcon />
           <Link
             to={this.props.authToken ? "/homePage" : "#"}
             className="options"
