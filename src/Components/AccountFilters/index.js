@@ -135,7 +135,7 @@ const AccountFilters = (props) => {
 
     return(
         <div className="row_container account_filter_container">
-            <div className="column_container account_filtered_options_container">
+            <div className="column_container account_filtered_options_container hide">
                 <div className="welcome_note account_filtered_options">
                     <PermIdentityIcon classes={{
                         root: classes.root
