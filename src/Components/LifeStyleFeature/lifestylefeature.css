@@ -79,8 +79,8 @@ li {
   border-radius: 10px;
 }
 .pageStyle .carDetails .rightSection h1 {
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 25px;
+  line-height: 45px;
   font-family: futura-demi;
   display: block;
   width: calc(100% - 2em);
@@ -103,8 +103,8 @@ li {
   font-family: futura-book;
 }
 .pageStyle .carDetails .rightSection .carFeature {
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 23px;
+  line-height: 30px;
   margin-top: 4px;
   white-space: nowrap;
   display: flex;
@@ -116,11 +116,11 @@ li {
   margin: 10px 0 0 10px;
 }
 .pageStyle .carDetails .rightSection .testDrive {
-  margin: 8px 0 0 10px;
+  margin: 15px 0 0 10px;
   display: flex;
   align-items: center;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 25px;
   font-family: futura-book;
   color: #888;
 }
@@ -133,7 +133,7 @@ li {
   align-items: center;
   margin: 8px 0 0 10px;
   font-family: futura-book;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 20px;
   cursor: pointer;
   color: #888;
@@ -342,7 +342,6 @@ li {
   display: flex;
   flex-direction: column;
   margin: 20px 20px;  
-  border-radius: 20px;
 }
 
 .test_drive_mobileNo_container {
@@ -371,8 +370,10 @@ li {
   right: 5px;
 }
 
-@media only screen and (max-width: 1200px) {
+.car_details_MobileView {
+  display: none;
 }
+
 
 @media screen and (max-width: 1280px) and (min-width: 769px) {
   .car_list_buyCar {
@@ -385,6 +386,32 @@ li {
     justify-content: center;
   }
 }
+
+
+@media screen and (max-width: 560px) {
+  .test_drive_validate_container {
+    left: 2%;
+  }
+  .test_drive_validate_container  {
+    width: 340px;
+    margin: 0;
+  }
+
+  .test_drive_btn_submit {
+    top: 60%;
+  }
+}
+
+@media screen and (min-width: 420px) and (max-width: 768px) {
+  .transmission_details {
+    width: 100%;
+    margin: 0 45px;
+  }
+  .test_drive_validate_container {
+    left: 25%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .car_list_buyCar {
     width: 100%;
@@ -468,12 +495,55 @@ li {
     max-width: 100%;
   }
 
-  .test_drive_validate_container {
-    left: 10%
+  .car_details_MobileView {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .car_details_heading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    font-size: 25px;
+    color: #0d00f5;
+    font-weight: bold;
+  }
+  .car_details_item {
+    width: 35%;
+    padding: 5px 0;
+    border-bottom: 0.5px solid #dbc4c4
+  }
+
+  .transmission_details {
+    width: 100%;
+    margin: 0 25px;
+  }
+  .location_info {
+    margin: 5px 25px;
+  }
+
+  .car_details_mobile_buttons {
+    margin: 20px;
+  }
+  .car_detail_desc {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .car_detail_desc_val {
+    margin: 10px auto;
+    font-size: 20px;
+    font-weight: 700;
   }
 }
-/* @media only screen and (max-width: 960px) {
-} */
+@media only screen and (max-width: 320px) {
+  .test_drive_validate_container {
+    width: 300px;
+  }
+}
 /* @media only screen and (max-width: 767px) {
 } */
 /* @media only screen and (max-width: 576px) {

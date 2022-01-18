@@ -5,17 +5,22 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 import PersonIcon from '@mui/icons-material/Person';
+import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
 // import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import CarRentalIcon from '@mui/icons-material/CarRental';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DescriptionIcon from '@material-ui/icons/Description';
 import DirectionsOutlinedIcon from '@material-ui/icons/DirectionsOutlined';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import CloseIcon from '@material-ui/icons/Close';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 // import {AddLocationIcon} from '@material-ui/icons';
 import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
+import CarRentalTwoToneIcon from '@mui/icons-material/CarRentalTwoTone';
 import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Accordion from '@mui/material/Accordion';
@@ -688,7 +693,7 @@ class Header extends Component {
                     to="/lifeStyle"
                     className="row_container mobile_login_content"
                   >
-                    <PersonIcon className="mobile_login_icon_pos" />
+                    <CarRentalIcon className="mobile_login_icon_pos" />
                     <p style={{ fontSize: "25px" }}>Buy a Car</p>
                   </StyledLink>
                 </div>
@@ -709,7 +714,7 @@ class Header extends Component {
                     to={this.props.authToken ? "/sell" : "#"}
                     className="row_container mobile_login_content"
                   >
-                    <PersonIcon className="mobile_login_icon_pos" />
+                    <DirectionsCarFilledOutlinedIcon className="mobile_login_icon_pos" />
                     <p style={{ fontSize: "25px" }}>Sell your car</p>
                   </StyledLink>
                 </div>
@@ -725,7 +730,7 @@ class Header extends Component {
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <PersonIcon className="mobile_login_icon_pos" />
+                      <HomeRepairServiceIcon className="mobile_login_icon_pos" />
                       <Typography style={{ fontSize: "25px" }}>
                         How it works
                       </Typography>
@@ -794,7 +799,7 @@ class Header extends Component {
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <PersonIcon className="mobile_login_icon_pos" />
+                      <AccountBalanceIcon className="mobile_login_icon_pos" />
                       <Typography style={{ fontSize: "25px" }}>
                         Account
                       </Typography>

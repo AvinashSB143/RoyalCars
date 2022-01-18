@@ -308,7 +308,7 @@ const BuyCarDetails = (props) => {
             />
           </div>
           <div className="carDetails">
-            <div className="rightSection">
+            <div className="rightSection hide">
               <div>
                 <h1>
                   {selectedCar && selectedCar.year} {selectedCar && selectedCar.brand} {selectedCar && selectedCar.model}
@@ -446,12 +446,148 @@ const BuyCarDetails = (props) => {
                     // }else {
                     //   props.enableLogUser(true)
                     // }
-                    setvalidateUser(true)
+                    setvalidateUser(true);
+                    window.scroll(0,0)
                   }}
                 >
                   Free Test Drive
                 </Button>
               </div>
+            </div>
+            <div className="car_details_MobileView">
+              <div className="car_details_heading">
+                Car Details
+              </div>
+              <div className="car_details_item colum_container">
+                <div>
+                  <p className="car_detail_desc">Year</p>
+                </div>
+                <div>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.year}</h2>
+                </div>
+              </div>
+              <div className="car_details_item colum_container">
+                <div>
+                  <p className="car_detail_desc">Car Brand</p>
+                </div>
+                <div>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.brand}</h2>
+                </div>
+              </div>
+              <div className="car_details_item colum_container">
+              <div>
+              <p className="car_detail_desc">KM Driven</p>
+                </div>
+                <div>
+                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.kmDriven}</h2>
+                </div>
+              </div>
+              <div className="car_details_item colum_container">
+                <div>
+                  <p className="car_detail_desc">Fuel Type</p>
+                </div>
+                <div>
+                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType}</h2>
+                </div>
+              </div>
+              <div className="car_details_item colum_container transmission_details">
+                <div>
+                  <p className="car_detail_desc">Transmission</p>
+                </div>
+                <div>
+                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
+                </div>
+              </div>
+              <div className="transmission_details location_info">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="12"
+                    viewBox="0 0 12 12"
+                  >
+                    <path
+                      opacity="1"
+                      d="M12.336 5.618L6.69.177a.645.645 0 00-.888 0L.157 5.618a.37.37 0 00-.137.413c.03.074.12.2.382.2h.636v4.836a.946.946 0 00.925.929h2.861V8.722h2.769V12h2.937a.935.935 0 00.906-.929V6.239h.655c.263 0 .352-.129.382-.2a.37.37 0 00-.137-.421z"
+                      fill="#888888"
+                    ></path>
+                  </svg>
+                  &nbsp; Home Test Drive: &nbsp;
+                  <span>Available</span>
+                </div>
+                <div className="transmission_details location_info">
+                  <svg
+                    width="10"
+                    height="12"
+                    viewBox="0 0 10 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.99998 0.166672C2.54998 0.166672 0.333313 2.04501 0.333313 4.95001C0.333313 6.80501 1.76248 8.98667 4.61498 11.5008C4.83665 11.6933 5.16915 11.6933 5.39081 11.5008C8.23748 8.98667 9.66665 6.80501 9.66665 4.95001C9.66665 2.04501 7.44998 0.166672 4.99998 0.166672ZM4.99998 6.00001C4.35831 6.00001 3.83331 5.47501 3.83331 4.83334C3.83331 4.19167 4.35831 3.66667 4.99998 3.66667C5.64165 3.66667 6.16665 4.19167 6.16665 4.83334C6.16665 5.47501 5.64165 6.00001 4.99998 6.00001Z"
+                      fill="#888888"
+                    ></path>
+                  </svg>
+                  <span>&nbsp; Royal Cars Car Hub, Mangalore</span>
+                  <span className="arrowIcon">
+                    <svg
+                      transform="rotate(0 0 0)"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#2E054E"
+                      width="7"
+                      height="7"
+                      viewBox="0 0 14 8"
+                    >
+                      <path
+                        fill="none"
+                        fill-rule="evenodd"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2.5"
+                        d="M386 48L392 54 398 48"
+                        transform="translate(-385 -47)"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+                <div className="car_details_mobile_buttons">
+                <Button
+                  style={{
+                    backgroundColor: "#4169e1",
+                    color: "#fff",
+                    borderRadius: "8px",
+                  }}
+                  onClick={() => {
+                    if(props.authToken) {
+                      props.bookNow(carInformation)
+                      props.enableLogUser(false)
+                    }else {
+                      props.enableLogUser(true)
+                    }
+                  }}
+                >
+                  Book Now
+                </Button>
+                <Button
+                  style={{
+                    backgroundColor: "red",
+                    color: "#fff",
+                    marginLeft: "20px",
+                    borderRadius: "8px",
+                  }}
+                  onClick={() => {
+                    // if(props.authToken) {
+                    //   props.bookTestDrive(userDetails.phone, new Date())
+                    //   props.enableLogUser(false)
+                    // }else {
+                    //   props.enableLogUser(true)
+                    // }
+                    setvalidateUser(true);
+                    window.scroll(0,0)
+                  }}
+                >
+                  Free Test Drive
+                </Button>
+                </div>
             </div>
           </div>
         </div>
