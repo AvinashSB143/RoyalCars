@@ -374,6 +374,14 @@ li {
   display: none;
 }
 
+.insurance_details {
+  font-family: futura-book;
+  display: inline-block;
+  align-items: center;
+  margin: 10px 0 0 10px;
+  font-size: 18px
+}
+
 
 @media screen and (max-width: 1280px) and (min-width: 769px) {
   .car_list_buyCar {

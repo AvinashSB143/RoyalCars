@@ -743,7 +743,7 @@ class Header extends Component {
                         style={{
                           borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "0",
+                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -763,11 +763,13 @@ class Header extends Component {
                           </p>
                         </StyledLink>
                       </div>
+                    </AccordionDetails>
+                    <AccordionDetails>
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
+                          padding: "0 0",
                         }}
                         onClick={() => {
                           this.setState({
