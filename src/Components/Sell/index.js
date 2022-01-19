@@ -216,7 +216,7 @@ const { vertical, horizontal, open } = state;
   }
 
 
-  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki","Others"];
+  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki","ToyoTa","Others"];
 const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km","30,000km - 40,000km", "40,000km -50,000km"]
 
 
