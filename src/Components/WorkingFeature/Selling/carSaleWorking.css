@@ -37,7 +37,7 @@
       background-color: lightblue;
     }
   
-    .about_us_main {
+    .about_us_main_sale {
       min-width: 978px;
       max-width: 1248px;
       margin: 0 auto !important;
@@ -45,7 +45,7 @@
     }
   
     
-  .about_us_card_container {
+  .about_us_card_container_sale {
       /* padding: 80px 24px 32px; */
       padding: 80px;
       display: flex;
@@ -65,24 +65,24 @@
       font-size: 22px;
       font-weight: 700;
     }
-    .about_us_card_container .about_us_card {
+    .about_us_card_container_sale .about_us_card {
       min-width: 0;
       width: 40%;
       font-size: 20px;
     }
-    .about_us_card_container .about_us_card .about_us_card_img {
+    .about_us_card_container_sale .about_us_card .about_us_card_img {
       width: 70%;
       height: auto;
       min-height: 136px;
       border-radius: 6px;
     }
-    .about_us_card_container .about_us_card h3 {
+    .about_us_card_container_sale .about_us_card h3 {
       font-family: futura-demi;
       margin: 12px 0;
       font-size: 28px;
       line-height: 32px;
     }
-    .about_us_card_container .about_us_card p {
+    .about_us_card_container_sale .about_us_card p {
       margin-bottom: 8px;
       color: black;
       font-size: 20px;
@@ -126,8 +126,8 @@
     align-items: center;
     background-color: #fff;
     border-top: 2px solid #f2f3f5;
-    background-color: rgb(247, 244, 248)
-  
+    background-color: rgb(247, 244, 248);
+    margin: 0 20px;
   }
   .SquadSpinny img {
     width: 80%;
@@ -373,7 +373,7 @@
     color: #2e054e;
     font-family: futura-book;
     border-bottom: 1px solid #e6e6e6;
-    width: 100%;
+    width: 95%;
   }
   
   .press_section h3 {
@@ -516,4 +516,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .about_us_card_container_sale {
+      padding: 20px;
+      line-height: 35px;
+      font-size: 14px;
+    }
+    .about_us_main {
+      min-width: none !important;
+    }
+    .SquadSpinny {
+      flex-direction: column;
+    }
+    .handPicked_car_container {
+      align-items: flex-start;
+    }
+    .handPicked_cars_details  {
+      width: 100%;
+    }
+    .column_container img {
+      margin: 0 auto;
+    }
   }

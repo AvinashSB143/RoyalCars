@@ -126,8 +126,8 @@
   align-items: center;
   background-color: #fff;
   border-top: 2px solid #f2f3f5;
-  background-color: rgb(247, 244, 248)
-
+  background-color: rgb(247, 244, 248);
+  margin: 0 20px;
 }
 .SquadSpinny img {
   width: 80%;
@@ -373,7 +373,7 @@
   color: #2e054e;
   font-family: futura-book;
   border-bottom: 1px solid #e6e6e6;
-  width: 100%;
+  width: 95%;
 }
 
 .press_section h3 {
@@ -516,4 +516,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .about_us_card_container {
+    padding: 20px;
+    line-height: 35px;
+    font-size: 14px;
+  }
+  .about_us_main {
+    min-width: none !important;
+  }
+  .SquadSpinny {
+    flex-direction: column;
+  }
+  .handPicked_car_container {
+    align-items: flex-start;
+  }
+  .handPicked_cars_details  {
+    width: 100%;
+  }
+  .column_container img {
+    margin: 0 auto;
+  }
 }

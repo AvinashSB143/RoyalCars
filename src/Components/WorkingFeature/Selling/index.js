@@ -56,7 +56,7 @@ return (
                     </div> */}
                     </div>
                 </div>
-                <div className="about_us_card_container about_us_main">
+                <div className="about_us_card_container_sale">
                     <span>
                     <h1> Selling your car made simple. </h1>
                     <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
@@ -65,7 +65,7 @@ return (
                 </div>
             <div className="carBuyingworkingCars">
 
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                     <div className="column_container">
                         <h1>Sell your car in simple steps.</h1>
                         <img 
@@ -78,7 +78,7 @@ return (
                         </h4>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1>Get an accurate quote</h1>
                         <h4 className="handPicked_cars_description">
@@ -91,7 +91,7 @@ return (
                     </div>
                 </div>
 
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                 <div className="column_container">
                     <img src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
@@ -105,7 +105,7 @@ return (
                 </div>
 
 {/* 
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                     <div className="column_container">
                         
                         <img 
@@ -118,7 +118,7 @@ return (
                         </h4>
                     </div>
                 </div> */}
-                {/* <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                {/* <div className = "SquadSpinny  main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1>Same day payment</h1>
                         <h4 className="handPicked_cars_description">
@@ -130,7 +130,7 @@ return (
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
                 </div> */}
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                     <h1>Peace of mind in ownership transfer</h1>
                     <h4 className="handPicked_cars_description">
@@ -142,7 +142,7 @@ return (
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny  main_container handPicked_car_container">
                 <div className="column_container">
                     <img 
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
