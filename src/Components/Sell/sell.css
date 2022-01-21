@@ -1,3 +1,4 @@
+
 .background_image_wrapper {
   /* background-image: url("../../images/sell_landing_back_desktop.jpg"); */
   background-color: #4169e1;
@@ -23,6 +24,7 @@
   align-items: center;
   justify-content: center;
   overflow: auto;
+  margin-bottom: 50px;
 }
 
 .marketingItem {
@@ -109,6 +111,37 @@
 /*HowItWorks*/
 .HowItsWork__listWrap {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.HowItsWork__listItem {
+  width: 300px;
+  margin: 20px;
+  background: #f7f7f7;
+}
+
+.HowItsWork__contentSection {
+  padding: 0 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+p.HowItsWork__details {
+  padding-bottom: 30px;
+}
+
+.HowItsWork__contentSection a.styles__btn{
+  background: #00011f;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.HowItsWork__listItem img {
+  height: 190px;
+  width: 300px;
 }
 
 .sellcar_filter_container {

@@ -231,7 +231,7 @@ class Header extends Component {
     }
   };
 
- 
+
 
   getMobileNumber = (number) => {
     if (number) {
@@ -587,6 +587,7 @@ class Header extends Component {
               <div className="column_container mobile_login_container">
                 {this.state.expandLoginDetails && (
                   <div className="mobile_login_closeIcon_pos">
+                    <span className="mobile-menu-title">Welcome to Royal Cars</span>
                     <CloseIcon
                       onClick={() =>
                         this.setState({
@@ -774,7 +775,7 @@ class Header extends Component {
                           to={this.props.authToken ? "/account/testDrive" : "#"}
                           className="row_container mobile_login_content"
                         >
-                          <p style={{ fontSize: "25px",marginTop: "-25px"  }}>
+                          <p style={{ fontSize: "25px", marginTop: "-25px" }}>
                             {" "}
                             Test Drives
                           </p>
@@ -1046,8 +1047,8 @@ class Header extends Component {
                               maxLength: 10,
                             }}
                             className={`${this.state.isError
-                                ? "login_text_field mobile_error"
-                                : "login_text_field"
+                              ? "login_text_field mobile_error"
+                              : "login_text_field"
                               }`}
                             onChange={(e) => this.getUserName(e.target.value)}
                             error={
@@ -1074,8 +1075,8 @@ class Header extends Component {
                               maxLength: 10,
                             }}
                             className={`${this.state.isError
-                                ? "login_text_field mobile_error"
-                                : "login_text_field"
+                              ? "login_text_field mobile_error"
+                              : "login_text_field"
                               }`}
                             onChange={(e) => this.getPassword(e.target.value)}
                             error={
@@ -1120,8 +1121,8 @@ class Header extends Component {
                               maxLength: 10,
                             }}
                             className={`${this.state.isError
-                                ? "login_text_field mobile_error"
-                                : "login_text_field"
+                              ? "login_text_field mobile_error"
+                              : "login_text_field"
                               }`}
                             onChange={(e) => this.getMobileNumber(e.target.value)}
                             type="tel"
@@ -1150,8 +1151,8 @@ class Header extends Component {
                                 maxLength: 10,
                               }}
                               className={`${this.state.isError
-                                  ? "login_text_field mobile_error"
-                                  : "login_text_field"
+                                ? "login_text_field mobile_error"
+                                : "login_text_field"
                                 }`}
                               onChange={(e) => this.getEmail(e.target.value)}
                               type="email"
@@ -1217,8 +1218,8 @@ class Header extends Component {
                         }}
                         InputProps={{ disableUnderline: true, maxLength: 10 }}
                         className={`${this.state.isError
-                            ? "login_text_field mobile_error"
-                            : "login_text_field"
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
                           }`}
                         onChange={(e) => this.getnewPassword(e.target.value)}
                         // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
@@ -1233,8 +1234,8 @@ class Header extends Component {
                         }}
                         InputProps={{ disableUnderline: true, maxLength: 10 }}
                         className={`${this.state.isError
-                            ? "login_text_field mobile_error"
-                            : "login_text_field"
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
                           }`}
                         onChange={(e) => this.getConfirmPassword(e.target.value)}
                         error={this.state.isPasswordMisMatched}
@@ -1266,15 +1267,15 @@ class Header extends Component {
                       <Link
                         to="#"
                         onClick={() =>
-                         this.setState({
-                          resendOtp: true
-                         }, () => this.props.createOTP(this.state.mobileNumber),
-                         setTimeout(() => {
                           this.setState({
-                            resendOtp: false
-                          })
-                        }, 2000)
-                         )
+                            resendOtp: true
+                          }, () => this.props.createOTP(this.state.mobileNumber),
+                            setTimeout(() => {
+                              this.setState({
+                                resendOtp: false
+                              })
+                            }, 2000)
+                          )
                         }
                       >
                         Resend OTP
