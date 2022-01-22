@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -60,6 +60,7 @@ const BuyCarDetails = (props) => {
     const [isOTPCreated, setisOTPCreated] = useState(false)
     const [OTP, setOTP] = useState(null)
     const [validateUser, setvalidateUser] = useState()
+    const phoneNumberRef = useRef()
 
     const handlePayment =  useCallback(() => {
       const options = {
@@ -109,7 +110,7 @@ const BuyCarDetails = (props) => {
 
     useEffect(() => {
       if(props.OTPVerificationSuccessful) {
-          props.bookTestDrive(userDetails.phone, new Date())
+          props.bookTestDrive(phoneNumberRef.current, new Date())
       }
 
     },[props.OTPVerificationSuccessful])
@@ -132,10 +133,11 @@ const BuyCarDetails = (props) => {
     const validateForTestDrive = () => {
       if(!isOTPCreated) {
         props.createOTP(testDrivePhoneNumber)
+        phoneNumberRef.current = testDrivePhoneNumber;
         setTestDrivePhoneNumber("")
         setisOTPCreated(true)
       } else if(OTP && OTP.length === 4){
-        props.validateOTP(OTP, testDrivePhoneNumber)
+        props.validateOTP(OTP, phoneNumberRef.current)
         setvalidateUser(false)
         setisOTPCreated(false)
       }
