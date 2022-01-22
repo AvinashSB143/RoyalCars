@@ -37,7 +37,7 @@ function Footer() {
             Welcome to Royal Cars! Your friendly second hand car dealer in Mangalore.
             We take care of the end-to-end process of Buying and Selling of your car.
             We at Royal Cars have a wide variety of cars suiting your needs right from your first family car to your favourite off-road vehicle.
-            Email us at <a href="mailto:support@royalcarsmangalore.in" style={{ color: "white" }}>support@royalcarsmangalore.in</a>
+            Email us at <a href="mailto:support@royalcarsmangalore.in" style={{ color: "white", fontWeight: "bolder" }}>support@royalcarsmangalore.in</a>
           </p>
         </div>
 

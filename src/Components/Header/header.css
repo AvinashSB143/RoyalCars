@@ -32,9 +32,15 @@
 .forgot_password {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   margin: 10px;
   width: 100%;
+}
+
+.mobile-menu-title{
+  font-size: 12px;
+  float: left;
+  color: white;
 }
 
 .Header_options {
@@ -119,6 +125,10 @@
   z-index: 2;
 }
 
+.login_container .Header-root-1{
+  background-color: #ccc;
+}
+
 .signup_container {
   height: 600px;
 }
@@ -127,7 +137,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  background-color: slateblue;
+  background-color: #ccc;
 }
 
 .overlay {
@@ -169,12 +179,18 @@
 }
 
 .login_proceed_btn {
-  background-color: red;
+  background-color: #00011f;
   width: 60%;
   padding: 10px;
   font-weight: 400;
   font-size: large;
   color: white;
+}
+.forgot_password a{
+color: black;
+font-weight: bold;
+text-decoration: none;
+margin: 0 20px;
 }
 
 .mobile_error {
@@ -701,19 +717,21 @@
     background: #fff;
   }
   .mobile_login_closeIcon_pos {
-    display: flex;
-    flex-direction: row-reverse;
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
     padding: 0.5rem;
-    background: #4169e1;
+    background: #00011f;
   }
+
   .css-ahj2mt-MuiTypography-root{
     font-family: inherit !important;
   }
-  .css-i4bv87-MuiSvgIcon-root{
-    color: #777;
+  .css-i4bv87-MuiSvgIcon-root,.column_container.mobile_login_container p{
+    color: #00011f;
   }
   .mobile_login_closeIcon_pos svg{
     color: white;
+    float: right;
   }
   .header_search_bar {
     width: 70%;

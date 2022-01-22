@@ -97,7 +97,7 @@
   display: grid;
   grid-template-columns: 2fr repeat(2, 1fr);
   grid-template-rows: auto 4rem;
-  background: #777;
+  background: #00011f;
   color: #fff;
   padding: 1rem;
   margin: 0 auto;
