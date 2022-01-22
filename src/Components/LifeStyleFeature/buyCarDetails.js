@@ -497,15 +497,14 @@ const BuyCarDetails = (props) => {
                 <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType}</h2>
                 </div>
               </div>
-               {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container">
+               <div className="car_details_item colum_container">
                 <div>
-                <p className="car_detail_desc">Insurance Type </p>
+                <p className="car_detail_desc">Transmission</p>
                   </div>
                   <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
                   </div>
                 </div>
-                }
                 {selectedCar && selectedCar.insuranceValidTill && <div className="car_details_item colum_container">
                   <div>
                     <p className="car_detail_desc">Insurance Validity</p>
@@ -514,14 +513,14 @@ const BuyCarDetails = (props) => {
                   <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insuranceValidTill}</h2>
                   </div>
               </div>}
-              <div className="car_details_item colum_container transmission_details">
+              {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container transmission_details">
                 <div>
-                  <p className="car_detail_desc">Transmission</p>
+                  <p className="car_detail_desc">Insurance Type</p>
                 </div>
                 <div>
-                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
+                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance}</h2>
                 </div>
-              </div>
+              </div> }
               <div className="transmission_details location_info">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -332,7 +332,13 @@ export const sellCar = data => {
     return dispatch => {
         try {
             axios.post('customerCar/sell', {
-                data
+                "year": data.year,
+                "brand": data.brand,
+                "model": data.model,
+                "variant": data.variant,
+                "totalOwner": data.totalOwner,
+                "kmDriven": data.kmDriven,
+                "customerPhoneNo": data.customerPhoneNo
             }).then(res => {
                 if(res.data) {
                     dispatch ({
