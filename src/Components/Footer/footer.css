@@ -186,7 +186,7 @@ a:hover {
   background-color: #ffdf00;
   border: 2px solid #ffdf00;
   font-size: 18px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   justify-content: center;
   align-items: center;
   border-radius: 0.4rem;

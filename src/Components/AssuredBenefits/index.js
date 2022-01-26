@@ -4,15 +4,15 @@ import Logo from "../../images/Logo.png";
 
 const AssuredBenefits = () => {
     return (
-        <div className="main_container column_container">
+        <div className="column_container">
             <div className="main_container column_container">
                 <img src={Logo} width="100px" height="100px" alt="Royal Cars" />
                 <h1 style={{ margin: 0 }}>
                     Royal Car benefits
                 </h1>
-                <p style={{ marginTop: "20px" }}>
+                <h3 style={{ marginTop: "20px", fontWeight: "lighter" }}>
                     The sure road to Car Joy
-                </p>
+                </h3>
             </div>
             <div className="benefits_images">
                 <div className="benefits_img">

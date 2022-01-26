@@ -81,7 +81,7 @@ li {
 .pageStyle .carDetails .rightSection h1 {
   font-size: 18px;
   line-height: 22px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   display: block;
   width: calc(100% - 2em);
   margin: 10px 0 0 10px;
@@ -100,7 +100,7 @@ li {
   position: relative;
   left: 10%;
   bottom: 2px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
 }
 .pageStyle .carDetails .rightSection .carFeature {
   font-size: 18px;
@@ -110,7 +110,7 @@ li {
   display: flex;
 }
 .pageStyle .carDetails .rightSection .carFeature span {
-  font-family: futura-book;
+  /* font-family: futura-book; */
   display: inline-block;
   align-items: center;
   margin: 10px 0 0 10px;
@@ -121,7 +121,7 @@ li {
   align-items: center;
   font-size: 16px;
   line-height: 20px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   color: #888;
 }
 .pageStyle .carDetails .rightSection .testDrive span {
@@ -132,7 +132,7 @@ li {
   display: flex;
   align-items: center;
   margin: 8px 0 0 10px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 16px;
   line-height: 20px;
   cursor: pointer;
@@ -150,7 +150,7 @@ li {
   justify-content: space-between;
   padding-top: 16px;
   padding-bottom: 4px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 22px;
   line-height: 24px;
   display: flex;
@@ -175,20 +175,20 @@ li {
 .pageStyle .carDetails .rightSection .carPriceMargin .carEMI {
   display: flex;
   align-items: center;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 16px;
   line-height: 20px;
   cursor: pointer;
 }
 .pageStyle .carDetails .rightSection .fixedPrice {
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 14px;
   line-height: 18px;
   color: #888;
   margin: 8px 0 0 10px;
 }
 .pageStyle .carDetails .rightSection .checkPrice {
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   color: #01b088;
   font-size: 14px;
   line-height: 18px;
@@ -241,7 +241,7 @@ li {
   .offerList
   .offerItem
   .offerText {
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 14px;
   line-height: 18px;
   color: #555;
@@ -424,7 +424,7 @@ li {
     background-color: #FFDF00;
     border: 2px solid #FFDF00;
     font-size: 1rem !important;
-    font-family: futura-demi;
+    /* font-family: futura-demi; */
     justify-content: center;
     align-items: center;
     border-radius: 0.4rem;
@@ -442,7 +442,7 @@ li {
     background-color: #FFDF00;
     border: 2px solid #FFDF00;
     font-size: 1rem;
-    font-family: futura-demi;
+    /* font-family: futura-demi; */
     justify-content: center;
     align-items: center;
     border-radius: 0.4rem;

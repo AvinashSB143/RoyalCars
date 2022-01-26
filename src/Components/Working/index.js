@@ -14,9 +14,9 @@ const Working = (props) => {
     <div className="main_container column_container working_container">
       <div className="working__Heading">
         <h2>How Royal Cars Works</h2>
-        <p style={{ margin:"10px auto" }} className="mobile_car_working_helperText">
+        <h3 style={{ marginTop: "20px", fontWeight: "lighter" }} className="mobile_car_working_helperText">
           You won’t just love our cars, you’ll love the way you buy them.
-        </p>
+        </h3>
       </div>
       <div className="working_images">
         <div className="working_img">
@@ -32,7 +32,7 @@ const Working = (props) => {
             Over 6000 fully inspected cars. Best performance guaranteed
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/lifeStyle" onClick={() =>( props.getAvailableCars(), window.scroll(0,0))}>
+            <Link to="/lifeStyle" onClick={() => (props.getAvailableCars(), window.scroll(0, 0))}>
               {" "}
               View All Cars
             </Link>
@@ -52,7 +52,7 @@ const Working = (props) => {
             Easy appointment. Cars at your doorstep. Expert assistance
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/availableCars" onClick={() => window.scroll(0,0) }> Book Test Drive</Link>
+            <Link to="/availableCars" onClick={() => window.scroll(0, 0)}> Book Test Drive</Link>
           </div>
         </div>
         <div className="working_img">

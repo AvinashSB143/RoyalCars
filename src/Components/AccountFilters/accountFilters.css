@@ -165,7 +165,7 @@ h4 {
   flex-direction: column;
   border-radius: 6px;
   background-color: #fff;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   color: #2e054e;
   margin-top: 16px !important;
 }
@@ -174,7 +174,7 @@ h4 {
 }
 .profile_form_detail .form-input-name {
   border-radius: 8px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   position: relative;
   width: 100%;
   color: #2e054e;
@@ -201,7 +201,7 @@ h4 {
   color: #2e054e;
   padding-left: 16px;
   box-shadow: none;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
 }
 .form-input-name .name_label {
   width: 1px;
@@ -261,7 +261,7 @@ h4 {
   margin-bottom: 0;
   font-size: 16px;
   line-height: 20px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   color: #fff;
   box-sizing: border-box;
   background: linear-gradient(94.68deg, #2e054e 1.1%, #4a007a 101%);
@@ -285,7 +285,7 @@ h4 {
   padding: 24px;
 }
 .referal_details .refer_friend .refer_friend_desc h2 {
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   font-weight: 600;
   margin-bottom: 8px;
   text-transform: capitalize;
@@ -339,7 +339,7 @@ h4 {
   font-size: 18px;
   line-height: 22px;
   color: #2e054e;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   text-transform: capitalize;
   margin-bottom: 24px;
 }
@@ -366,7 +366,7 @@ h4 {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   font-size: 18px;
   color: #2e054e;
   text-align: center;

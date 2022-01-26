@@ -230,7 +230,7 @@ margin: 0 20px;
 }
 .about_us_main {
   min-width: 978px;
-  max-width: 1248px;
+  max-width: 1248px; 
   margin: 0 auto !important;
   box-sizing: border-box;
 }
@@ -239,9 +239,9 @@ margin: 0 20px;
   padding: 80px 24px 32px;
   display: flex;
   justify-content: space-between;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 16px;
-  line-height: 20px;
+  line-height: 30px;
   background-color: #fff;
   color: #2e054e;
 }
@@ -258,7 +258,7 @@ margin: 0 20px;
   border-radius: 6px;
 }
 .about_us_card_container .about_us_card h3 {
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   margin: 12px 0;
   font-size: 28px;
   line-height: 32px;
@@ -272,7 +272,7 @@ margin: 0 20px;
 .importantTo_us {
   padding: 44px 0px 32px !important;
   justify-content: space-between;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 16px;
   line-height: 20px;
   background-color: #fff;
@@ -282,7 +282,7 @@ margin: 0 20px;
 .importantTo_us h3 {
   font-size: 36px;
   line-height: 40px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   margin-bottom: 32px;
 }
 
@@ -304,7 +304,7 @@ margin: 0 20px;
 .importantTo_us .importantTo_us_card .importantTo_us_card_list h4 {
   font-size: 26px;
   line-height: 30px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   margin: 12px 0;
 }
 
@@ -321,7 +321,7 @@ margin: 0 20px;
   border-radius: 6px;
 }
 .SquadSpinny .SquadSpinny_contentwrap {
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 18px;
   line-height: 20px;
   color: #2e054e;
@@ -345,7 +345,7 @@ margin: 0 20px;
 
 .Culture {
   padding: 44px 0 1px;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   font-size: 16px;
   line-height: 20px;
   color: #2e054e;
@@ -531,7 +531,7 @@ margin: 0 20px;
 
 .our_backers .investor_container h3 {
   font-size: 36px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   line-height: 38px;
 }
 
@@ -550,14 +550,14 @@ margin: 0 20px;
 .press_section {
   padding: 80px 24px;
   color: #2e054e;
-  font-family: futura-book;
+  /* font-family: futura-book; */
   border-bottom: 1px solid #e6e6e6;
 }
 
 .press_section h3 {
   font-size: 32px;
   line-height: 36px;
-  font-family: futura-demi;
+  /* font-family: futura-demi; */
   margin-bottom: 32px;
 }
 .press_section .press_content_wrapper {

@@ -4,7 +4,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
 
 body {
-  font-family: "Nunito", sans-serif,Helvetica-Light, Helvetica, Arial, sans-serif;
+  font-family: "Hind", sans-serif;
   overflow-x: hidden;
 }
 
@@ -50,12 +50,16 @@ body {
   height: auto;
 }
 
+a, a:hover{
+  text-decoration: none !important;
+}
+
 .slideshowDots{
   display:none;
 }
 
 .main_container:nth-child(even){
-  background-color: #f0eeee;
+  background-color: #fff;
 }
 
 .Header-root-1{

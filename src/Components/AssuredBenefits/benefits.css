@@ -1,6 +1,6 @@
 .benefits_images {
   display: flex;
-  padding: 24px 74px;
+  padding: 0 74px 24px 74px;
   width: auto;
   height: auto;
   overflow: auto;
