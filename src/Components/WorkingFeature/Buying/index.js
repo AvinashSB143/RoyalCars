@@ -56,7 +56,7 @@ return (
                     </div> */}
                     </div>
                 </div>
-                <div className="about_us_card_container about_us_main">
+                <div className="about_us_card_container">
                     <span>
                     <h1> We are about car joy - from selection to every part of ownership </h1>
                     <p className="working_buy_description">With rich experience in the car market space, Royal Cars is the one-stop destination for all the best pre-owned cars in Mangalore.</p>
@@ -65,7 +65,7 @@ return (
                 </div>
             <div className="carBuyingworkingCars">
 
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container">
                         <h1>Buying Your Assured Royal Cas</h1>
                         <img 
@@ -78,7 +78,7 @@ return (
                         </h4>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1> Get into every detail</h1>
                         <h4 className="handPicked_cars_description">
@@ -90,7 +90,7 @@ return (
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container">
                         
                         <img 
@@ -103,7 +103,7 @@ return (
                         </h4>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1> Paperwork and financing, handled</h1>
                         <h4 className="handPicked_cars_description">
@@ -115,7 +115,7 @@ return (
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container">
                         <img 
                     src = "https://media.istockphoto.com/photos/sea-of-hands-picture-id857146092?b=1&k=20&m=857146092&s=170667a&w=0&h=6LFXDhgmrAKxwIFFgt5ctdMooP_WgLlmeX6yhq7a174="></img>
@@ -127,7 +127,7 @@ return (
                         </h4>
                     </div>
                 </div>
-                <div className = "SquadSpinny about_us_main main_container handPicked_car_container">
+                <div className = "SquadSpinny main_container handPicked_car_container">
                     <div className="column_container handPicked_cars_details">
                         <h1>Delivery Day – a day to remember</h1>
                         <h4 className="handPicked_cars_description">
@@ -141,62 +141,7 @@ return (
                 </div>
 
                 <div className = "press_section">
-                    <h3>Press</h3>
                     <div className="press_content_wrapper">
-                        <div className="press_content">
-                            <div className ="press_content_list">
-                                <a className="press_content_img"
-                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
-                                <div className = "press_imgContainer">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
-                                    </img>
-                                </div>
-                                <div className = "press_descContainer">
-                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
-                                </div>
-                                </a>
-                                <a className="press_content_img"
-                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
-                                <div className = "press_imgContainer">
-                                    <img src="https://www.egis-india.com/sites/egis-india.com/files/styles/largeur_page/public/fe.png?itok=iyIILABn">
-                                    </img>
-                                </div>
-                                <div className = "press_descContainer">
-                                <p>Full-stack concept explained with benefits</p>
-                                </div>
-                                </a>
-                                <a className="press_content_img"
-                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
-                                <div className = "press_imgContainer">
-                                    <img src="https://img.etimg.com/thumb/msid-69088793,width-1200,height-900/industry/media/entertainment/media/the-economic-times-trumps-all-business-dailies-combined.jpg">
-                                    </img>
-                                </div>
-                                <div className = "press_descContainer">
-                                <p>Royal Cars brings in 360-degree interactive view of used cars</p>
-                                </div>
-                                </a>
-                                <a className="press_content_img"
-                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
-                                <div className = "press_imgContainer">
-                                    <img src="https://entrackr.com/wp-content/uploads/2019/03/funding-.jpg">
-                                    </img>
-                                </div>
-                                <div className = "press_descContainer">
-                                <p>Accel-backed Royal Cars acquaries used cars marketplace Truebil</p>
-                                </div>
-                                </a>
-                                <a className="press_content_img"
-                                href = "https://yourstory.com/2020/08/spinny-startup-pre-owned-car-market/amp">    
-                                <div className = "press_imgContainer">
-                                    <img src="https://images.squarespace-cdn.com/content/v1/564b6866e4b0c5929314d76f/1542059458363-DMWZVMBQVTIOM44WE6I1/What_is_your_story.jpg?format=1000w">
-                                    </img>
-                                </div>
-                                <div className = "press_descContainer">
-                                <p>How Royal Cars is re-defining the pre-owned car market through its platform</p>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
                         {/* <div className = "press_carousel">
                             <div className = "carousel_left"></div>
                             <div className="carousel_right"></div>

@@ -56,7 +56,7 @@ const CarSalesWorking = (props) => {
                     </div> */}
                     </div>
                 </div>
-                <div className="about_us_card_container about_us_main">
+                <div className="about_us_card_container_sale">
                     <span>
                         <h1> Selling your car made simple. </h1>
                         <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
@@ -398,7 +398,7 @@ const CarSalesWorking = (props) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

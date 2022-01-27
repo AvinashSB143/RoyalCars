@@ -429,13 +429,20 @@ h4 {
     margin: 15px auto;
   }
 }
-  @media only screen and (max-width:767px){
+  @media only screen and (max-width:768px){
+    .hide {
+      display: none;
+    }
     .account_filter_container {
       padding: 0;
     }
     .account_filtered_options_container {
-      max-width: 25rem;
-    min-width: 10rem;
+      /* max-width: 25rem;
+      min-width: 10rem; */
+      width: 100%;
+    }
+    .cars_offered {
+      width: 100%;
     }
     .account_filtered_options {
       font-size: 14px;
@@ -450,8 +457,9 @@ h4 {
       padding: 0;
     }
     .account_filtered_options_container {
-      max-width: 25rem;
-    min-width: 10rem;
+      /* max-width: 25rem;
+    min-width: 10rem; */
+    width: 100%;
     }
     .account_filtered_options {
       font-size: 12px;

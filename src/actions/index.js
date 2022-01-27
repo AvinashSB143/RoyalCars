@@ -332,7 +332,13 @@ export const sellCar = data => {
     return dispatch => {
         try {
             axios.post('customerCar/sell', {
-                data
+                "year": data.year,
+                "brand": data.brand,
+                "model": data.model,
+                "variant": data.variant,
+                "totalOwner": data.totalOwner,
+                "kmDriven": data.kmDriven,
+                "customerPhoneNo": data.customerPhoneNo
             }).then(res => {
                 if(res.data) {
                     dispatch ({
@@ -361,6 +367,13 @@ export const closeSnackBarTestDrive = () => {
     return dispatch => {
                     dispatch ({
                         type: "CLOSE_TEST_DRIVE_SNACKBAR",
+                    })
+                }
+}
+export const disableSnackBar = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "DISABLE_OTP_VALIDATION",
                     })
                 }
 }

@@ -18,9 +18,7 @@ import CarSalesWorking from "../WorkingFeature/Selling";
 import CarBuyingworking from '../WorkingFeature/Buying';
 import styled from "styled-components";
 const HomePageContainer = styled.div`
-  @media (max-width: 768px) {
-    width: fit-content;
-  }
+  
 `;
 function Routing() {
 

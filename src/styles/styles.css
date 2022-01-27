@@ -67,8 +67,9 @@ a, a:hover{
 }
 
 .column_container.mobile_login_container p {
-  font-size: 16px !important;
+  font-size: 20px !important;
   margin-top: 7px;
+  font-weight: bold;
 }
 
 @media screen and (max-width:850px){

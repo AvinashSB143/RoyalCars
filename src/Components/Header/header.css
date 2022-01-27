@@ -92,6 +92,8 @@
   list-style-type: none;
   text-decoration: none;
   color: black;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .more_items {
@@ -228,13 +230,13 @@ margin: 0 20px;
   background-image: none;
   background-color: lightblue;
 }
-.about_us_main {
+/* .about_us_main {
   min-width: 978px;
   max-width: 1248px; 
   margin: 0 auto !important;
   box-sizing: border-box;
-}
-
+} */
+/* 
 .about_us_card_container {
   padding: 80px 24px 32px;
   display: flex;
@@ -244,8 +246,8 @@ margin: 0 20px;
   line-height: 30px;
   background-color: #fff;
   color: #2e054e;
-}
-
+} */
+/* 
 .about_us_card_container .about_us_card {
   min-width: 0;
   width: 40%;
@@ -267,7 +269,7 @@ margin: 0 20px;
   margin-bottom: 8px;
   color: black;
   font-size: 20px;
-}
+} */
 
 .importantTo_us {
   padding: 44px 0px 32px !important;

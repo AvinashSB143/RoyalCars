@@ -14,6 +14,7 @@ import LifeStyle from "../LifeStyle";
 import BodyTypeCars from "../bodyType";
 import PopularBrands from "../PopularBrands";
 import FeaturedCars from "../Featured";
+import FAQContainer from "../FAQ";
 import { useState } from "react";
 import StarRatingComponent from 'react-star-rating-component';
 import LifeStyleFeature from "../LifeStyleFeature";
@@ -158,6 +159,7 @@ const HomePage = (props) => {
       <BodyTypeCars />
       <PopularBrands />
       <FeaturedCars />
+      <FAQContainer />
       {/* <SliderTest /> */}
     </div>
   );

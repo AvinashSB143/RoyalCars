@@ -5,17 +5,24 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import DensitySmallIcon from '@mui/icons-material/DensitySmall';
 import PersonIcon from '@mui/icons-material/Person';
+import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
 // import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import CarRentalIcon from '@mui/icons-material/CarRental';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import DescriptionIcon from '@material-ui/icons/Description';
 import DirectionsOutlinedIcon from '@material-ui/icons/DirectionsOutlined';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import LockIcon from '@mui/icons-material/Lock';
 import CloseIcon from '@material-ui/icons/Close';
+import AttachMoneyOutlinedIcon from '@mui/icons-material/AttachMoneyOutlined';
 import AddLocationIcon from '@material-ui/icons/AddLocation';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 // import {AddLocationIcon} from '@material-ui/icons';
 import withStyles from "@material-ui/core/styles/withStyles";
 import SearchIcon from '@material-ui/icons/Search';
+import CarRentalTwoToneIcon from '@mui/icons-material/CarRentalTwoTone';
 import TextField from '@material-ui/core/TextField';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import Accordion from '@mui/material/Accordion';
@@ -23,6 +30,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 
@@ -45,7 +53,8 @@ import {
   searchCar,
   enableLogUser,
   getAssuredCars,
-  createOTP
+  createOTP,
+  disableSnackBar
 } from "../../actions"
 import MenuBar from './MenuBar';
 import { Redirect } from "react-router";
@@ -220,7 +229,8 @@ class Header extends Component {
         showLoginContent: false,
         isForgotPassword: false,
         password: "",
-        userName: ""
+        userName: "",
+        hideButton: false
       });
     }
   };
@@ -300,6 +310,21 @@ class Header extends Component {
       openAboutUs: true,
     });
   };
+
+  handleCloseOTP = () => {
+    this.setState({ resendOtp: false })
+  }
+
+  handleClose = () => {
+    if(this.state.isSignUp) {
+      this.setState({ showLoginContent: false});
+    }
+    if(this.state.isForgotPassword) {
+      this.setState({closeOTPValidationPopUp: false})
+    }
+    
+  }
+
   render() {
     const expandMoreSection = (
       <div className="main_container column_container about_more_section">
@@ -423,7 +448,7 @@ class Header extends Component {
           </Link>
         </div>
         <div className="more_items">
-          <LocationOnIcon />
+          <DirectionsCarFilledOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/sellorders" : "#"}
             className="options"
@@ -447,7 +472,7 @@ class Header extends Component {
                 this.changeArrow()
               );
           }}>
-          <LocationOnIcon />
+          <AttachMoneyOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/refer_and_earn" : "#"}
             className="options"
@@ -463,7 +488,7 @@ class Header extends Component {
           </Link>
         </div>
         <div className="more_items">
-          <LocationOnIcon />
+          <PermIdentityOutlinedIcon />
           <Link
             to={this.props.authToken ? "/account/profileInformation" : "#"}
             className="options"
@@ -520,7 +545,7 @@ class Header extends Component {
             }
           }}
         >
-          <LocationOnIcon />
+          <LockIcon />
           <Link
             to={this.props.authToken ? "/homePage" : "#"}
             className="options"
@@ -532,6 +557,8 @@ class Header extends Component {
     );
     const { classes } = this.props;
     const { vertical, horizontal } = this.state.snackBarPos;
+
+    
     return (
       <>
         <Snackbar
@@ -542,17 +569,39 @@ class Header extends Component {
           className={
             classes.snackBarRoot
           }
-        // action={
-        //   <Fragment>
-        //     <IconButton
-        //       aria-label="close"
-        //       color="inherit"
-        //       sx={{ p: 0.5 }}
-        //     >
-        //       <CloseIcon />
-        //     </IconButton>
-        //   </Fragment>
-        // }
+        action={
+          <Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={this.handleCloseOTP}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Fragment>
+        }
+        />
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={this.props.OTPVerificationSuccessful && this.state.closeOTPValidationPopUp }
+          message="OTP Validated Successfully"
+          key={vertical + horizontal}
+          className={
+            classes.snackBarRoot
+          }
+        action={
+          <Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Fragment>
+        }
         />
         <div
           className={
@@ -648,7 +697,7 @@ class Header extends Component {
                     to="/lifeStyle"
                     className="row_container mobile_login_content"
                   >
-                    <PersonIcon className="mobile_login_icon_pos" />
+                    <CarRentalIcon className="mobile_login_icon_pos" />
                     <p style={{ fontSize: "25px" }}>Buy a Car</p>
                   </StyledLink>
                 </div>
@@ -669,7 +718,7 @@ class Header extends Component {
                     to={this.props.authToken ? "/sell" : "#"}
                     className="row_container mobile_login_content"
                   >
-                    <PersonIcon className="mobile_login_icon_pos" />
+                    <DirectionsCarFilledOutlinedIcon className="mobile_login_icon_pos" />
                     <p style={{ fontSize: "25px" }}>Sell your car</p>
                   </StyledLink>
                 </div>
@@ -685,7 +734,7 @@ class Header extends Component {
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <PersonIcon className="mobile_login_icon_pos" />
+                      <HomeRepairServiceIcon className="mobile_login_icon_pos" />
                       <Typography style={{ fontSize: "25px" }}>
                         How it works
                       </Typography>
@@ -695,7 +744,7 @@ class Header extends Component {
                         style={{
                           borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "0",
+                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -715,11 +764,13 @@ class Header extends Component {
                           </p>
                         </StyledLink>
                       </div>
+                    </AccordionDetails>
+                    <AccordionDetails>
                       <div
                         style={{
                           borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
+                          padding: "0 0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -754,7 +805,7 @@ class Header extends Component {
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <PersonIcon className="mobile_login_icon_pos" />
+                      <AccountBalanceIcon className="mobile_login_icon_pos" />
                       <Typography style={{ fontSize: "25px" }}>
                         Account
                       </Typography>
@@ -1009,7 +1060,7 @@ class Header extends Component {
           {this.state.expandAccountSection && expandAccountSection}
           {(this.props.enableUserToBook || (this.state.showLoginContent &&
             !this.props.isValidUser &&
-            !this.props.authToken)) && (
+            !this.props.authToken)) && !this.props.OTPVerificationSuccessful && (
               <div className='overlay'>
                 <div
                   className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) &&
@@ -1161,7 +1212,7 @@ class Header extends Component {
                         </>
                       )}
                   </>
-                  {this.props.signUpSuccess &&
+                  {this.props.signUpSuccess && !this.props.OTPVerificationSuccessful &&
                     <TextField
                       id="OTP"
                       placeholder="OTP"
@@ -1222,7 +1273,6 @@ class Header extends Component {
                           : "login_text_field"
                           }`}
                         onChange={(e) => this.getnewPassword(e.target.value)}
-                        // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
                         value={this.state.newPassword}
                       />
                       <TextField
@@ -1284,7 +1334,7 @@ class Header extends Component {
                     <Link
                       to="#"
                       onClick={() => {
-                        this.setState({ isForgotPassword: true });
+                        this.setState({ isForgotPassword: true, closeOTPValidationPopUp: true });
                       }}
                     >
                       Forgot Password
@@ -1325,6 +1375,81 @@ class Header extends Component {
                   )}
                 </div>
               </div>
+            )}
+
+            {this.props.OTPVerificationSuccessful && this.state.isForgotPassword && (
+              <div className='overlay'>
+              <div
+                className={`main_container column_container login_container ${(this.state.isSignUp || this.state.isForgotPassword) &&
+                  " signup_container"
+                  }`}
+              >
+                <CloseIcon
+                  className="close_icon"
+                  onClick={() => {
+                    this.setState({
+                      showLoginContent: false,
+                      showEmailField: false,
+                      showNameField: false,
+                      loginAttempted: false,
+                    });
+                    this.props.enableLogUser(false)
+                  }}
+                />
+                <VpnKeyIcon />
+                {this.props.OTPVerificationSuccessful && (
+                  <>
+                    <TextField
+                      id="newPassword"
+                      placeholder="New Password"
+                      classes={{
+                        root: classes.root,
+                        input: classes.input,
+                      }}
+                      InputProps={{ disableUnderline: true, maxLength: 10 }}
+                      className={`${this.state.isError
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
+                        }`}
+                      onChange={(e) => this.getnewPassword(e.target.value)}
+                      // helperText={(this.state.loginAttempted && !this.state.userName) || this.state.isError && "Please enter userName"}
+                      value={this.state.newPassword}
+                    />
+                    <TextField
+                      id="confirm_password"
+                      placeholder="confirm Password"
+                      classes={{
+                        root: classes.root,
+                        input: classes.input,
+                      }}
+                      InputProps={{ disableUnderline: true, maxLength: 10 }}
+                      className={`${this.state.isError
+                          ? "login_text_field mobile_error"
+                          : "login_text_field"
+                        }`}
+                      onChange={(e) => this.getConfirmPassword(e.target.value)}
+                      error={this.state.isPasswordMisMatched}
+                      helperText={
+                        this.state.isPasswordMisMatched &&
+                        "Password Doesnot Match"
+                      }
+                      type="password"
+                      value={this.state.confirmPassword}
+                    />
+                  </>
+                )}
+                {this.props.OTPVerificationSuccessful && (
+                  <button
+                    className="login_proceed_btn"
+                    onClick={() => {
+                      this.updatePassword();
+                    }}
+                  >
+                    Update Password
+                  </button>
+                )}
+              </div>
+            </div>
             )}
         </div>
       </>
@@ -1382,9 +1507,9 @@ const mapDispatchToProps = dispatch => {
         signUp(name, password, mobileNumber, email)
       )
     },
-    updatePassword: (newPassword) => {
+    updatePassword: (phoneNumber, newPassword) => {
       dispatch(
-        updatePassword(newPassword)
+        updatePassword(phoneNumber, newPassword)
       )
     },
     getTestDriveCars: () => {
@@ -1415,6 +1540,11 @@ const mapDispatchToProps = dispatch => {
     enableLogUser: data => {
       dispatch(
         enableLogUser(data)
+      )
+    },
+    disableSnackBar: () => {
+      dispatch(
+        disableSnackBar()
       )
     },
     logout: () => {
