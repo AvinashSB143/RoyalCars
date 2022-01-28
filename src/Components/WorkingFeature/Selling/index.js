@@ -40,7 +40,7 @@ const CarSalesWorking = (props) => {
     const { classes } = props;
     return (
         <div>
-            <div className="main_container column_container">
+            <div className="main_container column_container car-working-feature">
                 <div className="more_about_us" style={{ backgroundImage: `url("https://singularityhub.com/wp-content/uploads/2019/02/cockpit-view-self-driving-car-night-automation-shutterstock-685666552-1068x601.jpg")` }}>
                     <div>
                         <h1>In it to drive it</h1>
@@ -58,7 +58,7 @@ const CarSalesWorking = (props) => {
                 </div>
                 <div className="about_us_card_container_sale">
                     <span>
-                        <h1> Selling your car made simple. </h1>
+                        <h1> Selling your car made simple </h1>
                         <p className="working_buy_description">We at Royal Cars make the process of selling your car very simple by giving the best quote with free evaluation and providing same day online payment thus avoiding complex paper work.</p>
                         {/* <Link to="/sell" className="assured_cars">Sell Your Car</Link> */}
                     </span>

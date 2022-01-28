@@ -113,7 +113,8 @@
   z-index: 2;
   width: 18%;
   background: white;
-  right: 50px;
+  right: 80px;
+  padding: 0px;
 }
 
 .login_container {
@@ -241,13 +242,13 @@ margin: 0 20px;
   padding: 80px 24px 32px;
   display: flex;
   justify-content: space-between;
-  /* font-family: futura-book; */
+   font-family: futura-book; 
   font-size: 16px;
   line-height: 30px;
   background-color: #fff;
   color: #2e054e;
-} */
-/* 
+} 
+*/
 .about_us_card_container .about_us_card {
   min-width: 0;
   width: 40%;

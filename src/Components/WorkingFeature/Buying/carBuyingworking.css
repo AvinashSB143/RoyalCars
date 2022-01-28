@@ -55,11 +55,15 @@
     line-height: 30px;
     background-color: #fff;
     color: #2e054e;
+    text-align:center;
   }
   
   .working_buy_description {
     line-height: 35px;
     font-size: 1.2rem;
+    width: 61%;
+    margin: 0 auto;
+    text-align: center;
   }
   .assured_cars {
     font-size: 22px;
@@ -127,7 +131,7 @@
   background-color: #fff;
   border-top: 2px solid #f2f3f5;
   background-color: rgb(247, 244, 248);
-  margin: 0 20px;
+  margin: 0 50px;
 }
 .SquadSpinny img {
   width: 80%;
@@ -509,6 +513,7 @@
   align-items: center;
   width: 50%;
   color: #2e054e;
+  text-align:center;
 }
 .FAQ_container {
   margin: 20px;
@@ -541,4 +546,38 @@
   .column_container img {
     margin: 0 auto;
   }
+  
+  .working_buy_description {
+    line-height: 25px;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+}
+.handPicked_car_container:nth-child(even){
+  flex-direction: column-reverse;
+}
+.handPicked_cars_description {
+  font-size: 1rem;
+  line-height: 25px;
+}
+.handPicked_cars_details h1{
+  font-size: 1.5rem;
+}
+.SquadSpinny.about_us_main {
+  min-width: auto;
+}
+.car-working-feature .press_section{
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+}
+.handPicked_cars_description {
+   padding: 0 5%;
+}
+.car-working-feature .more_about_us h2{
+  font-size: 1.3rem;
+}
+.car-working-feature {
+  padding-bottom: 0px;
+}
 }
