@@ -3,6 +3,7 @@ import "./footer.css";
 import Logo from "../../images/Logo.png";
 import CallIcon from "@mui/icons-material/Call";
 import { Link } from "react-router-dom";
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -60,17 +61,8 @@ function Footer() {
         </div>
       </div> */}
       <div>
-        <h3>Buy Used cars</h3>
-        <div className="Footer__LocationLinks">
-          {locations.map((location) => (
-            <span className="location">{`${location} | `}</span>
-          ))}
-          <div>
-            <a href="" className="Footer__sell">
-              Sell Used Car at Royal Cars
-            </a>
-          </div>
-        </div>
+        <h3>Buy Used cars in Mangalore</h3>
+
       </div>
       <div className="Footer__mb_btn">
         <button className="Footer__Button">
@@ -89,6 +81,7 @@ function Footer() {
       <div className="Footer__Copyright">
         Copyright © 2021 Royal cars Pvt Limited. All rights reserved.
       </div>
+      <div className="scrollToTop" onClick={() => window.scrollTo({ behavior: 'smooth', top: 0 })}><KeyboardArrowUpIcon /></div>
     </div>
   );
 }
