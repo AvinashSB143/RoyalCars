@@ -2,9 +2,8 @@ import React from "react";
 import "./carousel.css";
 import "../../styles/styles.css";
 
-
-import Slider from "react-slick";
-
+import { Carousel } from "react-responsive-carousel";
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarBuy from '../../assests/carBuy.jpg';
 import BuyFromHome from '../../assests/homecar.jpg';
 import SellCar from '../../assests/sellCar.jpg';
@@ -16,30 +15,35 @@ const images = [
     TestDrive
 ];
 
-const Carousel = (props) => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 1000,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        className: "slides",
-    };
-
+const CarouselComponent = (props) => {
     return (
-        <Slider {...settings}>
-            {images.map((image) => {
-                return (
-                    <div className="wrapper" key="">
-                        <img
-                            className="sliderImg"
-                            src={image}
-                            alt=""
-                        />
-                    </div>
-                );
-            })}
-        </Slider>
+        <Carousel showArrows={true}>
+            {/* <Carousel showArrows={true} onChange={ } onClickItem={ } onClickThumb={ }> */}
+            {
+                props.cars.map((car) => {
+                    return (
+                        <div>
+                            <img src={car} />
+                        </div>
+                    )
+                })
+            }
+
+
+        </Carousel>
     );
 }
-export default Carousel;
+export default CarouselComponent;
+
+{/* <div>
+                <img src={CarBuy} />
+            </div>
+            <div>
+                <img src={BuyFromHome} />
+            </div>
+            <div>
+                <img src={SellCar} />
+            </div>
+            <div>
+                <img src={TestDrive} />
+            </div> */}

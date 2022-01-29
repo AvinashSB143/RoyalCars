@@ -7,9 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import useRazorpay from "react-razorpay";
 import TextField from '@material-ui/core/TextField';
 import withStyles from "@material-ui/core/styles/withStyles";
-import {Link} from 'react-router-dom';  
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import {bookNow,
+import CarouselComponent from "../../Components/utils/Carousel";
+import {
+  bookNow,
   verifyPayment,
   enableLogUser,
   bookTestDrive,
@@ -18,16 +20,21 @@ import {bookNow,
   closeSnackBarTestDrive
 } from "../../actions";
 
+const cars = [
+  "https://mcmscache.epapr.in/post_images/website_300/post_12645431/5d8d02195e992.jpeg",
+  "https://imgd.aeplcdn.com/600x337/n/cw/ec/40027/safari-exterior-right-front-three-quarter-2.jpeg?q=85",
+  "https://media.istockphoto.com/photos/blue-hatchback-car-picture-id1135255668?b=1&k=20&m=1135255668&s=170667a&w=0&h=DhAzhm3sOIza3P8CyRt8lmbDcpfskafpusgfkuewQYg=",
+  "https://royalcarsmangalore.in:5000/uploads/image_1640078642273Toyota_Innova_Crysta_2020_0_1200x768.png"
+]
 
-
-const styles = theme => ({ 
+const styles = theme => ({
   root: {
     background: "#f2f3f5",
     padding: "10px",
     margin: "10px auto"
   },
   input: {
-      padding: "16px 0 17px 10px"
+    padding: "16px 0 17px 10px"
   },
   flexContainer: {
     justifyContent: "space-around"
@@ -46,115 +53,115 @@ const styles = theme => ({
 
 
 const BuyCarDetails = (props) => {
-    const {selectedCar, userDetails, classes} = props;
-    const Razorpay = useRazorpay();
-    const [state, setState] = React.useState({
-      vertical: 'top',
-      horizontal: 'center',
-    });
+  const { selectedCar, userDetails, classes } = props;
+  const Razorpay = useRazorpay();
+  const [state, setState] = React.useState({
+    vertical: 'top',
+    horizontal: 'center',
+  });
 
-    const { vertical, horizontal, open } = state;
+  const { vertical, horizontal, open } = state;
 
 
-    const [testDrivePhoneNumber,setTestDrivePhoneNumber] = useState('')
-    const [isOTPCreated, setisOTPCreated] = useState(false)
-    const [OTP, setOTP] = useState(null)
-    const [validateUser, setvalidateUser] = useState()
-    const phoneNumberRef = useRef()
+  const [testDrivePhoneNumber, setTestDrivePhoneNumber] = useState('')
+  const [isOTPCreated, setisOTPCreated] = useState(false)
+  const [OTP, setOTP] = useState(null)
+  const [validateUser, setvalidateUser] = useState()
+  const phoneNumberRef = useRef()
 
-    const handlePayment =  useCallback(() => {
-      const options = {
-        key: "rzp_test_HrnE7wPqX9HFyT",
-        amount: selectedCar.budget,
-        currency: "INR",
-        name: "Acme Corp",
-        description: "Car Book Transaction",
-        // image: "https://example.com/your_logo",
-        order_id: props.bookedOrderId,
-        handler: (res) => {
-         console.log("razorpay response",res);
-         const data = {
-           razorpay_payment_id: "",
-           razorpay_order_id: "",
-           razorpay_signature: "",
-           cardId: "",
-           customerPhoneNo: userDetails.phone
-         }
-         props.verifyPayment(res)
-         window.location.href = "https://royalcarsmangalore.in:3000/"
-        },
-        // prefill: {
-        //   name: "Piyush Garg",
-        //   email: "piyushgarg.dev@gmail.com",
-        //   contact: "9999999999",
-        // },
-        // notes: {
-        //   address: "Razorpay Corporate Office",
-        // },
-        // theme: {
-        //   color: "#3399cc",
-        // },
-      };
-  
-      const rzpay = new Razorpay(options);
-      rzpay.open();
-    },[Razorpay])
-      // const order = await createOrder(params);
-  
-    useEffect(() => {
-      if(props.bookedOrderId) {
-        handlePayment()
-      }
-    },[props.bookedOrderId])
-  
-
-    useEffect(() => {
-      if(props.OTPVerificationSuccessful) {
-          props.bookTestDrive(phoneNumberRef.current, new Date())
-      }
-
-    },[props.OTPVerificationSuccessful])
-
-    const carInformation = {
-        "amount": selectedCar ? selectedCar.budget: ""
-    }
-
-    const getPhoneNumber = number => {
-      setTestDrivePhoneNumber(number)
-    }
-    const readOTPValue = value => {
-      setOTP(value)
-    }
-
-    const handleClose = () => {
-      props.disableSnackBar()
+  const handlePayment = useCallback(() => {
+    const options = {
+      key: "rzp_test_HrnE7wPqX9HFyT",
+      amount: selectedCar.budget,
+      currency: "INR",
+      name: "Acme Corp",
+      description: "Car Book Transaction",
+      // image: "https://example.com/your_logo",
+      order_id: props.bookedOrderId,
+      handler: (res) => {
+        console.log("razorpay response", res);
+        const data = {
+          razorpay_payment_id: "",
+          razorpay_order_id: "",
+          razorpay_signature: "",
+          cardId: "",
+          customerPhoneNo: userDetails.phone
+        }
+        props.verifyPayment(res)
+        window.location.href = "https://royalcarsmangalore.in:3000/"
+      },
+      // prefill: {
+      //   name: "Piyush Garg",
+      //   email: "piyushgarg.dev@gmail.com",
+      //   contact: "9999999999",
+      // },
+      // notes: {
+      //   address: "Razorpay Corporate Office",
+      // },
+      // theme: {
+      //   color: "#3399cc",
+      // },
     };
 
-    const validateForTestDrive = () => {
-      if(!isOTPCreated) {
-        props.createOTP(testDrivePhoneNumber)
-        phoneNumberRef.current = testDrivePhoneNumber;
-        setTestDrivePhoneNumber("")
-        setisOTPCreated(true)
-      } else if(OTP && OTP.length === 4){
-        props.validateOTP(OTP, phoneNumberRef.current)
-        setvalidateUser(false)
-        setisOTPCreated(false)
-      }
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  }, [Razorpay])
+  // const order = await createOrder(params);
+
+  useEffect(() => {
+    if (props.bookedOrderId) {
+      handlePayment()
+    }
+  }, [props.bookedOrderId])
+
+
+  useEffect(() => {
+    if (props.OTPVerificationSuccessful) {
+      props.bookTestDrive(phoneNumberRef.current, new Date())
     }
 
-    return selectedCar ? (
-      <div className={`${validateUser && 'overlay'} "car_details_container"`} 
-          style={{position : "relative"}}>
-            {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
-          <div className="test_drive_validate_container">
-            <CloseIcon
-                  className="close_Test_Drive_container"
-                  onClick={() => {
-                   setvalidateUser(false)
-                  }}
-                />
-            <div className="test_drive_mobileNo_container">
+  }, [props.OTPVerificationSuccessful])
+
+  const carInformation = {
+    "amount": selectedCar ? selectedCar.budget : ""
+  }
+
+  const getPhoneNumber = number => {
+    setTestDrivePhoneNumber(number)
+  }
+  const readOTPValue = value => {
+    setOTP(value)
+  }
+
+  const handleClose = () => {
+    props.disableSnackBar()
+  };
+
+  const validateForTestDrive = () => {
+    if (!isOTPCreated) {
+      props.createOTP(testDrivePhoneNumber)
+      phoneNumberRef.current = testDrivePhoneNumber;
+      setTestDrivePhoneNumber("")
+      setisOTPCreated(true)
+    } else if (OTP && OTP.length === 4) {
+      props.validateOTP(OTP, phoneNumberRef.current)
+      setvalidateUser(false)
+      setisOTPCreated(false)
+    }
+  }
+
+  return selectedCar ? (
+    <div className={`${validateUser && 'overlay'} "car_details_container"`}
+      style={{ position: "relative" }}>
+      {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
+        <div className="test_drive_validate_container">
+          <CloseIcon
+            className="close_Test_Drive_container"
+            onClick={() => {
+              setvalidateUser(false)
+            }}
+          />
+          <div className="test_drive_mobileNo_container">
             <h4>
               Please Enter your PhoneNumber
             </h4>
@@ -163,67 +170,67 @@ const BuyCarDetails = (props) => {
               placeholder="Mobile Number"
               InputProps={{
                 disableUnderline: true,
-                 maxLength: 10,
+                maxLength: 10,
               }}
-              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: "10px", width: "80%"}}
+              style={{ margin: "10px", borderRadius: "5px", backgroundColor: "#DDD", padding: "10px", width: "80%" }}
               type="tel"
               onChange={(e) => getPhoneNumber(e.target.value)}
               value={testDrivePhoneNumber}
-            /> )
-            : 
-            (<TextField
-              id="OTP"
-              placeholder="OTP"
-              InputProps={{
-                disableUnderline: true,
-                 maxLength: 10,
-              }}
-              style={{ margin: "10px", borderRadius: "5px", backgroundColor:"#DDD", padding: 0}}
-              type="tel"
-              onChange={(e) => readOTPValue(e.target.value)}
-              value={OTP}
-            /> )
+            />)
+              :
+              (<TextField
+                id="OTP"
+                placeholder="OTP"
+                InputProps={{
+                  disableUnderline: true,
+                  maxLength: 10,
+                }}
+                style={{ margin: "10px", borderRadius: "5px", backgroundColor: "#DDD", padding: 0 }}
+                type="tel"
+                onChange={(e) => readOTPValue(e.target.value)}
+                value={OTP}
+              />)
             }
-            </div>
-            <div className="test_drive_btn_submit column_container">
-            { isOTPCreated && <button onClick={() => {
+          </div>
+          <div className="test_drive_btn_submit column_container">
+            {isOTPCreated && <button onClick={() => {
               props.createOTP(testDrivePhoneNumber)
             }}>
-                Resend OTP
-              </button> 
-              }
-              <button className="verify_btn" onClick={validateForTestDrive}>
-              {!isOTPCreated ? "Send OTP" : "Validate OTP"} 
-              </button>
+              Resend OTP
+            </button>
+            }
+            <button className="verify_btn" onClick={validateForTestDrive}>
+              {!isOTPCreated ? "Send OTP" : "Validate OTP"}
+            </button>
           </div>
         </div>
       }
-             <Snackbar
-                anchorOrigin={{ vertical, horizontal }}
-                open={props.isBookedTestDriveSuccessFul}
-                message="Test Drive has been Booked as per your request."
-                key={vertical + horizontal}
-                className={
-                classes.snackBarRoot
-                }
-                classes={{
-                message: classes.snackBarRoot,
-                root: classes.snackBarRoot
-                }}
-                action={
-                  <React.Fragment>
-                    <IconButton
-                        aria-label="close"
-                      color="inherit"
-                      sx={{ p: 0.5 }}
-                      onClick={handleClose}
-                    >
-                      <CloseIcon />
-                    </IconButton>
-                  </React.Fragment>
-                }
-              />
-       
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={props.isBookedTestDriveSuccessFul}
+        message="Test Drive has been Booked as per your request."
+        key={vertical + horizontal}
+        className={
+          classes.snackBarRoot
+        }
+        classes={{
+          message: classes.snackBarRoot,
+          root: classes.snackBarRoot
+        }}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+
       <div className="pageStyle">
         <div>
           <ul className="carsList">
@@ -304,10 +311,11 @@ const BuyCarDetails = (props) => {
         >
           <div className="carView">
             {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
-            <img
+            {/* <img
               className="filter_car_img"
               src={`https://royalcarsmangalore.in:5000/${selectedCar.imagePath}`}
-            />
+            /> */}
+            <CarouselComponent cars={cars} />
           </div>
           <div className="carDetails">
             <div className="rightSection hide">
@@ -321,9 +329,9 @@ const BuyCarDetails = (props) => {
                   <span> &nbsp;.&nbsp; {selectedCar && selectedCar.transmission}</span>
                 </div>
                 <div className="carFeature">
-                  { selectedCar && selectedCar.insurance && <div className="insurance_details insurance_details__selected">{selectedCar && selectedCar.insurance && selectedCar.insurance} Insurance</div> }
-                  { selectedCar && selectedCar.insuranceValidTill && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
-                 {selectedCar && selectedCar.insuranceValidTill && selectedCar.insuranceValidTill}</div>}
+                  {selectedCar && selectedCar.insurance && <div className="insurance_details insurance_details__selected">{selectedCar && selectedCar.insurance && selectedCar.insurance} Insurance</div>}
+                  {selectedCar && selectedCar.insuranceValidTill && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
+                    {selectedCar && selectedCar.insuranceValidTill && selectedCar.insuranceValidTill}</div>}
                 </div>
                 <div className="testDrive">
                   <svg
@@ -429,10 +437,10 @@ const BuyCarDetails = (props) => {
                     borderRadius: "8px",
                   }}
                   onClick={() => {
-                    if(props.authToken) {
+                    if (props.authToken) {
                       props.bookNow(carInformation)
                       props.enableLogUser(false)
-                    }else {
+                    } else {
                       props.enableLogUser(true)
                     }
                   }}
@@ -454,7 +462,7 @@ const BuyCarDetails = (props) => {
                     //   props.enableLogUser(true)
                     // }
                     setvalidateUser(true);
-                    window.scroll(0,0)
+                    window.scroll(0, 0)
                   }}
                 >
                   Free Test Drive
@@ -482,11 +490,11 @@ const BuyCarDetails = (props) => {
                 </div>
               </div>
               <div className="car_details_item colum_container">
-              <div>
-               <p className="car_detail_desc">KM Driven</p>
+                <div>
+                  <p className="car_detail_desc">KM Driven</p>
                 </div>
                 <div>
-                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.kmDriven}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.kmDriven}</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -494,85 +502,85 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Fuel Type</p>
                 </div>
                 <div>
-                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType}</h2>
                 </div>
               </div>
-               <div className="car_details_item colum_container">
+              <div className="car_details_item colum_container">
                 <div>
-                <p className="car_detail_desc">Transmission</p>
-                  </div>
-                  <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
-                  </div>
+                  <p className="car_detail_desc">Transmission</p>
                 </div>
-                {selectedCar && selectedCar.insuranceValidTill && <div className="car_details_item colum_container">
-                  <div>
-                    <p className="car_detail_desc">Insurance Validity</p>
-                  </div>
-                  <div>
+                <div>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
+                </div>
+              </div>
+              {selectedCar && selectedCar.insuranceValidTill && <div className="car_details_item colum_container">
+                <div>
+                  <p className="car_detail_desc">Insurance Validity</p>
+                </div>
+                <div>
                   <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insuranceValidTill}</h2>
-                  </div>
+                </div>
               </div>}
               {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container transmission_details">
                 <div>
                   <p className="car_detail_desc">Insurance Type</p>
                 </div>
                 <div>
-                <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance}</h2>
                 </div>
-              </div> }
+              </div>}
               <div className="transmission_details location_info">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="12"
+                  viewBox="0 0 12 12"
+                >
+                  <path
+                    opacity="1"
+                    d="M12.336 5.618L6.69.177a.645.645 0 00-.888 0L.157 5.618a.37.37 0 00-.137.413c.03.074.12.2.382.2h.636v4.836a.946.946 0 00.925.929h2.861V8.722h2.769V12h2.937a.935.935 0 00.906-.929V6.239h.655c.263 0 .352-.129.382-.2a.37.37 0 00-.137-.421z"
+                    fill="#888888"
+                  ></path>
+                </svg>
+                &nbsp; Home Test Drive: &nbsp;
+                <span>Available</span>
+              </div>
+              <div className="transmission_details location_info">
+                <svg
+                  width="10"
+                  height="12"
+                  viewBox="0 0 10 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.99998 0.166672C2.54998 0.166672 0.333313 2.04501 0.333313 4.95001C0.333313 6.80501 1.76248 8.98667 4.61498 11.5008C4.83665 11.6933 5.16915 11.6933 5.39081 11.5008C8.23748 8.98667 9.66665 6.80501 9.66665 4.95001C9.66665 2.04501 7.44998 0.166672 4.99998 0.166672ZM4.99998 6.00001C4.35831 6.00001 3.83331 5.47501 3.83331 4.83334C3.83331 4.19167 4.35831 3.66667 4.99998 3.66667C5.64165 3.66667 6.16665 4.19167 6.16665 4.83334C6.16665 5.47501 5.64165 6.00001 4.99998 6.00001Z"
+                    fill="#888888"
+                  ></path>
+                </svg>
+                <span>&nbsp; Royal Cars Car Hub, Mangalore</span>
+                <span className="arrowIcon">
                   <svg
+                    transform="rotate(0 0 0)"
                     xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="12"
-                    viewBox="0 0 12 12"
+                    stroke="#2E054E"
+                    width="7"
+                    height="7"
+                    viewBox="0 0 14 8"
                   >
                     <path
-                      opacity="1"
-                      d="M12.336 5.618L6.69.177a.645.645 0 00-.888 0L.157 5.618a.37.37 0 00-.137.413c.03.074.12.2.382.2h.636v4.836a.946.946 0 00.925.929h2.861V8.722h2.769V12h2.937a.935.935 0 00.906-.929V6.239h.655c.263 0 .352-.129.382-.2a.37.37 0 00-.137-.421z"
-                      fill="#888888"
+                      fill="none"
+                      fill-rule="evenodd"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2.5"
+                      d="M386 48L392 54 398 48"
+                      transform="translate(-385 -47)"
                     ></path>
                   </svg>
-                  &nbsp; Home Test Drive: &nbsp;
-                  <span>Available</span>
-                </div>
-                <div className="transmission_details location_info">
-                  <svg
-                    width="10"
-                    height="12"
-                    viewBox="0 0 10 12"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4.99998 0.166672C2.54998 0.166672 0.333313 2.04501 0.333313 4.95001C0.333313 6.80501 1.76248 8.98667 4.61498 11.5008C4.83665 11.6933 5.16915 11.6933 5.39081 11.5008C8.23748 8.98667 9.66665 6.80501 9.66665 4.95001C9.66665 2.04501 7.44998 0.166672 4.99998 0.166672ZM4.99998 6.00001C4.35831 6.00001 3.83331 5.47501 3.83331 4.83334C3.83331 4.19167 4.35831 3.66667 4.99998 3.66667C5.64165 3.66667 6.16665 4.19167 6.16665 4.83334C6.16665 5.47501 5.64165 6.00001 4.99998 6.00001Z"
-                      fill="#888888"
-                    ></path>
-                  </svg>
-                  <span>&nbsp; Royal Cars Car Hub, Mangalore</span>
-                  <span className="arrowIcon">
-                    <svg
-                      transform="rotate(0 0 0)"
-                      xmlns="http://www.w3.org/2000/svg"
-                      stroke="#2E054E"
-                      width="7"
-                      height="7"
-                      viewBox="0 0 14 8"
-                    >
-                      <path
-                        fill="none"
-                        fill-rule="evenodd"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2.5"
-                        d="M386 48L392 54 398 48"
-                        transform="translate(-385 -47)"
-                      ></path>
-                    </svg>
-                  </span>
-                </div>
-                <div className="car_details_mobile_buttons">
+                </span>
+              </div>
+              <div className="car_details_mobile_buttons">
                 <Button
                   style={{
                     backgroundColor: "#4169e1",
@@ -580,10 +588,10 @@ const BuyCarDetails = (props) => {
                     borderRadius: "8px",
                   }}
                   onClick={() => {
-                    if(props.authToken) {
+                    if (props.authToken) {
                       props.bookNow(carInformation)
                       props.enableLogUser(false)
-                    }else {
+                    } else {
                       props.enableLogUser(true)
                     }
                   }}
@@ -605,72 +613,72 @@ const BuyCarDetails = (props) => {
                     //   props.enableLogUser(true)
                     // }
                     setvalidateUser(true);
-                    window.scroll(0,0)
+                    window.scroll(0, 0)
                   }}
                 >
                   Free Test Drive
                 </Button>
-                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-    ) : (
-      <p>Loaing...!</p>
-    );
+    </div>
+  ) : (
+    <p>Loaing...!</p>
+  );
 };
 
 const mapStateToProps = state => {
-    return{
-        selectedCar: state.reducers.selectedCar,
-        userDetails: state.reducers.userDetails,
-        bookedOrderId: state.reducers.bookedOrderId,
-        authToken: state.reducers.authToken,
-        isBookedTestDriveSuccessFul: state.reducers.isBookedTestDriveSuccessFul,
-        OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
-        OTPcreatedForTestDrive: state.reducers.OTPcreatedForTestDrive,
-    }
-    
+  return {
+    selectedCar: state.reducers.selectedCar,
+    userDetails: state.reducers.userDetails,
+    bookedOrderId: state.reducers.bookedOrderId,
+    authToken: state.reducers.authToken,
+    isBookedTestDriveSuccessFul: state.reducers.isBookedTestDriveSuccessFul,
+    OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
+    OTPcreatedForTestDrive: state.reducers.OTPcreatedForTestDrive,
+  }
+
 }
 const mapDispatchToProps = dispatch => {
-    return{
-        bookNow: data => {
-            dispatch(
-                bookNow(data)
-            )
-        },
-        validateOTP: (OTP, phoneNumber) => {
-            dispatch(
-                validateOTP(OTP, phoneNumber)
-            )
-        },
-        enableLogUser: data => {
-            dispatch(
-              enableLogUser(data)
-            )
-        },
-        createOTP: data => {
-            dispatch(
-              createOTP(data)
-            )
-        },
-        verifyPayment: data => {
-            dispatch(
-              verifyPayment(data)
-            )
-        },
-        disableSnackBar: () => {
-            dispatch(
-              closeSnackBarTestDrive()
-            )
-        },
-        bookTestDrive: (phoneNumber, data) => {
-            dispatch(
-              bookTestDrive(phoneNumber, data)
-            )
-        }
+  return {
+    bookNow: data => {
+      dispatch(
+        bookNow(data)
+      )
+    },
+    validateOTP: (OTP, phoneNumber) => {
+      dispatch(
+        validateOTP(OTP, phoneNumber)
+      )
+    },
+    enableLogUser: data => {
+      dispatch(
+        enableLogUser(data)
+      )
+    },
+    createOTP: data => {
+      dispatch(
+        createOTP(data)
+      )
+    },
+    verifyPayment: data => {
+      dispatch(
+        verifyPayment(data)
+      )
+    },
+    disableSnackBar: () => {
+      dispatch(
+        closeSnackBarTestDrive()
+      )
+    },
+    bookTestDrive: (phoneNumber, data) => {
+      dispatch(
+        bookTestDrive(phoneNumber, data)
+      )
     }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(BuyCarDetails));

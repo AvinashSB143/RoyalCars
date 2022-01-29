@@ -1,29 +1,19 @@
-.wrapper {
-    display: flex !important;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    position: relative;
-  }
-  
-  .sliderImg {
-    box-sizing: border-box;
-    height: 300px;
-    width: 400px;
-    padding: 0px 2vw;
-    object-fit: cover;
-  }
-  
-  .imgTitle {
-    font-weight: 900;
-  }
-  
-  .slides .slick-prev,
-  .slides .slick-next {
-    position: absolute;
-    top: 50%;
-    z-index: 1;
-    background-color: black;
-  }
-  
+.carousel .thumb.selected, .carousel .thumb:hover {
+  border: 1px solid #333 !important;
+}
+
+.carousel .control-dots, .carousel .carousel-status{
+  display:none;
+}
+.carousel .thumbs-wrapper{
+  margin-top: 0px !important;
+}
+.carousel .slide{
+  height: auto !important;
+}
+ .carView{
+  width: 95% !important;
+}
+@media only screen and (max-width:424px){
+
+}
