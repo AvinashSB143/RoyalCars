@@ -407,7 +407,7 @@ const LifeStyleFeature = (props) => {
         <Link to="/buyCar/cars" onClick={() => props.seletedCar(car)}>
           <img
             className="filter_car_img"
-            src={`http://3.111.30.111:5000/${car.imagePath}`}
+            src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
             alt="Selected cars"
           />
         </Link>
@@ -442,7 +442,7 @@ const LifeStyleFeature = (props) => {
           <Link to="/buyCar/cars" onClick={() => props.seletedCar(car)}>
             <img
               className="filter_car_img"
-              src={`http://3.111.30.111:5000/${car.imagePath}`}
+              src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
               alt="Selected cars"
             />
           </Link>
