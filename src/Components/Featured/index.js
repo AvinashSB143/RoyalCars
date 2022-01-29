@@ -89,7 +89,7 @@ const FeaturedCars = (props) => {
                             props.selectedCar(car)
                         }}>
                             <img
-                                src={`http://3.111.30.111:5000/${car.imagePath}`}
+                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
                                 class="feature-img"
                                 alt=""
                             />

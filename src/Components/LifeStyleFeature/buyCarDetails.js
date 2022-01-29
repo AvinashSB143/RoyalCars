@@ -81,7 +81,7 @@ const BuyCarDetails = (props) => {
            customerPhoneNo: userDetails.phone
          }
          props.verifyPayment(res)
-         window.location.href = "http://3.111.30.111:3000/"
+         window.location.href = "https://royalcarsmangalore.in:3000/"
         },
         // prefill: {
         //   name: "Piyush Garg",
@@ -306,7 +306,7 @@ const BuyCarDetails = (props) => {
             {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
             <img
               className="filter_car_img"
-              src={`http://3.111.30.111:5000/${selectedCar.imagePath}`}
+              src={`https://royalcarsmangalore.in:5000/${selectedCar.imagePath}`}
             />
           </div>
           <div className="carDetails">
