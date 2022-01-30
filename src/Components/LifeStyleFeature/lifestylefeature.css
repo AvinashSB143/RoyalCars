@@ -295,6 +295,10 @@ li {
   margin: 1rem 0.5rem;
 }
 
+.car_list_buyCar img {
+  height: 220px;
+}
+
 .filter_car_img {
   width: 100%;
 }
