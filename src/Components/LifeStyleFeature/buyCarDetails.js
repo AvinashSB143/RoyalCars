@@ -77,14 +77,15 @@ const BuyCarDetails = (props) => {
       handler: (res) => {
         console.log("razorpay response", res);
         const data = {
-          razorpay_payment_id: "",
-          razorpay_order_id: "",
+          razorpay_payment_id: res.razorpay_payment_id,
+          razorpay_order_id: props.bookedOrderId,
           razorpay_signature: "",
-          cardId: "",
-          customerPhoneNo: userDetails.phone
+          carId: selectedCar.id,
+          customerPhoneNo: userDetails.phone,
+          paidAmmount: selectedCar.budget
         }
-        props.verifyPayment(res)
-        window.location.href = "https://royalcarsmangalore.in:3000/"
+        props.verifyPayment(data)
+        window.location.href = "https://royalcarsmangalore.in/"
       },
       // prefill: {
       //   name: "Piyush Garg",
@@ -226,6 +227,31 @@ const BuyCarDetails = (props) => {
           </React.Fragment>
         }
       />
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={props.customerCarBooked !== null}
+        message="Thanks for Booking your Car.."
+        key={vertical + horizontal}
+        className={
+          classes.snackBarRoot
+        }
+        classes={{
+          message: classes.snackBarRoot,
+          root: classes.snackBarRoot
+        }}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
 
       <div className="pageStyle">
         <div>
@@ -323,11 +349,12 @@ const BuyCarDetails = (props) => {
                   <span>{selectedCar && selectedCar.kmDriven} Kms</span>
                   <span>&nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
                   <span> &nbsp;.&nbsp; {selectedCar && selectedCar.transmission}</span>
+                  <span> &nbsp; ₹ {selectedCar && selectedCar.budget}</span>
                 </div>
                 <div className="carFeature">
                   {selectedCar && selectedCar.insurance && <div className="insurance_details insurance_details__selected">{selectedCar && selectedCar.insurance && selectedCar.insurance} Insurance</div>}
                   {selectedCar && selectedCar.insuranceValidTill && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
-                    {selectedCar && selectedCar.insuranceValidTill && selectedCar.insuranceValidTill}</div>}
+                  {selectedCar && selectedCar.insuranceValidTill && selectedCar.insuranceValidTill}</div>}
                 </div>
                 <div className="testDrive">
                   <svg
@@ -503,6 +530,14 @@ const BuyCarDetails = (props) => {
               </div>
               <div className="car_details_item colum_container">
                 <div>
+                  <p className="car_detail_desc">Budget</p>
+                </div>
+                <div>
+                  <h2 className="car_detail_desc_val">₹ {selectedCar && selectedCar.budget}</h2>
+                </div>
+              </div>
+              <div className="car_details_item colum_container">
+                <div>
                   <p className="car_detail_desc">Transmission</p>
                 </div>
                 <div>
@@ -517,7 +552,7 @@ const BuyCarDetails = (props) => {
                   <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insuranceValidTill}</h2>
                 </div>
               </div>}
-              {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container transmission_details">
+              {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container">
                 <div>
                   <p className="car_detail_desc">Insurance Type</p>
                 </div>
@@ -634,6 +669,7 @@ const mapStateToProps = state => {
     isBookedTestDriveSuccessFul: state.reducers.isBookedTestDriveSuccessFul,
     OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
     OTPcreatedForTestDrive: state.reducers.OTPcreatedForTestDrive,
+    customerCarBooked: state.reducers.customerCarBooked,
   }
 
 }

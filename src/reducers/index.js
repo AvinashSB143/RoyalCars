@@ -16,7 +16,8 @@ const initialState = {
     customerBookedCars: [],
     customerSellOrderList: [],
     carRegisteredForSell: false,
-    bookedOrderId: ""
+    bookedOrderId: "",
+    customerCarBooked: null
 }
 
 const reducers = (state = initialState, action) => {
@@ -157,7 +158,8 @@ const reducers = (state = initialState, action) => {
     if(action.type === "CLOSE_TEST_DRIVE_SNACKBAR") {
         return {
             ...state,
-            isBookedTestDriveSuccessFul: false
+            isBookedTestDriveSuccessFul: false,
+            customerCarBooked: null
         }
     }
     if(action.type === "DISABLE_OTP_VALIDATION") {
@@ -178,6 +180,12 @@ const reducers = (state = initialState, action) => {
         return {
             ...state,
             assuredCarList: action.payload
+        }
+    }
+    if(action.type === "CUSTOMER_BUY_ORDER_STATUS") {
+        return {
+            ...state,
+            customerCarBooked: action.payload
         }
     }
     if(action.type === "LOGOUT") {
