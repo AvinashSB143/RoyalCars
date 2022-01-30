@@ -20,10 +20,11 @@ const CarouselComponent = (props) => {
         <Carousel showArrows={true}>
             {/* <Carousel showArrows={true} onChange={ } onClickItem={ } onClickThumb={ }> */}
             {
-                props.cars.map((car) => {
+                props.cars.map((imagePath) => {
                     return (
                         <div>
-                            <img src={car} />
+                            {/* <img src={car} /> */}
+                            <img src={`https://royalcarsmangalore.in:5000/${imagePath}`} />
                         </div>
                     )
                 })

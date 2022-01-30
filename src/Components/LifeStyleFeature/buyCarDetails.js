@@ -20,12 +20,6 @@ import {
   closeSnackBarTestDrive
 } from "../../actions";
 
-const cars = [
-  "https://mcmscache.epapr.in/post_images/website_300/post_12645431/5d8d02195e992.jpeg",
-  "https://imgd.aeplcdn.com/600x337/n/cw/ec/40027/safari-exterior-right-front-three-quarter-2.jpeg?q=85",
-  "https://media.istockphoto.com/photos/blue-hatchback-car-picture-id1135255668?b=1&k=20&m=1135255668&s=170667a&w=0&h=DhAzhm3sOIza3P8CyRt8lmbDcpfskafpusgfkuewQYg=",
-  "https://royalcarsmangalore.in:5000/uploads/image_1640078642273Toyota_Innova_Crysta_2020_0_1200x768.png"
-]
 
 const styles = theme => ({
   root: {
@@ -59,6 +53,8 @@ const BuyCarDetails = (props) => {
     vertical: 'top',
     horizontal: 'center',
   });
+  const carsImages = selectedCar.imagePath.split(",");
+
 
   const { vertical, horizontal, open } = state;
 
@@ -315,7 +311,7 @@ const BuyCarDetails = (props) => {
               className="filter_car_img"
               src={`https://royalcarsmangalore.in:5000/${selectedCar.imagePath}`}
             /> */}
-            <CarouselComponent cars={cars} />
+            <CarouselComponent cars={carsImages} />
           </div>
           <div className="carDetails">
             <div className="rightSection hide">
