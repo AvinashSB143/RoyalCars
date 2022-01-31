@@ -79,8 +79,8 @@ const BuyCarDetails = (props) => {
         const data = {
           razorpay_payment_id: res.razorpay_payment_id,
           razorpay_order_id: props.bookedOrderId,
-          razorpay_signature: "",
-          carId: selectedCar.id,
+          razorpay_signature: res.razorpay_signature ? res.razorpay_signature : "",
+          carId: selectedCar._id,
           customerPhoneNo: userDetails.phone,
           paidAmmount: selectedCar.budget
         }
