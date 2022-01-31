@@ -53,7 +53,7 @@ const BuyCarDetails = (props) => {
     vertical: 'top',
     horizontal: 'center',
   });
-  const carsImages = selectedCar.imagePath.split(",");
+  const carsImages = selectedCar && selectedCar.imagePath.split(",");
 
 
   const { vertical, horizontal, open } = state;
