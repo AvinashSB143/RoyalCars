@@ -369,7 +369,6 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     selectedOwner && setKMList(!showKMList)
   }
 
-
   const carDetails = {
     "year": JSON.stringify(selectedyear),
     "brand": selectedBrand,
@@ -378,6 +377,17 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     "totalOwner": selectedOwner,
     "kmDriven": selectedKMDriven,
     "customerPhoneNo": props.userDetails.phone
+  }
+
+  
+  const submitCarDetailsforSale = () => {
+    props.dispatchSellCar(carDetails)
+    setselectedYear("");
+    setselectedBrand("");
+    setsetselectedModel("");
+    setselectedVariant("");
+    setselectedOwner("");
+    setselectedKMDriven("");
   }
 
 
@@ -452,8 +462,10 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
               onClick={() => enableShowKMList()}
             />
             <button class="search-button"
-              // disabled={!selectedKMDriven}
-              onClick={() => { props.dispatchSellCar(carDetails) }}
+              onClick={() => { 
+                submitCarDetailsforSale()
+               }
+              }
             >Submit</button>
           </div>
           <div className="filter_form_mobile">

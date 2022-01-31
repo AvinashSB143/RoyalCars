@@ -332,11 +332,7 @@ class Header extends Component {
           className="more_items"
           onMouseOver={this.hideShowWorkFlow}
           onClick={() => {
-            this.props.authToken
-              ? this.changeArrow()
-              : this.setState({ showLoginContent: true }, () =>
-                this.changeArrow()
-              );
+            this.changeArrow()
           }}
         >
           <>
@@ -344,7 +340,7 @@ class Header extends Component {
           </>
           <p4 className="options">
             <Link
-              to={this.props.authToken ? "/more/AboutUs" : "#"}
+              to="/more/AboutUs"
               className="options"
               onClick={this.onAboutUs}
             >
@@ -1017,9 +1013,6 @@ class Header extends Component {
                 <KeyboardArrowDownIcon />
               )}
             </div>
-            <div className="hide_option show_desktop_menu">
-              <FavoriteBorderIcon />
-            </div>
             <div className="hide_option header_SignIn_bar show_desktop_menu">
               <p>
                 Hello,{" "}
@@ -1050,7 +1043,7 @@ class Header extends Component {
             </div>
             <div className="header_SignIn_bar hide_option show_desktop_menu">
               <p>Call us at</p>
-              <b style={{ fontSize: "16px" }}>8147676718</b>
+              <b style={{ fontSize: "16px" }}>9148941334</b>
             </div>
           </div>
           {this.state.expandMoreSection && expandMoreSection}

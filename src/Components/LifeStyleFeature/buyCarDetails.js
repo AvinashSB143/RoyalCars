@@ -227,31 +227,6 @@ const BuyCarDetails = (props) => {
           </React.Fragment>
         }
       />
-      <Snackbar
-        anchorOrigin={{ vertical, horizontal }}
-        open={props.customerCarBooked !== null}
-        message="Thanks for Booking your Car.."
-        key={vertical + horizontal}
-        className={
-          classes.snackBarRoot
-        }
-        classes={{
-          message: classes.snackBarRoot,
-          root: classes.snackBarRoot
-        }}
-        action={
-          <React.Fragment>
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              sx={{ p: 0.5 }}
-              onClick={handleClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </React.Fragment>
-        }
-      />
 
       <div className="pageStyle">
         <div>

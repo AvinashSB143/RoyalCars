@@ -69,7 +69,10 @@ function Footer() {
       </div>
       <div className="Footer__Buttons">
         {buttons.map((button, idx) => (
-          <Link to={idx === 1 ? "/lifeStyle" : "#"} className="Footer__Button" onClick={() => window.scroll(0, 0)}>
+          <Link to={idx === 1 ? "/lifeStyle" : "#"} className="Footer__Button" 
+          onClick={() => {
+            if(idx === 1) window.scroll(0, 0)
+          }}>
             {idx === 0 && <CallIcon />}
             {button}
           </Link>

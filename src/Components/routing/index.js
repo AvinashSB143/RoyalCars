@@ -22,7 +22,6 @@ const HomePageContainer = styled.div`
 `;
 function Routing() {
 
-  const validateUser = () => {};
   return (
     <HomePageContainer>
       <Header />
