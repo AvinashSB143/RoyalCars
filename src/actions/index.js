@@ -378,6 +378,13 @@ export const disableSnackBar = () => {
                     })
                 }
 }
+export const disableSnackBarReferral = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "DISABLE_SNACKBAR_REFERRAL",
+                    })
+                }
+}
 
 export const getTestDriveCars = data => {
     return dispatch => {
@@ -398,10 +405,12 @@ export const getTestDriveCars = data => {
     }
 }
 
-export const getBookedCars = data => {
+export const getBookedCars = phoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCustomerCar/bookedCars').then(res => {
+            axios.get('customerCar/getCustomerCar/getCarStatus',{
+                phoneNumber: phoneNumber
+            }).then(res => {
                 if(res && res.data) {
                     dispatch ({
                         type: "CUSTOMER_BOOKED_CARS",
@@ -415,10 +424,12 @@ export const getBookedCars = data => {
     }
 }
 
-export const sellOrders = data => {
+export const sellOrders = userPhoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCustomerCar/sellOrders').then(res => {
+            axios.get('customerCar/getCustomerCar/getCarStatus',{
+                phoneNumner: userPhoneNumber
+            }).then(res => {
                 if(res && res.data) {
                     dispatch ({
                         type: "CUSTOMER_SELL_ORDER",
@@ -473,6 +484,7 @@ export const bookNow = data => {
         }
     }
 }
+
 export const verifyPayment = data => {
     return dispatch => {
         try {
@@ -483,6 +495,25 @@ export const verifyPayment = data => {
                     dispatch ({
                         type: "CUSTOMER_BUY_ORDER_STATUS",
                         // payload: res.data.orderId
+                    })
+                }
+            }).catch(err => console.log(err))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const referFriend = phNumber => {
+    return dispatch => {
+        try {
+            axios.post('user/referFrnd',{
+               phoneNumber: phNumber
+            }).then(res => {
+                if(res && res.data) {
+                    dispatch ({
+                        type: "REFER_FRIEND_SUCCESS",
+                        payload: res.data.response.success
                     })
                 }
             }).catch(err => console.log(err))

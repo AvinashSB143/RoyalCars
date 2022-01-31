@@ -188,6 +188,18 @@ const reducers = (state = initialState, action) => {
             customerCarBooked: action.payload
         }
     }
+    if(action.type === "REFER_FRIEND_SUCCESS") {
+        return {
+            ...state,
+            referFriendSuccessFul: action.payload
+        }
+    }
+    if(action.type === "DISABLE_SNACKBAR_REFERRAL") {
+        return {
+            ...state,
+            referFriendSuccessFul: false
+        }
+    }
     if(action.type === "LOGOUT") {
         return {
             authToken: null,

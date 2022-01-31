@@ -1,12 +1,48 @@
 import React,{useState} from 'react';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import { connect } from 'react-redux';
+import Modal from 'react-modal';
+import { referFriend, disableSnackBarReferral } from "../../actions";
+import "../../styles/styles.css";
 
-const ReferEarn = () => {
+
+
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      background: "#9a9191",
+      height: "200px",
+      borderRadius: "10px"
+
+    },
+  };
+
+const ReferEarn = (props) => {
     const [localState,setLocalState] = useState({
         expandMoreSection:false,
         questionNo:null
     })
+
+    const [friendPhoneNumber, setFriendPhoneNumber] = useState('')
+    const [showModal, setShowModal] = useState(false)
+
+    const [state, setState] = React.useState({
+        vertical: 'top',
+        horizontal: 'center',
+      });
+
+  const { vertical, horizontal, open } = state;
+
+
     const changeArrow = (value) => {
         if(!localState.expandMoreSection && value === 1){
             setLocalState({
@@ -34,8 +70,47 @@ const ReferEarn = () => {
             })
         }
     }
+
+    const handleOpenModal = () => {
+        setShowModal(true)
+    }
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+
+    const readFriendPhoneNumber = (e) => {
+        setFriendPhoneNumber(e.target.value)
+    }
+
+    const referFriendToRoyalCars = () => {
+        setShowModal(false);
+        props.referFriend(friendPhoneNumber);
+    }
+
+    const handleClose = () => {
+        props.disableSnackBarReferral()
+      };
+
     return (
         <div>
+            <Snackbar
+                anchorOrigin={{ vertical, horizontal }}
+                open={props.referFriendSuccessFul}
+                key={vertical + horizontal}
+                action={
+                <React.Fragment>
+                    <IconButton
+                    aria-label="close"
+                    color="inherit"
+                    sx={{ p: 0.5 }}
+                    onClick={handleClose}
+                    >
+                    <CloseIcon />
+                    </IconButton>
+                </React.Fragment>
+                }
+            />
+       
             {/* <h3 style={{fontSize:"22px",width:"100%",textTransform:"capitalize"}}>
                 Refer And Earn
             </h3> */}
@@ -51,7 +126,7 @@ const ReferEarn = () => {
                 <div className="refer_friend_bgi" style={{backgroundImage:
                     `url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-909040892-1535400758.jpg?resize=480:*")`}}>
                 </div>
-                <div className="refer_friend_desc">
+                <div className="refer_friend_desc" onClick={handleOpenModal}>
                 <h2>Refer Your Friends</h2>
                 <p style = {{color:"#fff"}}>
                     Once your friend uses your referral you get ₹3000/- straight into your bank account after you have bought or sold a car at Royal Cars.</p>
@@ -61,6 +136,51 @@ const ReferEarn = () => {
                         </path></svg>
                     </span>
                 </button>
+                <Modal
+                    isOpen={showModal && !props.referFriendSuccessFul}
+                    onRequestClose={handleCloseModal}
+                    style={customStyles}
+                >
+                    <form>
+                        <h2>Please Enter Your Friend Phone Number</h2>
+                    <input
+                    style={{
+                        display: "block",
+                        margin: "10px auto",
+                        height: "30px",
+                        width: "50%",
+                        position: "relative"
+                    }}
+                    className="refer_earn_input" onChange={(e) => readFriendPhoneNumber(e)}
+                    />
+                    <div className="main_container">
+                    <button 
+                    style={{
+                        margin: "auto",
+                        height: "30px",
+                        width: "30%",
+                        fontSize: "14px",
+                        background: "#ffdf00",
+                        color: "black",
+                        position: "absolute",
+                        left: "35%"
+                    }}
+                    className="refer_friend_Button"  onClick={() => referFriendToRoyalCars()}> Refer </button>
+                    <button 
+                    style={{
+                        margin: "auto",
+                        height: "30px",
+                        width: "30%",
+                        fontSize: "14px",
+                        background: "#ffdf00",
+                        color: "black",
+                        position: "absolute",
+                        left: "35%"
+                    }}
+                    className="refer_friend_Button"  onClick={() => referFriendToRoyalCars()}> Close </button>
+                   </div>
+                    </form>
+                </Modal>
                 </div>
                 </div>
                 <div className = "redeem_rewards">
@@ -137,4 +257,26 @@ const ReferEarn = () => {
     )
 };
 
-export default ReferEarn; 
+const mapStateToProps = state => {
+    return {
+    referFriendSuccessFul: state.reducers.referFriendSuccessFul,
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        referFriend: (phoneNumber) => {
+            dispatch(
+                referFriend(phoneNumber)
+            )
+        },
+        disableSnackBarReferral: () => {
+            dispatch(
+                disableSnackBarReferral()
+            )
+        },
+    }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps)(ReferEarn); 

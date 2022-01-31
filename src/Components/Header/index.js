@@ -56,10 +56,6 @@ import {
   createOTP,
   disableSnackBar
 } from "../../actions"
-import MenuBar from './MenuBar';
-import { Redirect } from "react-router";
-import { MonetizationOn } from '@material-ui/icons';
-import { height } from '@mui/system';
 import styled from "styled-components";
 
 const styles = (theme) => ({
@@ -439,7 +435,9 @@ class Header extends Component {
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
-              this.props.getBookedCars();
+                if(this.props.userDetails) {
+                  this.props.getBookedCars(this.props.userDetails.phone);
+                 }
             }}
           >
             Bookings
@@ -456,7 +454,9 @@ class Header extends Component {
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
-              this.props.sellOrders();
+              if(this.props.userDetails){
+                this.props.sellOrders(this.props.userDetails.phone);
+              }
             }}
           >
             Sell Orders
@@ -840,8 +840,11 @@ class Header extends Component {
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
-                          this.props.getBookedCars();
-                        }}
+                          if(this.props.userDetails) {
+                            this.props.getBookedCars(this.props.userDetails.phone);
+                           }
+                          }
+                      }
                       >
                         <StyledLink
                           to={this.props.authToken ? "/account/bookings" : "#"}
@@ -861,7 +864,9 @@ class Header extends Component {
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
-                          this.props.sellOrders();
+                          if(this.props.userDetails){
+                            this.props.sellOrders(this.props.userDetails.phone);
+                          }
                         }}
                       >
                         <StyledLink
@@ -1514,14 +1519,14 @@ const mapDispatchToProps = dispatch => {
         getTestDriveCars(data)
       )
     },
-    getBookedCars: () => {
+    getBookedCars: (phoneNumber) => {
       dispatch(
-        getBookedCars()
+        getBookedCars(phoneNumber)
       )
     },
-    sellOrders: () => {
+    sellOrders: (userPhoneNumber) => {
       dispatch(
-        sellOrders()
+        sellOrders(userPhoneNumber)
       )
     },
     searchCarByName: (name) => {
