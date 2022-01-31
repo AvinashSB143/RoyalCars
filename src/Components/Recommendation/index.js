@@ -1,11 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import "./recomendation.css";
 
+import HeroBanner1 from "../../assests/HeroBanner.jpg"
+
 const RecommendedCars = () => {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
   const cars = [
-    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*",
+    HeroBanner1,
     "https://cdn.luxe.digital/media/2020/12/15110747/fastest-cars-world-2021-luxe-digital%402x.jpg",
     "https://cdni.autocarindia.com/ExtraImages/20210610035741_Creta.jpg",
   ];

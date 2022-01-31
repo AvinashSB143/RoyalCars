@@ -94,15 +94,16 @@
   font-weight: bold;
 }
 .Footer_Container {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 2fr repeat(2, 1fr);
-  grid-template-rows: auto 4rem;
+  grid-template-rows: auto 4rem; */
   background: #00011f;
   color: #fff;
   padding: 1rem;
   margin: 0 auto;
-  z-index: 1;
+  /* z-index: 1; */
   position: relative;
+  text-align: center;
 }
 .Footer_Container div {
   padding: 1rem 0;
@@ -125,8 +126,9 @@
 
 .APP_Description {
   color: #fff;
-  width: 90%;
+  width: 70%;
   margin-top: 1rem;
+  margin: 0 auto;
 }
 .Footer__SocialIcons svg {
   margin-right: 1rem;
@@ -236,5 +238,8 @@ a:hover {
     display: flex;
     flex-direction: column;
     padding: 2rem;
+  }
+  .APP_Description{
+    width: 100%;
   }
 }

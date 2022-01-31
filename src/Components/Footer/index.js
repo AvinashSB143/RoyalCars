@@ -60,10 +60,7 @@ function Footer() {
           ))}
         </div>
       </div> */}
-      <div>
-        <h3>Buy Used cars in Mangalore</h3>
 
-      </div>
       <div className="Footer__mb_btn">
         <button className="Footer__Button">
           <CallIcon />
