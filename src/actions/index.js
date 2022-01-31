@@ -108,12 +108,13 @@ export const updatePassword = (number, newPassword) => {
     }
 }
 
-export const bookTestDrive = (number, data) => {
+export const bookTestDrive = (number, date, carId) => {
     return dispatch => {
         try {
             axios.post('user/bookTestDrive', {
                 phoneNumber: number,
-                bookedDate: data.getDate()+"/"+(data.getMonth()+1)+"/"+data.getFullYear()
+                bookedDate: date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear(),
+                carId: carId
             }).then(res => {
                if(res && res.data) {
                 dispatch ({
@@ -381,7 +382,9 @@ export const disableSnackBar = () => {
 export const getTestDriveCars = data => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCustomerCar/testDrive').then(res => {
+            axios.post('customerCar/getCustomerCar/getCarStatus',{
+                "phoneNumber": data
+            }).then(res => {
                 if(res && res.data) {
                     dispatch ({
                         type: "TEST_DRIVE_CARS",

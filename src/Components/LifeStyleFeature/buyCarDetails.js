@@ -114,7 +114,7 @@ const BuyCarDetails = (props) => {
 
   useEffect(() => {
     if (props.OTPVerificationSuccessful) {
-      props.bookTestDrive(phoneNumberRef.current, new Date())
+      props.bookTestDrive(phoneNumberRef.current, new Date(), selectedCar._id)
     }
 
   }, [props.OTPVerificationSuccessful])
@@ -680,9 +680,9 @@ const mapDispatchToProps = dispatch => {
         closeSnackBarTestDrive()
       )
     },
-    bookTestDrive: (phoneNumber, data) => {
+    bookTestDrive: (phoneNumber, date, carId) => {
       dispatch(
-        bookTestDrive(phoneNumber, data)
+        bookTestDrive(phoneNumber, date, carId)
       )
     }
   }

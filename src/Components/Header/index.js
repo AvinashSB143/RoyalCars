@@ -420,7 +420,9 @@ class Header extends Component {
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
-              this.props.getTestDriveCars();
+              if(this.props.userDetails) {
+                this.props.getTestDriveCars(this.props.userDetails.phone);
+              }  
             }}
           >
             Test Drives
@@ -815,7 +817,9 @@ class Header extends Component {
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
-                          this.props.getTestDriveCars();
+                          if(this.props.userDetails) {
+                            this.props.getTestDriveCars(this.props.userDetails.phone);
+                          } 
                         }}
                       >
                         <StyledLink
@@ -1505,9 +1509,9 @@ const mapDispatchToProps = dispatch => {
         updatePassword(phoneNumber, newPassword)
       )
     },
-    getTestDriveCars: () => {
+    getTestDriveCars: (data) => {
       dispatch(
-        getTestDriveCars()
+        getTestDriveCars(data)
       )
     },
     getBookedCars: () => {
