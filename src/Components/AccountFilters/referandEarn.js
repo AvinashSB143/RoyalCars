@@ -33,7 +33,8 @@ const ReferEarn = (props) => {
     })
 
     const [friendPhoneNumber, setFriendPhoneNumber] = useState('')
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     const [state, setState] = React.useState({
         vertical: 'top',
@@ -42,6 +43,9 @@ const ReferEarn = (props) => {
 
   const { vertical, horizontal, open } = state;
 
+  function toggleModal() {
+    setIsOpen(!isOpen);
+  }
 
     const changeArrow = (value) => {
         if(!localState.expandMoreSection && value === 1){
@@ -71,22 +75,14 @@ const ReferEarn = (props) => {
         }
     }
 
-    const handleOpenModal = () => {
-        setShowModal(true)
-    }
-    const handleCloseModal = () => {
-        setShowModal(false)
+    const closeModal = () => {
+        setIsOpen(!isOpen);
+        props.referFriend(friendPhoneNumber)
     }
 
     const readFriendPhoneNumber = (e) => {
         setFriendPhoneNumber(e.target.value)
     }
-
-    const referFriendToRoyalCars = () => {
-        setShowModal(false);
-        props.referFriend(friendPhoneNumber);
-    }
-
     const handleClose = () => {
         props.disableSnackBarReferral()
       };
@@ -94,22 +90,30 @@ const ReferEarn = (props) => {
     return (
         <div>
             <Snackbar
-                anchorOrigin={{ vertical, horizontal }}
-                open={props.referFriendSuccessFul}
-                key={vertical + horizontal}
-                action={
-                <React.Fragment>
-                    <IconButton
-                    aria-label="close"
-                    color="inherit"
-                    sx={{ p: 0.5 }}
-                    onClick={handleClose}
-                    >
-                    <CloseIcon />
-                    </IconButton>
-                </React.Fragment>
-                }
-            />
+        anchorOrigin={{ vertical, horizontal }}
+        open={props.referFriendSuccessFul}
+        message="Thanks fpr Referring Royal Cars."
+        key={vertical + horizontal}
+        // className={
+        //   classes.snackBarRoot
+        // }
+        // classes={{
+        //   message: classes.snackBarRoot,
+        //   root: classes.snackBarRoot
+        // }}
+        action={
+          <React.Fragment>
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              sx={{ p: 0.5 }}
+              onClick={handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
        
             {/* <h3 style={{fontSize:"22px",width:"100%",textTransform:"capitalize"}}>
                 Refer And Earn
@@ -126,23 +130,22 @@ const ReferEarn = (props) => {
                 <div className="refer_friend_bgi" style={{backgroundImage:
                     `url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-909040892-1535400758.jpg?resize=480:*")`}}>
                 </div>
-                <div className="refer_friend_desc" onClick={handleOpenModal}>
-                <h2>Refer Your Friends</h2>
+                <div className="refer_friend_desc" >
+                <h2 >Refer Your Friends</h2>
                 <p style = {{color:"#fff"}}>
                     Once your friend uses your referral you get ₹3000/- straight into your bank account after you have bought or sold a car at Royal Cars.</p>
-                <button className="refer_friend_btn">
+                <button className="refer_friend_btn" onClick={toggleModal}>
                     <span>Refer a friend
                     <svg transform="rotate(0 0 0)" xmlns="http://www.w3.org/2000/svg" stroke="#4169e1" width="10" height="10" viewBox="0 0 14 8"><path fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M386 48L392 54 398 48" transform="translate(-385 -47)">
                         </path></svg>
                     </span>
                 </button>
                 <Modal
-                    isOpen={showModal && !props.referFriendSuccessFul}
-                    onRequestClose={handleCloseModal}
+                    isOpen={isOpen}
+                    // onRequestClose={toggleModal}
                     style={customStyles}
                 >
-                    <form>
-                        <h2>Please Enter Your Friend Phone Number</h2>
+                    <h2>Please Enter Your Friend Phone Number</h2>
                     <input
                     style={{
                         display: "block",
@@ -151,9 +154,8 @@ const ReferEarn = (props) => {
                         width: "50%",
                         position: "relative"
                     }}
-                    className="refer_earn_input" onChange={(e) => readFriendPhoneNumber(e)}
+                    onChange={(e) => readFriendPhoneNumber(e)}
                     />
-                    <div className="main_container">
                     <button 
                     style={{
                         margin: "auto",
@@ -165,21 +167,7 @@ const ReferEarn = (props) => {
                         position: "absolute",
                         left: "35%"
                     }}
-                    className="refer_friend_Button"  onClick={() => referFriendToRoyalCars()}> Refer </button>
-                    <button 
-                    style={{
-                        margin: "auto",
-                        height: "30px",
-                        width: "30%",
-                        fontSize: "14px",
-                        background: "#ffdf00",
-                        color: "black",
-                        position: "absolute",
-                        left: "35%"
-                    }}
-                    className="refer_friend_Button"  onClick={() => referFriendToRoyalCars()}> Close </button>
-                   </div>
-                    </form>
+                    onClick={() => {closeModal()}}> Refer </button>
                 </Modal>
                 </div>
                 </div>

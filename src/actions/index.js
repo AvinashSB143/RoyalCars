@@ -513,7 +513,7 @@ export const referFriend = phNumber => {
                 if(res && res.data) {
                     dispatch ({
                         type: "REFER_FRIEND_SUCCESS",
-                        payload: res.data.response.success
+                        payload: res.data.response.Success
                     })
                 }
             }).catch(err => console.log(err))
