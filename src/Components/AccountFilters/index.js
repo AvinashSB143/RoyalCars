@@ -38,7 +38,7 @@ const AccountFilters = (props) => {
     const {classes} = props;
 
     const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
-    const PageTitle = ["TEST Drives", "BOOKINGS", "SELL ORDERS", "HELP & SUPPORT", "REFER & EARN", "PROFILE"];
+    const PageTitle = ["TEST DRIVES", "BOOKINGS", "SELL ORDERS", "HELP & SUPPORT", "REFER & EARN", "PROFILE"];
 
 
     const [showAllCars,setShowAllCars] = useState(false);
@@ -231,7 +231,7 @@ const AccountFilters = (props) => {
                     <Link to="#" className="nav_link">Account <ArrowForwardIosIcon classes={{
                         root: classes.arrow_root
                     }}/></Link>
-                    <Link to="#" className="nav_link">{mainHeading}</Link>
+                    <Link to="#" className="nav_link" style={{textTransform: "capitalize"}}>{mainHeading}</Link>
                 </ul>
                 <h2 className="selected_account_filter">
                    {mainHeading.toUpperCase(0)}
@@ -244,7 +244,39 @@ const AccountFilters = (props) => {
                  {filter === "refer_and_earn" && <ReferEarn />}
                  {!showAllCars && !(filter === "profileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
-                       <p className="test_drive_no_cars_text"> You havenot booked any cars Yet. </p>
+                        <div class="grid--4-cols">
+                        <a className="feature-box" href="/buyCar/cars">
+                        <img
+                                src="https://royalcarsmangalore.in:5000/uploads/image_1640076729177download.jpg"
+                                class="feature-img"
+                                alt=""
+                            />
+                      <div className="feature-content">
+                          <div className="content-details">
+                              <h4>2021 Innova Crysta</h4> 
+                              <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
+                                 Booking Date : 02/02/2022</p>
+                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : 1234567890</p></div>
+                                </div>
+                                        </a>
+                                        <a className="feature-box" href="/buyCar/cars">
+                        <img
+                                src="https://royalcarsmangalore.in:5000/uploads/image_1640076729177download.jpg"
+                                class="feature-img"
+                                alt=""
+                            />
+                      <div className="feature-content">
+                          <div className="content-details">
+                              <h4>2021 Innova Crysta</h4> 
+                              <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
+                                 Booking Date : 02/02/2022</p>
+                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : 1234567890</p></div>
+                                </div>
+                                        </a>
+                                        
+</div>
+                                      
+
                         <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
                            filter !== "sellorders" && props.getCustomerCars()
                             setShowAllCars(true)
