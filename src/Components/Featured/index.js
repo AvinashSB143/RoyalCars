@@ -96,15 +96,15 @@ const FeaturedCars = (props) => {
                             <div class="feature-content">
                                 <div className="content-details">
                                     <h4>{car && car.year} {car && car.brand} {car && car.model}</h4>
-                                    <h5><span>{car && car.kmDriven} Kms</span>
-                                        <span>&nbsp;.&nbsp; {car && car.fuelType}</span>
-                                        <span> &nbsp;.&nbsp; {car && car.transmission}</span></h5>
-                                    <h3>{car.budget}</h3>
+                                    <p  style={{lineHeight: "20px",fontSize: "14px",textTransform: "capitalize"}}><span>{car && car.kmDriven} Kms</span>
+                                        <span>.{car && car.fuelType}</span>
+                                        <span>.{car && car.transmission}</span></p>
+                                    <p style={{fontWeight: "bolder",fontSize: "24px"}} >₹ {car.budget}</p>
                                 </div>
                                 <div className="location-details">
-                                    <h5 style={{ borderTop: "0.5px gray solid", paddingTop: "8px" }}>{car.location}</h5>
+                                    <p style={{ borderTop: "0.5px gray solid", paddingTop: "8px" }}>{car.location}</p>
                                     <h6>{selectedCar.HomeTestDrive ? "Home Test Drive Available" : null}</h6>
-                                    <h6>Home Test Drive Available</h6>
+                                    <h5>Home Test Drive Available</h5>
                                 </div>
                             </div>
                         </Link>

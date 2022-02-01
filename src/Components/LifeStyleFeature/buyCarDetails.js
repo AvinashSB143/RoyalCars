@@ -430,9 +430,10 @@ const BuyCarDetails = (props) => {
               >
                 <Button
                   style={{
-                    backgroundColor: "#4169e1",
+                    backgroundColor: "#6300a3",
                     color: "#fff",
                     borderRadius: "8px",
+                    fontWeight: "bolder"
                   }}
                   onClick={() => {
                     if (props.authToken) {
@@ -447,10 +448,12 @@ const BuyCarDetails = (props) => {
                 </Button>
                 <Button
                   style={{
-                    backgroundColor: "red",
+                    backgroundColor: "#ed264f",
                     color: "#fff",
                     marginLeft: "20px",
                     borderRadius: "8px",
+                    fontWeight: "bolder"
+
                   }}
                   onClick={() => {
                     // if(props.authToken) {

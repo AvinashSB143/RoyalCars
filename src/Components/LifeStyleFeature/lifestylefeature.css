@@ -72,6 +72,7 @@ li {
   position: sticky;
   top: 0;
   margin: 0 20px;
+  text-transform: capitalize;
 }
 .pageStyle .carDetails .rightSection {
   margin-bottom: 16px;
