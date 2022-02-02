@@ -93,6 +93,12 @@ const LifeStyleFeature = (props) => {
     return `${event.target.value}`;
   };
 
+  useEffect(() => {
+    if(props.availableCarList && props.availableCarList.length ==0) {
+      props.getCustomerCars()
+    }
+  },[])
+
   const searchCarByName = (name) => {
     let newCarList =
       props.availableCarList &&
@@ -397,6 +403,21 @@ const LifeStyleFeature = (props) => {
     }
   }, [props.searchedCarName]);
 
+  const saveSelectedCar = (car) => {
+          props.seletedCar(car);
+          props.showSearchBar(false);
+          localStorage.setItem("selectedCarYear", car.year);
+          localStorage.setItem("selectedCarbrand", car.brand);
+          localStorage.setItem("selectedCarModel", car.model);
+          localStorage.setItem("selectedCarFuelType", car.fuelType);
+          localStorage.setItem("selectedCarTransmission", car.transmission);
+          localStorage.setItem("selectedCarImagePath", car.imagePath);
+          localStorage.setItem("selectedCarBudget", car.budget);
+          localStorage.setItem("selectedCarkmDriven", car.kmDriven);
+          localStorage.setItem("selectedCarinsurance", car.insurance);
+          localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
+  }
+
   const carList = (
     filteredCarsList && filteredCarsList.length !== 0
       ? filteredCarsList
@@ -406,8 +427,7 @@ const LifeStyleFeature = (props) => {
     return (
       <div className="column_container car_list_buyCar hide_option">
         <Link to="/buyCar/cars" onClick={() => {
-          props.seletedCar(car);
-          props.showSearchBar(false)
+          saveSelectedCar(car)
         }}>
           <img
             className="filter_car_img"
@@ -444,8 +464,7 @@ const LifeStyleFeature = (props) => {
       return (
         <div className="column_container car_list_buyCar hide_option">
           <Link to="/buyCar/cars" onClick={() =>  {
-            props.seletedCar(car);
-            props.showSearchBar(false)
+            saveSelectedCar(car)
           }
             }>
             <img

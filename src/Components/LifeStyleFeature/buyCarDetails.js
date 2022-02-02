@@ -63,7 +63,18 @@ const BuyCarDetails = (props) => {
     vertical: 'top',
     horizontal: 'center',
   });
-  const carsImages = selectedCar && selectedCar.imagePath.split(",");
+  
+  const selectedCarYear = localStorage.getItem("selectedCarYear");
+  const selectedCarbrand = localStorage.getItem("selectedCarbrand");
+  const selectedCarModel = localStorage.getItem("selectedCarModel");
+  const selectedCarFuelType = localStorage.getItem("selectedCarFuelType");
+  const selectedCarTransmission = localStorage.getItem("selectedCarTransmission");
+  const selectedCarImagePath = localStorage.getItem("selectedCarImagePath");
+  const selectedCarBudget = localStorage.getItem("selectedCarBudget");
+  const selectedCarkmDriven = localStorage.getItem("selectedCarkmDriven");
+  const selectedCarinsurance = localStorage.getItem("selectedCarinsurance");
+  const selectedCarinsuranceValidTill = localStorage.getItem("selectedCarinsuranceValidTill");
+  const carsImages = selectedCar ? selectedCar.imagePath.split(",") : selectedCarImagePath.split(",");
 
 
   const { vertical, horizontal, open } = state;
@@ -77,10 +88,10 @@ const BuyCarDetails = (props) => {
 
   const handlePayment = useCallback(() => {
     const options = {
-      key: "rzp_test_HrnE7wPqX9HFyT",
+      key: "XyrrKg1ddYiIQDczwZy73wDH",
       amount: selectedCar.budget,
       currency: "INR",
-      name: "Acme Corp",
+      name: "Royal Cars",
       description: "Car Book Transaction",
       // image: "https://example.com/your_logo",
       order_id: props.bookedOrderId,
@@ -130,7 +141,7 @@ const BuyCarDetails = (props) => {
   }, [props.OTPVerificationSuccessful])
 
   const carInformation = {
-    "amount": selectedCar ? selectedCar.budget : ""
+    "amount": selectedCar ? selectedCar.budget ? selectedCar.budget : "" : selectedCarBudget ? selectedCarBudget : ""
   }
 
   const getPhoneNumber = number => {
@@ -157,7 +168,8 @@ const BuyCarDetails = (props) => {
     }
   }
 
-  return selectedCar ? (
+
+  return selectedCar || selectedCarYear ? (
     <div className={`${validateUser && 'overlay'} "car_details_container"`}
       style={{ position: "relative" }}>
       {!(props.OTPVerificationSuccessful && props.OTPcreatedForTestDrive) && validateUser &&
@@ -313,33 +325,28 @@ const BuyCarDetails = (props) => {
           </ul>
         </div>
         <div
-          //   style={{ display: "flex", marginTop: "20px" }}
           className="buycar__container"
         >
           <div className="carView">
-            {/* <img className="filter_car_img" src={selectedCar.imagePath} /> */}
-            {/* <img
-              className="filter_car_img"
-              src={`https://royalcarsmangalore.in:5000/${selectedCar.imagePath}`}
-            /> */}
+           
             <CarouselComponent cars={carsImages} />
           </div>
           <div className="carDetails">
             <div className="rightSection hide">
               <div>
                 <h1>
-                  {selectedCar && selectedCar.year} {selectedCar && selectedCar.brand} {selectedCar && selectedCar.model}
+                  {selectedCar ? selectedCar.year : selectedCarYear } {selectedCar ? selectedCar.brand : selectedCarbrand} {selectedCar ? selectedCar.model : selectedCarModel}
                 </h1>
                 <div className="carFeature">
-                  <span>{selectedCar && selectedCar.kmDriven} Kms</span>
-                  <span>&nbsp;.&nbsp; {selectedCar && selectedCar.fuelType}</span>
-                  <span> &nbsp;.&nbsp; {selectedCar && selectedCar.transmission}</span>
-                  <span> &nbsp; ₹ {selectedCar && selectedCar.budget}</span>
+                  <span>{selectedCar ? selectedCar.kmDriven : selectedCarkmDriven} Kms</span>
+                  <span>&nbsp;.&nbsp; {selectedCar ? selectedCar.fuelType : selectedCarFuelType}</span>
+                  <span> &nbsp;.&nbsp; {selectedCar ? selectedCar.transmission : selectedCarTransmission}</span>
+                  <span> &nbsp; ₹ {selectedCar ? selectedCar.budget : selectedCarBudget}</span>
                 </div>
                 <div className="carFeature">
-                  {selectedCar && selectedCar.insurance && <div className="insurance_details insurance_details__selected">{selectedCar && selectedCar.insurance && selectedCar.insurance} Insurance</div>}
-                  {selectedCar && selectedCar.insuranceValidTill && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
-                  {selectedCar && selectedCar.insuranceValidTill && selectedCar.insuranceValidTill}</div>}
+                  {((selectedCar && selectedCar.insurance) || selectedCarinsurance) && <div className="insurance_details insurance_details__selected">{(selectedCar && selectedCar.insurance) ?  selectedCar.insurance : selectedCarinsurance} Insurance</div>}
+                  {((selectedCar && selectedCar.insuranceValidTill) || selectedCarinsuranceValidTill) && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
+                  {(selectedCar && selectedCar.insuranceValidTill) ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill }</div>}
                 </div>
                 <div className="testDrive">
                   <svg

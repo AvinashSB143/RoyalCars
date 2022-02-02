@@ -355,7 +355,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     "variant": selectedVariant,
     "totalOwner": selectedOwner,
     "kmDriven": selectedKMDriven,
-    "customerPhoneNo": props.userDetails.phone
+    "customerPhoneNo": props.userDetails && props.userDetails.phone ? props.userDetails.phone : ""
   }
 
   
