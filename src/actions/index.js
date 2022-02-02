@@ -389,8 +389,8 @@ export const disableSnackBarReferral = () => {
 export const getTestDriveCars = data => {
     return dispatch => {
         try {
-            axios.post('customerCar/getCustomerCar/getCarStatus',{
-                "phoneNumber": data
+            axios.post('user/getMyTestDrive',{
+                phoneNumber: data
             }).then(res => {
                 if(res && res.data) {
                     dispatch ({
@@ -408,7 +408,7 @@ export const getTestDriveCars = data => {
 export const getBookedCars = phoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCustomerCar/getCarStatus',{
+            axios.get('customerCar/getBuyCar',{
                 phoneNumber: phoneNumber
             }).then(res => {
                 if(res && res.data) {
@@ -427,7 +427,7 @@ export const getBookedCars = phoneNumber => {
 export const sellOrders = userPhoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCustomerCar/getCarStatus',{
+            axios.get('customerCar/getCarStatus',{
                 phoneNumner: userPhoneNumber
             }).then(res => {
                 if(res && res.data) {

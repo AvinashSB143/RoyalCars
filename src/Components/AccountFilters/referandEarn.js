@@ -171,9 +171,6 @@ const ReferEarn = (props) => {
                 </Modal>
                 </div>
                 </div>
-                <div className = "redeem_rewards">
-                    <h2>Track & Redeem Rewards</h2>
-                </div>
             </div>
             <div className="question_sec">
                     <h2 className ="list_heading">Frequently asked question</h2>

@@ -51,7 +51,7 @@ const AccountFilters = (props) => {
                   <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${car.imagePath}`} alt="Buy A Car" />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
-                     <span className="row_container description"> <h4 className="car_name_info">{car.yesr}</h4><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                     <span className="row_container description"> <h4 className="car_name_info_sellOrder">{car.year}</h4><h4 className="car_name_info_sellOrder">{car.brand}</h4><h4 className="car_name_info_sellOrder">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
                      <div className="row_container car_km_ifo">
                        <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
                      </div>
@@ -60,67 +60,64 @@ const AccountFilters = (props) => {
         )
     })
    
-    const testDriveCarsList = props.testDriveCars && props.testDriveCars.map((car) => {
+    const customerTestDriveCars = props.availableCarList && props.availableCarList.filter((car) => {
+        return car.id === props.testDriveCars.carId
+    })
+
+    const testDriveCarsList = customerTestDriveCars && customerTestDriveCars.map((car) => {
         return(
-            <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
-                <div className="test_drive_car_img">
-                <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${car.imagePath}`} alt="Test Drive Car Details" />
-                </Link>
-                   </div>
-                 <div className="column_container test_drive_car_details" >
-                <h4 className="car_name_info">{car.year}</h4>
-                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
-                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
-                    </div>
-                    <div >
-                        <Link to="#" className="test_drive_car_btn">
-                        Free Test Drive
-                    </Link>
-                    </div>
-                    </div>
+                        <Link className="feature-box" href="#">
+                            <img
+                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                class="feature-img"
+                                alt=""
+                            />
+                        <div className="feature-content">
+                          <div className="content-details">
+                              <h4>{car.year} {car.brand} {car.model}</h4> 
+                              <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
+                                 Booking Date : {props.testDriveCars.bookedDate}</p>
+                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : {props.testDriveCars.phoneNumber}</p>
+                            </div>
+                        </div>
+                        </Link>
                 )
     })
+
+
     const bookedCarsList = props.customerBookedCars && props.customerBookedCars.map((car) => {
         return(
-            <div className="row_container car_list" onClick={() => props.seletedCar(car)}>
-                <div className="test_drive_car_img">
-                <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${car.imagePath}`} alt="Test Drive Car Details"/>
-                </Link>
-                   </div>
-                 <div className="column_container test_drive_car_details" >
-                <h4 className="car_name_info">{car.year}</h4>
-                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
-                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
-                    </div>
-                    <div >
-                        <Link to="#" className="test_drive_car_btn">
-                        Book Car Now
-                    </Link>
-                    </div>
-                    </div>
+            <Link className="feature-box" href="#">
+                            <img
+                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                class="feature-img"
+                                alt=""
+                            />
+                        <div className="feature-content">
+                          <div className="content-details">
+                              <h4>{car.year} &nbsp; {car.brand} &nbsp; {car.model}</h4> 
+                              <h4>₹ {car.budget} &nbsp; {car.transmission} &nbsp; {car.kmDriven} KM</h4>
+                            </div>
+                        </div>
+                        </Link>
         )
     })
+    
     const sellOrderList = props.customerSellOrderList && props.customerSellOrderList.map((car) => {
         return(
-            <div className="row_container car_list">
-                <div className="test_drive_car_img">
-                <Link to = "/buyCar/cars">
-                    <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${car.imagePath}`} alt="Test Drive Car Details"/>
-                </Link>
-                   </div>
-                 <div className="column_container test_drive_car_details" >
-                <h4 className="car_name_info">{car.year}</h4>
-                <span className="row_container"><h4 className="car_name_info">{car.brand}</h4><h4 className="car_name_info">{car.model}</h4></span>
-                <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
-                    </div>
-                    <div >
-                        <Link to="#" className="test_drive_car_btn">
-                        Book Car Now
-                    </Link>
-                    </div>
-                    </div>
+            <Link className="feature-box" href="#">
+                            <img
+                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                class="feature-img"
+                                alt=""
+                            />
+                        <div className="feature-content">
+                          <div className="content-details">
+                              <h4>{car.year} &nbsp; {car.brand} &nbsp; {car.model}</h4> 
+                              <h4>₹ {car.budget} &nbsp; {car.transmission} &nbsp; {car.kmDriven} KM</h4>
+                            </div>
+                        </div>
+                        </Link>
         )
     })
 
@@ -237,46 +234,16 @@ const AccountFilters = (props) => {
                    {mainHeading.toUpperCase(0)}
                 </h2>
                 <div className={`${showAllCars ? "row_container" : "column_container"} account_filtered_cars`}>
-                 {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && testDriveCarsList}
-                 {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && bookedCarsList}
-                 {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && sellOrderList}
+                 {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && 
+                 <div class="grid--4-cols"> {testDriveCarsList} </div>}
+                 {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && 
+                 <div class="grid--4-cols"> {bookedCarsList} </div>}
+                 {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && 
+                 <div class="grid--4-cols"> {sellOrderList} </div>}
                  {filter === "profileInformation" && <PersonalInfo />}
                  {filter === "refer_and_earn" && <ReferEarn />}
                  {!showAllCars && !(filter === "profileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
-                        <div class="grid--4-cols">
-                        <a className="feature-box" href="/buyCar/cars">
-                        <img
-                                src="https://royalcarsmangalore.in:5000/uploads/image_1640076729177download.jpg"
-                                class="feature-img"
-                                alt=""
-                            />
-                      <div className="feature-content">
-                          <div className="content-details">
-                              <h4>2021 Innova Crysta</h4> 
-                              <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
-                                 Booking Date : 02/02/2022</p>
-                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : 1234567890</p></div>
-                                </div>
-                                        </a>
-                                        <a className="feature-box" href="/buyCar/cars">
-                        <img
-                                src="https://royalcarsmangalore.in:5000/uploads/image_1640076729177download.jpg"
-                                class="feature-img"
-                                alt=""
-                            />
-                      <div className="feature-content">
-                          <div className="content-details">
-                              <h4>2021 Innova Crysta</h4> 
-                              <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
-                                 Booking Date : 02/02/2022</p>
-                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : 1234567890</p></div>
-                                </div>
-                                        </a>
-                                        
-</div>
-                                      
-
                         <Link to={filter === "sellorders" ? "/sell" : "#"} className="test_drive_car_btn" onClick={() => {
                            filter !== "sellorders" && props.getCustomerCars()
                             setShowAllCars(true)
