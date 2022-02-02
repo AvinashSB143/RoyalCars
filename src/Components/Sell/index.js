@@ -88,27 +88,6 @@ export const HowItsWork__listItem = ({
         <p class="HowItsWork__details">
           Sell your car hassle free
         </p>
-        <a class="styles__btn" href="/check-car-valuation/">
-          Sell your car
-          {/* <svg
-            transform="rotate(0 0 0)"
-            xmlns="http://www.w3.org/2000/svg"
-            stroke="#4169e1"
-            width="9"
-            height="9"
-            viewBox="0 0 14 8"
-          >
-            <path
-              fill="none"
-              fill-rule="evenodd"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2.5"
-              d="M386 48L392 54 398 48"
-              transform="translate(-385 -47)"
-            ></path>
-          </svg>{" "} */}
-        </a>
       </div>
     </div>
   );

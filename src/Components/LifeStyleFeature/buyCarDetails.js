@@ -42,6 +42,16 @@ const styles = theme => ({
   animated: {
     fontSize: "18px",
     fontWeight: "400"
+  },
+  testDriveBtn: {
+    backgroundColor: "#ffdf00 !important",
+    color: "#fff",
+    marginLeft: "20px",
+    borderRadius: "8px",
+    fontWeight: "bold",
+    fontSize: "15px",
+    color: "black !important"
+
   }
 });
 
@@ -430,7 +440,7 @@ const BuyCarDetails = (props) => {
               >
                 <Button
                   style={{
-                    backgroundColor: "#6300a3",
+                    backgroundColor: "#00011f",
                     color: "#fff",
                     borderRadius: "8px",
                     fontWeight: "bolder"
@@ -454,6 +464,9 @@ const BuyCarDetails = (props) => {
                     borderRadius: "8px",
                     fontWeight: "bolder"
 
+                  }}
+                  classes={{
+                    root: classes.testDriveBtn
                   }}
                   onClick={() => {
                     // if(props.authToken) {
@@ -592,7 +605,7 @@ const BuyCarDetails = (props) => {
               <div className="car_details_mobile_buttons">
                 <Button
                   style={{
-                    backgroundColor: "#4169e1",
+                    backgroundColor: "#00011f",
                     color: "#fff",
                     borderRadius: "8px",
                   }}
@@ -613,6 +626,9 @@ const BuyCarDetails = (props) => {
                     color: "#fff",
                     marginLeft: "20px",
                     borderRadius: "8px",
+                  }}
+                  classes={{
+                    root: classes.testDriveBtn
                   }}
                   onClick={() => {
                     // if(props.authToken) {

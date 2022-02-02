@@ -13,7 +13,8 @@ import {
     getBookedCars,
     sellOrders,
     logout,
-    selectedCar
+    selectedCar,
+    showSearchBar
  } from "../../actions"
 import PersonalInfo from './PersonalInfo';
 import ReferEarn from './referandEarn';
@@ -44,11 +45,12 @@ const AccountFilters = (props) => {
     const [showAllCars,setShowAllCars] = useState(false);
     const getUserInfo = useSelector(state => state.reducers)
     const carList = props.availableCarList && props.availableCarList.map((car) => {
+        const carImage = car.imagePath.split(",");
         return(
              <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}
              onClick={() => props.seletedCar(car)}>
                   <Link to = "/buyCar/cars">
-                  <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${car.imagePath}`} alt="Buy A Car" />
+                  <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${carImage[0]}`} alt="Buy A Car" />
                   </Link>
                   <div className="column_container"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info_sellOrder">{car.year}</h4><h4 className="car_name_info_sellOrder">{car.brand}</h4><h4 className="car_name_info_sellOrder">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
@@ -60,15 +62,16 @@ const AccountFilters = (props) => {
         )
     })
    
-    const customerTestDriveCars = props.availableCarList && props.availableCarList.filter((car) => {
+    const customerTestDriveCars = props.availableCarList && props.testDriveCars ? props.availableCarList.filter((car) => {
         return car.id === props.testDriveCars.carId
-    })
+    }) : [];
 
-    const testDriveCarsList = customerTestDriveCars && customerTestDriveCars.map((car) => {
+    const testDriveCarsList = customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
+        const carImage = car.imagePath.split(",");
         return(
                         <Link className="feature-box" href="#">
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
                                 class="feature-img"
                                 alt=""
                             />
@@ -80,16 +83,17 @@ const AccountFilters = (props) => {
                                   <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : {props.testDriveCars.phoneNumber}</p>
                             </div>
                         </div>
-                        </Link>
+                    </Link>
                 )
-    })
+    }) : [];
 
 
     const bookedCarsList = props.customerBookedCars && props.customerBookedCars.map((car) => {
+        const carImage = car.imagePath.split(",");
         return(
             <Link className="feature-box" href="#">
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
                                 class="feature-img"
                                 alt=""
                             />
@@ -104,10 +108,11 @@ const AccountFilters = (props) => {
     })
     
     const sellOrderList = props.customerSellOrderList && props.customerSellOrderList.map((car) => {
+        const carImage = car.imagePath.split(",");
         return(
             <Link className="feature-box" href="#">
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
                                 class="feature-img"
                                 alt=""
                             />
@@ -148,8 +153,11 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info" 
                     onClick={() => {
-                         props.getTestDriveCars() 
-                            setShowAllCars(false)
+                        if(props.userDetails) {
+                            props.getTestDriveCars(props.userDetails.phone);
+                            props.showSearchBar(true)
+                          } 
+                        setShowAllCars(false)
                         }
                     }
                     >
@@ -164,8 +172,11 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info"
                     onClick={() => {
-                        props.getBookedCars()
-                        setShowAllCars(false)   
+                        if(props.userDetails) {
+                            props.getBookedCars(props.userDetails.phone);
+                            props.showSearchBar(true)
+                           }
+                        setShowAllCars(false);
                     }}
                     >
                         <h4>Bookings</h4>
@@ -179,8 +190,11 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info"
                     onClick={()=> {
-                        props.sellOrders()
-                        setShowAllCars(false) 
+                        if(props.userDetails){
+                            props.sellOrders(props.userDetails.phone);
+                            props.showSearchBar(true)
+                    }
+                        setShowAllCars(false);
                     }}
                     >
                         <h4>Sell Orders</h4>
@@ -188,7 +202,11 @@ const AccountFilters = (props) => {
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
                 </Link>
-                <Link to="/account/refer_and_earn" className={`${filter === "refer_and_earn" && "item_focused"} account_filtered_options `}>
+                <Link to="/account/refer_and_earn" className={`${filter === "refer_and_earn" && "item_focused"} account_filtered_options `}
+                        onClick={() => 
+                            props.showSearchBar(false)
+                        }
+                >
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
@@ -198,7 +216,11 @@ const AccountFilters = (props) => {
                     </div>
                     <ArrowForwardIosIcon className="icon_pos"/>
                 </Link>
-                <Link to="/account/profileInformation" className={`${filter === "profileInformation" && "item_focused"} account_filtered_options `}>
+                <Link to="/account/profileInformation" className={`${filter === "profileInformation" && "item_focused"} account_filtered_options `}
+                        onClick={() => 
+                            props.showSearchBar(false)
+                        }
+                >
                     <PermIdentityIcon classes={{
                         root: classes.root
                     }}/>
@@ -211,6 +233,7 @@ const AccountFilters = (props) => {
                 <Link to="/homePage" className="account_filtered_options logout"
                 onClick={() => {
                     props.logout()
+                    props.showSearchBar(false)
                 }}
                 >
                     <PermIdentityIcon classes={{
@@ -234,13 +257,13 @@ const AccountFilters = (props) => {
                    {mainHeading.toUpperCase(0)}
                 </h2>
                 <div className={`${showAllCars ? "row_container" : "column_container"} account_filtered_cars`}>
-                 {filter === "testDrive" && (testDriveCarsList && testDriveCarsList.length !== 0) && 
+                 {filter === "testDrive" && !showAllCars && (testDriveCarsList && testDriveCarsList.length !== 0) && 
                  <div class="grid--4-cols"> {testDriveCarsList} </div>}
-                 {filter === "bookings" && (bookedCarsList && bookedCarsList.length !== 0) && 
+                 {filter === "bookings" && !showAllCars && (bookedCarsList && bookedCarsList.length !== 0) && 
                  <div class="grid--4-cols"> {bookedCarsList} </div>}
-                 {filter === "sellorders" && (sellOrderList && sellOrderList.length !== 0) && 
+                 {filter === "sellorders" && !showAllCars &&  (sellOrderList && sellOrderList.length !== 0) && 
                  <div class="grid--4-cols"> {sellOrderList} </div>}
-                 {filter === "profileInformation" && <PersonalInfo />}
+                 {filter === "profileInformation" &&  <PersonalInfo />}
                  {filter === "refer_and_earn" && <ReferEarn />}
                  {!showAllCars && !(filter === "profileInformation") && !(filter === "refer_and_earn") &&
                     <div className="column_container">
@@ -283,26 +306,31 @@ const mapDispatchToProps = dispatch => {
               selectedCar(data)
             )
         },
-        getTestDriveCars: () => {
+        getTestDriveCars: (phone) => {
             dispatch(
-                getTestDriveCars()
+                getTestDriveCars(phone)
             )
         },
-        getBookedCars: () => {
+        getBookedCars: (phoneNumber) => {
             dispatch(
-                getBookedCars()
+                getBookedCars(phoneNumber)
             )
         },
-        sellOrders: () => {
+        sellOrders: (phone) => {
             dispatch(
-                sellOrders()
+                sellOrders(phone)
             )
         },
         logout: () => {
             dispatch(
                 logout()
             )
-        }
+        },
+        showSearchBar: data => {
+            dispatch(
+              showSearchBar(data)
+            )
+          },
     }
 }
 

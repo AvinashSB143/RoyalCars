@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import "./lifestyle.css";
 import "../../styles/styles.css";
 import {
-    getCarsByCategory
+    getCarsByCategory,
+    showSearchBar
 } from "../../actions"
 // import history from "../history";
 
@@ -19,20 +20,28 @@ const LifeStyle = (props) => {
             </h2>
             <div className="lifeStyle_images">
                 <Link className="lifeStyle_image" to="/lifeStyle"
-                    onClick={() => (
-                        props.getCarsByCategory("family"),
-                        window.scroll(0, 0)
-                    )
+                    onClick={() => {
+                        props.getCarsByCategory("family");
+                        window.scroll(0, 0);
+                        props.showSearchBar(true)
+                    }
                     }>
                     <img alt="Family" className="lifeStyle_img" src={FamilyImage} />
                     <p className="Choice_Item">FAMILY</p>
                 </Link>
                 <Link className="lifeStyle_image" to="/lifeStyle"
-                    onClick={() => (props.getCarsByCategory("adventure"), window.scroll(0, 0))}>
+                    onClick={() => {props.getCarsByCategory("adventure");
+                     window.scroll(0, 0);
+                     props.showSearchBar(true)
+                    }}>
                     <img alt="Adventures" className="lifeStyle_img" src={AdventureImage} />
                     <p className="Choice_Item">ADVENTURE</p>
                 </Link>
-                <Link className="lifeStyle_image" to="/lifeStyle" onClick={() => (props.getCarsByCategory("value"), window.scroll(0, 0))}>
+                <Link className="lifeStyle_image" to="/lifeStyle" onClick={() => {
+                    props.getCarsByCategory("value");
+                    window.scroll(0, 0);
+                    props.showSearchBar(true)
+                }}>
                     <img alt="Value" className="lifeStyle_img" src={valueImage} />
                     <p className="Choice_Item">VALUE</p>
                 </Link>
@@ -54,6 +63,11 @@ const mapDispatchToProps = (dispatch) => {
         getCarsByCategory: data => {
             dispatch(
                 getCarsByCategory(data)
+            )
+        },
+        showSearchBar: data => {
+            dispatch(
+                showSearchBar(data)
             )
         }
     }

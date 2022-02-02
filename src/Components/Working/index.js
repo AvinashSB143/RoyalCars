@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./working.css";
 import "../../styles/styles.css";
 import { connect } from "react-redux";
-import { getAvailableCars, getCarsByBrand, enableLogUser } from "../../actions";
+import { getAvailableCars, getCarsByBrand, enableLogUser, showSearchBar } from "../../actions";
 
 import CarBuy from '../../assests/carBuy.jpg';
 import BuyFromHome from '../../assests/homecar.jpg';
@@ -32,7 +32,12 @@ const Working = (props) => {
             Over 6000 fully inspected cars. Best performance guaranteed
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/lifeStyle" onClick={() => (props.getAvailableCars(), window.scroll(0, 0))}>
+            <Link to="/lifeStyle" onClick={() => {
+              props.getAvailableCars();
+              window.scroll(0, 0);
+              props.showSearchBar(true)
+            }
+            }>
               {" "}
               View All Cars
             </Link>
@@ -52,7 +57,11 @@ const Working = (props) => {
             Easy appointment. Cars at your doorstep. Expert assistance
           </p>
           <div style={{ marginTop: "10px" }}>
-            <Link to="/availableCars" onClick={() => window.scroll(0, 0)}> Book Test Drive</Link>
+            <Link to="/availableCars" onClick={() => {
+              window.scroll(0, 0);
+              props.showSearchBar(true)}}
+            > Book Test Drive
+            </Link>
           </div>
         </div>
         <div className="working_img">
@@ -75,7 +84,9 @@ const Working = (props) => {
               }}
               onClick={() => {
                 props.getAvailableCars();
-              }}
+                props.showSearchBar(true)
+              }
+              }
             >
               {" "}
               Buy a Car
@@ -98,6 +109,7 @@ const Working = (props) => {
                 if (!props.authToken) {
                   props.enableLogUser(true);
                   window.scrollTo(0, 0);
+                  props.showSearchBar(false)
                 }
               }}
             > Sell a Car</Link>
@@ -125,6 +137,11 @@ const mapDispatchToProps = (dispatch) => {
     enableLogUser: data => {
       dispatch(
         enableLogUser(data)
+      )
+    },
+    showSearchBar: data => {
+      dispatch(
+        showSearchBar(data)
       )
     },
   };

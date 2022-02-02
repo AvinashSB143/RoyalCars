@@ -54,7 +54,8 @@ import {
   enableLogUser,
   getAssuredCars,
   createOTP,
-  disableSnackBar
+  disableSnackBar,
+  showSearchBar
 } from "../../actions"
 import styled from "styled-components";
 
@@ -418,7 +419,9 @@ class Header extends Component {
                 );
               if(this.props.userDetails) {
                 this.props.getTestDriveCars(this.props.userDetails.phone);
-              }  
+                this.props.showSearchBar(true)
+              }
+                
             }}
           >
             Test Drives
@@ -437,7 +440,8 @@ class Header extends Component {
                 );
                 if(this.props.userDetails) {
                   this.props.getBookedCars(this.props.userDetails.phone);
-                 }
+                  this.props.showSearchBar(true)
+                }
             }}
           >
             Bookings
@@ -456,6 +460,7 @@ class Header extends Component {
                 );
               if(this.props.userDetails){
                 this.props.sellOrders(this.props.userDetails.phone);
+                this.props.showSearchBar(true)
               }
             }}
           >
@@ -480,6 +485,7 @@ class Header extends Component {
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
+                this.props.showSearchBar(false)
             }}
           >
             Refer and Earn
@@ -496,6 +502,7 @@ class Header extends Component {
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
+                this.props.showSearchBar(false)
             }}
           >
             Profile Information
@@ -514,6 +521,7 @@ class Header extends Component {
             this.changeArrow();
             if (this.props.authToken) {
               this.props.logout();
+              this.props.showSearchBar(false)
               // this.setState({ showLoginContent: false });
               this.setState({
                 expandBuyCarSection: false,
@@ -819,6 +827,7 @@ class Header extends Component {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
                           if(this.props.userDetails) {
                             this.props.getTestDriveCars(this.props.userDetails.phone);
+                            this.props.showSearchBar(true)
                           } 
                         }}
                       >
@@ -842,7 +851,8 @@ class Header extends Component {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
                           if(this.props.userDetails) {
                             this.props.getBookedCars(this.props.userDetails.phone);
-                           }
+                            this.props.showSearchBar(true)
+                          }
                           }
                       }
                       >
@@ -866,7 +876,8 @@ class Header extends Component {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
                           if(this.props.userDetails){
                             this.props.sellOrders(this.props.userDetails.phone);
-                          }
+                            this.props.showSearchBar(true)
+                      }
                         }}
                       >
                         <StyledLink
@@ -887,7 +898,9 @@ class Header extends Component {
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
+                          this.props.showSearchBar(false)
                         }}
+                        
                       >
                         <StyledLink
                           to={this.props.authToken ? "/account/refer_and_earn" : "#"}
@@ -906,7 +919,8 @@ class Header extends Component {
                           padding: "1rem 0",
                         }}
                         onClick={() => {
-                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false })
+                          this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
+                          this.props.showSearchBar(false)
                         }}
                       >
                         <StyledLink
@@ -960,11 +974,11 @@ class Header extends Component {
               </div>
             )}
 
-            <Link to="/homePage" className="header_logo">
+            <Link to="/homePage" className="header_logo" onClick={() => this.props.showSearchBar(false)}>
               <img src={Logo} alt="App_LOGO" />
             </Link>
             <div className="header_search_bar hide_option ">
-              <div className="search_container">
+              {this.props.showSearchBartoUser && <div className="search_container">
                 <TextField
                   id="standard-search"
                   placeholder="Search field"
@@ -980,14 +994,18 @@ class Header extends Component {
                 <SearchIcon className="search_icon" onClick={
                   this.filterCarsBySearch
                 } />
+                
               </div>
+            }
             </div>
             <Link
               to="/lifeStyle"
               className="header_buy_car show_desktop_menu"
               onClick={() => {
                 this.props.getAvailableCars();
-              }}
+                this.props.showSearchBar(true)
+              }
+              }
             >
               <b>Buy Car</b>
             </Link>
@@ -998,6 +1016,7 @@ class Header extends Component {
                 this.setState({
                   showLoginContent: !this.props.authToken,
                 });
+                this.props.showSearchBar(false)
               }}
             >
               <b style={{ fontSize: "16px" }}>Sell Car</b>
@@ -1342,11 +1361,7 @@ class Header extends Component {
                       Forgot Password
                     </Link>
                   </div>
-                  {this.state.loginAttempted &&
-                    !this.props.authToken &&
-                    this.state.userName &&
-                    this.state.password &&
-                    !this.props.signUpSuccess && (
+                  {this.props.authenticationStatus === false && (
                       <p style={{ color: "red", margin: "5px" }}>
                         Invalid Credentials
                       </p>
@@ -1468,6 +1483,8 @@ const mapStateToProps = state => {
     userDetails: state.reducers.userDetails,
     OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
     enableUserToBook: state.reducers.enableUserToBook,
+    showSearchBartoUser: state.reducers.showSearchBartoUser,
+    authenticationStatus: state.reducers.authenticationStatus
   }
 
 }
@@ -1542,6 +1559,11 @@ const mapDispatchToProps = dispatch => {
     enableLogUser: data => {
       dispatch(
         enableLogUser(data)
+      )
+    },
+    showSearchBar: data => {
+      dispatch(
+        showSearchBar(data)
       )
     },
     disableSnackBar: () => {

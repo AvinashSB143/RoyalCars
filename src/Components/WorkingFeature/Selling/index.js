@@ -42,7 +42,10 @@ const CarSalesWorking = (props) => {
         <div>
             <div className="main_container column_container car-working-feature">
                 <div className="more_about_us" style={{ backgroundImage: `url("https://singularityhub.com/wp-content/uploads/2019/02/cockpit-view-self-driving-car-night-automation-shutterstock-685666552-1068x601.jpg")` }}>
-                    <div>
+                    <div style={{
+                        position: "relative",
+                        top: "25%"
+                    }}>
                         <h1>In it to drive it</h1>
                         <h2>
                             <span>Four wheels fuel a billion dreams and</span>

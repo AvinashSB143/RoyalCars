@@ -17,7 +17,8 @@ const initialState = {
     customerSellOrderList: [],
     carRegisteredForSell: false,
     bookedOrderId: "",
-    customerCarBooked: null
+    customerCarBooked: null,
+    showSearchBartoUser: false
 }
 
 const reducers = (state = initialState, action) => {
@@ -198,6 +199,12 @@ const reducers = (state = initialState, action) => {
         return {
             ...state,
             referFriendSuccessFul: false
+        }
+    }
+    if(action.type === "TOGGLE_SEARCH_BAR") {
+        return {
+            ...state,
+            showSearchBartoUser: action.payload
         }
     }
     if(action.type === "LOGOUT") {

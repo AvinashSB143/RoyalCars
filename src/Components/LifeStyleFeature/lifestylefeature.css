@@ -285,6 +285,7 @@ li {
 .car_list_container {
   flex-wrap: wrap;
   min-height: 100vh;
+  justify-content: space-evenly;
 }
 
 .car_km_ifo {

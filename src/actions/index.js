@@ -378,6 +378,14 @@ export const disableSnackBar = () => {
                     })
                 }
 }
+export const showSearchBar = (data) => {
+    return dispatch => {
+                    dispatch ({
+                        type: "TOGGLE_SEARCH_BAR",
+                        payload: data
+                    })
+                }
+}
 export const disableSnackBarReferral = () => {
     return dispatch => {
                     dispatch ({
@@ -408,7 +416,7 @@ export const getTestDriveCars = data => {
 export const getBookedCars = phoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getBuyCar',{
+            axios.post('customerCar/getBuyCar',{
                 phoneNumber: phoneNumber
             }).then(res => {
                 if(res && res.data) {
@@ -427,7 +435,7 @@ export const getBookedCars = phoneNumber => {
 export const sellOrders = userPhoneNumber => {
     return dispatch => {
         try {
-            axios.get('customerCar/getCarStatus',{
+            axios.post('customerCar/getCarStatus',{
                 phoneNumner: userPhoneNumber
             }).then(res => {
                 if(res && res.data) {

@@ -84,22 +84,23 @@ const FeaturedCars = (props) => {
             <div class="grid--4-cols">
                 {/* <Carousel slide={3}> */}
                 {props.assuredCarList && props.assuredCarList.map((car) => {
+                    const carImage = car.imagePath.split(",");
                     return (
                         <Link to="/buyCar/cars" class="feature-box" onClick={() => {
                             props.selectedCar(car)
                         }}>
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
                                 class="feature-img"
                                 alt=""
                             />
                             <div class="feature-content">
                                 <div className="content-details">
-                                    <h4>{car && car.year} {car && car.brand} {car && car.model}</h4>
+                                    <h4 style={{margin: "10px auto"}}>{car && car.year} &nbsp; &nbsp; {car && car.brand} &nbsp; &nbsp; {car && car.model}</h4>
                                     <p  style={{lineHeight: "20px",fontSize: "14px",textTransform: "capitalize"}}><span>{car && car.kmDriven} Kms</span>
-                                        <span>.{car && car.fuelType}</span>
-                                        <span>.{car && car.transmission}</span></p>
-                                    <p style={{fontWeight: "bolder",fontSize: "24px"}} >₹ {car.budget}</p>
+                                    &nbsp; &nbsp;<span>.{car && car.fuelType}</span>
+                                    &nbsp; &nbsp;<span>.{car && car.transmission}</span></p>
+                                    &nbsp; &nbsp;<p style={{fontWeight: "bolder",fontSize: "24px"}} >₹ {car.budget}</p>
                                 </div>
                                 <div className="location-details">
                                     <p style={{ borderTop: "0.5px gray solid", paddingTop: "8px" }}>{car.location}</p>

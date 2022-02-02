@@ -21,7 +21,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Link } from "react-router-dom";
-import { selectedCar, getAvailableCars } from "../../actions";
+import { selectedCar, getAvailableCars, showSearchBar } from "../../actions";
 
 const styles = (theme) => ({
   root: {
@@ -402,12 +402,16 @@ const LifeStyleFeature = (props) => {
       ? filteredCarsList
       : props.availableCarList && props.availableCarList
   ).map((car) => {
+      const carImage = car.imagePath.split(",");
     return (
       <div className="column_container car_list_buyCar hide_option">
-        <Link to="/buyCar/cars" onClick={() => props.seletedCar(car)}>
+        <Link to="/buyCar/cars" onClick={() => {
+          props.seletedCar(car);
+          props.showSearchBar(false)
+        }}>
           <img
             className="filter_car_img"
-            src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+            src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
             alt="Selected cars"
           />
         </Link>
@@ -417,7 +421,6 @@ const LifeStyleFeature = (props) => {
             <h4 className="car_name_info">{car.year}</h4>
             <h4 className="car_name_info">{car.brand}</h4>
             <h4 className="car_name_info">{car.model}</h4>
-            <FavoriteBorderIcon classes={{ root: classes.icon_root }} />
           </span>
           <div className="row_container car_km_ifo">
             <span className="row_container car_details">
@@ -437,12 +440,17 @@ const LifeStyleFeature = (props) => {
   let showFilteredCarList =
     filteredCarsList.length !== 0 &&
     filteredCarsList.map((car) => {
+      const carImage = car.imagePath.split(",");
       return (
         <div className="column_container car_list_buyCar hide_option">
-          <Link to="/buyCar/cars" onClick={() => props.seletedCar(car)}>
+          <Link to="/buyCar/cars" onClick={() =>  {
+            props.seletedCar(car);
+            props.showSearchBar(false)
+          }
+            }>
             <img
               className="filter_car_img"
-              src={`https://royalcarsmangalore.in:5000/${car.imagePath}`}
+              src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
               alt="Selected cars"
             />
           </Link>
@@ -1121,6 +1129,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getCustomerCars: () => {
       dispatch(getAvailableCars());
+    },
+    showSearchBar: (data) => {
+      dispatch(showSearchBar(data));
     },
   };
 };

@@ -2,7 +2,7 @@ import "./brands.css";
 import "../../styles/styles.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAvailableCars, getCarsByBrand } from "../../actions";
+import { getAvailableCars, getCarsByBrand, showSearchBar } from "../../actions";
 
 import Skoda from "../../assests/Skoda.png";
 import Toyota from "../../assests/Toyota.png";
@@ -31,13 +31,15 @@ const brands = [
 const PopularBrands = (props) => {
 
   const displayCarsByBrand = (brand, index) => {
-      props.getCarsByBrand(brand)
-      window.scroll(0,0)
+      props.getCarsByBrand(brand);
+      window.scroll(0,0);
+      props.showSearchBar(true)
   }
 
   const getAllCars = () => {
-    props.getAvailableCars()
-    window.scroll(0,0)
+    props.getAvailableCars();
+    window.scroll(0,0);
+    props.showSearchBar(true)
   }
   return (
     <div className="main_container column_container">
@@ -57,7 +59,8 @@ const PopularBrands = (props) => {
           <a class="PopularBrands__brand" hre="#" >
             <Link to="/lifeStyle" class="PopularBrands__content" 
             onClick={() => {
-              displayCarsByBrand(brand.brandName, index)
+              displayCarsByBrand(brand.brandName, index);
+
             }
             }>
           <img alt={brand.brandName} src={brand.url} style={{height: "60px",minHeight: "60px"}} />
@@ -90,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getCarsByBrand: (data) => {
       dispatch(getCarsByBrand(data));
+    },
+    showSearchBar: (data) => {
+      dispatch(showSearchBar(data));
     },
   };
 };
