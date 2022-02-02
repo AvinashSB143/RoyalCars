@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {Link, useParams} from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -38,6 +38,8 @@ const AccountFilters = (props) => {
     const {filter} = useParams();
     const {classes} = props;
 
+    const customertestDriveCarsList = useRef();
+
     const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
     const PageTitle = ["TEST DRIVES", "BOOKINGS", "SELL ORDERS", "HELP & SUPPORT", "REFER & EARN", "PROFILE"];
 
@@ -62,10 +64,26 @@ const AccountFilters = (props) => {
         )
     })
    
-    const customerTestDriveCars = props.availableCarList && props.testDriveCars ? props.availableCarList.filter((car) => {
-        return car.id === props.testDriveCars.carId
-    }) : [];
 
+    useEffect(() => {
+        if(props.testDriveCars && customertestDriveCarsList.current !== props.testDriveCars.length && (props.availableCarList && props.availableCarList.length == 0)) {
+            props.getCustomerCars();
+            customertestDriveCarsList.current = props.testDriveCars.length
+        }
+    },[props.testDriveCars])
+
+    const getSortedTestDriveCars = (ar1,ar2) => {
+        let res = [];
+        res = ar1.filter(el => {
+          return ar2.find(element => {
+             return element.carId === el._id;
+          });
+        });
+        return res;
+    }
+
+    const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList, props.testDriveCars);
+         
     const testDriveCarsList = customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
         const carImage = car.imagePath.split(",");
         return(
