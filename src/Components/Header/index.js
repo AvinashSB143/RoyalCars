@@ -943,6 +943,7 @@ class Header extends Component {
                           this.setState({ showLoginContent: false, expandLoginDetails: false });
                           if (this.props.authToken) {
                             this.props.logout();
+                            localStorage.clear();
                           }
                         }}
                       >

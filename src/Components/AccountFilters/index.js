@@ -233,7 +233,8 @@ const AccountFilters = (props) => {
                 <Link to="/homePage" className="account_filtered_options logout"
                 onClick={() => {
                     props.logout()
-                    props.showSearchBar(false)
+                    props.showSearchBar(false);
+                    localStorage.clear();
                 }}
                 >
                     <PermIdentityIcon classes={{
