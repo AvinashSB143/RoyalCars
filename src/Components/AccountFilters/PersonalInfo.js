@@ -13,7 +13,7 @@ const PersonalInfo = (props) => {
                 <div style = {{marginBottom:"24px"}}>
                     <h3 style={{fontSize:"16px",lineHeight:"20px",marginBottom:"12px"}}>Full Name</h3>
                     <div className="form-input-name">
-                    <input type="text" maxLength="50" name="account-name" value={userDetails ?userDetails.username : ""} />
+                    <input type="text" maxLength="50" name="account-name" value={userDetails ?userDetails.username : ""} disabled />
                     <label className="name_label" for="account-name">Name</label>
                     </div>
                 </div>
@@ -28,13 +28,13 @@ const PersonalInfo = (props) => {
                     <h3 style={{fontSize:"16px",lineHeight:"20px",marginBottom:"12px"}}>Email Address</h3>
                     <div className="form-input-name">
                     <input type="text" maxLength="50" name="account-name" value={userDetails ? userDetails.email: ""}
-                    placeholder="Enter Your Email"/>
+                    />
                     <label className="name_label" for="account-name" data-focus-value = "Name"></label>
                     </div>
                 </div>
                 <div style = {{marginBottom:"24px"}}>
-                    <button className="form_button" onClick={() => {}}>
-                        <span>Edit Info</span></button>
+                    {/* <button className="form_button" onClick={() => {}}>
+                        <span>Okay</span></button> */}
                 </div>
             </form>
             </div>
