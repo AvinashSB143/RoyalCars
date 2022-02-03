@@ -436,7 +436,7 @@ export const sellOrders = userPhoneNumber => {
     return dispatch => {
         try {
             axios.post('customerCar/getCarStatus',{
-                phoneNumner: userPhoneNumber
+                phoneNumber: userPhoneNumber
             }).then(res => {
                 if(res && res.data) {
                     dispatch ({

@@ -76,15 +76,23 @@ const AccountFilters = (props) => {
         let res = [];
         res = ar1.filter(el => {
           return ar2.find(element => {
-             return element.carId === el._id;
+            return element.carId === el._id;
           });
         });
+        res.forEach((item, index) => {
+            props.testDriveCars.forEach((sortedCar) => {
+                if(item._id === sortedCar.carId) {
+                   res[index] = {...item, "bookedDate": sortedCar.bookedDate, "phoneNumber": sortedCar.phoneNumber} 
+                }
+            })
+        })
+
         return res;
     }
 
     const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList, props.testDriveCars);
          
-    const testDriveCarsList = customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
+    const testDriveCarsList = customerTestDriveCars && customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
         const carImage = car.imagePath.split(",");
         return(
                         <Link className="feature-box" href="#">
@@ -97,8 +105,8 @@ const AccountFilters = (props) => {
                           <div className="content-details">
                               <h4>{car.year} {car.brand} {car.model}</h4> 
                               <p style={{lineHeight: "20px", textTransform: "capitalize"}}>
-                                 Booking Date : {props.testDriveCars.bookedDate}</p>
-                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : {props.testDriveCars.phoneNumber}</p>
+                                 Booking Date : {car.bookedDate}</p>
+                                  <p style={{fontWeight: "bolder", fontSize: "20xpx"}}>Booking Contact : {car.phoneNumber}</p>
                             </div>
                         </div>
                     </Link>
@@ -126,13 +134,13 @@ const AccountFilters = (props) => {
     })
     
     const sellOrderList = props.customerSellOrderList && props.customerSellOrderList.map((car) => {
-        const carImage = car.imagePath.split(",");
+        const carImage = car.imagePath && car.imagePath.split(",");
         return(
             <Link className="feature-box" href="#">
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage && carImage[0] ? carImage[0] : "" }`}
                                 class="feature-img"
-                                alt=""
+                                alt="Car Image Unavailable"
                             />
                         <div className="feature-content">
                           <div className="content-details">
@@ -290,7 +298,7 @@ const AccountFilters = (props) => {
                            filter !== "sellorders" && props.getCustomerCars()
                             setShowAllCars(true)
                         }}>
-                           {filter === "sellorders" ? "Sell Car" : "See all cars"} 
+                           {filter === "sellorders" ? "Sell My Car" : "See all cars"} 
                         </Link>
                     </div>    
                 }
