@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 0px;
+  padding-top: 30px;
 }
 
 .row_container {
@@ -72,7 +72,7 @@ a, a:hover{
 
 .column_container.mobile_login_container p {
   font-size: 20px !important;
-  margin-top: 7px;
+  margin-top: 3px;
   font-weight: bold;
 }
 

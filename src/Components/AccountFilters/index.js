@@ -49,15 +49,15 @@ const AccountFilters = (props) => {
     const carList = props.availableCarList && props.availableCarList.map((car) => {
         const carImage = car.imagePath.split(",");
         return(
-             <div className={`column_container ${showAllCars ? "car_list_testDrive" : "car_list"}`}
+             <div className={`column_container ${showAllCars ? "car_list_testDrive feature-box" : "car_list"}`}
              onClick={() => props.seletedCar(car)}>
                   <Link to = "/buyCar/cars">
                   <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${carImage[0]}`} alt="Buy A Car" />
                   </Link>
-                  <div className="column_container"  style={{position: "relative"}}>
+                  <div className="column_container account-cars"  style={{position: "relative"}}>
                      <span className="row_container description"> <h4 className="car_name_info_sellOrder">{car.year}</h4><h4 className="car_name_info_sellOrder">{car.brand}</h4><h4 className="car_name_info_sellOrder">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
                      <div className="row_container car_km_ifo">
-                       <span className="row_container car_details"><p className="car_info">{car.kmDriven} KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
+                       <span className="row_container car_details"><p className="car_info">{car.kmDriven}KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
                      </div>
                   </div>
               </div>

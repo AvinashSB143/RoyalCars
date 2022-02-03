@@ -72,9 +72,13 @@ h4 {
 }
 
 .cars_offered {
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
   width: 70%;
-  background-color: hsla(0, 0%, 67.5%, 0.2)
+  /* background-color: hsla(0, 0%, 67.5%, 0.2) */
+}
+
+.cars_offered ul a{
+  color: #fff;
 }
 
 .account_filtered_cars {
@@ -128,12 +132,12 @@ h4 {
 }
 
 .description {
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-height: 1.5rem;
 }
 .car_km_ifo {
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .car_details {
@@ -150,14 +154,21 @@ h4 {
 }
 .test_drive_car_btn {
   padding: 5px;
-  margin: 10px auto;
+  margin: 100px auto;
   font-size: 20px;
   font-weight: 700;
-  background: red;
-  color: white;
+  background: #ffdf00;
+  color: black;
   position: relative;
-  top: 50%;
-  text-decoration: none;
+  border-radius: 5px;
+}
+
+.account-cars {
+  position: relative;
+  background: #eee;
+  /* border-radius: 6px; */
+  padding: 11px;
+  margin-top: -10px;
 }
 .profile_form {
   box-shadow: none;
@@ -172,6 +183,13 @@ h4 {
   /* font-family: futura-demi; */
   color: #2e054e;
   margin-top: 16px !important;
+}
+.AccountFilters-arrow_root-5{
+  vertical-align: middle;
+}
+.cars_offered ul{
+  padding: 20px;
+  background-color: #00011e;
 }
 .profile_form .profile_form_detail {
   width: 50%;
@@ -431,6 +449,9 @@ h4 {
   .car_list_testDrive {
     width: 100%;
     margin: 15px auto;
+  }
+  .car_list_testDrive .filter_car_img{
+    width: 100%;
   }
 }
   @media only screen and (max-width:768px){

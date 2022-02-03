@@ -462,7 +462,7 @@ const LifeStyleFeature = (props) => {
     filteredCarsList.map((car) => {
       const carImage = car.imagePath.split(",");
       return (
-        <div className="column_container car_list_buyCar hide_option">
+        <div className="column_container car_list_buyCar hide_option feature-box">
           <Link to="/buyCar/cars" onClick={() =>  {
             saveSelectedCar(car)
           }
@@ -473,7 +473,7 @@ const LifeStyleFeature = (props) => {
               alt="Selected cars"
             />
           </Link>
-          <div className="column_container" style={{ position: "relative" }}>
+          <div className="column_container feature-content" style={{ position: "relative" }}>
             <span className="row_container description">
               {" "}
               <h4 className="car_name_info">{car.year}</h4>
@@ -483,7 +483,7 @@ const LifeStyleFeature = (props) => {
             </span>
             <div className="row_container car_km_ifo">
               <span className="row_container car_details">
-                <p className="car_info">{car.kmDriven} KM</p>
+                <p className="car_info">{car.kmDriven}KM</p>
                 <p className="car_info">{car.fuelType}</p>{" "}
                 <p className="car_info">{car.transmission}</p>
               </span>
@@ -1087,7 +1087,7 @@ const LifeStyleFeature = (props) => {
             : "colunm_container featured_filtered_cars mobile_buy_main_container"
         }
       >
-        <ul>
+        {/* <ul>
           <Link
             to="/homePage"
             style={{ marginRight: "15px" }}
@@ -1104,16 +1104,16 @@ const LifeStyleFeature = (props) => {
               FILTERS
             </button>
           ) : null}
-        </ul>
+        </ul> */}
         <div className="row_container  selected_filter_list hide_option">
           <button className="clear_Filter_btn" onClick={clearAllFilters}>
             {" "}
             <ReplayIcon /> Clear All Filters
           </button>
         </div>
-        {props.availableCarList && props.availableCarList.length !== 0 && (
-          <p>Used Family Cars</p>
-        )}
+          {/* {props.availableCarList && props.availableCarList.length !== 0 && (
+            <p>Used Family Cars</p>
+          )} */}
         <div className="row_container car_list_container">
           {filteredCarsList && filteredCarsList.length !== 0 ? (
             <> {showFilteredCarList}</>

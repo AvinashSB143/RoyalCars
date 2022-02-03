@@ -295,6 +295,7 @@ li {
 .car_list_buyCar {
   width: 30%;
   margin: 1rem 0.5rem;
+  height: max-content;
 }
 
 .car_list_buyCar img {

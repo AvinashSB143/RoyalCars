@@ -732,6 +732,7 @@ class Header extends Component {
                   style={{
                     height: "auto",
                     marginLeft: "-1rem",
+                    borderBottom: "0.5px solid grey"
                   }}
                 >
                   <Accordion>
@@ -748,9 +749,7 @@ class Header extends Component {
                     <AccordionDetails>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -764,7 +763,7 @@ class Header extends Component {
                           to="/how-it-works/buying/"
                           className="row_container mobile_login_content"
                         >
-                          <p style={{ fontSize: "25px", marginTop: "-25px" }}>
+                          <p style={{ fontSize: "25px", marginTop: "-25px",  padding: "5px"  }}>
                             {" "}
                             Car Buying Process
                           </p>
@@ -774,9 +773,7 @@ class Header extends Component {
                     <AccordionDetails>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "0 0",
                         }}
                         onClick={() => {
                           this.setState({
@@ -819,9 +816,7 @@ class Header extends Component {
                     <AccordionDetails>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
@@ -835,7 +830,7 @@ class Header extends Component {
                           to={this.props.authToken ? "/account/testDrive" : "#"}
                           className="row_container mobile_login_content"
                         >
-                          <p style={{ fontSize: "25px", marginTop: "-25px" }}>
+                          <p style={{ fontSize: "25px", marginTop: "-25px",  padding: "5px"  }}>
                             {" "}
                             Test Drives
                           </p>
@@ -843,9 +838,7 @@ class Header extends Component {
                       </div>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
@@ -868,9 +861,7 @@ class Header extends Component {
                       </div>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
@@ -892,9 +883,7 @@ class Header extends Component {
                       </div>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false, });
@@ -914,9 +903,7 @@ class Header extends Component {
                       </div>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: !this.props.authToken, expandLoginDetails: false });
@@ -935,9 +922,7 @@ class Header extends Component {
                       </div>
                       <div
                         style={{
-                          borderBottom: "0.5px solid grey",
                           height: "auto",
-                          padding: "1rem 0",
                         }}
                         onClick={() => {
                           this.setState({ showLoginContent: false, expandLoginDetails: false });

@@ -41,6 +41,7 @@
   font-size: 12px;
   float: left;
   color: white;
+  margin-top: 3px;
 }
 
 .Header_options {
@@ -85,6 +86,10 @@
   z-index: 2;
   background-color: white;
   border-radius: 20px;
+}
+
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 8px 16px 0px !important;
 }
 
 .options {
@@ -727,7 +732,8 @@ margin: 0 20px;
   .css-ahj2mt-MuiTypography-root{
     font-family: inherit !important;
   }
-  .css-i4bv87-MuiSvgIcon-root,.column_container.mobile_login_container p{
+  .mobile_login_icon_pos,
+  .column_container.mobile_login_container p{
     color: #00011f;
   }
   .mobile_login_closeIcon_pos svg{
@@ -740,6 +746,8 @@ margin: 0 20px;
   }
   .mobile_login_icon_pos {
     margin: 0.35rem 0;
+    color: #00011f;
+
   }
 }
 
