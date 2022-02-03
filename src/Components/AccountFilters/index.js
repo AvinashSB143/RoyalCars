@@ -55,7 +55,7 @@ const AccountFilters = (props) => {
                   <img className="filter_car_img" src={`https://royalcarsmangalore.in:5000/${carImage[0]}`} alt="Buy A Car" />
                   </Link>
                   <div className="column_container account-cars"  style={{position: "relative"}}>
-                     <span className="row_container description"> <h4 className="car_name_info_sellOrder">{car.year}</h4><h4 className="car_name_info_sellOrder">{car.brand}</h4><h4 className="car_name_info_sellOrder">{car.model}</h4><FavoriteBorderIcon classes={{root: classes.icon_root}}/></span>
+                     <span className="row_container description"> <h4 className="car_name_info_sellOrder">{car.year}</h4> &nbsp;&nbsp;<h4 className="car_name_info_sellOrder">{car.brand}</h4>&nbsp;&nbsp;<h4 className="car_name_info_sellOrder">{car.model}</h4></span>
                      <div className="row_container car_km_ifo">
                        <span className="row_container car_details"><p className="car_info">{car.kmDriven}KM</p><p className="car_info">{car.fuelType}</p> <p className="car_info">{car.transmission}</p></span>
                      </div>
