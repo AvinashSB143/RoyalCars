@@ -418,11 +418,10 @@ const LifeStyleFeature = (props) => {
           localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
   }
 
-  const carList = (
-    filteredCarsList && filteredCarsList.length !== 0
+  const carList = 
+    (filteredCarsList && filteredCarsList.length !== 0
       ? filteredCarsList
-      : props.availableCarList && props.availableCarList
-  ).map((car) => {
+      : props.availableCarList && props.availableCarList.length!== 0 ? props.availableCarList : []).map((car) => {
       const carImage = car.imagePath.split(",");
     return (
       <div className="column_container car_list_buyCar hide_option">

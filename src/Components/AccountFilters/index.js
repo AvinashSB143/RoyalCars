@@ -182,7 +182,10 @@ const AccountFilters = (props) => {
                         if(props.userDetails) {
                             props.getTestDriveCars(props.userDetails.phone);
                             props.showSearchBar(true)
-                          } 
+                        }
+                        else {
+                            window.location.href("https://royalcarsmangalore.in")
+                        } 
                         setShowAllCars(false)
                         }
                     }

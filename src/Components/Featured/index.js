@@ -3,7 +3,7 @@ import "../../styles/styles.css";
 import { connect } from 'react-redux';
 import CarouselModule from '../utils/Carousel';
 import { Link } from 'react-router-dom';
-import { selectedCar } from "../../actions";
+import { selectedCar, showSearchBar } from "../../actions";
 import { Carousel } from '@trendyol-js/react-carousel';
 
 
@@ -67,7 +67,23 @@ const images = [
     }
 ];
 
+
 const FeaturedCars = (props) => {
+    
+const saveSelectedCar = (car) => {
+    props.selectedCar(car);
+    props.showSearchBar(false);
+    localStorage.setItem("selectedCarYear", car.year);
+    localStorage.setItem("selectedCarbrand", car.brand);
+    localStorage.setItem("selectedCarModel", car.model);
+    localStorage.setItem("selectedCarFuelType", car.fuelType);
+    localStorage.setItem("selectedCarTransmission", car.transmission);
+    localStorage.setItem("selectedCarImagePath", car.imagePath);
+    localStorage.setItem("selectedCarBudget", car.budget);
+    localStorage.setItem("selectedCarkmDriven", car.kmDriven);
+    localStorage.setItem("selectedCarinsurance", car.insurance);
+    localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
+}
     return (
         <div className="main_container column_container">
             <h2>
@@ -87,7 +103,8 @@ const FeaturedCars = (props) => {
                     const carImage = car.imagePath.split(",");
                     return (
                         <Link to="/buyCar/cars" class="feature-box" onClick={() => {
-                            props.selectedCar(car)
+                            // props.selectedCar(car)
+                            saveSelectedCar(car)
                         }}>
                             <img
                                 src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
@@ -129,6 +146,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         selectedCar: (data) => {
             dispatch(selectedCar(data));
+        },
+        showSearchBar: (data) => {
+            dispatch(showSearchBar(data));
         },
     }
 };
