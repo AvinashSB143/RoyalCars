@@ -344,9 +344,9 @@ const BuyCarDetails = (props) => {
                   <span> &nbsp; ₹ {selectedCar ? selectedCar.budget : selectedCarBudget}</span>
                 </div>
                 <div className="carFeature">
-                  {((selectedCar && selectedCar.insurance) || selectedCarinsurance) && <div className="insurance_details insurance_details__selected">{(selectedCar && selectedCar.insurance) ?  selectedCar.insurance : selectedCarinsurance} Insurance</div>}
-                  {((selectedCar && selectedCar.insuranceValidTill) || selectedCarinsuranceValidTill) && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
-                  {(selectedCar && selectedCar.insuranceValidTill) ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill }</div>}
+                  {((selectedCar && selectedCar.insurance) || selectedCarinsurance !== "undefined") && <div className="insurance_details insurance_details__selected">{(selectedCar && selectedCar.insurance) ?  selectedCar.insurance : selectedCarinsurance ? selectedCarinsurance : ""} Insurance</div>}
+                  {((selectedCar && selectedCar.insuranceValidTill) || selectedCarinsuranceValidTill !== "undefined") && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
+                  {(selectedCar && selectedCar.insuranceValidTill) ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill ? selectedCarinsuranceValidTill : "" }</div>}
                 </div>
                 <div className="testDrive">
                   <svg
@@ -499,7 +499,7 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Year</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.year}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.year ? selectedCar.year  : selectedCarYear ? selectedCarYear : "" }</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -507,7 +507,7 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Car Brand</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.brand}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.brand ? selectedCar.brand : selectedCarbrand ? selectedCarbrand : ""}</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -515,7 +515,7 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">KM Driven</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.kmDriven}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.kmDriven ? selectedCar.kmDriven : selectedCarkmDriven ? selectedCarkmDriven : ""  }</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -523,7 +523,7 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Fuel Type</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.fuelType ? selectedCar.fuelType : selectedCarFuelType ? selectedCarFuelType : "" }</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -531,7 +531,7 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Budget</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">₹ {selectedCar && selectedCar.budget}</h2>
+                  <h2 className="car_detail_desc_val">₹ {selectedCar && selectedCar.budget ? selectedCar.budget : selectedCarBudget ? selectedCarBudget : "" }</h2>
                 </div>
               </div>
               <div className="car_details_item colum_container">
@@ -539,23 +539,23 @@ const BuyCarDetails = (props) => {
                   <p className="car_detail_desc">Transmission</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.transmission ? selectedCar.transmission : selectedCarTransmission ? selectedCarTransmission : "" }</h2>
                 </div>
               </div>
-              {selectedCar && selectedCar.insuranceValidTill && <div className="car_details_item colum_container">
+              {((selectedCar && selectedCar.insuranceValidTill) || selectedCarinsuranceValidTill !== "undefined") && <div className="car_details_item colum_container">
                 <div>
                   <p className="car_detail_desc">Insurance Validity</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insuranceValidTill}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insuranceValidTill ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill ? selectedCarinsuranceValidTill : "" }</h2>
                 </div>
               </div>}
-              {selectedCar && selectedCar.insurance && <div className="car_details_item colum_container">
+              {((selectedCar && selectedCar.insurance) || selectedCarinsurance !== "undefined" ) && <div className="car_details_item colum_container">
                 <div>
                   <p className="car_detail_desc">Insurance Type</p>
                 </div>
                 <div>
-                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance}</h2>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance ? selectedCar.insurance : selectedCarinsurance ? selectedCarinsurance : ""}</h2>
                 </div>
               </div>}
               <div className="transmission_details location_info">
