@@ -160,7 +160,8 @@ const reducers = (state = initialState, action) => {
         return {
             ...state,
             isBookedTestDriveSuccessFul: false,
-            customerCarBooked: null
+            customerCarBooked: null,
+            OTPVerificationSuccessful: false
         }
     }
     if(action.type === "DISABLE_OTP_VALIDATION") {
