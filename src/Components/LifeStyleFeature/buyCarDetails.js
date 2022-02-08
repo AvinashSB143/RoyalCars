@@ -73,6 +73,7 @@ const BuyCarDetails = (props) => {
   const selectedCarBudget = localStorage.getItem("selectedCarBudget");
   const selectedCarkmDriven = localStorage.getItem("selectedCarkmDriven");
   const selectedCarinsurance = localStorage.getItem("selectedCarinsurance");
+  const selectedCarVariant = localStorage.getItem("selectedCarVariant");
   const selectedCarinsuranceValidTill = localStorage.getItem("selectedCarinsuranceValidTill");
   const carsImages = selectedCar ? selectedCar.imagePath.split(",") : selectedCarImagePath.split(",");
 
@@ -346,8 +347,13 @@ const BuyCarDetails = (props) => {
                 <div className="carFeature">
                   {((selectedCar && selectedCar.insurance) || selectedCarinsurance !== "undefined") && <div className="insurance_details insurance_details__selected">{(selectedCar && selectedCar.insurance) ?  selectedCar.insurance : selectedCarinsurance ? selectedCarinsurance : ""} Insurance</div>}
                   {((selectedCar && selectedCar.insuranceValidTill) || selectedCarinsuranceValidTill !== "undefined") && <div className="insurance_details insurance_details__Validity"> Valid Till &nbsp;
-                  {(selectedCar && selectedCar.insuranceValidTill) ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill ? selectedCarinsuranceValidTill : "" }</div>}
+                  {(selectedCar && selectedCar.insuranceValidTill) ? selectedCar.insuranceValidTill : selectedCarinsuranceValidTill ? selectedCarinsuranceValidTill : "" }
+                </div>}
                 </div>
+                {selectedCar && selectedCar.variant && <div className="insurance_details ">
+                {/* {(selectedCar && selectedCar.variant) ? selectedCar.variant: ""} */}
+                <span>variant: &nbsp; {(selectedCar && selectedCar.variant) ? selectedCar.variant: ""}</span>
+                </div>}
                 <div className="testDrive">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -558,6 +564,16 @@ const BuyCarDetails = (props) => {
                   <h2 className="car_detail_desc_val">{selectedCar && selectedCar.insurance ? selectedCar.insurance : selectedCarinsurance ? selectedCarinsurance : ""}</h2>
                 </div>
               </div>}
+              {((selectedCar && selectedCar.variant) || selectedCarinsurance !== "undefined" ) && 
+              <div className="car_details_item colum_container car_cariant">
+                <div>
+                  <p className="car_detail_desc">variant</p>
+                </div>
+                <div>
+                  <h2 className="car_detail_desc_val">{selectedCar && selectedCar.variant ? selectedCar.variant : selectedCarVariant ? selectedCarVariant : ""}</h2>
+                </div>
+              </div>
+              }
               <div className="transmission_details location_info">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

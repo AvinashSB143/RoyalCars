@@ -315,7 +315,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
   const enableShowModelList = () => {
     setShowYearList(false)
     setShowBrandList(false)
-    selectedyear && selectedBrand && setShowModelList(!showModelList)
+    selectedyear && selectedBrand && selectedVariant && setShowModelList(!showModelList)
     setShowVariantList(false)
     setShowOwnerList(false)
     setKMList(false)
@@ -325,7 +325,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     setShowYearList(false)
     setShowBrandList(false)
     setShowModelList(false)
-    selectedModel && setShowVariantList(!showVariantList)
+    selectedBrand && setShowVariantList(!showVariantList)
     setShowOwnerList(false)
     setKMList(false)
   }
@@ -335,7 +335,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     setShowBrandList(false)
     setShowModelList(false)
     setShowVariantList(false)
-    selectedVariant && setShowOwnerList(!showOwnerList)
+    selectedModel && setShowOwnerList(!showOwnerList)
     setKMList(false)
   }
 
@@ -428,11 +428,11 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
               onClick={() => enableShowYearlist()} />
             <FormFields name="Brand" value={selectedBrand} disable={!selectedyear}
               onClick={() => enableShowBrandList()} />
-            <FormFields name="Model" value={selectedModel}
-              onClick={() => enableShowModelList()}
-            />
             <FormFields name="Variant" value={selectedVariant}
               onClick={() => enableShowMvariantList()}
+            />
+            <FormFields name="Model" value={selectedModel}
+              onClick={() => enableShowModelList()}
             />
             <FormFields name="Owner" value={selectedOwner}
               onClick={() => enableShowOwnerList()}
@@ -639,31 +639,10 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
               {carBrandsContainer}
             </div>
           </div>}
-          {selectedyear && selectedBrand && showModelList && <div className="sellcar_filter_container select_carbrand_filter">
+          {selectedyear && selectedBrand && showVariantList && <div className="sellcar_filter_container select_carbrand_filter">
             <div className="column_container car_list_options">
               <div className="search_container">
-                <TextField
-                  id="standard-search"
-                  placeholder="Please enter car Model"
-                  type="search"
-                  variant="standard"
-                  classes={{
-                    root: classes.root,
-                  }}
-                  InputProps={{ disableUnderline: true }}
-                  className="search_text"
-                  onChange={e => setsetselectedModel(e.target.value)}
-                />
-                <button onClick={() => setShowModelList(false)}>
-                  Okay
-                </button>
-              </div>
-            </div>
-          </div>}
-          {selectedModel && showVariantList && <div className="sellcar_filter_container select_variant_filter">
-            <div className="column_container car_list_options">
-              <div className="search_container">
-                <TextField
+              <TextField
                   id="standard-search"
                   placeholder="Please type Variant"
                   type="search"
@@ -678,6 +657,28 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
                 <button onClick={() => setShowVariantList(false)}>
                   Okay
                 </button>
+              </div>
+            </div>
+          </div>}
+          {selectedyear && selectedBrand && selectedVariant && showModelList && <div className="sellcar_filter_container select_variant_filter">
+            <div className="column_container car_list_options">
+              <div className="search_container">
+              <TextField
+                  id="standard-search"
+                  placeholder="Please enter car Model"
+                  type="search"
+                  variant="standard"
+                  classes={{
+                    root: classes.root,
+                  }}
+                  InputProps={{ disableUnderline: true }}
+                  className="search_text"
+                  onChange={e => setsetselectedModel(e.target.value)}
+                />
+                <button onClick={() => setShowModelList(false)}>
+                  Okay
+                </button>
+                
               </div>
             </div>
           </div>}

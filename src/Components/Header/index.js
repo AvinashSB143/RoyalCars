@@ -143,6 +143,11 @@ class Header extends Component {
     }
   };
 
+  setUserDetailstoStorage = () => {
+    this.changeArrow();
+    localStorage.setItem("selectedUserDetailsPhoneNumber", this.props.userDetails.phone);
+  }
+
   hideShowWorkFlow = () => {
     this.setState({
       showWorkFlow: false,
@@ -413,7 +418,7 @@ class Header extends Component {
             className="options"
             onClick={() => {
               this.props.authToken
-                ? this.changeArrow()
+                ? this.setUserDetailstoStorage()
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
@@ -434,7 +439,7 @@ class Header extends Component {
             className="options"
             onClick={() => {
               this.props.authToken
-                ? this.changeArrow()
+                ? this.setUserDetailstoStorage()
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );
@@ -454,7 +459,7 @@ class Header extends Component {
             className="options"
             onClick={() => {
               this.props.authToken
-                ? this.changeArrow()
+                ? this.setUserDetailstoStorage()
                 : this.setState({ showLoginContent: true }, () =>
                   this.changeArrow()
                 );

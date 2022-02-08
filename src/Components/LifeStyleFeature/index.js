@@ -179,7 +179,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newFuelList.splice(index, 1);
         }
-        if (newFuelList.length !== 0) {
+        if (newFuelList && newFuelList.length !== 0) {
           setFilteredCars({ ...filteredCars, fuelType: newFuelList });
         } else {
           delete filteredCars.fuelType;
@@ -267,7 +267,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newList && newList.splice(index, 1);
         }
-        if (newList.length !== 0) {
+        if (newList && newList.length !== 0) {
           setFilteredCars({ ...filteredCars, bodyType: newList });
         } else {
           delete filteredCars.bodyType;
@@ -297,7 +297,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newList && newList.splice(index, 1);
         }
-        if (newList.length !== 0) {
+        if (newList && newList.length !== 0) {
           setFilteredCars({ ...filteredCars, transmission: newList });
         } else {
           delete filteredCars.transmission;
@@ -324,7 +324,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newList && newList.splice(index, 1);
         }
-        if (newList.length !== 0) {
+        if (newList && newList.length !== 0) {
           setFilteredCars({ ...filteredCars, totalOwner: newList });
         } else {
           delete filteredCars.totalOwner;
@@ -351,7 +351,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newList && newList.splice(index, 1);
         }
-        if (newList.length !== 0) {
+        if (newList && newList.length !== 0) {
           setFilteredCars({ ...filteredCars, categories: newList });
         } else {
           delete filteredCars.categories;
@@ -381,7 +381,7 @@ const LifeStyleFeature = (props) => {
         if (index > -1) {
           newList && newList.splice(index, 1);
         }
-        if (newList.length !== 0) {
+        if (newList && newList.length !== 0) {
           setFilteredCars({ ...filteredCars, isActive: newList });
         } else {
           delete filteredCars.isActive;
@@ -457,7 +457,7 @@ const LifeStyleFeature = (props) => {
   });
 
   let showFilteredCarList =
-    filteredCarsList.length !== 0 &&
+  filteredCarsList && filteredCarsList.length !== 0 &&
     filteredCarsList.map((car) => {
       const carImage = car.imagePath.split(",");
       return (

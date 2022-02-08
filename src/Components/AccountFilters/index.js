@@ -42,7 +42,10 @@ const AccountFilters = (props) => {
 
     const heading = ["test", "bookings", "sellorders", "help_suport", "refer_and_earn", "profile"];
     const PageTitle = ["TEST DRIVES", "BOOKINGS", "SELL ORDERS", "HELP & SUPPORT", "REFER & EARN", "PROFILE"];
-
+    const userTestDriveCarsStored = localStorage.getItem("userTestDriveCarsStored");
+    const userBookedDriveCarsStored = localStorage.getItem("userBookedDriveCarsStored");
+    const userSellOrderCarsStored = localStorage.getItem("userSellOrderCarsStored");
+    const selectedUserDetailsPhoneNumber = localStorage.getItem("selectedUserDetailsPhoneNumber");
 
     const [showAllCars,setShowAllCars] = useState(false);
     const getUserInfo = useSelector(state => state.reducers)
@@ -72,9 +75,26 @@ const AccountFilters = (props) => {
         }
     },[props.testDriveCars])
 
+    useEffect(() => {
+        props.testDriveCars && props.testDriveCars.length !==0 && localStorage.setItem("userTestDriveCarsStored", JSON.stringify(props.testDriveCars));
+    },[props.testDriveCars])
+    
+    useEffect(() => {
+        props.customerBookedCars && props.customerBookedCars.length !==0 && localStorage.setItem("userBookedDriveCarsStored", JSON.stringify(props.customerBookedCars));
+    },[props.customerBookedCars])
+   
+   
+    useEffect(() => {
+        props.customerSellOrderList && props.customerSellOrderList.length !==0 && localStorage.setItem("userSellOrderCarsStored", JSON.stringify(props.customerSellOrderList));
+    },[props.customerSellOrderList])
+
+
+
+    
+
     const getSortedTestDriveCars = (ar1,ar2) => {
         let res = [];
-        res = ar1.filter(el => {
+        res = ar1 && ar2 && ar1.filter(el => {
           return ar2.find(element => {
             return element.carId === el._id;
           });
@@ -90,7 +110,7 @@ const AccountFilters = (props) => {
         return res;
     }
 
-    const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList, props.testDriveCars);
+    const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList, props.testDriveCars && props.testDriveCars.length !== 0 ? props.testDriveCars : userTestDriveCarsStored ? JSON.parse(userTestDriveCarsStored) : []);
          
     const testDriveCarsList = customerTestDriveCars && customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
         const carImage = car.imagePath.split(",");
@@ -112,14 +132,14 @@ const AccountFilters = (props) => {
                     </Link>
                 )
     }) : [];
+    
 
-
-    const bookedCarsList = props.customerBookedCars && props.customerBookedCars.map((car) => {
-        const carImage = car.imagePath.split(",");
+    const bookedCarsList = (props.customerBookedCars && props.customerBookedCars.length !== 0 ?  props.customerBookedCars : userBookedDriveCarsStored ? JSON.parse(userBookedDriveCarsStored): []).map((car) => {
+        const carImage = car.imagePath && car.imagePath.split(",");
         return(
             <Link className="feature-box" href="#">
                             <img
-                                src={`https://royalcarsmangalore.in:5000/${carImage[0]}`}
+                                src={`https://royalcarsmangalore.in:5000/${carImage && carImage[0] ? carImage[0] : ""}`}
                                 class="feature-img"
                                 alt=""
                             />
@@ -133,7 +153,8 @@ const AccountFilters = (props) => {
         )
     })
     
-    const sellOrderList = props.customerSellOrderList && props.customerSellOrderList.map((car) => {
+    
+    const sellOrderList = (props.customerSellOrderList && props.customerSellOrderList.length !== 0 ? props.customerSellOrderList : userSellOrderCarsStored ? JSON.parse(userSellOrderCarsStored) : []).map((car) => {
         const carImage = car.imagePath && car.imagePath.split(",");
         return(
             <Link className="feature-box" href="#">
@@ -179,13 +200,10 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info" 
                     onClick={() => {
-                        if(props.userDetails) {
-                            props.getTestDriveCars(props.userDetails.phone);
+                        if(props.userDetails || selectedUserDetailsPhoneNumber) {
+                            props.getTestDriveCars(props.userDetails && props.userDetails.phone ? props.userDetails.phone : selectedUserDetailsPhoneNumber ? selectedUserDetailsPhoneNumber : "");
                             props.showSearchBar(true)
                         }
-                        else {
-                            window.location.href("https://royalcarsmangalore.in")
-                        } 
                         setShowAllCars(false)
                         }
                     }
@@ -201,8 +219,8 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info"
                     onClick={() => {
-                        if(props.userDetails) {
-                            props.getBookedCars(props.userDetails.phone);
+                        if(props.userDetails || selectedUserDetailsPhoneNumber)  {
+                            props.getBookedCars(props.userDetails && props.userDetails.phone ? props.userDetails.phone : selectedUserDetailsPhoneNumber ? selectedUserDetailsPhoneNumber : "");
                             props.showSearchBar(true)
                            }
                         setShowAllCars(false);
@@ -219,8 +237,8 @@ const AccountFilters = (props) => {
                     }}/>
                     <div className="column_container user_info"
                     onClick={()=> {
-                        if(props.userDetails){
-                            props.sellOrders(props.userDetails.phone);
+                        if(props.userDetails || selectedUserDetailsPhoneNumber) {
+                            props.sellOrders(props.userDetails && props.userDetails.phone ? props.userDetails.phone : selectedUserDetailsPhoneNumber ? selectedUserDetailsPhoneNumber : "");
                             props.showSearchBar(true)
                     }
                         setShowAllCars(false);

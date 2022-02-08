@@ -532,6 +532,11 @@ li {
     padding: 5px 0;
     border-bottom: 0.5px solid #dbc4c4
   }
+  
+  .car_cariant {
+    position: relative;
+    left: -25%;
+  }
 
   .transmission_details {
     width: 100%;
