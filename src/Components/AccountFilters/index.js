@@ -69,7 +69,7 @@ const AccountFilters = (props) => {
    
 
     useEffect(() => {
-        if(props.testDriveCars && customertestDriveCarsList.current !== props.testDriveCars.length && (props.availableCarList && props.availableCarList.length == 0)) {
+        if(props.testDriveCars && customertestDriveCarsList.current !== props.testDriveCars.length && (!props.availableCarList || (props.availableCarList && props.availableCarList.length ==0))) {
             props.getCustomerCars();
             customertestDriveCarsList.current = props.testDriveCars.length
         }
@@ -92,7 +92,7 @@ const AccountFilters = (props) => {
 
     
 
-    const getSortedTestDriveCars = (ar1,ar2) => {
+    const getSortedTestDriveCars = (ar1=[],ar2=[]) => {
         let res = [];
         res = ar1 && ar2 && ar1.filter(el => {
           return ar2.find(element => {
@@ -110,7 +110,7 @@ const AccountFilters = (props) => {
         return res;
     }
 
-    const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList, props.testDriveCars && props.testDriveCars.length !== 0 ? props.testDriveCars : userTestDriveCarsStored ? JSON.parse(userTestDriveCarsStored) : []);
+    const customerTestDriveCars = getSortedTestDriveCars(props.availableCarList && props.availableCarList, props.testDriveCars && props.testDriveCars.length !== 0 ? props.testDriveCars : userTestDriveCarsStored ? JSON.parse(userTestDriveCarsStored) : []);
          
     const testDriveCarsList = customerTestDriveCars && customerTestDriveCars.length !== 0 ? customerTestDriveCars.map((car) => {
         const carImage = car.imagePath.split(",");
