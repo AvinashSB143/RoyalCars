@@ -29,7 +29,7 @@ const Working = (props) => {
             Choose from a range of best pre-owned cars
           </h3>
           <p style={{ textAlign: "center", margin: 0 }}>
-            Over 6000 fully inspected cars. Best performance guaranteed
+            Over 100+ fully inspected cars. Best performance guaranteed
           </p>
           <div style={{ marginTop: "10px" }}>
             <Link to="/lifeStyle" onClick={() => {

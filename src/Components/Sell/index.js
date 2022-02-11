@@ -6,7 +6,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {DatePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from '@date-io/date-fns';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
@@ -226,8 +226,8 @@ const Sell = (props) => {
   }
 
 
-  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford","Honda", "Hyundai", "Isuzu","jeep","Kia","Mahindra","Maruti Suzuki","ToyoTa","Others"];
-const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km","30,000km - 40,000km", "40,000km -50,000km"]
+  const carbrands = ["Chevrolet", "Datsun", "Fiat", "Ford", "Honda", "Hyundai", "Isuzu", "jeep", "Kia", "Mahindra", "Maruti Suzuki", "ToyoTa", "Others"];
+  const carKmDriven = ["0km - 10,000km", "10,000km - 20,000km", "20,000km - 30,000km", "30,000km - 40,000km", "40,000km -50,000km"]
 
 
   const carBrandsContainer = carbrands.map((item, index) => {
@@ -358,7 +358,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
     "customerPhoneNo": props.userDetails && props.userDetails.phone ? props.userDetails.phone : ""
   }
 
-  
+
   const submitCarDetailsforSale = () => {
     props.dispatchSellCar(carDetails)
     setselectedYear("");
@@ -428,11 +428,11 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
               onClick={() => enableShowYearlist()} />
             <FormFields name="Brand" value={selectedBrand} disable={!selectedyear}
               onClick={() => enableShowBrandList()} />
-            <FormFields name="Variant" value={selectedVariant}
-              onClick={() => enableShowMvariantList()}
-            />
             <FormFields name="Model" value={selectedModel}
               onClick={() => enableShowModelList()}
+            />
+            <FormFields name="Variant" value={selectedVariant}
+              onClick={() => enableShowMvariantList()}
             />
             <FormFields name="Owner" value={selectedOwner}
               onClick={() => enableShowOwnerList()}
@@ -441,185 +441,187 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
               onClick={() => enableShowKMList()}
             />
             <button class="search-button"
-              onClick={() => { 
+              onClick={() => {
                 submitCarDetailsforSale()
-               }
+              }
               }
             >Submit</button>
           </div>
           <div className="filter_form_mobile">
-              <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        Year
-                        {selectedyear && <p style={{fontSize: "12px"}}>{selectedyear}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <DatePicker
-                        views={["year"]}
-                        label="Please Select Year"
-                        value={selectedDate}
-                        onChange={e => handleYearChange(e)}
-                        classes={{
-                          root: classes.datePickerRoot,
-                          animated: classes.animated
-                        }}
-                        disableUnderline={true}
-                      />
-                    </MuiPickersUtilsProvider>
-                    </AccordionDetails>
-              </Accordion>
-              <Accordion disabled={!selectedyear}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        Brand
-                        {selectedBrand && <p style={{fontSize: "12px"}}>{selectedBrand}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                      {carBrandsContainer}
-                    </AccordionDetails>
-              </Accordion>
-              <Accordion disabled={!selectedBrand}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        Variant
-                        {selectedVariant && <p style={{fontSize: "12px"}}>{selectedVariant}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                      <TextField
-                          id="standard-search"
-                          placeholder="Please type Variant"
-                          type="search"
-                          variant="standard"
-                          classes={{
-                              root: classes.root,
-                          }}
-                          InputProps={{ disableUnderline: true }}
-                          className="search_text"
-                          onChange={e => setselectedVariant(e.target.value)}
-                          />
-                    </AccordionDetails>
-              </Accordion>
-              <Accordion disabled={!selectedVariant}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        Model
-                        {selectedModel && <p style={{fontSize: "12px"}}>{selectedModel}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                      <div >
-                      <TextField
-                          id="standard-search"
-                          placeholder="Please enter car Model"
-                          type="search"
-                          variant="standard"
-                          classes={{
-                              root: classes.root,
-                          }}
-                          InputProps={{ disableUnderline: true }}
-                          className="search_text"
-                          onChange={e => setsetselectedModel(e.target.value)}
-                          />
-                      </div>
-                    </AccordionDetails>
-              </Accordion>
-              <Accordion disabled={!selectedModel}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        Owner
-                        {selectedOwner && <p style={{fontSize: "12px"}}>{selectedOwner}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                    <div className="sellcar_filter_container select_owner_filter column_container">
-                        <button className={`${selectedOwner ==="1st Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`}  onClick={() => {
-                          setselectedOwner("1")
-                          setShowOwnerList(false)
-                        }}>1st Owner</button>   
-                        <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
-                        onClick={() => {
-                          setselectedOwner("2")
-                          setShowOwnerList(false)
-                        }}>2nd Owner</button>   
-                        <button className={`${selectedOwner ==="2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} 
-                        onClick={() => {
-                          setselectedOwner("3")
-                          setShowOwnerList(false)
-                        }}>3nd Owner</button>   
-                        </div>
-                    </AccordionDetails>
-              </Accordion>
-              <Accordion disabled={!selectedOwner}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={{background: "#FFDF00"}}
-                    >
-                      <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
-                        KM Driven
-                        {selectedKMDriven && <p style={{fontSize: "12px"}}>{selectedKMDriven}</p>}
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails style={{backhround: "#d9d7d7"}}>
-                      <div >
-                      <TextField
-                        id="standard-search"
-                        placeholder="KMs Driven"
-                        type="search"
-                        variant="standard"
-                        classes={{
-                            root: classes.root,
-                        }}
-                        InputProps={{ disableUnderline: true }}
-                        className="search_text"
-                        onChange={e => setselectedKMDriven(e.target.value)}
-                        />
-                      </div>
-                    </AccordionDetails>
-              </Accordion>
-              <div className="sell_submit_mobile">
-                <button style={{padding: "10px 30px", width: "50%", fontSize: "18px",
-                  fontWeight: "700", background: "red", color: "white"}}
-                  onClick={() => {props.dispatchSellCar(carDetails)}}
-                  disabled={!selectedKMDriven}
-                  >
-                  Submit
-                </button>
-              </div>
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  Year
+                  {selectedyear && <p style={{ fontSize: "12px" }}>{selectedyear}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <DatePicker
+                    views={["year"]}
+                    label="Please Select Year"
+                    value={selectedDate}
+                    onChange={e => handleYearChange(e)}
+                    classes={{
+                      root: classes.datePickerRoot,
+                      animated: classes.animated
+                    }}
+                    disableUnderline={true}
+                  />
+                </MuiPickersUtilsProvider>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled={!selectedyear}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  Brand
+                  {selectedBrand && <p style={{ fontSize: "12px" }}>{selectedBrand}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                {carBrandsContainer}
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled={!selectedBrand}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  Variant
+                  {selectedVariant && <p style={{ fontSize: "12px" }}>{selectedVariant}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                <TextField
+                  id="standard-search"
+                  placeholder="Please type Variant"
+                  type="search"
+                  variant="standard"
+                  classes={{
+                    root: classes.root,
+                  }}
+                  InputProps={{ disableUnderline: true }}
+                  className="search_text"
+                  onChange={e => setselectedVariant(e.target.value)}
+                />
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled={!selectedVariant}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  Model
+                  {selectedModel && <p style={{ fontSize: "12px" }}>{selectedModel}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                <div >
+                  <TextField
+                    id="standard-search"
+                    placeholder="Please enter car Model"
+                    type="search"
+                    variant="standard"
+                    classes={{
+                      root: classes.root,
+                    }}
+                    InputProps={{ disableUnderline: true }}
+                    className="search_text"
+                    onChange={e => setsetselectedModel(e.target.value)}
+                  />
+                </div>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled={!selectedModel}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  Owner
+                  {selectedOwner && <p style={{ fontSize: "12px" }}>{selectedOwner}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                <div className="sellcar_filter_container select_owner_filter column_container">
+                  <button className={`${selectedOwner === "1st Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} onClick={() => {
+                    setselectedOwner("1")
+                    setShowOwnerList(false)
+                  }}>1st Owner</button>
+                  <button className={`${selectedOwner === "2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`}
+                    onClick={() => {
+                      setselectedOwner("2")
+                      setShowOwnerList(false)
+                    }}>2nd Owner</button>
+                  <button className={`${selectedOwner === "2nd Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`}
+                    onClick={() => {
+                      setselectedOwner("3")
+                      setShowOwnerList(false)
+                    }}>3nd Owner</button>
+                </div>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion disabled={!selectedOwner}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                style={{ background: "#FFDF00" }}
+              >
+                <Typography style={{ fontSize: "20px", fontWeight: "700" }}>
+                  KM Driven
+                  {selectedKMDriven && <p style={{ fontSize: "12px" }}>{selectedKMDriven}</p>}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails style={{ backhround: "#d9d7d7" }}>
+                <div >
+                  <TextField
+                    id="standard-search"
+                    placeholder="KMs Driven"
+                    type="search"
+                    variant="standard"
+                    classes={{
+                      root: classes.root,
+                    }}
+                    InputProps={{ disableUnderline: true }}
+                    className="search_text"
+                    onChange={e => setselectedKMDriven(e.target.value)}
+                  />
+                </div>
+              </AccordionDetails>
+            </Accordion>
+            <div className="sell_submit_mobile">
+              <button style={{
+                padding: "10px 30px", width: "50%", fontSize: "18px",
+                fontWeight: "700", background: "red", color: "white"
+              }}
+                onClick={() => { props.dispatchSellCar(carDetails) }}
+                disabled={!selectedKMDriven}
+              >
+                Submit
+              </button>
+            </div>
           </div>
-        {showYearList &&   <div className="sellcar_filter_container">
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          {showYearList && <div className="sellcar_filter_container">
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
               <DatePicker
                 views={["year"]}
                 label="Please Select Year"
@@ -642,7 +644,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
           {selectedyear && selectedBrand && showVariantList && <div className="sellcar_filter_container select_carbrand_filter">
             <div className="column_container car_list_options">
               <div className="search_container">
-              <TextField
+                <TextField
                   id="standard-search"
                   placeholder="Please type Variant"
                   type="search"
@@ -663,7 +665,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
           {selectedyear && selectedBrand && selectedVariant && showModelList && <div className="sellcar_filter_container select_variant_filter">
             <div className="column_container car_list_options">
               <div className="search_container">
-              <TextField
+                <TextField
                   id="standard-search"
                   placeholder="Please enter car Model"
                   type="search"
@@ -678,7 +680,7 @@ const carKmDriven = ["0km - 10,000km","10,000km - 20,000km","20,000km - 30,000km
                 <button onClick={() => setShowModelList(false)}>
                   Okay
                 </button>
-                
+
               </div>
             </div>
           </div>}
