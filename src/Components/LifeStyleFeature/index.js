@@ -12,7 +12,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ReplayIcon from "@material-ui/icons/Replay";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+// import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -97,7 +97,7 @@ const LifeStyleFeature = (props) => {
   //   if(props.availableCarList && props.availableCarList.length ==0) {
   //     props.getCustomerCars()
   //   }
-  // },[props.availableCarList && props.availableCarList.length])
+  // },[])
 
   const searchCarByName = (name) => {
     let newCarList =
@@ -139,7 +139,9 @@ const LifeStyleFeature = (props) => {
                 (_k === "kmDriven" || _k === "budget")
                 ? Number(values[0][0]) >= car[_k]
                 : Number(values[0][0]) <= car[_k]
-              : values &&
+              : _k ==="brand" ? values &&
+              car[_k] &&
+              values[0].includes(car[_k].toString()) : values &&
                   car[_k] &&
                   values[0].includes(car[_k].toString().toLowerCase());
           })
@@ -478,7 +480,7 @@ const LifeStyleFeature = (props) => {
               <h4 className="car_name_info">{car.year}</h4>
               <h4 className="car_name_info">{car.brand}</h4>
               <h4 className="car_name_info">{car.model}</h4>
-              <FavoriteBorderIcon classes={{ root: classes.icon_root }} />
+              {/* <FavoriteBorderIcon classes={{ root: classes.icon_root }} /> */}
             </span>
             <div className="row_container car_km_ifo">
               <span className="row_container car_details">
