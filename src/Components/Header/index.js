@@ -123,6 +123,14 @@ class Header extends Component {
     });
   };
 
+  componentDidUpdate(prevProps) {
+    if(!prevProps.OTPVerificationSuccessful && this.props.OTPVerificationSuccessful) {
+      setTimeout(() => {
+      this.props.disableSnackBar()
+      },[2000])
+    }
+  }
+
   changeArrow = (value) => {
     if (value) {
       this.setState({
@@ -595,7 +603,7 @@ class Header extends Component {
         />
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
-          open={this.props.OTPVerificationSuccessful && this.state.closeOTPValidationPopUp}
+          open={this.props.OTPVerificationSuccessful}
           message="OTP Validated Successfully"
           key={vertical + horizontal}
           className={

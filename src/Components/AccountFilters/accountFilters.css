@@ -203,7 +203,6 @@ h4 {
 }
 .form-input-name input {
   color: rgba(46, 5, 78, 0.5);
-  cursor: not-allowed;
   padding-top: 20px;
   border-color: #e8e8e8;
   background-color: #fff;

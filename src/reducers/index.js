@@ -208,6 +208,18 @@ const reducers = (state = initialState, action) => {
             showSearchBartoUser: action.payload
         }
     }
+    if(action.type === "USER_DETAILS_UPDATED") {
+        return {
+            ...state,
+            userDetailsUpdated: true,
+        }
+    }
+    if(action.type === "DISABLE_USERDETAILS_SNACKBAR") {
+        return {
+            ...state,
+            userDetailsUpdated: false
+        }
+    }
     if(action.type === "LOGOUT") {
         return {
             authToken: null,

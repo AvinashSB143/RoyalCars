@@ -153,6 +153,30 @@ export const validateNumber = number => {
     }
 }
 
+export const updateUserDetails = (number, userName, email) => {
+    return dispatch => {
+        try {
+            axios.post('user/updateUser', {
+                phoneNumber: number,
+                userName: userName,
+                email: email
+            }).then(res => {
+                console.log(res)
+                dispatch ({
+                    type: "USER_DETAILS_UPDATED",
+                    payload: res.data
+                })
+            }).catch(err => console.log(err))
+            dispatch ({
+                type: "API_FAILURE",
+                payload: "success"
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
 export const validateOTP = (OTP,phoneNumber) => {
     return dispatch => {
         try {
@@ -375,6 +399,13 @@ export const disableSnackBar = () => {
     return dispatch => {
                     dispatch ({
                         type: "DISABLE_OTP_VALIDATION",
+                    })
+                }
+}
+export const disableUserDetailsSuccessSnackBar = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "DISABLE_USERDETAILS_SNACKBAR",
                     })
                 }
 }

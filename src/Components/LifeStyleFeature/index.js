@@ -93,17 +93,17 @@ const LifeStyleFeature = (props) => {
     return `${event.target.value}`;
   };
 
-  useEffect(() => {
-    if(props.availableCarList && props.availableCarList.length ==0) {
-      props.getCustomerCars()
-    }
-  },[])
+  // useEffect(() => {
+  //   if(props.availableCarList && props.availableCarList.length ==0) {
+  //     props.getCustomerCars()
+  //   }
+  // },[props.availableCarList && props.availableCarList.length])
 
   const searchCarByName = (name) => {
     let newCarList =
       props.availableCarList &&
       props.availableCarList.filter(function (car) {
-        return car["brand"] === name || car["model"] === name;
+        return car["brand"].toLowerCase() === name.toLowerCase() || car["model"].toLowerCase() === name.toLowerCase();
         // keys && keys.every(function(_k) {
         //     return (_k === "year" || _k === "kmDriven") ? typeof car[_k] === "number" && values && Number(values[0][0]) >= car[_k] : values && car[_k] && values[0].includes(car[_k].toString().toLowerCase())
         // })
@@ -488,7 +488,7 @@ const LifeStyleFeature = (props) => {
               </span>
             </div>
           </div>
-        </div>
+          </div>
       );
     });
 
@@ -1115,7 +1115,9 @@ const LifeStyleFeature = (props) => {
           )} */}
         <div className="row_container car_list_container">
           {filteredCarsList && filteredCarsList.length !== 0 ? (
-            <> {showFilteredCarList}</>
+        <>
+             {showFilteredCarList}
+             </>
           ) : filteredCars && Object.keys(filteredCars).length !== 0 ? (
             <div className="empty_car_list hide_option">
               No Cars Available..!
