@@ -129,7 +129,6 @@ return (
                 <div className="our_backers">
                     <div className = "about_us_main">
                         <div className="investor_container">
-                            <h3>Our Backers</h3>
                             <div className="investor_list">
                                     {investor.map((imag) => (
                                         <img src = {imag} />
