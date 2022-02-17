@@ -85,6 +85,13 @@ const LifeStyleFeature = (props) => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedModels, setSelectedModels] = useState([]);
 
+  
+  useEffect(() => {
+    if(props.availableCarList && props.availableCarList.length !==0) {
+      localStorage.setItem("availableCarsToBuy", JSON.stringify(props.availableCarList))
+    }
+  },[props.availableCarList && props.availableCarList.length])
+
   const updatebudget = (event) => {
     if (event) {
       setFilteredCars({ ...filteredCars, budget: event.target.value });
@@ -93,11 +100,6 @@ const LifeStyleFeature = (props) => {
     return `${event.target.value}`;
   };
 
-  // useEffect(() => {
-  //   if(props.availableCarList && props.availableCarList.length ==0) {
-  //     props.getCustomerCars()
-  //   }
-  // },[])
 
   const searchCarByName = (name) => {
     let newCarList =
@@ -420,10 +422,12 @@ const LifeStyleFeature = (props) => {
           localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
   }
 
+  const availableCarsToBuy = JSON.parse(localStorage.getItem("availableCarsToBuy"));
+
   const carList = 
     (filteredCarsList && filteredCarsList.length !== 0
       ? filteredCarsList
-      : props.availableCarList && props.availableCarList.length!== 0 ? props.availableCarList : []).map((car) => {
+      : props.availableCarList && props.availableCarList.length!== 0 ? props.availableCarList : availableCarsToBuy && availableCarsToBuy.length !==0 ? availableCarsToBuy : []).map((car) => {
       const carImage = car.imagePath.split(",");
     return (
       <div className="column_container car_list_buyCar hide_option">
@@ -1124,7 +1128,7 @@ const LifeStyleFeature = (props) => {
             <div className="empty_car_list hide_option">
               No Cars Available..!
             </div>
-          ) : props.availableCarList && props.availableCarList.length !== 0 ? (
+          ) :( props.availableCarList && props.availableCarList.length !== 0 || availableCarsToBuy && availableCarsToBuy.length !== 0) ? (
             <>{carList}</>
           ) : (
             <div className="empty_car_list hide_option">
