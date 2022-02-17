@@ -238,6 +238,7 @@ const Sell = (props) => {
           props.getCarsByBrand(item)
           setselectedBrand(item)
           setShowBrandList(false)
+          // setShowModelList(true)
         }}
       >{item}</button>
     )
@@ -315,7 +316,7 @@ const Sell = (props) => {
   const enableShowModelList = () => {
     setShowYearList(false)
     setShowBrandList(false)
-    selectedyear && selectedBrand && selectedVariant && setShowModelList(!showModelList)
+    selectedyear && selectedBrand && setShowModelList(true)
     setShowVariantList(false)
     setShowOwnerList(false)
     setKMList(false)
@@ -325,7 +326,7 @@ const Sell = (props) => {
     setShowYearList(false)
     setShowBrandList(false)
     setShowModelList(false)
-    selectedBrand && setShowVariantList(!showVariantList)
+    selectedBrand && setShowVariantList(true)
     setShowOwnerList(false)
     setKMList(false)
   }
@@ -641,28 +642,7 @@ const Sell = (props) => {
               {carBrandsContainer}
             </div>
           </div>}
-          {selectedyear && selectedBrand && showVariantList && <div className="sellcar_filter_container select_carbrand_filter">
-            <div className="column_container car_list_options">
-              <div className="search_container">
-                <TextField
-                  id="standard-search"
-                  placeholder="Please type Variant"
-                  type="search"
-                  variant="standard"
-                  classes={{
-                    root: classes.root,
-                  }}
-                  InputProps={{ disableUnderline: true }}
-                  className="search_text"
-                  onChange={e => setselectedVariant(e.target.value)}
-                />
-                <button onClick={() => setShowVariantList(false)}>
-                  Okay
-                </button>
-              </div>
-            </div>
-          </div>}
-          {selectedyear && selectedBrand && selectedVariant && showModelList && <div className="sellcar_filter_container select_variant_filter">
+          {selectedyear && selectedBrand  && showModelList && <div className="sellcar_filter_container select_carbrand_filter">
             <div className="column_container car_list_options">
               <div className="search_container">
                 <TextField
@@ -684,7 +664,30 @@ const Sell = (props) => {
               </div>
             </div>
           </div>}
-          {selectedModel && showOwnerList && <div className="sellcar_filter_container select_owner_filter column_container">
+          {/* {selectedyear && selectedBrand && showVariantList && <div className="sellcar_filter_container select_carbrand_filter"> */}
+          {selectedyear && selectedBrand && selectedModel && showVariantList &&  <div className="sellcar_filter_container select_variant_filter">
+            <div className="column_container car_list_options">
+              <div className="search_container">
+                <TextField
+                  id="standard-search"
+                  placeholder="Please type Variant"
+                  type="search"
+                  variant="standard"
+                  classes={{
+                    root: classes.root,
+                  }}
+                  InputProps={{ disableUnderline: true }}
+                  className="search_text"
+                  onChange={e => setselectedVariant(e.target.value)}
+                />
+                <button onClick={() => setShowVariantList(false)}>
+                  Okay
+                </button>
+              </div>
+            </div>
+          </div>}
+          
+          {selectedVariant && showOwnerList && <div className="sellcar_filter_container select_owner_filter column_container">
             <button className={`${selectedOwner === "1st Owner" ? "selected_option select_owner_btn" : "select_owner_btn"}`} onClick={() => {
               setselectedOwner("1")
               setShowOwnerList(false)
