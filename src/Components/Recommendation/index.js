@@ -4,14 +4,13 @@ import "./recomendation.css";
 import HeroBanner1 from "../../assests/hero1.jpg";
 import HeroBanner2 from "../../assests/hero2.jpg";
 import HeroBanner3 from "../../assests/hero3.jpg";
+import mainHero from "../../assests/mainHero.jpg";
 
 const RecommendedCars = () => {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
   const cars = [
-    HeroBanner1,
-    HeroBanner2,
-    HeroBanner3
+    mainHero
   ];
   const delay = 2000;
 
@@ -43,13 +42,13 @@ const RecommendedCars = () => {
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
         <div className="slidedWrapper">
-          {cars.map((images, index) => (
+          {/* {cars.map((images, index) => ( */}
             <img
               className="slideImg"
-              src={images}
+              src={mainHero}
               alt={`Recommendation_${index}`}
             />
-          ))}
+          {/* ))} */}
         </div>
       </div>
 
