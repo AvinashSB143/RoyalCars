@@ -67,6 +67,7 @@ const BuyCarDetails = (props) => {
   const selectedCarYear = localStorage.getItem("selectedCarYear");
   const selectedCarbrand = localStorage.getItem("selectedCarbrand");
   const selectedCarModel = localStorage.getItem("selectedCarModel");
+  const selectedCarId = localStorage.getItem("selectedCarId");
   const selectedCarFuelType = localStorage.getItem("selectedCarFuelType");
   const selectedCarTransmission = localStorage.getItem("selectedCarTransmission");
   const selectedCarImagePath = localStorage.getItem("selectedCarImagePath");
@@ -75,6 +76,7 @@ const BuyCarDetails = (props) => {
   const selectedCarinsurance = localStorage.getItem("selectedCarinsurance");
   const selectedCarVariant = localStorage.getItem("selectedCarVariant");
   const selectedCarinsuranceValidTill = localStorage.getItem("selectedCarinsuranceValidTill");
+  const car_bookedOrderId = localStorage.getItem("car_bookedOrderId");
   const carsImages = selectedCar ? selectedCar.imagePath.split(",") : selectedCarImagePath.split(",");
 
 
@@ -89,8 +91,8 @@ const BuyCarDetails = (props) => {
 
   const handlePayment = useCallback(() => {
     const options = {
-      key: "rzp_test_HrnE7wPqX9HFyT",
-      amount: selectedCar.budget,
+      key: "rzp_live_rpMlrTILaVynxt",
+      amount: selectedCar ? selectedCar.budget : selectedCarBudget,
       currency: "INR",
       name: "Royal Cars",
       description: "Car Book Transaction",
@@ -100,11 +102,11 @@ const BuyCarDetails = (props) => {
         console.log("razorpay response", res);
         const data = {
           razorpay_payment_id: res.razorpay_payment_id,
-          razorpay_order_id: props.bookedOrderId,
+          razorpay_order_id: props.bookedOrderId ? props.bookedOrderId : car_bookedOrderId ? car_bookedOrderId : "",
           razorpay_signature: res.razorpay_signature ? res.razorpay_signature : "",
-          carId: selectedCar._id,
-          customerPhoneNo: userDetails.phone,
-          paidAmmount: selectedCar.budget
+          carId: selectedCar ? selectedCar._id : selectedCarId ? selectedCarId : "",
+          customerPhoneNo: userDetails ? userDetails.phone: "",
+          paidAmmount: selectedCar ? selectedCar.budget : selectedCarBudget ? selectedCarBudget : ""
         }
         props.verifyPayment(data)
         window.location.href = "https://royalcarsmangalore.in/"

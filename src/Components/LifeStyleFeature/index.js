@@ -411,6 +411,7 @@ const LifeStyleFeature = (props) => {
           props.seletedCar(car);
           props.showSearchBar(false);
           localStorage.setItem("selectedCarYear", car.year);
+          localStorage.setItem("selectedCarId", car._id);
           localStorage.setItem("selectedCarbrand", car.brand);
           localStorage.setItem("selectedCarModel", car.model);
           localStorage.setItem("selectedCarFuelType", car.fuelType);
@@ -420,6 +421,8 @@ const LifeStyleFeature = (props) => {
           localStorage.setItem("selectedCarkmDriven", car.kmDriven);
           localStorage.setItem("selectedCarinsurance", car.insurance);
           localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
+          localStorage.setItem("car_bookedOrderId", props.bookedOrderId ? props.bookedOrderId : "");
+
   }
 
   const availableCarsToBuy = JSON.parse(localStorage.getItem("availableCarsToBuy"));

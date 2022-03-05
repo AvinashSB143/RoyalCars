@@ -74,6 +74,7 @@ const saveSelectedCar = (car) => {
     props.selectedCar(car);
     props.showSearchBar(false);
     localStorage.setItem("selectedCarYear", car.year);
+    localStorage.setItem("selectedCarId", car._id);
     localStorage.setItem("selectedCarbrand", car.brand);
     localStorage.setItem("selectedCarModel", car.model);
     localStorage.setItem("selectedCarFuelType", car.fuelType);
@@ -83,6 +84,8 @@ const saveSelectedCar = (car) => {
     localStorage.setItem("selectedCarkmDriven", car.kmDriven);
     localStorage.setItem("selectedCarinsurance", car.insurance);
     localStorage.setItem("selectedCarinsuranceValidTill", car.insuranceValidTill);
+    localStorage.setItem("car_bookedOrderId", props.bookedOrderId ? props.bookedOrderId : "");
+
 }
     return (
         <div className="main_container column_container">
@@ -137,7 +140,9 @@ const saveSelectedCar = (car) => {
 
 const mapStateToProps = (state) => {
     return {
-        assuredCarList: state.reducers.assuredCarList
+        assuredCarList: state.reducers.assuredCarList,
+        bookedOrderId: state.reducers.bookedOrderId,
+
     };
 };
 

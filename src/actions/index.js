@@ -424,6 +424,13 @@ export const disableSnackBarReferral = () => {
                     })
                 }
 }
+export const closeBookedCarPopUp = () => {
+    return dispatch => {
+                    dispatch ({
+                        type: "CLOSE_CARBOOKED_POPUP",
+                    })
+                }
+}
 
 export const getTestDriveCars = data => {
     return dispatch => {

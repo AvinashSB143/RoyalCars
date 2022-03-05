@@ -187,7 +187,13 @@ const reducers = (state = initialState, action) => {
     if(action.type === "CUSTOMER_BUY_ORDER_STATUS") {
         return {
             ...state,
-            customerCarBooked: action.payload
+            customerCarBooked: true
+        }
+    }
+    if(action.type === "CLOSE_CARBOOKED_POPUP") {
+        return {
+            ...state,
+            customerCarBooked: false
         }
     }
     if(action.type === "REFER_FRIEND_SUCCESS") {

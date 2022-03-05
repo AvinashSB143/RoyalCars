@@ -55,7 +55,8 @@ import {
   getAssuredCars,
   createOTP,
   disableSnackBar,
-  showSearchBar
+  showSearchBar,
+  closeBookedCarPopUp
 } from "../../actions"
 import styled from "styled-components";
 
@@ -323,6 +324,10 @@ class Header extends Component {
 
   handleCloseOTP = () => {
     this.setState({ resendOtp: false })
+  }
+
+  handleCloseBookedCar = () => {
+    this.props.closeBookedCarPopUp()
   }
 
   handleClose = () => {
@@ -616,6 +621,27 @@ class Header extends Component {
                 color="inherit"
                 sx={{ p: 0.5 }}
                 onClick={this.handleClose}
+              >
+                <CloseIcon />
+              </IconButton>
+            </Fragment>
+          }
+        />
+        <Snackbar
+          anchorOrigin={{ vertical, horizontal }}
+          open={this.props.customerCarBooked}
+          message="Car Booked with advance amount Successfully..!"
+          key={vertical + horizontal}
+          className={
+            classes.snackBarRoot
+          }
+          action={
+            <Fragment>
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                sx={{ p: 0.5 }}
+                onClick={this.handleCloseBookedCar}
               >
                 <CloseIcon />
               </IconButton>
@@ -1483,7 +1509,8 @@ const mapStateToProps = state => {
     OTPVerificationSuccessful: state.reducers.OTPVerificationSuccessful,
     enableUserToBook: state.reducers.enableUserToBook,
     showSearchBartoUser: state.reducers.showSearchBartoUser,
-    authenticationStatus: state.reducers.authenticationStatus
+    authenticationStatus: state.reducers.authenticationStatus,
+    customerCarBooked: state.reducers.customerCarBooked,
   }
 
 }
@@ -1568,6 +1595,11 @@ const mapDispatchToProps = dispatch => {
     disableSnackBar: () => {
       dispatch(
         disableSnackBar()
+      )
+    },
+    closeBookedCarPopUp: () => {
+      dispatch(
+        closeBookedCarPopUp()
       )
     },
     logout: () => {
