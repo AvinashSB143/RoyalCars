@@ -92,7 +92,7 @@ const BuyCarDetails = (props) => {
   const handlePayment = useCallback(() => {
     const options = {
       key: "rzp_live_rpMlrTILaVynxt",
-      amount: selectedCar ? selectedCar.budget : selectedCarBudget,
+      amount: "10000",
       currency: "INR",
       name: "Royal Cars",
       description: "Car Book Transaction",
@@ -106,7 +106,7 @@ const BuyCarDetails = (props) => {
           razorpay_signature: res.razorpay_signature ? res.razorpay_signature : "",
           carId: selectedCar ? selectedCar._id : selectedCarId ? selectedCarId : "",
           customerPhoneNo: userDetails ? userDetails.phone: "",
-          paidAmmount: selectedCar ? selectedCar.budget : selectedCarBudget ? selectedCarBudget : ""
+          paidAmmount: "10000"
         }
         props.verifyPayment(data)
         window.location.href = "https://royalcarsmangalore.in/"
