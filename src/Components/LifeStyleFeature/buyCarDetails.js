@@ -92,7 +92,7 @@ const BuyCarDetails = (props) => {
   const handlePayment = useCallback(() => {
     const options = {
       key: "rzp_live_rpMlrTILaVynxt",
-      amount: "10000",
+      amount: "1000000",
       currency: "INR",
       name: "Royal Cars",
       description: "Car Book Transaction",
