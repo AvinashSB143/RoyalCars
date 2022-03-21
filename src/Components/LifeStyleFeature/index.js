@@ -85,6 +85,9 @@ const LifeStyleFeature = (props) => {
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [selectedModels, setSelectedModels] = useState([]);
 
+  useEffect(() => {
+    window.scroll(0,0)
+  },[])
   
   useEffect(() => {
     if(props.availableCarList && props.availableCarList.length !==0) {
