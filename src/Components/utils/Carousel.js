@@ -17,7 +17,7 @@ const images = [
 
 const CarouselComponent = (props) => {
     return (
-        <Carousel showArrows={true}>
+        <Carousel showArrows={true} interval={1000}>
             {/* <Carousel showArrows={true} onChange={ } onClickItem={ } onClickThumb={ }> */}
             {
                 props.cars.map((imagePath) => {
